@@ -21,14 +21,12 @@ public class MemberDAO {
 
 	// 아이디 중복체크
 	public int empNoChk(MemberDTO dto) throws Exception {
-		System.out.println("dao : " + dto.getEmpNo());
 		int result = sqlSession.selectOne(namespace + ".empNoChk", dto.getEmpNo());
 		return result;
 	}
 	
 	// 이메일 중복체크
 		public int userEmailChk(String userEmail) throws Exception {
-			System.out.println("dao : " + userEmail);
 			int result = sqlSession.selectOne(namespace + ".userEmailChk", userEmail);
 			return result;
 		}
@@ -39,8 +37,6 @@ public class MemberDAO {
 	//임시 비밀번호
 		public void sentPw(MemberDTO dto)throws Exception{
 		
-			System.out.println("dao의useremail:"+dto.getUserEmail());
-			System.out.println("dao의pw:"+dto.getPassword());
 			sqlSession.update(namespace+".newPw",dto);
 		
 		}
