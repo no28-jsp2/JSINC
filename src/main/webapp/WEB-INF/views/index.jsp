@@ -26,7 +26,7 @@
 							<h3>회사 사진</h3>
 						</div>
 						<div class="custom-bar-chart">
-						<img src="img/company/com01.jpg" style="height: 80%; width: 100%">
+						<img src="resources/img/company/com01.jpg" style="height: 80%; width: 100%">
 						</div>
 						<!--custom chart end-->
 

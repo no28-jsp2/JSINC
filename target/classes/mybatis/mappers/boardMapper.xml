@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jsinc.mybatis.Board">
+	<select id="listAll" resultType="dto_board">
+		select
+			bno,
+			title,
+			content,
+			writer,
+			regdate
+		from 
+			jsinc_board
+		order by
+			bno desc
+	</select>
+
+	<insert id="insert" parameterType="dto_board">
+		insert into jsinc_board values(#{bno},#{title},#{writer},#{content},#{regdate},#{savefile})
+	</insert>
+	<select id="view">
+		select title,content,writer,savefile
+		from jsinc_board	
+	</select>
+	
+	<update id="update">
+		update jsinc_board set
+			title = #{title},
+			content = #{content},
+			writer = #{writer}
+		where bno = #{bno}
+	</update>
+	
+	<delete id="delete">
+		delete from jsinc_board
+		where bno = #{bno}
+	</delete> 
+	
+	
+	
+	
+	
+	
+</mapper>

@@ -14,7 +14,7 @@
             <ul class="sidebar-menu" id="nav-accordion">
                <p class="centered">
                   <a href="profile">
-                     <img src="${pageContext.request.contextPath }/resources/${user.img}" class="img-circle" width="80">
+                     <img src="${pageContext.request.contextPath }/resources/img/${user.img}" class="img-circle" width="80">
                   </a>
                </p>
                <h5 class="centered"><i class="fa fa-user"></i> ${user.name } <br>(${user.userEmail })</h5>
