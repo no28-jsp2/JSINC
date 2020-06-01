@@ -36,7 +36,7 @@
                         <div class="content-panel pn">
                            <div id="profile-02">
                               <div class="user">
-                                 <img src="resources/img/friends/fr-06.jpg" class="img-circle"
+                                 <img src="${pageContext.request.contextPath }/resources/img/${user.img}" class="img-circle"
                                     width="80">
                                  <h4>${user.name }</h4>
                               </div>

@@ -39,6 +39,7 @@ public class ProfileEditServiceImpl implements ProfileService{
       dto.setSmsChk(request.getParameter("smsChk"));
       dto.setRank(user.getRank());
       dto.setDep(user.getDep());
+      dto.setImg(user.getImg());
 
       try {
          dao.editProfile(dto);
