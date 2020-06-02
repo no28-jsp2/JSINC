@@ -4,10 +4,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<style type="text/css">
+ul li img {
+	width: 100%;
+	height: 300px;
+}
+</style>
+
+
+
 <title>JS.Inc</title>
-
-
-
 </head>
 <body>
 	<section id="container">
@@ -22,11 +29,18 @@
 				<div class="row">
 					<div class="col-lg-9 main-chart">
 						<!--CUSTOM CHART START -->
-						<div class="border-head">
-							<h3>회사 사진</h3>
-						</div>
-						<div class="custom-bar-chart">
-						<img src="resources/img/company/com01.jpg" style="height: 80%; width: 100%">
+
+						<div class="border-head"></div>
+						<div class="custom-bar-chart"
+							style="width: 90%; margin: 0 auto; margin-bottom: 50px;">
+							<div align="center" style="margin: 0 auto;">
+								<ul class="bxSlider">
+									<li><img alt="" src="resources/bxSli/img/pic01.png"></a></li>
+									<li><img alt="" src="resources/bxSli/img/pic02.jpg"></a></li>
+									<li><img alt="" src="resources/bxSli/img/pic03.png"></a></li>
+								</ul>
+							</div>
+
 						</div>
 						<!--custom chart end-->
 
@@ -85,33 +99,33 @@
 							</div>
 							<!-- /col-md-8  -->
 						</div>
-						
+
 						<!-- /row -->
-	<div class="col-md-8 mb">
-								<div class="message-p pn">
-									<div class="message-header">
-										<h5>결재 대기 문서</h5>
+						<div class="col-md-8 mb">
+							<div class="message-p pn">
+								<div class="message-header">
+									<h5>결재 대기 문서</h5>
+								</div>
+								<div class="row">
+									<div class="col-md-3 centered hidden-sm hidden-xs">
+										<img src="img/ui-danro.jpg" class="img-circle" width="65">
 									</div>
-									<div class="row">
-										<div class="col-md-3 centered hidden-sm hidden-xs">
-											<img src="img/ui-danro.jpg" class="img-circle" width="65">
-										</div>
-										<div class="col-md-9">
-											<p>
-												<name>Dan Rogers</name>
-												sent you a message.
-											</p>
-											<p class="small">3 hours ago</p>
-											<p class="message">Lorem Ipsum is simply dummy text of
-												the printing and typesetting industry. Lorem Ipsum has been
-												the industry's standard dummy text ever since the 1500s.</p>
-											<form class="form-inline" role="form">
-												<button type="submit" class="btn btn-default">Send</button>
-											</form>
-										</div>
+									<div class="col-md-9">
+										<p>
+											<name>Dan Rogers</name>
+											sent you a message.
+										</p>
+										<p class="small">3 hours ago</p>
+										<p class="message">Lorem Ipsum is simply dummy text of the
+											printing and typesetting industry. Lorem Ipsum has been the
+											industry's standard dummy text ever since the 1500s.</p>
+										<form class="form-inline" role="form">
+											<button type="submit" class="btn btn-default">Send</button>
+										</form>
 									</div>
 								</div>
 							</div>
+						</div>
 
 
 						<!-- /row -->
@@ -122,9 +136,9 @@
               *********************************************************************************************************************************************************** -->
 					<div class="col-lg-3 ds">
 						<!--COMPLETED ACTIONS DONUTS CHART-->
-						
+
 						<!--NEW EARNING STATS -->
-						
+
 						<!--new earning end-->
 						<!-- RECENT ACTIVITIES SECTION -->
 						<h4 class="centered mt">가입 커뮤니티 최신글</h4>
@@ -257,9 +271,13 @@
 		<!--main content end-->
 		<jsp:include page="default/footer.jsp" />
 	</section>
+	<!-- slider -->
+	<link rel="stylesheet" href="resources/bxSli/css/jquery.bxslider.css">
+	<script src="resources/bxSli/js/jquery-3.5.1.min.js"></script>
+	<script src="resources/bxSli/js/jquery.bxslider.js"></script>
+	<script src="resources/bxSli/images/controls.png"></script>
+	<!-- slider end -->
 	<!-- js placed at the end of the document so the pages load faster -->
-	<script src="resources/lib/jquery/jquery.min.js"></script>
-
 	<script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
 	<script class="include" type="text/javascript"
 		src="resources/lib/jquery.dcjqaccordion.2.7.js"></script>
@@ -339,7 +357,17 @@
       var to = $("#" + id).data("to");
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
-  
+    
+    $(document).ready(function() {
+		$(".bxSlider").bxSlider({
+			auto : true,
+			speed : 500,
+			pause:5000,
+			
+
+		});
+
+	});
 	</script>
 </body>
 
