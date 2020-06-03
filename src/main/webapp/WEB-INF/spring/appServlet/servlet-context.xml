@@ -27,7 +27,7 @@
 <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></beans:bean>
 <!-- 업로드 패스 설정 --> 
 <beans:bean class="java.lang.String" id="uploadPath">
- <beans:constructor-arg value="\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JSINC\resources" />
+ <beans:constructor-arg value="D:\12월 취업반 평일 오후3시반 허성택\spring_workspace2\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JSINC\resources" />
 
 </beans:bean>
 	

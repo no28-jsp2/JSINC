@@ -23,6 +23,11 @@
 <link rel="stylesheet" href="resources/lib/advanced-datatable/css/DT_bootstrap.css" />
 <link href="resources/lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
 <link href="resources/lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-fileupload/bootstrap-fileupload.css" />
+<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-datepicker/css/datepicker.css" />
+<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-timepicker/compiled/timepicker.css" />
+<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-datetimepicker/datertimepicker.css" />
   
 <!-- Custom styles for this template -->
 <link href="resources/css/style.css" rel="stylesheet">

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,59 +16,18 @@
 		<section id="main-content">
 			<section class="wrapper">
 				<h3>
-					<i class="fa fa-angle-right"></i> 새 설문 작성
+					<i class="fa fa-angle-right"></i> ${survey.title}
 				</h3>
 				<div class="row mt">
 					<!--  DATE PICKERS -->
 					<div class="col-lg-12">
 						<div class="form-panel">
 							<form action="surveyInput" class="form-horizontal style-form">
-							
-								<div class="form-group">
-									<label for="ctitle" class="control-label col-lg-2" style="text-align: center;">설문 제목</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control " id="ctitle" name="title" required>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label" style="text-align: center;">마감 날짜</label>
-									<div class="col-md-3 col-xs-11">
-										<div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="2020-${loginMonth }-${loginDay}" class="input-append date dpYears">
-											<input type="text" readonly="" value="2020-${loginMonth }-${loginDay}" size="16" class="form-control" name="eDate"> 
-											<span class="input-group-btn add-on">
-												<button class="btn btn-theme" type="button">
-													<i class="fa fa-calendar"></i>
-												</button>
-											</span>
-										</div>
-										<span class="help-block">Select date</span>
-									</div>
-								</div>
-
 								<div class="form-group ">
 									<label for="ccomment" class="control-label col-lg-2" style="text-align: center;">설문 내용</label>
 									<div class="col-lg-10">
-										<textarea class="form-control " id="ccomment" name="comment" required style="height: 200px;"></textarea>
+										<p>${survey.text }</p>
 									</div>
-								</div>
-								<div class="form-group ">
-									<label class="control-label col-lg-2" style="text-align: center;">답변 옵션 설정</label>
-									<div class="col-lg-10">
-										<div class="radio">
-											<label> 
-												<input type="radio" name="optionsRadios" id="optionsRadios1" value="2" checked> 
-												옵션 2개 (1, 2)
-											</label>
-										</div>
-										<div class="radio">
-											<label> 
-												<input type="radio" name="optionsRadios" id="optionsRadios2" value="5">
-												옵션 5개 (1, 2, 3, 4, 5)
-											</label>
-										</div>
-									</div>
-									
 								</div>
 								<div class="form-group">
 									<div class="col-lg-offset-2 col-lg-10">

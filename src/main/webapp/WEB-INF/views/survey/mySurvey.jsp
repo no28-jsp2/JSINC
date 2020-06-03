@@ -16,7 +16,7 @@
 		<section id="main-content">
 			<section class="wrapper">
 				<h3>
-					<i class="fa fa-angle-right"></i> 진행중인 설문
+					<i class="fa fa-angle-right"></i> 내가만든 설문
 				</h3>
 				<div class="row mb">
 					<!-- page start-->
