@@ -13,7 +13,8 @@ import com.jsinc.jsincDAO.SurveyDAO;
 import com.jsinc.jsincDTO.SurveyDTO;
 
 @Service
-public class SurveyService implements ServiceIf{
+public class ResultService implements ServiceIf{
+
 	@Autowired
 	SurveyDAO dao;
 	
@@ -29,8 +30,6 @@ public class SurveyService implements ServiceIf{
 		String text = dto.getText();
 		text = text.replace("\n", "<br>");
 		dto.setText(text);
-		System.out.println("dto.opt : " + dto.getOpt());
 		session.setAttribute("survey", dto);
 	}
-
 }

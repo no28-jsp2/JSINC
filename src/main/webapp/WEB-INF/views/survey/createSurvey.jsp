@@ -50,6 +50,8 @@
 									<label for="ccomment" class="control-label col-lg-2" style="text-align: center;">설문 내용</label>
 									<div class="col-lg-10">
 										<textarea class="form-control " id="ccomment" name="comment" required style="height: 200px;"></textarea>
+										&#187; 옵션 갯수 설정에 따른 각 옵션별 항목을 설문 내용에 적어주세요.<br>
+										ex) 2개 선택시 : 1. 찬성 // 2. 반대
 									</div>
 								</div>
 								<div class="form-group ">

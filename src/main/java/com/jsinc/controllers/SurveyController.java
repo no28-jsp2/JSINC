@@ -8,8 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jsinc.services.survey.CreateSurveyService;
+import com.jsinc.services.survey.EndListService;
+import com.jsinc.services.survey.MyListService;
 import com.jsinc.services.survey.ProceedingListService;
+import com.jsinc.services.survey.ResultService;
 import com.jsinc.services.survey.ServiceIf;
+import com.jsinc.services.survey.SurveyResultService;
 import com.jsinc.services.survey.SurveyService;
 
 @Controller
@@ -31,12 +35,18 @@ public class SurveyController {
 	}
 	
 	@RequestMapping("endSurvey")
-	public String endSurvey() {
+	public String endSurvey(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		service = ac.getBean("endListService", EndListService.class);
+		service.execute(model);
 		return "survey/endSurvey";
 	}
 	
 	@RequestMapping("mySurvey")
-	public String mySurvey() {
+	public String mySurvey(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		service = ac.getBean("myListService", MyListService.class);
+		service.execute(model);
 		return "survey/mySurvey";
 	}
 	
@@ -54,5 +64,21 @@ public class SurveyController {
 		service = ac.getBean("surveyService", SurveyService.class);
 		service.execute(model);
 		return "survey/survey";
+	}
+	
+	@RequestMapping("surveyResult")
+	public String surveyResult(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		service = ac.getBean("surveyResultService", SurveyResultService.class);
+		service.execute(model);
+		return "redirect:startedSurvey";
+	}
+	
+	@RequestMapping("result")
+	public String result(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		service = ac.getBean("resultService", ResultService.class);
+		service.execute(model);
+		return "survey/result";
 	}
 }

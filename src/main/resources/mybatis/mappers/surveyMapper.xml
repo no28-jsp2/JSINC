@@ -18,4 +18,17 @@
 	<select id="survey" resultType="dto_sur">
 		select * from jsinc_survey where title=#{title}
 	</select>
+	
+	<update id="endChk">
+		update jsinc_survey set state=#{state} where title=#{title}
+	</update>
+	<!-- ============================================================================================================ -->
+	<insert id="inputResult" parameterType="dto_sr">
+		insert into survey_result values(#{empNo}, #{title}, #{result})
+	</insert>
+	
+	<select id="resultChk" resultType="int">
+		select count(*) from survey_result where empNo=#{empNo} and title=#{title}
+	</select>
+	
 </mapper>

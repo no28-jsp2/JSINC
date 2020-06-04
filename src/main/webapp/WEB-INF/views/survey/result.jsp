@@ -6,6 +6,7 @@
 
 <head>
 <title>JS.Inc</title>
+<meta charset="utf-8">
 </head>
 
 <body>
@@ -30,22 +31,10 @@
 									</div>
 								</div>
 								<div class="form-group">
-								<div class="col-lg-offset-2 col-lg-10">
-								<c:choose>
-									<c:when test="${survey.opt == 2}">
-										<button class="btn btn-theme" type="submit" name="button" value="1">1</button>
-										<button class="btn btn-theme" type="submit" name="button" value="2">2</button>
-									</c:when>
-									<c:otherwise>
-										<button class="btn btn-theme" type="submit" name="button" value="1">1</button>
-										<button class="btn btn-theme" type="submit" name="button" value="2">2</button>
-										<button class="btn btn-theme" type="submit" name="button" value="3">3</button>
-										<button class="btn btn-theme" type="submit" name="button" value="4">4</button>
-										<button class="btn btn-theme" type="submit" name="button" value="5">5</button>
-									</c:otherwise>
-								</c:choose>
-								</div>
-									
+									<label for="ccomment" class="control-label col-lg-2" style="text-align: center;">결과</label>
+									<div class="col-lg-10">
+										<canvas id="doughnut" height="300" width="400"></canvas>
+									</div>
 								</div>
 							</form>
 						</div>
@@ -80,7 +69,9 @@
 	<script type="text/javascript" src="resources/lib/bootstrap-daterangepicker/moment.min.js"></script>
 	<script type="text/javascript" src="resources/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
 	<script src="resources/lib/advanced-form-components.js"></script>
-
+	<!--script for this page-->
+	<script src="resources/lib/chart-master/Chart.js"></script>
+	<script src="resources/lib/chartjs-conf.js"></script>
 </body>
 
 </html>

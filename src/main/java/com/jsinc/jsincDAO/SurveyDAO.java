@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jsinc.jsincDTO.SurveyDTO;
+import com.jsinc.jsincDTO.SurveyResultDTO;
 
 
 @Repository
@@ -19,11 +20,27 @@ public class SurveyDAO {
 		return sqlSession.selectList(namespace + ".listAll", state);
 	}
 	
+	public List<SurveyDTO> myList(String empNo) {
+		return sqlSession.selectList(namespace + ".myList", empNo);
+	}
+	
 	public void input(SurveyDTO dto) {
 		sqlSession.insert(namespace + ".input", dto);
 	}
 	
 	public SurveyDTO survey(String title) {
 		return sqlSession.selectOne(namespace + ".survey", title);
+	}
+	
+	public void endChk(SurveyDTO dto) {
+		sqlSession.update(namespace + ".endChk", dto);
+	}
+	// ==========================================================================
+	public void inputResult(SurveyResultDTO dto) {
+		sqlSession.insert(namespace + ".inputResult", dto);
+	}
+	
+	public int resultChk(SurveyResultDTO dto) {
+		return sqlSession.selectOne(namespace + ".resultChk", dto);
 	}
 }

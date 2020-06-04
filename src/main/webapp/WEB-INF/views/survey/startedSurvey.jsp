@@ -34,10 +34,18 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${proList }" var="dto_sur">
+									<c:forEach items="${gList }" var="dto_sur">
 										<tr class="gradeA">
 											<td>${dto_sur.state }</td>
 											<td><a href="survey?title=${dto_sur.title }">${dto_sur.title }</a></td>
+											<td>${dto_sur.eDate }</td>
+											<td>${dto_sur.writer }</td>
+										</tr>
+									</c:forEach>
+									<c:forEach items="${rList }" var="dto_sur">
+										<tr class="gradeX">
+											<td>${dto_sur.state }</td>
+											<td><a href="result?title=${dto_sur.title }">${dto_sur.title }</a></td>
 											<td>${dto_sur.eDate }</td>
 											<td>${dto_sur.writer }</td>
 										</tr>
