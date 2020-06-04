@@ -61,8 +61,9 @@ ul li img {
 							<!-- WEATHER PANEL -->
 							<div class="col-md-4 mb">
 								<div class="weather pn">
-									<i class="fa fa-cloud fa-4x"></i>
-									<h2>11º C</h2>
+									<i class="cicon"></i>
+									<h2 class="ctemp">현재 온도:</h2>
+									<h4 class="humtemp">습도:</h2>
 									<h4>종로구</h4>
 								</div>
 							</div>
@@ -262,6 +263,8 @@ ul li img {
 							</div>
 						</div>
 						<!-- / calendar -->
+						
+						
 					</div>
 					<!-- /col-lg-3 -->
 				</div>
@@ -271,6 +274,27 @@ ul li img {
 		<!--main content end-->
 		<jsp:include page="default/footer.jsp" />
 	</section>
+	<!-- 날씨 -->
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
+	<script>
+	$.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=37.5711258&lon=126.991981&APPID=254aee44df076ff4abe18019eaec0bbf', function(data){
+		var $cTemp=Math.floor(data.main.temp-273.15)+"ºC";
+		var $minTemp=Math.floor(data.main.temp_min-273.15);
+	 	var $maxTemp=Math.floor(data.main.temp_max-273.15);
+	 	var $cDate=data.dt;
+	 	var $wIcon=data.weather[0].icon;
+	 	var $hum=(data.main.humidity+"%");
+	 	
+	 	$('.ctemp').append($cTemp)
+	 	$('.humtemp').append($hum)
+	 	$('.cicon').append('<img src="http://openweathermap.org/img/wn/'+$wIcon+'@2x.png"/>')
+	    });
+
+	</script>
+	
+	<!--날씨 end  -->
 	<!-- slider -->
 	<link rel="stylesheet" href="resources/bxSli/css/jquery.bxslider.css">
 	<script src="resources/bxSli/js/jquery-3.5.1.min.js"></script>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,16 +29,40 @@
         <h3><i class="fa fa-angle-right"></i> 전체 커뮤니티</h3>
 
 		
-
-		<div class="form-group">
-			<textarea class="form-control" name="message" id="contact-message"
-				placeholder="Your Message" rows="5" data-rule="required"
-				data-msg="Please write something for us"></textarea>
-			<div class="validate"></div>
-		</div>
+ <!-- /col-md-12 -->
+          <div class="col-md-12 mt">
+            <div class="content-panel">
+              <table class="table table-hover">
+                <hr>
+                <thead>
+                  <tr>
+                    <th>커뮤니티(명)</th>
+                    <th>회원수</th>
+                    <th>마스터</th>
+                    <th>가입여부</th>
+                  </tr>
+                </thead>
+                <tbody>
+				<c:forEach items="${allList }" var="dto">
+				<tr>
+				<td><a href="viewCom?title=${dto.title }">${dto.title}</a></td>
+				<td>10</td>
+				<td>${dto.name }</td>
+				<td>가입</td>
+				</tr>
+				</c:forEach>               
+               
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- /col-md-12 -->
 
 	</section>
 	</section>
+	
+	
+	
 	
 	<!--main content end-->
 	<jsp:include page="../default/footer.jsp" />

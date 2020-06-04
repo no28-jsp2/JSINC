@@ -26,21 +26,42 @@
 	 <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> 가입 커뮤니티</h3>
+        <h3><i class="fa fa-angle-right"></i> 내가 가입한 커뮤니티</h3>
+
+		<!--커뮤니티 -->
+          <div class="col-md-12 mt">
+            <div class="content-panel">
+              <table class="table table-hover">
+                <hr>
+                <thead>
+                  <tr>
+                    <th>커뮤니티(명)</th>
+                    <th>회원수</th>
+                    <th>마스터</th>
+                    <th>가입여부</th>
+                  </tr>
+                </thead>
+                <tbody>
+				<c:forEach items="${myList }" var="dto">
+				<tr>
+				<td><a href="#">${dto.title}</a></td>
+				<td>10</td>
+				<td>${dto.name }</td>
+				<td>가입</td>
+				</tr>
+				</c:forEach>               
+               
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- 커뮤니티 end -->
 
 		
-
-		<div class="form-group">
-			<textarea class="form-control" name="message" id="contact-message"
-				placeholder="Your Message" rows="5" data-rule="required"
-				data-msg="Please write something for us"></textarea>
-			<div class="validate"></div>
-		</div>
-
 	</section>
 	</section>
 	
-	<!--main content end-->
+	
 	<jsp:include page="../default/footer.jsp" />
 	<script	src="resources/bxSli/js/jquery-3.5.1.min.js"></script>
 	<!-- js placed at the end of the document so the pages load faster -->
