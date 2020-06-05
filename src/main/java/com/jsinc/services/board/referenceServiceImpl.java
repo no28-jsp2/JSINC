@@ -1,25 +1,20 @@
 package com.jsinc.services.board;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
 import com.jsinc.jsincDAO.BoardDAO;
 import com.jsinc.jsincDTO.BoardDTO;
 @Service
-public class boardServiceImpl implements boardService{
-
-	
+public class referenceServiceImpl implements referenceService{
 	
 	@Inject
 	BoardDAO dao;
 	
-	//게시글 작성
 	@Override
 	public void create(BoardDTO dto) throws Exception {
 		String title = dto.getTitle();
@@ -39,27 +34,34 @@ public class boardServiceImpl implements boardService{
 		dto.setTitle(title);
 		dto.setContent(content);
 		dto.setWriter(writer);
-		dao.create(dto);
+		dao.upload(dto);
 	}
-	//게시글 상세보기
+
 	@Override
-	public BoardDTO view(int bno) throws Exception {
-		return dao.view(bno);
+	public BoardDTO fileView(int bno) throws Exception {
+		return dao.fileView(bno);
 	}
-	//게시글 수정
+
+
 	@Override
-	public void update(BoardDTO dto) throws Exception {
-		dao.update(dto);
+	public void fileUpdate(BoardDTO dto) throws Exception {
+		dao.fileUpdate(dto);
 	}
-	//게시글 삭제
+
 	@Override
-	public void delete(int bno) throws Exception {
-		dao.delete(bno);
+	public void fileDelete(int bno) throws Exception {
+		dao.fileDelete(bno);
 	}
-	//게시글 전체 목록
+
 	@Override
-	public List<BoardDTO> listAll() throws Exception {
-		return dao.list();
+	public List<BoardDTO> fileListAll() throws Exception {
+		return dao.fileList();
 	}
+
+	@Override
+	public BoardDTO file(String realfile) throws Exception {
+		return dao.file(realfile);
+	}
+
 
 }

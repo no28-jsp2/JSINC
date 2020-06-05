@@ -14,7 +14,7 @@
             <ul class="sidebar-menu" id="nav-accordion">
                <p class="centered">
                   <a href="profile">
-                     <img src="${pageContext.request.contextPath }/resources/img/${user.img}" class="img-circle" width="80">
+                     <img src="${pageContext.request.contextPath }/resources/${user.img}" class="img-circle" width="80">
                   </a>
                </p>
                <h5 class="centered"><i class="fa fa-user"></i> ${user.name } <br>(${user.userEmail })</h5>
@@ -42,9 +42,9 @@
                      class="fa fa-cogs"></i> <span>게시판</span>
                </a>
                   <ul class="sub">
-                     <li><a href="allCompanyBoard">전사게시판</a></li>
-                     <li><a href="departmentBoard">부서게시판</a></li>
-                     <li><a href="referenceBoard">부서게시판</a></li>
+                     <li><a href="allCompanyBoard">전사 게시판</a></li>
+                     <li><a href="departmentBoard">부서 게시판</a></li>
+                     <li><a href="referenceBoard">자료실 게시판</a></li>
                   </ul>
                </li>
                

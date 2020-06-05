@@ -6,8 +6,6 @@
 <head>
 <title>JS.Inc</title>
 
-
-
 </head>
 <body>
 	<section id="container">

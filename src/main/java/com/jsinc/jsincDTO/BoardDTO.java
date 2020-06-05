@@ -10,6 +10,9 @@ public class BoardDTO {
 	private String content;
 	private Date regdate;
 	private String savefile;
+	private String realfile;
+	private int filesize;
+	
 	public int getBno() {
 		return bno;
 	}
@@ -46,6 +49,20 @@ public class BoardDTO {
 	public void setSavefile(String savefile) {
 		this.savefile = savefile;
 	}
+	public String getRealfile() {
+		return realfile;
+	}
+	public void setRealfile(String realfile) {
+		this.realfile = realfile;
+	}
+	public int getFilesize() {
+		return filesize;
+	}
+	public void setFilesize(int filesize) {
+		this.filesize = filesize;
+	}
+	
+	
 	
 	
 }
