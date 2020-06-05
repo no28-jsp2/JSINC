@@ -45,5 +45,10 @@ public class MemberDAO {
 	public void editProfile(MemberDTO dto) throws Exception {
 		sqlSession.update(namespace + ".editProfile", dto);
 	}
+	
+	// 비밀번호 변경
+	public void passwordChange(MemberDTO dto) {
+		sqlSession.update(namespace + ".passwordChange", dto);
+	}
 
 }

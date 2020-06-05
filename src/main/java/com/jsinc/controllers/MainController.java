@@ -23,6 +23,7 @@ import com.jsinc.jsincDTO.MemberDTO;
 import com.jsinc.services.main.LoginService;
 import com.jsinc.services.main.MailService;
 import com.jsinc.services.main.MemberServiceImpl;
+import com.jsinc.services.main.PasswordChangeService;
 import com.jsinc.services.main.ProfileEditServiceImpl;
 import com.jsinc.services.main.ProfileService;
 import com.jsinc.services.main.ProfileValueServiceImpl;
@@ -36,8 +37,8 @@ public class MainController {
 	@Autowired
 	MailService mailService;
 	ProfileService profileService;
-	
-	@Resource(name="uploadPath") // 업로드 경로 (출처 : servlet-context)
+
+	@Resource(name = "uploadPath") // 업로드 경로 (출처 : servlet-context)
 	private String uploadPath;
 
 	@RequestMapping("loginChk")
@@ -54,22 +55,30 @@ public class MainController {
 	public String index() {
 		return "index";
 	}
+
 	@RequestMapping("profile")
-	   public String profile(Model model,HttpServletRequest request) {
-	      model.addAttribute("request", request);
-	      profileService = ac.getBean("profileValueServiceImpl", ProfileValueServiceImpl.class);
-	      profileService.execute(model);
-	      return "profile";
-	   }
-	   
-	   @RequestMapping("editProfile")
-	   public String editProfile(Model model, HttpServletRequest request) {
-	      model.addAttribute("request", request);
-	      profileService = ac.getBean("profileEditServiceImpl",ProfileEditServiceImpl.class);
-	      profileService.execute(model);
-	      return "redirect:profile";
-	   }
+	public String profile(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		profileService = ac.getBean("profileValueServiceImpl", ProfileValueServiceImpl.class);
+		profileService.execute(model);
+		return "profile";
+	}
+
+	@RequestMapping("editProfile")
+	public String editProfile(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		profileService = ac.getBean("profileEditServiceImpl", ProfileEditServiceImpl.class);
+		profileService.execute(model);
+		return "redirect:profile";
+	}
 	
+	@RequestMapping("changePw")
+	public String changePw(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		profileService = ac.getBean("passwordChangeService", PasswordChangeService.class);
+		profileService.execute(model);
+		return "redirect:profile";
+	}
 
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
@@ -89,28 +98,27 @@ public class MainController {
 	@ResponseBody
 	public String doSend(String email, String title, String body, HttpServletRequest req) {
 
-		
 		title = "JSInc. 회원가입 인증 코드 발급 안내 입니다.";
 		email = req.getParameter("userEmail");
 		body = "귀하의 인증 코드는" + vali + " 입니다.";
-		
-		char[] charSet= {'1','2','3','4','5','6','7','8','9','A','B','C','D',
-	    		 'e','F','G','h','I','j','K','L','m','O','p','Q','r','S','t'};
-	     
-	     StringBuffer newKey = new StringBuffer();
-	     for(int i =0;i<10;i++) {
-	    	 int idx=(int)(charSet.length*Math.random());
-	    	 newKey.append(charSet[idx]);
-	     }
-	     this.vali=newKey.toString();
-		 System.out.println("사용자 이메일:"+email);
-		 System.out.println("인증코드:"+vali);
-		 title = "JSInc. 회원가입 인증 코드 발급 안내 입니다.";
-		 body="";
-		 body +="<div align='center' style='border:1px solid black;' font-family:verdana'>";
-		 body +="<h3 style='color:blue;'>귀하의 인증코드 입니다. </h3>";
-		 body +="<p>인증코드: <strong>"+vali+"</strong></p></div>";
-		
+
+		char[] charSet = { '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'e', 'F', 'G', 'h', 'I',
+				'j', 'K', 'L', 'm', 'O', 'p', 'Q', 'r', 'S', 't' };
+
+		StringBuffer newKey = new StringBuffer();
+		for (int i = 0; i < 10; i++) {
+			int idx = (int) (charSet.length * Math.random());
+			newKey.append(charSet[idx]);
+		}
+		this.vali = newKey.toString();
+		System.out.println("사용자 이메일:" + email);
+		System.out.println("인증코드:" + vali);
+		title = "JSInc. 회원가입 인증 코드 발급 안내 입니다.";
+		body = "";
+		body += "<div align='center' style='border:1px solid black;' font-family:verdana'>";
+		body += "<h3 style='color:blue;'>귀하의 인증코드 입니다. </h3>";
+		body += "<p>인증코드: <strong>" + vali + "</strong></p></div>";
+
 		Map<String, Object> sendRs = mailService.send(email, title, body);
 		return (String) sendRs.get("msg");
 	}
@@ -121,13 +129,13 @@ public class MainController {
 		String chkNum = (String) req.getParameter("chkNum");
 		System.out.println("입력한 인증번호" + chkNum);
 		System.out.println("인증번호=======" + vali);
-		int result=0;
+		int result = 0;
 		if (vali.equals(chkNum)) {
-			return 0+"";
+			return 0 + "";
 		} else if (chkNum.equals("")) {
-			return 1+"";
+			return 1 + "";
 		} else {
-			return 2+"";
+			return 2 + "";
 		}
 	}
 
@@ -138,74 +146,73 @@ public class MainController {
 		System.out.println(dto.getEmpNo());
 		int result = service.empNoChk(dto);
 		System.out.println("result: " + result);
-		return result+"";
+		return result + "";
 	}
 
 	@RequestMapping(value = "userEmailChk", produces = "application/text;charset=utf8")
 	@ResponseBody
 	public String userEmailChk(HttpServletRequest req) throws Exception {
 		String userEmail = (String) req.getParameter("userEmail");
-		System.out.println("controller:"+userEmail);
+		System.out.println("controller:" + userEmail);
 		service = ac.getBean("memberServiceImpl", MemberServiceImpl.class);
-		int result=service.userEmailChk(userEmail);
-		System.out.println("result:"+result);
-		return result+"";
+		int result = service.userEmailChk(userEmail);
+		System.out.println("result:" + result);
+		return result + "";
 	}
-	
+
 	@RequestMapping("registerMem")
-	public String registerMem(MemberDTO dto,Model model,MultipartFile profile) throws Exception {
-		
-		//업로드
-		UUID uuid = UUID.randomUUID(); //파일 이름 중복 방지
-		String saveName = uuid + "_" + profile.getOriginalFilename(); //UUID가 붙은 파일이름을 객체에 저장
-		File saveFile = new File(uploadPath+File.separator+"img"+File.separator+"profile",saveName);//저장할 폴더 이름 , 저장할 파일 이름
+	public String registerMem(MemberDTO dto, Model model, MultipartFile profile) throws Exception {
+
+		// 업로드
+		UUID uuid = UUID.randomUUID(); // 파일 이름 중복 방지
+		String saveName = uuid + "_" + profile.getOriginalFilename(); // UUID가 붙은 파일이름을 객체에 저장
+		File saveFile = new File(uploadPath + File.separator + "img" + File.separator + "profile", saveName);// 저장할 폴더
+																												// 이름 ,
+																												// 저장할
+																												// 파일 이름
 		try {
-		profile.transferTo(saveFile); // 업로드 파일에 saveFile이라는 껍데기 입히기
-		}catch (Exception e) {
+			profile.transferTo(saveFile); // 업로드 파일에 saveFile이라는 껍데기 입히기
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
-		dto.setImg(File.separator+"profile"+File.separator+saveName);
-		
+		dto.setImg(File.separator + "profile" + File.separator + saveName);
+
 		service = ac.getBean("memberServiceImpl", MemberServiceImpl.class);
-		model.addAttribute("dto",dto);
+		model.addAttribute("dto", dto);
 		service.execute(model);
-		
+
 		return "home";
 	}
-	
-	 @RequestMapping("lostPw")
-	 @ResponseBody
-	   public String lostPw(MemberDTO dto) throws Exception {
-	     int result=0; 
-	     char[] charSet= {'1','2','3','4','5','6','7','8','9','A','B','C','D',
-	    		 'e','F','G','h','I','j','K','L','m','O','p','Q','r','S','t'};
-	     
-	     StringBuffer newKey = new StringBuffer();
-	     for(int i =0;i<10;i++) {
-	    	 int idx=(int)(charSet.length*Math.random());
-	    	 newKey.append(charSet[idx]);
-	     }
-	     String sentpw=newKey.toString();
-	     dto.setPassword(sentpw);
-		 System.out.println("사용자 이메일:"+dto.getUserEmail());
-		 System.out.println("임시 비밀번호:"+dto.getPassword());
-		 String title = "JSInc. 임시 비밀번호 발급 안내 입니다.";
-		 String body="";
-		 body +="<div align='center' style='border:1px solid black;' font-family:verdana'>";
-		 body +="<h3 style='color:blue;'>귀하의 임시 비밀번호 입니다. 로그인 후 비밀번호를 변경하세요.</h3>";
-		 body +="<p>임시 비밀번호: <strong>"+sentpw+"</strong></p></div>";
-		 Map<String, Object> sendRs = mailService.send(dto.getUserEmail(), title, body);
-		 
-		 service = ac.getBean("memberServiceImpl", MemberServiceImpl.class);
-		 service.sentPw(dto);
-		 
-		
+
+	@RequestMapping("lostPw")
+	@ResponseBody
+	public String lostPw(MemberDTO dto) throws Exception {
+		int result = 0;
+		char[] charSet = { '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'e', 'F', 'G', 'h', 'I',
+				'j', 'K', 'L', 'm', 'O', 'p', 'Q', 'r', 'S', 't' };
+
+		StringBuffer newKey = new StringBuffer();
+		for (int i = 0; i < 10; i++) {
+			int idx = (int) (charSet.length * Math.random());
+			newKey.append(charSet[idx]);
+		}
+		String sentpw = newKey.toString();
+		dto.setPassword(sentpw);
+		System.out.println("사용자 이메일:" + dto.getUserEmail());
+		System.out.println("임시 비밀번호:" + dto.getPassword());
+		String title = "JSInc. 임시 비밀번호 발급 안내 입니다.";
+		String body = "";
+		body += "<div align='center' style='border:1px solid black;' font-family:verdana'>";
+		body += "<h3 style='color:blue;'>귀하의 임시 비밀번호 입니다. 로그인 후 비밀번호를 변경하세요.</h3>";
+		body += "<p>임시 비밀번호: <strong>" + sentpw + "</strong></p></div>";
+		Map<String, Object> sendRs = mailService.send(dto.getUserEmail(), title, body);
+
+		service = ac.getBean("memberServiceImpl", MemberServiceImpl.class);
+		service.sentPw(dto);
+
 		return (String) sendRs.get("msg");
-		 
-		 
-		 
-	 }
-	
-	
+
+	}
+
 }

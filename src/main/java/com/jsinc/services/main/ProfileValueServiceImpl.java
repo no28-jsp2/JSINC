@@ -42,8 +42,6 @@ public class ProfileValueServiceImpl implements ProfileService{
             totWorkTime += listAll.get(i).getWorkTime();
          }
       }
-      System.out.println(month + "월 총 근무 시간 : " + String.format("%.1f", totWorkTime) + "시간");
-      System.out.println(month + "월 총 근무일 수 : " + workDays + "일");
       application.setAttribute("workTimes", String.format("%.1f", totWorkTime));
       application.setAttribute("workDays", workDays+"");
    }
