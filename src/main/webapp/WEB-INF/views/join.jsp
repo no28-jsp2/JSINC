@@ -532,9 +532,7 @@
                      }
 
                      //패스워드 비교
-                     if ($('#password').val() != $('#passwordCheck')
-                           .val()
-                           || $('#passwordCheck').val() == "") {
+                     if ($('#password').val() != $('#passwordCheck').val() || $('#passwordCheck').val() == "") {
                         alert("패스워드가 일치하지 않습니다.");
                         $('#passwordCheck').focus();
                         return false;

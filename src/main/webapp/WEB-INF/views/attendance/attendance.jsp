@@ -6,19 +6,6 @@
 <html lang="en">
 <head>
 <title>JS.Inc</title>
-
-<!-- Favicons -->
-<link href="resources/img/favicon.png" rel="icon">
-<link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-<!-- Bootstrap core CSS -->
-<link href="resources/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!--external css-->
-<link href="resources/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<!-- Custom styles for this template -->
-<link href="resources/css/style.css" rel="stylesheet">
-<link href="resources/css/style-responsive.css" rel="stylesheet">
-
 </head>
 
 <body>
