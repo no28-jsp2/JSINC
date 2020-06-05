@@ -1,14 +1,21 @@
 package com.jsinc.services.board;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Service;
 
 import com.jsinc.jsincDAO.BoardDAO;
 import com.jsinc.jsincDTO.BoardDTO;
-
+@Service
 public class boardServiceImpl implements boardService{
 
+	
+	
 	@Inject
 	BoardDAO dao;
 	
