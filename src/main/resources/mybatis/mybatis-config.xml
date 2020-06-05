@@ -8,6 +8,5 @@
 		<typeAlias alias="dto_mem" type="com.jsinc.jsincDTO.MemberDTO"/>
 		<typeAlias alias="dto_att" type="com.jsinc.jsincDTO.AttendanceDTO"/>
 		<typeAlias alias="dto_board" type="com.jsinc.jsincDTO.BoardDTO"/>
-		<typeAlias alias="dto_com" type="com.jsinc.jsincDTO.CommunityDTO"/>
    </typeAliases>
 </configuration>
