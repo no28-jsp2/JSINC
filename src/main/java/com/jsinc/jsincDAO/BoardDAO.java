@@ -1,6 +1,9 @@
 package com.jsinc.jsincDAO;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -11,7 +14,7 @@ import com.jsinc.jsincDTO.BoardDTO;
 public class BoardDAO {
 
 	private static final String namespace = "com.jsinc.mybatis.Board";
-	
+	@Inject
 	private SqlSession sqlSession;
 	//게시글 등록
 	public void create(BoardDTO dto) throws Exception{
@@ -32,7 +35,32 @@ public class BoardDAO {
 	
 	//게시글 전체목록
 	public List<BoardDTO> list() throws Exception {
-		return sqlSession.selectList(namespace+".list");
+		return sqlSession.selectList(namespace+".listAll");
 	}
 	
+	//자료실 등록
+	public void upload(BoardDTO dto)throws Exception{
+		sqlSession.insert(namespace+".fileUpload",dto);
+	}
+	//자료실 전체목록
+	public List<BoardDTO> fileList() throws Exception {
+		return sqlSession.selectList(namespace+".fileList");
+	}
+	//자료실 상세보기
+	public BoardDTO fileView(int bno) throws Exception{
+		return sqlSession.selectOne(namespace+".fileView",bno);
+	}
+	//자료실 수정
+	public void fileUpdate(BoardDTO dto) throws Exception{
+		sqlSession.update(namespace+".fileUpdate",dto);
+	}
+	//자료실 삭제
+	public void fileDelete(int bno) throws Exception{
+		sqlSession.delete(namespace+".fileDelete",bno);
+	}
+	
+	//파일 다운로드
+	public BoardDTO file(String realfile) throws Exception{
+		return sqlSession.selectOne(namespace+".file", realfile);
+	}
 }

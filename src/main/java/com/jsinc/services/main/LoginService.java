@@ -33,13 +33,16 @@ public class LoginService implements ServiceIf {
 	            //profile 추가
 	            Date date = new Date();
 	            SimpleDateFormat format = new SimpleDateFormat("MM");
+	            SimpleDateFormat day = new SimpleDateFormat("dd");
 	            String month = format.format(date);
+	            String days = day.format(date);
 	            //------------------------------------------------------
 	            HttpSession session = request.getSession();
 	            ServletContext application = session.getServletContext();
 	            application.setAttribute("user", dto);
 	            //profile 추가
 	            application.setAttribute("loginMonth", month);
+	            application.setAttribute("loginDay", days);
 	            //------------------------------------------------------
 	            return CHK_OK;
 	         }
