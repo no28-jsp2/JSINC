@@ -5,9 +5,7 @@
 <mapper namespace="com.jsinc.mybatis.Board">
 	<select id="listAll" resultType="dto_board">
 		select
-			bno,
 			title,
-			content,
 			writer,
 			regdate
 		from 
@@ -17,10 +15,10 @@
 	</select>
 
 	<insert id="insert" parameterType="dto_board">
-		insert into jsinc_board values(#{bno},#{title},#{writer},#{content},#{regdate},#{savefile})
+		insert into jsinc_board(bno,title,content,writer) values((select nvl(max(bno)+1, 1)from jsinc_board),#{title},#{content},#{writer})
 	</insert>
 	<select id="view">
-		select title,content,writer,savefile
+		select content
 		from jsinc_board	
 	</select>
 	
@@ -37,7 +35,43 @@
 		where bno = #{bno}
 	</delete> 
 	
+	<insert id="fileUpload" parameterType="dto_board">
+		insert into jsinc_reference(bno,title,content,writer,savefile,realfile) 
+		values((select nvl(max(bno)+1, 1)from jsinc_reference),#{title},#{content},#{writer},#{savefile},#{realfile})
+	</insert>
+	<select id="fileList" resultType="dto_board">
+		select
+			bno,
+			title,
+			writer,
+			regdate
+			
+		from
+			jsinc_reference
+		order by
+			bno desc
+	</select>
+	<select id="fileView" resultType="com.jsinc.jsincDTO.BoardDTO">
+		select
+			*
+		from jsinc_reference
+		where bno = #{bno}
+	</select>
+	<update id="fileUpdate">
+	update jsinc_reference set
+			title = #{title},
+			content = #{content},
+			writer = #{writer}
+		where bno = #{bno}
+	</update>
+	<delete id="fileDelete">
+	delete from jsinc_reference
+		where bno = #{bno}
+	</delete>
 	
+	<select id="file" resultType="com.jsinc.jsincDTO.BoardDTO">
+		select savefile from jsinc_reference where realfile = #{realfile}
+	</select>
 	
 	
 	

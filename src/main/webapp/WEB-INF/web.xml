@@ -11,6 +11,7 @@
 			/WEB-INF/spring/root-context.xml
 			classpath:database/jdbc-config.xml
 			classpath:email/context-email.xml
+			classpath:download/context.xml
 		</param-value>
 	</context-param>
 
