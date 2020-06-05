@@ -36,6 +36,7 @@
                 <hr>
                 <thead>
                   <tr>
+                  	<th>번호</th>
                     <th>커뮤니티(명)</th>
                     <th>회원수</th>
                     <th>마스터</th>
@@ -45,10 +46,11 @@
                 <tbody>
 				<c:forEach items="${allList }" var="dto">
 				<tr>
-				<td><a href="viewCom?title=${dto.title }">${dto.title}</a></td>
-				<td>10</td>
+				<td>${dto.cNo }</td>
+				<td><a href="viewCom?title=${dto.title }&cno=${dto.cNo}">${dto.title}</a></td>
+				<td>${dto.members }</td>
 				<td>${dto.name } ${dto.rank }</td>
-				<td>가입</td>
+				<td>${dto.join }</td>
 				</tr>
 				</c:forEach>               
                

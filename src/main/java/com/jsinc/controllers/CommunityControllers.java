@@ -25,6 +25,7 @@ public class CommunityControllers {
 	ApplicationContext ac = App.ac;
 	private ServiceCom service;
 	
+
 	
 	//커뮤니티 만들기
 	@RequestMapping("createCommunity")
@@ -67,9 +68,12 @@ public class CommunityControllers {
 	//해당 커뮤니티에 입장시
 	@RequestMapping(value="viewCom",method = RequestMethod.GET)
 	public String viewCom(HttpServletRequest request,Model model) {
+		String cno=request.getParameter("cno");
 		String title=request.getParameter("title");
+		System.out.println("커뮤니티 번호 : "+cno);
 		System.out.println("title:"+title);
 		model.addAttribute("request",request);
+		model.addAttribute("cno",cno);
 		service = ac.getBean("viewServiceImpl",ViewServiceImpl.class);
 		service.getExe(model);
 		

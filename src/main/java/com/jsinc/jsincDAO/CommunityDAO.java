@@ -39,12 +39,14 @@ public class CommunityDAO {
 		return sqlSession.selectOne(namespace+".signBut",dto);
 	}
 	//가입여부 
-	public List<CommunityDTO> joinOrNot(int empNo){
-		return sqlSession.selectList(namespace+".joinOrNot",empNo);
+	public int joinOrNot(CommunityDTO dto){
+		return sqlSession.selectOne(namespace+".joinOrNot",dto);
 	}
 	
 	//가입인원
-	
+	public int countMember(CommunityDTO dto) {
+		return sqlSession.selectOne(namespace+".countMember",dto);
+	}
 	
 
 }

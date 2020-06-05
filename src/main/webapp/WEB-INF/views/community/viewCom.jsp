@@ -64,6 +64,7 @@
 							<h4>
 								<i class="fa fa-angle-right"></i> 소개:${view.content }
 							</h4>
+							
 			</div>
 			<input type="text" id="hide" style="visibility: hidden;"value="${view.title }">
 			
@@ -71,15 +72,36 @@
 
 				<div class="form-group">
 				<div class="showback">
+				<form action="content" onsubmit="return validat()">
+					<input type="text" style="visibility: hidden; value="${cno }">
 					<textarea class="form-control" name="message" id="contact-message"
-						placeholder="Your Message" rows="5" data-rule="required"
+						placeholder="내용을 입력해주세요" rows="5" data-rule="required"
 						data-msg="Please write something for us"></textarea>
 					<button type="submit" class="btn btn-round btn-info" style="margin: 10px;">이야기
 						하기</button>
 					
+				</form>	
 					</div>
 				</div>
 				<hr>
+<script type="text/javascript">
+	function validat(){
+		if($("#contact-message").val()==""){
+			alert("내용을 작성해주세요")
+			$("#contact-message").focus()
+			return false;
+		}
+		if(${signBut != 1 }){
+			alert("가입을 해주시기 바랍니다")
+			$("#contact-message").focus()
+			return false;
+		}
+		
+		
+		alert("등록 되었습니다~")
+		
+	}
+</script>
 				
 
 					
@@ -87,22 +109,17 @@
 
 				<div class="room-box">
 					<h5 class="text-primary">박남혜 차장 2020-06-04 09시04분</h5>
-					<p>게시판 목록에서 글번호 대신 '공지'라는 텍스트가 표시되며 목록 상단에 고정됩니다.</p>
-					<p>
-						<span class="text-muted">Admin :</span> Sam Soffes | <span
-							class="text-muted">Member :</span> 44 | <span class="text-muted">Last
-							Activity :</span> 15 min ago
-					</p>
-				<div class="chat-txt">
-                <input type="text" style="width: 80%">
-                 <button type="button" class="btn btn-primary">댓글</button>
-                
+					<span>게시판 목록에서 글번호 대신 '공지'라는 텍스트가 표시되며 목록 상단에 고정됩니다.</span><a href="#" onclick="attachAddr(); return false;" class="btn ty_2 small">추가</a>
               </div>
+              	<div class="room-box">
+					<h5 class="text-primary">홍길동 차장 2020-06-04 09시04분</h5>
+					<span>게시판 목록에서 글번호 대신 '공지'라는 텍스트가 표시되며 목록 상단에 고정됩니다.</span><a href="#" onclick="attachAddr(); return false;" class="btn ty_2 small">추가</a>
               </div>
+              
+              
               
 					
 				</div>
-
 			</div>
 
 

@@ -5,7 +5,7 @@
 <mapper namespace="com.jsinc.mybatis.community">
 	<!-- 커뮤니티 만들기 -->
 	<insert id="input" parameterType="dto_com">
-	insert into createcom (empNo,name,title,content,com_date,rank)values(#{empNo},#{name},#{title},#{content},#{com_date},#{rank})
+	insert into createcom (empNo,name,title,content,com_date,rank,cno)values(#{empNo},#{name},#{title},#{content},#{com_date},#{rank},com_no_seq.nextval)
 	</insert>
 	<!-- 전체 커뮤니티 -->
 	<select id="getAll" resultType="dto_com">
@@ -28,9 +28,11 @@
 		select count(*) from joincom where empno=#{empNo} and title=#{title}
 	</select>
 	<!-- 가입 여부 -->
-	<select id="joinOrNot" resultType="dto_com">
-		select * from joinCom where empno=#{empNo}
-	
+	<select id="joinOrNot" resultType="int">
+		select count(*) from joinCom where empNo=#{empNo} and title=#{title}
 	</select>
-	
+	<!-- 가입 인원 -->
+	<select id="countMember" resultType="int">
+		select count(*) from joinCom where title=#{title}
+	</select>
 </mapper>

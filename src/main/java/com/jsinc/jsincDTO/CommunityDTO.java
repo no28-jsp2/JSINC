@@ -2,6 +2,7 @@ package com.jsinc.jsincDTO;
 
 
 public class CommunityDTO {
+	private int cNo;
 	private int empNo;
 	private String name;
 	private String title;
@@ -14,6 +15,12 @@ public class CommunityDTO {
 	
 	
 	
+	public int getcNo() {
+		return cNo;
+	}
+	public void setcNo(int cNo) {
+		this.cNo = cNo;
+	}
 	public String getJoin() {
 		return join;
 	}
