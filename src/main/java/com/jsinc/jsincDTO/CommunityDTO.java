@@ -8,8 +8,30 @@ public class CommunityDTO {
 	private String content;
 	private String com_date;
 	private String autho;
+	private String rank;
+	private int members;
+	private String join;
 	
 	
+	
+	public String getJoin() {
+		return join;
+	}
+	public void setJoin(String join) {
+		this.join = join;
+	}
+	public String getRank() {
+		return rank;
+	}
+	public void setRank(String rank) {
+		this.rank = rank;
+	}
+	public int getMembers() {
+		return members;
+	}
+	public void setMembers(int members) {
+		this.members = members;
+	}
 	public int getEmpNo() {
 		return empNo;
 	}

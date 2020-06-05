@@ -1,6 +1,5 @@
 package com.jsinc.service.community;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -14,38 +13,35 @@ import org.springframework.ui.Model;
 import com.jsinc.jsincDAO.CommunityDAO;
 import com.jsinc.jsincDTO.CommunityDTO;
 import com.jsinc.jsincDTO.MemberDTO;
-
 @Service
-public class AllServiceImpl implements ServiceCom{
+public class SignUpServiceImpl implements ServiceCom{
 	@Autowired
 	CommunityDAO dao;
 	
-	
-
 	@Override
 	public void execute(CommunityDTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	//전체 커뮤니티 리스트를 가져온다.
 	@Override
 	public void getExe(Model model) {
-		ArrayList<CommunityDTO> list=(ArrayList<CommunityDTO>)dao.allCom();
-	
-		Map<String, Object> map = model.asMap();
-		HttpServletRequest request= (HttpServletRequest)map.get("request");
+		Map<String, Object> map=model.asMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		String title = request.getParameter("title");
+		String join="Y";
 		HttpSession session=request.getSession();
 		ServletContext application = session.getServletContext();
 		MemberDTO memDto =(MemberDTO)application.getAttribute("user");
+		CommunityDTO dto = new CommunityDTO();
+		dto.setEmpNo(memDto.getEmpNo());
+		dto.setTitle(title);
+		dto.setname(memDto.getName());
+		dto.setRank(memDto.getRank());
+		dto.setJoin(join);
 		
-		int empNo = memDto.getEmpNo();
-		ArrayList<CommunityDTO> lists =(ArrayList<CommunityDTO>)dao.joinOrNot(empNo);
-		System.out.println(lists.get(0).getTitle()); 
-		model.addAttribute("join",lists);
-		model.addAttribute("allList",list);
+		dao.signUp(dto);
+		
 	}
-	
-	
-	
+
 }

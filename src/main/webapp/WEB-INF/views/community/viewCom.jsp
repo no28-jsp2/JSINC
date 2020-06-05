@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,25 +26,64 @@
 	<section id="main-content">
 		<section class="wrapper">
 			<h3>
-				<i class="fa fa-angle-right"></i>(커뮤니티의 제목) 커뮤니티 글
-				<button type="button" class="btn btn-round btn-danger" onclick="signUp()" id="sign">가입
+				<i class="fa fa-angle-right"></i>커뮤니티 글
+			<c:choose>
+			<c:when test="${signBut == 1 }">
+				<button type="button" disabled="disabled" class="btn btn-round btn-success" onclick="location.href='signUp?title=${view.title}'" >가입
+					중</button>
+			</c:when>
+			<c:otherwise >
+					<button type="button" class="btn btn-round btn-success" onclick="location.href='signUp?title=${view.title}'" >가입
 					하기</button>
+			</c:otherwise>
+			
+			</c:choose>
 			</h3>
-
-			<div style="width: 90%" align="left">
+		
+		
+			<script type="text/javascript">
+			$('#sign').ready(function(){
+				$('#sign').click(function(){
+					alert("가입이 완료 되었습니다.")
+					console.log("aaaaaa")
+				});
+				
+			});
+			</script>
+			
+			
+		
+			
+			<div class="showback">
+							<h4>
+								<i class="fa fa-angle-right"></i> 마스터:${view.name }${view.rank }
+							</h4>
+							<h4>
+								<i class="fa fa-angle-right"></i> 커뮤니티 명:${view.title }
+							</h4>
+							<h4>
+								<i class="fa fa-angle-right"></i> 소개:${view.content }
+							</h4>
+			</div>
+			<input type="text" id="hide" style="visibility: hidden;"value="${view.title }">
+			
+			<div style="width: 80%" align="left">
 
 				<div class="form-group">
+				<div class="showback">
 					<textarea class="form-control" name="message" id="contact-message"
 						placeholder="Your Message" rows="5" data-rule="required"
 						data-msg="Please write something for us"></textarea>
-					<div class="validate"></div>
-				</div>
-				<div align="right" style="margin-bottom: 10px;">
-
-					<button type="submit" class="btn btn-round btn-info">이야기
+					<button type="submit" class="btn btn-round btn-info" style="margin: 10px;">이야기
 						하기</button>
-
+					
+					</div>
 				</div>
+				<hr>
+				
+
+					
+
 
 				<div class="room-box">
 					<h5 class="text-primary">박남혜 차장 2020-06-04 09시04분</h5>
@@ -54,10 +94,10 @@
 							Activity :</span> 15 min ago
 					</p>
 				<div class="chat-txt">
-                <input type="text" class="form-control">
+                <input type="text" style="width: 80%">
+                 <button type="button" class="btn btn-primary">댓글</button>
+                
               </div>
-              <div class="btn-group hidden-sm hidden-xs">
-              	<button class="btn btn-theme">Send</button>
               </div>
               
 					
@@ -69,24 +109,10 @@
 
 
 
-
+	<button type="button" class="btn btn-round btn-danger"  style="margin: 10px;">탈퇴 하기..</button>
 		</section>
 	</section>
-	<script type="text/javascript">
-	function signUp(){
-		$.ajax({
-			url:"signUp",
-			type:"GET",
-			success:function(data){
-				alert("가입 완료")
-			},
-			error:function(){
-				alert("실패")
-			}
-		});
-	}
 	
-	</script>
 
 
 

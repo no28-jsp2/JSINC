@@ -17,6 +17,8 @@ import com.jsinc.service.community.AllServiceImpl;
 import com.jsinc.service.community.CreateServiceImpl;
 import com.jsinc.service.community.MyServiceImpl;
 import com.jsinc.service.community.ServiceCom;
+import com.jsinc.service.community.SignUpServiceImpl;
+import com.jsinc.service.community.ViewServiceImpl;
 
 @Controller
 public class CommunityControllers {
@@ -31,9 +33,12 @@ public class CommunityControllers {
 	}
 	//전체 커뮤니티
 	@RequestMapping("allCommunity")
-	public String allCommunity(Model model) {
+	public String allCommunity(HttpServletRequest req,Model model) {
+		model.addAttribute("request",req);
 		service=ac.getBean("allServiceImpl",AllServiceImpl.class);
 		service.getExe(model);
+		
+		
 		
 		return "community/allCommunity";
 	}
@@ -54,13 +59,20 @@ public class CommunityControllers {
 		String name=memDto.getName();
 		dto.setEmpNo(empNo);
 		dto.setname(name);
+		dto.setRank(memDto.getRank());
 		service = ac.getBean("createServiceImpl",CreateServiceImpl.class);
 		service.execute(dto);
 		return "redirect:allCommunity";
 	}
 	//해당 커뮤니티에 입장시
 	@RequestMapping(value="viewCom",method = RequestMethod.GET)
-	public String viewCom() {
+	public String viewCom(HttpServletRequest request,Model model) {
+		String title=request.getParameter("title");
+		System.out.println("title:"+title);
+		model.addAttribute("request",request);
+		service = ac.getBean("viewServiceImpl",ViewServiceImpl.class);
+		service.getExe(model);
+		
 		
 		return "community/viewCom";
 	}
@@ -68,10 +80,13 @@ public class CommunityControllers {
 	
 	//해당 커뮤니티에 가입하기 버튼을 누를 시
 	@RequestMapping(value="signUp",method = RequestMethod.GET)
-	@ResponseBody
-	public String signUp() {
-		
-		return "asd";
+	public String signUp(HttpServletRequest request,Model model) {
+		service=ac.getBean("signUpServiceImpl",SignUpServiceImpl.class);
+		model.addAttribute("request",request);
+		service.getExe(model);
+		String title=request.getParameter("title");
+		System.out.println("title"+title);
+		return "redirect:allCommunity";
 	}
 	
 	

@@ -47,7 +47,7 @@
 		
 		  <div class="form-send" align="center">
                 <button type="submit" class="btn btn-success">커뮤니티 만들기</button>
-                <button type="button" class="btn btn-danger" style="width: 100px;">취소</button>
+                <button type="button" class="btn btn-danger" style="width: 100px;" onclick="location.href='allCommunity'">취소</button>
           </div>
 		</form>
 		   <div align="center">

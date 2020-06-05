@@ -47,7 +47,7 @@
 				<tr>
 				<td><a href="viewCom?title=${dto.title }">${dto.title}</a></td>
 				<td>10</td>
-				<td>${dto.name }</td>
+				<td>${dto.name } ${dto.rank }</td>
 				<td>가입</td>
 				</tr>
 				</c:forEach>               
