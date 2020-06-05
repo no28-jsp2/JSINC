@@ -43,4 +43,12 @@ public class SurveyDAO {
 	public int resultChk(SurveyResultDTO dto) {
 		return sqlSession.selectOne(namespace + ".resultChk", dto);
 	}
+	
+	public int resultAll(String title) {
+		return sqlSession.selectOne(namespace + ".resultAll", title);
+	}
+	
+	public int answerCnt(SurveyResultDTO dto) {
+		return sqlSession.selectOne(namespace + ".answerCnt", dto);
+	}
 }

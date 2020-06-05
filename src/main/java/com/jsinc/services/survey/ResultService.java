@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 
 import com.jsinc.jsincDAO.SurveyDAO;
 import com.jsinc.jsincDTO.SurveyDTO;
+import com.jsinc.jsincDTO.SurveyResultDTO;
 
 @Service
 public class ResultService implements ServiceIf{
@@ -30,6 +31,15 @@ public class ResultService implements ServiceIf{
 		String text = dto.getText();
 		text = text.replace("\n", "<br>");
 		dto.setText(text);
+		int opt = dto.getOpt();
+		SurveyResultDTO dto_sr = new SurveyResultDTO();
+		dto_sr.setTitle(title);
+		model.addAttribute("total", dao.resultAll(title));
+		for(int i=1;i<=opt;i++) {
+			dto_sr.setResult(Integer.toString(i));
+			model.addAttribute("answer" + i, dao.answerCnt(dto_sr));
+		}
+		model.addAttribute("opt", opt);
 		session.setAttribute("survey", dto);
 	}
 }

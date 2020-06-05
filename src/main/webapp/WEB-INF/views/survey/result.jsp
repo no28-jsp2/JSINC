@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +34,22 @@
 								<div class="form-group">
 									<label for="ccomment" class="control-label col-lg-2" style="text-align: center;">결과</label>
 									<div class="col-lg-10">
-										<canvas id="doughnut" height="300" width="400"></canvas>
+										참여자 수 : ${total } 명<br><br>
+										<c:choose>
+											<c:when test="${opt == 2 }">
+												답변 1 : ${answer1 } 명 (${(answer1 / total)*100 } %)<br>
+												답변 2 : ${answer2 } 명 (${(answer2 / total)*100 } %)<br>
+											</c:when>
+											<c:otherwise>
+												답변 1 : ${answer1 } 명 (<fmt:formatNumber value="${(answer1 / total)}" type="percent"/>)<br>
+												답변 2 : ${answer2 } 명 (<fmt:formatNumber value="${(answer2 / total)}" type="percent"/>)<br>
+												답변 3 : ${answer3 } 명 (<fmt:formatNumber value="${(answer3 / total)}" type="percent"/>)<br>
+												답변 4 : ${answer4 } 명 (<fmt:formatNumber value="${(answer4 / total)}" type="percent"/>)<br>
+												답변 5 : ${answer5 } 명 (<fmt:formatNumber value="${(answer5 / total)}" type="percent"/>)<br>
+											</c:otherwise>
+										</c:choose>
+										
+										<!--<canvas id="doughnut" height="300" width="400"></canvas>-->
 									</div>
 								</div>
 							</form>

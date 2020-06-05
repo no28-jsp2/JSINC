@@ -31,4 +31,12 @@
 		select count(*) from survey_result where empNo=#{empNo} and title=#{title}
 	</select>
 	
+	<select id="resultAll" resultType="int">
+		select count(*) from survey_result where title=#{title}
+	</select>
+	
+	<select id="answerCnt" resultType="int">
+		select count(*) from survey_result where result=#{result} and title=#{title}
+	</select>
+	
 </mapper>
