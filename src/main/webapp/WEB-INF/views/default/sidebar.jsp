@@ -32,8 +32,10 @@
                      <i class="fa fa-desktop"></i> <span>커뮤니티</span>
                   </a>
                   <ul class="sub">
-                     <li><a href="createCommunity">커뮤티티 만들기</a></li>
+                     <li><a href="createCommunity">커뮤니티 만들기</a></li>
+                     <li><a href="allCommunity">전체 커뮤니티</a></li>
                      <li><a href="joinCommunity">가입 커뮤니티</a></li>
+                     
                   </ul>
                </li>
                

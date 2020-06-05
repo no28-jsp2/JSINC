@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.jsinc.mybatis.community">
+	<!-- 커뮤니티 만들기 -->
+	<insert id="input" parameterType="dto_com">
+	insert into createcom (empNo,name,title,content,com_date,rank,cno)values(#{empNo},#{name},#{title},#{content},#{com_date},#{rank},com_no_seq.nextval)
+	</insert>
+	<!-- 전체 커뮤니티 -->
+	<select id="getAll" resultType="dto_com">
+		select * from createcom
+	</select>
+	<!-- 내가 가입한 커뮤니티 -->
+	<select id="myCom" resultType="dto_com">
+		select * from createcom where empno=#{empNo}	
+	</select>
+	<!-- 커뮤니티 클릭시 -->
+	<select id="view" resultType="dto_com">
+		select * from createcom where title=#{title}
+	</select>
+	<!-- 커뮤니티 가입 -->
+	<insert id="signUp">
+		insert into joincom (empNo,title,join,members,name,rank) values(#{empNo},#{title},#{join},1+#{members},#{name},#{rank})
+	</insert>
+	<!-- 가입버튼 활성 비활성 -->
+	<select id="signBut" resultType="int" parameterType="dto_com">
+		select count(*) from joincom where empno=#{empNo} and title=#{title}
+	</select>
+	<!-- 가입 여부 -->
+	<select id="joinOrNot" resultType="int">
+		select count(*) from joinCom where empNo=#{empNo} and title=#{title}
+	</select>
+	<!-- 가입 인원 -->
+	<select id="countMember" resultType="int">
+		select count(*) from joinCom where title=#{title}
+	</select>
+</mapper>
