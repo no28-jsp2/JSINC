@@ -28,6 +28,8 @@
 <link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-daterangepicker/daterangepicker.css" />
 <link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-timepicker/compiled/timepicker.css" />
 <link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-datetimepicker/datertimepicker.css" />
+						<!-- (캘린더 2020.06.06 18:31 추가) -->
+<link href="resources/lib/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
   
 <!-- Custom styles for this template -->
 <link href="resources/css/style.css" rel="stylesheet">

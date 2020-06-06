@@ -34,18 +34,40 @@
 								<div class="form-group">
 									<label for="ccomment" class="control-label col-lg-2" style="text-align: center;">결과</label>
 									<div class="col-lg-10">
-										참여자 수 : ${total } 명<br><br>
+										참여자 수 : <b style="color: blue;">${total }</b> 명<br><br>
 										<c:choose>
 											<c:when test="${opt == 2 }">
-												답변 1 : ${answer1 } 명 (${(answer1 / total)*100 } %)<br>
-												답변 2 : ${answer2 } 명 (${(answer2 / total)*100 } %)<br>
+												1. <b style="color: blue;">${answer1 }</b> 명&nbsp;(<fmt:formatNumber value="${(answer1 / total)}" type="percent"/>)
+												<div class="progress progress-striped">
+													
+													<div class="progress-bar progress-bar-success" role="progressbar" aria-valuemax="100" style="width: ${(answer1 / total)*100}%"></div>
+												</div>
+												2. <b style="color: blue;">${answer2 }</b> 명&nbsp;(<fmt:formatNumber value="${(answer2 / total)}" type="percent"/>)
+												<div class="progress progress-striped">
+													<div class="progress-bar progress-bar-info" role="progressbar" aria-valuemax="100" style="width: ${(answer2 / total)*100}%"></div>
+												</div>
 											</c:when>
 											<c:otherwise>
-												답변 1 : ${answer1 } 명 (<fmt:formatNumber value="${(answer1 / total)}" type="percent"/>)<br>
-												답변 2 : ${answer2 } 명 (<fmt:formatNumber value="${(answer2 / total)}" type="percent"/>)<br>
-												답변 3 : ${answer3 } 명 (<fmt:formatNumber value="${(answer3 / total)}" type="percent"/>)<br>
-												답변 4 : ${answer4 } 명 (<fmt:formatNumber value="${(answer4 / total)}" type="percent"/>)<br>
-												답변 5 : ${answer5 } 명 (<fmt:formatNumber value="${(answer5 / total)}" type="percent"/>)<br>
+												1. <b style="color: blue;">${answer1 }</b> 명&nbsp;(<fmt:formatNumber value="${(answer1 / total)}" type="percent"/>)
+												<div class="progress progress-striped">
+													<div class="progress-bar progress-bar-success" role="progressbar" aria-valuemax="100" style="width: ${(answer1 / total)*100}%"></div>
+												</div>
+												2. <b style="color: blue;">${answer2 }</b> 명&nbsp;(<fmt:formatNumber value="${(answer2 / total)}" type="percent"/>)
+												<div class="progress progress-striped">
+													<div class="progress-bar progress-bar-info" role="progressbar" aria-valuemax="100" style="width: ${(answer2 / total)*100}%"></div>
+												</div>
+												3. <b style="color: blue;">${answer3 }</b> 명&nbsp;(<fmt:formatNumber value="${(answer3 / total)}" type="percent"/>)
+												<div class="progress progress-striped">
+													<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuemax="100" style="width: ${(answer3 / total)*100}%"></div>
+												</div>
+												4. <b style="color: blue;">${answer4 }</b> 명&nbsp;(<fmt:formatNumber value="${(answer4 / total)}" type="percent"/>)
+												<div class="progress progress-striped">
+													<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuemax="100" style="width: ${(answer4 / total)*100}%"></div>
+												</div>
+												5. <b style="color: blue;">${answer5 }</b> 명&nbsp;(<fmt:formatNumber value="${(answer5 / total)}" type="percent"/>)
+												<div class="progress progress-striped">
+													<div class="progress-bar progress-bar-five" role="progressbar" aria-valuemax="100" style="width: ${(answer5 / total)*100}%"></div>
+												</div>
 											</c:otherwise>
 										</c:choose>
 										
@@ -59,7 +81,6 @@
 					<!-- /col-lg-12 -->
 				</div>
 				<!-- /row -->
-				
 			</section>
 			<!-- /wrapper -->
 		</section>
@@ -91,3 +112,4 @@
 </body>
 
 </html>
+										
