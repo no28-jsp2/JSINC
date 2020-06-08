@@ -170,6 +170,7 @@ public class MainController {
 																												// 이름 ,
 																												// 저장할
 																												// 파일 이름
+		
 		try {
 			profile.transferTo(saveFile); // 업로드 파일에 saveFile이라는 껍데기 입히기
 		} catch (Exception e) {
