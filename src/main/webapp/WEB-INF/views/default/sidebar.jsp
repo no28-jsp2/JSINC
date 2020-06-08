@@ -14,7 +14,7 @@
             <ul class="sidebar-menu" id="nav-accordion">
                <p class="centered">
                   <a href="profile">
-                     <img src="${pageContext.request.contextPath }/resources/${user.img}" class="img-circle" width="80">
+                     <img src="resources/img${user.img}" class="img-circle" width="80">
                   </a>
                </p>
                <h5 class="centered"><i class="fa fa-user"></i> ${user.name } <br>(${user.userEmail })</h5>
@@ -73,8 +73,8 @@
                
                <!-- 캘린더 -->
                <li>
-                  <a href="calender">
-                     <i class="fa fa-th"></i><span>캘린더</span>
+                  <a href="toDoList">
+                     <i class="fa fa-th"></i><span>스케줄</span>
                   </a>
                </li>
                
