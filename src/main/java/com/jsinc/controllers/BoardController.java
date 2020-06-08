@@ -131,7 +131,7 @@ public class BoardController {
 		File file = new File(fullPath);
 		File file2 = new File(realName);
 		
-		File downloadFile = new File(uploadPath + save);
+		//File downloadFile = new File(uploadPath + save);
 		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("fileDownload");

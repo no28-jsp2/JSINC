@@ -156,6 +156,7 @@
 			alert("내용을 작성해주세요")
 			return false;
 		}	
+		
 			alert("등록 되었습니다.")	
 	}
 	
@@ -174,7 +175,7 @@
 			return false;
 		}
 		
-		
+		$("#contact-message").text()=""	
 		alert("등록 되었습니다~")
 		
 	}
