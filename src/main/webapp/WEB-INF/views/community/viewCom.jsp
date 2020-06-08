@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,87 +27,76 @@
 		<section class="wrapper">
 			<h3>
 				<i class="fa fa-angle-right"></i>커뮤니티 글
-			<c:choose>
-			<c:when test="${signBut == 1 }">
-				<button type="button" class="btn btn-round btn-danger"  style="margin: 10px;" onclick="location.href='leave?title=${view.title}'">탈퇴 하기..</button>		
-			</c:when>
-			<c:otherwise >
-					<button type="button" class="btn btn-round btn-success" onclick="location.href='signUp?title=${view.title}&cno=${cno }'" >가입
-					하기</button>
-			</c:otherwise>
-			
-			</c:choose>
+				<c:choose>
+					<c:when test="${signBut == 1 }">
+						<button type="button" class="btn btn-round btn-danger" style="margin: 10px;" 
+						onclick="location.href='leave?title=${view.title}'">탈퇴 하기..</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="btn btn-round btn-success"
+							onclick="location.href='signUp?title=${view.title}&cno=${cno }'">가입 하기</button>
+					</c:otherwise>
+
+				</c:choose>
 			</h3>
-		
-		
+
 			<script type="text/javascript">
 			$('#sign').ready(function(){
 				$('#sign').click(function(){
 					alert("가입이 완료 되었습니다.")
 					console.log("aaaaaa")
 				});
-				
 			});
 			</script>
-			
-			
-		
-			
-			<div class="showback">
-							<h4>
-								<i class="fa fa-angle-right"></i> 마스터:${view.name }${view.rank }
-							</h4>
-							<h4>
-								<i class="fa fa-angle-right"></i> 커뮤니티 명:${view.title }
-							</h4>
-							<h4>
-								<i class="fa fa-angle-right"></i> 소개:${view.content }
-							</h4>
-							
-			</div>
-			<input type="text" id="hide" style="visibility: hidden;"value="${view.title }">
-			
-			<div style="width: 90%" align="left">
 
-				<div class="form-group">
-				<div class="showback">
+			<div class="showback">
 				<h4>
-								<i class="fa fa-angle-right"></i>게시글을 작성 해주세요
-							</h4>
-				<form action=viewCom onsubmit="return validat()">
-					<input type="text"  value="${cno }" name="cno" style="visibility: hidden;">
-					<textarea class="form-control" id="contact-message"
-						placeholder="내용을 입력해주세요" rows="5" data-rule="required" name="content"
-						></textarea>
-					<button type="submit" class="btn btn-round btn-info" style="margin: 10px;">이야기하기</button>
-					<input type="text"  value="${view.title }" name="title" style="visibility: hidden;">
-					
-						
-				</form>	
+					<i class="fa fa-angle-right"></i> 마스터:${view.name }${view.rank }
+				</h4>
+				<h4>
+					<i class="fa fa-angle-right"></i> 커뮤니티 명:${view.title }
+				</h4>
+				<h4>
+					<i class="fa fa-angle-right"></i> 소개:${view.content }
+				</h4>
+			</div>
+			<input type="text" id="hide" style="visibility: hidden;" value="${view.title }">
+			<div style="width: 90%" align="left">
+				<div class="form-group">
+					<div class="showback">
+						<h4>
+							<i class="fa fa-angle-right"></i>게시글을 작성 해주세요
+						</h4>
+						<form action=viewCom onsubmit="return validat()">
+							<input type="text" value="${cno }" name="cno">
+							<textarea class="form-control" id="contact-message" placeholder="내용을 입력해주세요" 
+									rows="5" data-rule="required" name="content"></textarea>
+							<button type="submit" class="btn btn-round btn-info" style="margin: 10px;">이야기하기</button>
+							<input type="text" value="${view.title }" name="title">
+						</form>
 					</div>
 				</div>
 				<hr style="border: ridge 10px lightgray; margin-left: 10px;">
 
 				<div class="room-box">
 					<c:forEach items="${conList }" var="con">
-				<c:set var="tot" value="0"/>				
-				<c:set var="tot" value="${tot+con.idgroup }"/>
-				<c:set var="tot" value="${tot+con.step }"/>
-			<c:choose>
-				<c:when test="${tot gt con.idgroup }">
-					<hr>
-				</c:when>
-			</c:choose>
+						<c:set var="tot" value="0" />
+						<c:set var="tot" value="${tot+con.idgroup }" />
+						<c:set var="tot" value="${tot+con.step }" />
+						<c:choose>
+							<c:when test="${tot gt con.idgroup }">
+								<hr>
+							</c:when>
+						</c:choose>
 						<c:choose>
 							<c:when test="${con.step>0 }">
-								<span style="font-size: 13pt; color: black">
-									<span class="fa fa-mail-forward">${con.content } </span> 
+								<span style="font-size: 13pt; color: black"> <span
+									class="fa fa-mail-forward">${con.content } </span>
 								</span>
-								<span class="text-primary">
-									<i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp;
+								<span class="text-primary"> <i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp;
 									<i class="fa fa-calendar"></i>&nbsp;${con.com_date }
 								</span>
-							
+
 
 							</c:when>
 
@@ -119,10 +108,10 @@
 								</h5>
 								<span style="font-size: 13pt; color: black">${con.content }</span>
 								<br>
-								
+
 							</c:when>
 						</c:choose>
-						
+
 
 
 
@@ -130,24 +119,26 @@
 
 					</c:forEach>
 					<div>
-								<c:set var="idgroup" value="${con.idgroup }"/>
-									<form action="reply" onsubmit="return revaldat()">
-										<input type="text" style="width: 60%; margin-top: 20px;" placeholder="댓글 입력" name="reply" id="reply">
-										<button type="submit" class="btn btn-round btn-success" onclick="revaldat()">등록</button>
-									</form>
-								</div>
+						<c:set var="idgroup" value="${con.idgroup }" />
+						<form action="reply" onsubmit="return revaldat()">
+							<input type="text" style="width: 60%; margin-top: 20px;"
+								placeholder="댓글 입력" name="reply" id="reply">
+							<button type="submit" class="btn btn-round btn-success"
+								onclick="revaldat()">등록</button>
+						</form>
+					</div>
 				</div>
-     
-					
-				</div>
+
+
+			</div>
 
 
 
 
 
-	
-		
-		
+
+
+
 		</section>
 	</section>
 	<script type="text/javascript">
