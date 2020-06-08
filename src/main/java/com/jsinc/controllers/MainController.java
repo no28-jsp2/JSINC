@@ -214,5 +214,21 @@ public class MainController {
 		return (String) sendRs.get("msg");
 
 	}
+	
+	@RequestMapping("lockScreen")
+	public String lockScreen() {
+		return "lockScreen";
+	}
+	
+	@RequestMapping("lock")
+	public String lock(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		ServletContext application = session.getServletContext();
+		MemberDTO dto = (MemberDTO)application.getAttribute("user");
+		if(dto.getPassword().equals(request.getParameter("password"))) {
+			return "redirect:index";
+		}
+		return "redirect:lockScreen";
+	}
 
 }

@@ -14,7 +14,7 @@
             <ul class="sidebar-menu" id="nav-accordion">
                <p class="centered">
                   <a href="profile">
-                     <img src="${pageContext.request.contextPath }/resources/${user.img}" class="img-circle" width="80">
+                     <img src="resources/img${user.img}" class="img-circle" width="80">
                   </a>
                </p>
                <h5 class="centered"><i class="fa fa-user"></i> ${user.name } <br>(${user.userEmail })</h5>
@@ -65,28 +65,23 @@
                </li>
                
                <!-- 주소록 -->
-               <li class="sub-menu">
-                  <a href="javascript:;"> 
-                     <i class="fa fa-tasks"></i> <span>주소록</span>
+               <li >
+                  <a href="addressBook"> 
+                     <i class="fa fa-tasks"></i><span>주소록</span>
                   </a>
-                  <ul class="sub">
-                     <li><a href="publicAddressbook">공용 주소록</a></li>
-                     <li><a href="personalAddressbook">개인 주소록</a></li>
-                     <li><a href="form_validation.html">부서 주소록</a></li>
-                  </ul>
                </li>
                
                <!-- 캘린더 -->
                <li>
-                  <a href="calender">
-                     <i class="fa fa-th"></i> <span>캘린더</span>
+                  <a href="toDoList">
+                     <i class="fa fa-th"></i><span>스케줄</span>
                   </a>
                </li>
                
                <!-- 메일 -->
                <li class="sub-menu">
                   <a href="javascript:;"> 
-                     <i class="fa fa-envelope"></i> <span>메일</span> <span class="label label-theme pull-right mail-info">2</span>
+                     <i class="fa fa-envelope"></i><span>메일</span><span class="label label-theme pull-right mail-info">2</span>
                   </a>
                   <ul class="sub">
                      <li><a href="receiveMail">받은 메일함</a></li>

@@ -28,10 +28,13 @@
 <link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-daterangepicker/daterangepicker.css" />
 <link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-timepicker/compiled/timepicker.css" />
 <link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-datetimepicker/datertimepicker.css" />
+						<!-- (캘린더 2020.06.06 18:31 추가) -->
+<link href="resources/lib/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
   
 <!-- Custom styles for this template -->
 <link href="resources/css/style.css" rel="stylesheet">
 <link href="resources/css/style-responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="resources/css/to-do.css">
 <script src="resources/lib/chart-master/Chart.js"></script>
 
 </head>
@@ -229,6 +232,7 @@
 		</div>
 		<div class="top-menu">
 			<ul class="nav pull-right top-menu">
+				<li style="padding-top: 15px;"><a href="lockScreen"><i class="fa fa-lock"></i></a></li>				
 				<li><a class="logout" href="logout">로그아웃</a></li>
 			</ul>
 		</div>

@@ -36,9 +36,7 @@ public class MemberDAO {
 
 	// 임시 비밀번호
 	public void sentPw(MemberDTO dto) throws Exception {
-
 		sqlSession.update(namespace + ".newPw", dto);
-
 	}
 
 	// 프로필 수정
