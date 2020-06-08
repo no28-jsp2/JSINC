@@ -5,6 +5,7 @@ public class ToDoListDTO {
 	private String eDate;
 	private String sDate;
 	private String todo;
+	private String checked;
 
 	public int getEmpNo() {
 		return empNo;
@@ -36,6 +37,14 @@ public class ToDoListDTO {
 
 	public void setsDate(String sDate) {
 		this.sDate = sDate;
+	}
+
+	public String getChecked() {
+		return checked;
+	}
+
+	public void setChecked(String checked) {
+		this.checked = checked;
 	}
 
 }

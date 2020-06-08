@@ -20,7 +20,7 @@ public class AddressBookService implements ServiceIf{
 		ArrayList<MemberDTO> development = (ArrayList<MemberDTO>)dao.listAll("개발부");
 		ArrayList<MemberDTO> accountancy = (ArrayList<MemberDTO>)dao.listAll("경리부");
 		ArrayList<MemberDTO> quality = (ArrayList<MemberDTO>)dao.listAll("품질관리부");
-		ArrayList<MemberDTO> overseas = (ArrayList<MemberDTO>)dao.listAll("해외영업부 ");
+		ArrayList<MemberDTO> overseas = (ArrayList<MemberDTO>)dao.listAll("해외영업부");
 		
 		model.addAttribute("mg", management);
 		model.addAttribute("dp", development);

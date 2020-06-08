@@ -6,4 +6,12 @@
 	<select id="listAll" resultType="dto_todo">
 		select * from jsinc_todo where empNo=#{empNo} and eDate=#{eDate} order by sDate asc
 	</select>
+	
+	<insert id="addList">
+		insert into jsinc_todo(empNo,eDate,todo,sDate) values(#{empNo},#{eDate},#{todo},#{sDate})
+	</insert>
+	
+	<update id="check" parameterType="dto_todo">
+		update jsinc_todo set checked=#{checked} where todo=#{todo}
+	</update>
 </mapper>

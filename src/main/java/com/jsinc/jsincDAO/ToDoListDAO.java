@@ -17,5 +17,13 @@ public class ToDoListDAO {
 	public List<ToDoListDTO> list(ToDoListDTO dto){
 		return sqlSession.selectList(namespace + ".listAll", dto);
 	}
+	
+	public void add(ToDoListDTO dto) {
+		sqlSession.insert(namespace + ".addList", dto);
+	}
+	
+	public void check(ToDoListDTO dto) {
+		sqlSession.update(namespace + ".check", dto);
+	}
 
 }

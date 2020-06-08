@@ -72,7 +72,7 @@
 										</tr>
 									</c:forEach>
 									<c:forEach items="${os }" var="dto_mem">
-										<tr class="gradeA">
+										<tr>
 											<td><img src="resources/img${dto_mem.img}" class="img-circle" width="20">&nbsp;${dto_mem.name }</td>
 											<td>${dto_mem.empNo }</td>
 											<td>${dto_mem.rank }</td>

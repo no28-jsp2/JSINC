@@ -35,34 +35,57 @@
 								<div class="task-content">
 									<ul class="task-list">
 										<c:forEach items="${list }" var="dto_todo">
-											<!-- <form action="checkList"> -->
-												<li>
-													<div class="task-checkbox">
-														<input type="checkbox" class="list-child" name="check" value="${dto_todo.todo}"/>
-													</div>
-													<div class="task-title">
-														<span class="task-title-sp">${dto_todo.todo}</span> 
-														<span class="badge bg-important">${loginMonth}</span>
-														<div class="pull-right">
-															<button class="btn btn-success btn-xs" name="btns" value="chk">
-																<i class=" fa fa-check"></i>
-															</button>
-															<button class="btn btn-primary btn-xs" name="btns" value="edit">
-																<i class="fa fa-pencil"></i>
-															</button>
-															<button class="btn btn-danger btn-xs" name="btns" value="del">
-																<i class="fa fa-trash-o "></i>
-															</button>
+											<c:choose>
+												<c:when test="${dto_todo.checked eq 'Y' }">
+													<li>
+														<div class="task-checkbox">
+															<input type="checkbox" class="list-child" name="check" value="${dto_todo.todo}" checked="checked"/>
 														</div>
-													</div>
-												</li>
-											<!-- </form> -->
+														<div class="task-title">
+															<span class="task-title-sp" style="text-decoration: line-through;">${dto_todo.todo}</span> 
+															<div class="pull-right">
+																<button class="btn btn-success btn-xs" onclick="location.href='check?btns=${dto_todo.todo}'">				
+																	<i class=" fa fa-check"></i>
+																</button>
+																<button class="btn btn-primary btn-xs" onclick="location.href='edit?btns=${dto_todo.todo}'">
+																	<i class="fa fa-pencil"></i>
+																</button>
+																<button class="btn btn-danger btn-xs" onclick="location.href='delete?btns=${dto_todo.todo}'">
+																	<i class="fa fa-trash-o "></i>
+																</button>
+															</div>
+														</div>
+													</li>
+												</c:when>
+												<c:otherwise>
+													<li>
+														<div class="task-checkbox">
+															<input type="checkbox" class="list-child" name="check" value="${dto_todo.todo}"/>
+														</div>
+														<div class="task-title">
+															<span class="task-title-sp">${dto_todo.todo}</span> 
+															<div class="pull-right">
+																<button class="btn btn-success btn-xs" onclick="location.href='check?btns=${dto_todo.todo}'">				
+																	<i class=" fa fa-check"></i>
+																</button>
+																<button class="btn btn-primary btn-xs" onclick="location.href='edit?btns=${dto_todo.todo}'">
+																	<i class="fa fa-pencil"></i>
+																</button>
+																<button class="btn btn-danger btn-xs" onclick="location.href='delete?btns=${dto_todo.todo}'">
+																	<i class="fa fa-trash-o "></i>
+																</button>
+															</div>
+														</div>
+													</li>
+												</c:otherwise>
+											</c:choose>
+											
 										</c:forEach>
 										
 									</ul>
 								</div>
 								<div class=" add-task-row">
-									<a class="btn btn-success btn-sm pull-left" href="">Add New Tasks</a> 
+									<a class="btn btn-success btn-sm pull-left" href="addTodo">Add New Tasks</a> 
 									
 								</div>
 							</div>
