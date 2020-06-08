@@ -13,7 +13,7 @@ public class MemberDTO {
 	private String dep;
 	private String rank;
 	private String img;
-	
+	private String authority;
 
 	public String getDep() {
 		return dep;
@@ -109,6 +109,14 @@ public class MemberDTO {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 	
 
