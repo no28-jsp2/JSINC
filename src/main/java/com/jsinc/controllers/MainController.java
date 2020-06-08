@@ -161,8 +161,13 @@ public class MainController {
 	}
 
 	@RequestMapping("registerMem")
-	public String registerMem(MemberDTO dto, Model model, MultipartFile profile) throws Exception {
+	public String registerMem(MemberDTO dto, Model model, MultipartFile profile, @RequestParam String rank) throws Exception {
 
+		if(rank.equals("과장")|| rank.equals("부장")||rank.equals("이사")) {
+			dto.setAuthority("Y");
+		}else {
+			dto.setAuthority("N");
+		}
 		// 업로드
 		UUID uuid = UUID.randomUUID(); // 파일 이름 중복 방지
 		String saveName = uuid + "_" + profile.getOriginalFilename(); // UUID가 붙은 파일이름을 객체에 저장
@@ -177,7 +182,8 @@ public class MainController {
 			return null;
 		}
 		dto.setImg(File.separator + "profile" + File.separator + saveName);
-
+		
+		
 		service = ac.getBean("memberServiceImpl", MemberServiceImpl.class);
 		model.addAttribute("dto", dto);
 		service.execute(model);

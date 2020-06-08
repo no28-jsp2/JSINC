@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+	th {background-color: #B2D3C2; }
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -19,20 +22,16 @@
         	
           <!-- page start-->
           	<div class="content-panel">
-          		<div>
-          		제목 : ${board.title }
-          		</div>
-          		<div>
-          		작성자 : ${board.writer } &nbsp; 작성일자 : <fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/>
-          		</div>
-          		<div>
-          		내용 : ${board.content }
-          		</div>
-          		<div>
-          		첨부 파일 : <a href="fileDownload?bno=${board.bno}"/>${board.realfile }</a>
-          		</div>
+          		<table  style=" border-style:solid; width: 500px; height: 150px;">
+          		<tr><th>제목 </th><td> ${board.title }</td></tr>
+          		<tr><th>작성자 </th><td> ${board.writer }</td></tr>
+          		<tr><th>작성일자 </th><td> <fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/></td></tr>
+          		<tr><th>내용 </th><td> ${board.content }</td></tr>
+          		<tr><th>첨부 파일 </th><td> <a href="fileDownload?bno=${board.bno}"/>${board.realfile }</a></td></tr>
+          		</table>
         	<a href="referenceBoard" id="list" class="btn">목록보기</a>
-					
+			<a href="update" class="btn">수정</a>
+			<a href="delete" class="btn">삭제</a>
           <!-- page end-->
         	</div>
         </div>
