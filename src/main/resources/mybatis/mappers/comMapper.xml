@@ -13,7 +13,7 @@
 	</select>
 	<!-- 내가 가입한 커뮤니티 -->
 	<select id="myCom" resultType="dto_com">
-		select * from joincom where empno=#{empNo}	
+		select * from joincom where empNo=#{empNo}	
 	</select>
 	<!-- 커뮤니티 클릭시 -->
 	<select id="view" resultType="dto_com">
@@ -21,7 +21,7 @@
 	</select>
 	<!-- 커뮤니티 가입 -->
 	<insert id="signUp">
-		insert into joincom (empNo,title,join,members,name,rank) values(#{empNo},#{title},#{join},1+#{members},#{name},#{rank})
+		insert into joincom (empNo,title,join,members,name,rank,cNo) values(#{empNo},#{title},#{join},1+#{members},#{name},#{rank},#{cNo})
 	</insert>
 	<!-- 가입버튼 활성 비활성 -->
 	<select id="signBut" resultType="int" parameterType="dto_com">

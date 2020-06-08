@@ -32,7 +32,7 @@
 				<button type="button" class="btn btn-round btn-danger"  style="margin: 10px;" onclick="location.href='leave?title=${view.title}'">탈퇴 하기..</button>		
 			</c:when>
 			<c:otherwise >
-					<button type="button" class="btn btn-round btn-success" onclick="location.href='signUp?title=${view.title}'" >가입
+					<button type="button" class="btn btn-round btn-success" onclick="location.href='signUp?title=${view.title}&cno=${cno }'" >가입
 					하기</button>
 			</c:otherwise>
 			
@@ -89,38 +89,54 @@
 				<hr style="border: ridge 10px lightgray; margin-left: 10px;">
 
 				<div class="room-box">
-			<c:forEach items="${conList }" var="con">
-				
-					
-								
-					
-					<c:choose>
-					<c:when test="${con.step>0 }">
-					<span style="font-size: 13pt; color: black"><span class="fa fa-mail-forward">${con.content }   </span> </span>
-					<span class="text-primary"><i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp; <i class="fa fa-calendar"></i>&nbsp;${con.com_date }</span>
-						<div style="margin-top: 30px;margin-bottom: 20px;">
-					<form action="reply" onsubmit="return revaldat()" >
-					<input type="text" style="width: 60%; margin-top: 20px;" placeholder="댓글 입력" name="reply" id="reply">	
-					<button type="submit" class="btn btn-round btn-success" onclick="revaldat()">등록</button>
+					<c:forEach items="${conList }" var="con">
+				<c:set var="tot" value="0"/>				
+				<c:set var="tot" value="${tot+con.idgroup }"/>
+				<c:set var="tot" value="${tot+con.step }"/>
+			<c:choose>
+				<c:when test="${tot gt con.idgroup }">
 					<hr>
-              		</form>
-           			</div>
-					
-					</c:when>
-					
-					
-					<c:when test="${con.step==0 }">
-					<h5 class="text-primary"><i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp; <i class="fa fa-calendar"></i>&nbsp;${con.com_date }</h5>
-					<span style="font-size: 13pt; color: black">${con.content }</span><br>
-					</c:when>
-					</c:choose>
-					
-											
-				
-           			
-           			
-             </c:forEach> 
-            </div>
+				</c:when>
+			</c:choose>
+						<c:choose>
+							<c:when test="${con.step>0 }">
+								<span style="font-size: 13pt; color: black">
+									<span class="fa fa-mail-forward">${con.content } </span> 
+								</span>
+								<span class="text-primary">
+									<i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp;
+									<i class="fa fa-calendar"></i>&nbsp;${con.com_date }
+								</span>
+							
+
+							</c:when>
+
+
+							<c:when test="${con.step==0 }">
+								<h5 class="text-primary" style="margin-top: 30px;">
+									<i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp;
+									<i class="fa fa-calendar"></i>&nbsp;${con.com_date }
+								</h5>
+								<span style="font-size: 13pt; color: black">${con.content }</span>
+								<br>
+								
+							</c:when>
+						</c:choose>
+						
+
+
+
+
+
+					</c:forEach>
+					<div>
+								<c:set var="idgroup" value="${con.idgroup }"/>
+									<form action="reply" onsubmit="return revaldat()">
+										<input type="text" style="width: 60%; margin-top: 20px;" placeholder="댓글 입력" name="reply" id="reply">
+										<button type="submit" class="btn btn-round btn-success" onclick="revaldat()">등록</button>
+									</form>
+								</div>
+				</div>
      
 					
 				</div>

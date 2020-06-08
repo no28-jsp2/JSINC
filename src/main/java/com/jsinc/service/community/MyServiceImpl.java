@@ -39,7 +39,6 @@ public class MyServiceImpl implements ServiceCom{
 		ArrayList<CommunityDTO> lists = new ArrayList<CommunityDTO>();
 		CommunityDTO dto_com = new CommunityDTO();
 		
-		System.out.println("==========="+list.get(0).getTitle());
 		for(CommunityDTO dto :list) {
 			dto_com.setEmpNo(empNo);
 			dto_com.setTitle(dto.getTitle());
@@ -47,13 +46,12 @@ public class MyServiceImpl implements ServiceCom{
 			dto.setJoin("가입");
 			lists.add(dto);
 		}
-		System.out.println("lists===="+list.get(0).getcNo());
-		System.out.println("lists===="+lists.get(0).getTitle());
-		System.out.println("lists===="+lists.get(0).getMembers());
-		System.out.println("lists===="+lists.get(0).getname());
-		System.out.println("lists===="+lists.get(0).getJoin());
+		if(lists.size() == 0) {
+			model.addAttribute("noData","0");
+		}else if(lists.size()!=0) {
+			model.addAttribute("allList",lists);
+		}
 		
-		model.addAttribute("allList",lists);
 	
 	
 	}

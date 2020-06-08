@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,6 +44,13 @@
                   </tr>
                 </thead>
                 <tbody>
+           	<c:choose>
+				<c:when test="${noData eq '0' }">
+				<tr>
+				<td colspan="5" align="center">내용이 없습니다</td>
+				</tr>
+				</c:when>
+				<c:otherwise>
 				<c:forEach items='${allList }' var="dto">
 				<tr>
 				<td>${dto.cNo }</td>
@@ -51,7 +59,11 @@
 				<td>${dto.name } ${dto.rank }</td>
 				<td>가입</td>
 				</tr>
-				</c:forEach>               
+				</c:forEach>   
+				
+				</c:otherwise>
+				            
+            </c:choose>
                
                 </tbody>
               </table>
