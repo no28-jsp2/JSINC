@@ -36,7 +36,24 @@ public class MyServiceImpl implements ServiceCom{
 		int empNo=memDto.getEmpNo();
 		System.out.println("service::::"+empNo);
 		ArrayList<CommunityDTO> list = (ArrayList<CommunityDTO>) dao.myCom(empNo);
-		model.addAttribute("myList",list);
+		ArrayList<CommunityDTO> lists = new ArrayList<CommunityDTO>();
+		CommunityDTO dto_com = new CommunityDTO();
+		
+		for(CommunityDTO dto :list) {
+			dto_com.setEmpNo(empNo);
+			dto_com.setTitle(dto.getTitle());
+			dto.setMembers(dao.countMember(dto_com));
+			dto.setJoin("가입");
+			lists.add(dto);
+		}
+		if(lists.size() == 0) {
+			model.addAttribute("noData","0");
+		}else if(lists.size()!=0) {
+			model.addAttribute("allList",lists);
+		}
+		
+	
+	
 	}
 	
 	

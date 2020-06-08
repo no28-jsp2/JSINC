@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,13 +29,14 @@
       <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> 내가 가입한 커뮤니티</h3>
 
-		<!--커뮤니티 -->
+	 <!-- /col-md-12 -->
           <div class="col-md-12 mt">
             <div class="content-panel">
               <table class="table table-hover">
                 <hr>
                 <thead>
                   <tr>
+                  	<th>번호</th>
                     <th>커뮤니티(명)</th>
                     <th>회원수</th>
                     <th>마스터</th>
@@ -42,20 +44,33 @@
                   </tr>
                 </thead>
                 <tbody>
-				<c:forEach items="${myList }" var="dto">
+           	<c:choose>
+				<c:when test="${noData eq '0' }">
 				<tr>
-				<td><a href="#">${dto.title}</a></td>
-				<td>10</td>
-				<td>${dto.name }</td>
+				<td colspan="5" align="center">내용이 없습니다</td>
+				</tr>
+				</c:when>
+				<c:otherwise>
+				<c:forEach items='${allList }' var="dto">
+				<tr>
+				<td>${dto.cNo }</td>
+				<td><a href="viewCom?title=${dto.title }&cno=${dto.cNo}">${dto.title}</a></td>
+				<td>${dto.members }</td>
+				<td>${dto.name } ${dto.rank }</td>
 				<td>가입</td>
 				</tr>
-				</c:forEach>               
+				</c:forEach>   
+				
+				</c:otherwise>
+				            
+            </c:choose>
                
                 </tbody>
               </table>
             </div>
           </div>
-          <!-- 커뮤니티 end -->
+          <!-- /col-md-12 -->
+
 
 		
 	</section>

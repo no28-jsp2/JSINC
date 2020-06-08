@@ -14,7 +14,7 @@ import com.jsinc.jsincDAO.CommunityDAO;
 import com.jsinc.jsincDTO.CommunityDTO;
 import com.jsinc.jsincDTO.MemberDTO;
 @Service
-public class SignUpServiceImpl implements ServiceCom{
+public class LeaveServiceImpl implements ServiceCom{
 	@Autowired
 	CommunityDAO dao;
 	
@@ -26,23 +26,26 @@ public class SignUpServiceImpl implements ServiceCom{
 
 	@Override
 	public void getExe(Model model) {
-		Map<String, Object> map=model.asMap();
-		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		String title = request.getParameter("title");
-		int cno =Integer.parseInt(request.getParameter("cno"));
-		String join="Y";
-		HttpSession session=request.getSession();
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpSession session = request.getSession();
 		ServletContext application = session.getServletContext();
 		MemberDTO memDto =(MemberDTO)application.getAttribute("user");
-		CommunityDTO dto = new CommunityDTO();
-		dto.setcNo(cno);
-		dto.setEmpNo(memDto.getEmpNo());
-		dto.setTitle(title);
-		dto.setname(memDto.getName());
-		dto.setRank(memDto.getRank());
-		dto.setJoin(join);
+		int empNo=memDto.getEmpNo();
+		String title=request.getParameter("title");
 		
-		dao.signUp(dto);
+		CommunityDTO dto = new CommunityDTO();
+		dto.setEmpNo(empNo);
+		dto.setTitle(title);
+		int result=0;
+		System.out.println("empNo :"+empNo);
+		System.out.println("title"+title);
+		result=dao.leave(dto);
+		
+		
+		
+		
+		
 		
 	}
 

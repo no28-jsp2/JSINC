@@ -78,17 +78,7 @@
                   </a>
                </li>
                
-               <!-- 메일 -->
-               <li class="sub-menu">
-                  <a href="javascript:;"> 
-                     <i class="fa fa-envelope"></i><span>메일</span><span class="label label-theme pull-right mail-info">2</span>
-                  </a>
-                  <ul class="sub">
-                     <li><a href="receiveMail">받은 메일함</a></li>
-                     <li><a href="sendMail">보낸 메일함</a></li>
-                     <li><a href="garbage">휴지통</a></li>
-                  </ul>
-               </li>
+
                
                <!-- 보고 -->
                <li class="sub-menu">
@@ -102,14 +92,14 @@
                   </ul>
                </li>
                
-               <!-- 메신져 -->
+               <!-- 쪽지 -->
                <li class="sub-menu">
                   <a href="javascript:;"> 
-                     <i class="fa fa-comments-o"></i> <span>메신저</span>
+                     <i class="fa fa-comments-o"></i> <span>쪽지함</span><span class="label label-theme pull-right mail-info">2</span>
                   </a>
                   <ul class="sub">
-                     <li><a href="lobby">로비</a></li>
-                     <li><a href="chatRoom">채팅방</a></li>
+                     <li><a href="sentMessage">보낸 쪽지함</a></li>
+                     <li><a href="RecMessage">받은 쪽지함</a></li>
                   </ul>
                </li>
                
