@@ -28,13 +28,14 @@
       <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> 내가 가입한 커뮤니티</h3>
 
-		<!--커뮤니티 -->
+	 <!-- /col-md-12 -->
           <div class="col-md-12 mt">
             <div class="content-panel">
               <table class="table table-hover">
                 <hr>
                 <thead>
                   <tr>
+                  	<th>번호</th>
                     <th>커뮤니티(명)</th>
                     <th>회원수</th>
                     <th>마스터</th>
@@ -42,11 +43,12 @@
                   </tr>
                 </thead>
                 <tbody>
-				<c:forEach items="${myList }" var="dto">
+				<c:forEach items='${allList }' var="dto">
 				<tr>
-				<td><a href="#">${dto.title}</a></td>
-				<td>10</td>
-				<td>${dto.name }</td>
+				<td>${dto.cNo }</td>
+				<td><a href="viewCom?title=${dto.title }&cno=${dto.cNo}">${dto.title}</a></td>
+				<td>${dto.members }</td>
+				<td>${dto.name } ${dto.rank }</td>
 				<td>가입</td>
 				</tr>
 				</c:forEach>               
@@ -55,7 +57,8 @@
               </table>
             </div>
           </div>
-          <!-- 커뮤니티 end -->
+          <!-- /col-md-12 -->
+
 
 		
 	</section>

@@ -13,7 +13,7 @@
 	</select>
 	<!-- 내가 가입한 커뮤니티 -->
 	<select id="myCom" resultType="dto_com">
-		select * from createcom where empno=#{empNo}	
+		select * from joincom where empno=#{empNo}	
 	</select>
 	<!-- 커뮤니티 클릭시 -->
 	<select id="view" resultType="dto_com">
@@ -35,4 +35,18 @@
 	<select id="countMember" resultType="int">
 		select count(*) from joinCom where title=#{title}
 	</select>
+	<!-- 게시글 등록(내용) -->
+	<insert id="contentsave" parameterType="dto_com02">
+		insert into contentcom (cno,name,content,com_date,idgroup,step,indent,empno,rank) values (#{cNo},#{name},#{content},#{com_date},re_seq.nextval,0,0,#{empNo},#{rank})
+	</insert>	
+	<!-- 게시글 가져오기 -->
+	<select id="contentGet" resultType="dto_com02">
+			select * from contentcom where cno=#{cno} order by idgroup desc,step asc
+	</select>
+	<!-- 회원 탈퇸 -->
+	<delete id="leave" parameterType="dto_com">
+		delete from joinCom where empno=#{empNo} and title=#{title}
+	</delete>
+
+
 </mapper>

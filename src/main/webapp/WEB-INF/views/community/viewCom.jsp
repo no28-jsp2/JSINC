@@ -29,8 +29,7 @@
 				<i class="fa fa-angle-right"></i>커뮤니티 글
 			<c:choose>
 			<c:when test="${signBut == 1 }">
-				<button type="button" disabled="disabled" class="btn btn-round btn-success" onclick="location.href='signUp?title=${view.title}'" >가입
-					중</button>
+				<button type="button" class="btn btn-round btn-danger"  style="margin: 10px;" onclick="location.href='leave?title=${view.title}'">탈퇴 하기..</button>		
 			</c:when>
 			<c:otherwise >
 					<button type="button" class="btn btn-round btn-success" onclick="location.href='signUp?title=${view.title}'" >가입
@@ -68,23 +67,85 @@
 			</div>
 			<input type="text" id="hide" style="visibility: hidden;"value="${view.title }">
 			
-			<div style="width: 80%" align="left">
+			<div style="width: 90%" align="left">
 
 				<div class="form-group">
 				<div class="showback">
-				<form action="content" onsubmit="return validat()">
-					<input type="text" style="visibility: hidden; value="${cno }">
-					<textarea class="form-control" name="message" id="contact-message"
-						placeholder="내용을 입력해주세요" rows="5" data-rule="required"
-						data-msg="Please write something for us"></textarea>
-					<button type="submit" class="btn btn-round btn-info" style="margin: 10px;">이야기
-						하기</button>
+				<h4>
+								<i class="fa fa-angle-right"></i>게시글을 작성 해주세요
+							</h4>
+				<form action=viewCom onsubmit="return validat()">
+					<input type="text"  value="${cno }" name="cno" style="visibility: hidden;">
+					<textarea class="form-control" id="contact-message"
+						placeholder="내용을 입력해주세요" rows="5" data-rule="required" name="content"
+						></textarea>
+					<button type="submit" class="btn btn-round btn-info" style="margin: 10px;">이야기하기</button>
+					<input type="text"  value="${view.title }" name="title" style="visibility: hidden;">
 					
+						
 				</form>	
 					</div>
 				</div>
-				<hr>
-<script type="text/javascript">
+				<hr style="border: ridge 10px lightgray; margin-left: 10px;">
+
+				<div class="room-box">
+			<c:forEach items="${conList }" var="con">
+				
+					
+								
+					
+					<c:choose>
+					<c:when test="${con.step>0 }">
+					<span style="font-size: 13pt; color: black"><span class="fa fa-mail-forward">${con.content }   </span> </span>
+					<span class="text-primary"><i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp; <i class="fa fa-calendar"></i>&nbsp;${con.com_date }</span>
+						<div style="margin-top: 30px;margin-bottom: 20px;">
+					<form action="reply" onsubmit="return revaldat()" >
+					<input type="text" style="width: 60%; margin-top: 20px;" placeholder="댓글 입력" name="reply" id="reply">	
+					<button type="submit" class="btn btn-round btn-success" onclick="revaldat()">등록</button>
+					<hr>
+              		</form>
+           			</div>
+					
+					</c:when>
+					
+					
+					<c:when test="${con.step==0 }">
+					<h5 class="text-primary"><i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp; <i class="fa fa-calendar"></i>&nbsp;${con.com_date }</h5>
+					<span style="font-size: 13pt; color: black">${con.content }</span><br>
+					</c:when>
+					</c:choose>
+					
+											
+				
+           			
+           			
+             </c:forEach> 
+            </div>
+     
+					
+				</div>
+
+
+
+
+
+	
+		
+		
+		</section>
+	</section>
+	<script type="text/javascript">
+	function revaldat(){
+		if($("#reply").val()==""){
+			alert("내용을 작성해주세요")
+			return false;
+		}	
+			alert("등록 되었습니다.")	
+	}
+	
+	
+	
+	
 	function validat(){
 		if($("#contact-message").val()==""){
 			alert("내용을 작성해주세요")
@@ -101,35 +162,11 @@
 		alert("등록 되었습니다~")
 		
 	}
-</script>
-				
 
-					
-
-
-				<div class="room-box">
-					<h5 class="text-primary">박남혜 차장 2020-06-04 09시04분</h5>
-					<span>게시판 목록에서 글번호 대신 '공지'라는 텍스트가 표시되며 목록 상단에 고정됩니다.</span><a href="#" onclick="attachAddr(); return false;" class="btn ty_2 small">추가</a>
-              </div>
-              	<div class="room-box">
-					<h5 class="text-primary">홍길동 차장 2020-06-04 09시04분</h5>
-					<span>게시판 목록에서 글번호 대신 '공지'라는 텍스트가 표시되며 목록 상단에 고정됩니다.</span><a href="#" onclick="attachAddr(); return false;" class="btn ty_2 small">추가</a>
-              </div>
-              
-              
-              
-					
-				</div>
-			</div>
-
-
-
-
-
-	<button type="button" class="btn btn-round btn-danger"  style="margin: 10px;">탈퇴 하기..</button>
-		</section>
-	</section>
 	
+	
+	
+</script>
 
 
 

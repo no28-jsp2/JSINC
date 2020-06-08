@@ -1,11 +1,13 @@
 package com.jsinc.jsincDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jsinc.jsincDTO.CommunityConDTO;
 import com.jsinc.jsincDTO.CommunityDTO;
 
 @Repository
@@ -23,7 +25,6 @@ public class CommunityDAO {
 	}
 	//내가 가입한 커뮤니티
 	public List<CommunityDTO> myCom(int empNo){
-		System.out.println("dao:"+empNo);
 		return sqlSession.selectList(namespace+".myCom",empNo);
 	}
 	//커뮤니티 클릭 시 
@@ -48,5 +49,18 @@ public class CommunityDAO {
 		return sqlSession.selectOne(namespace+".countMember",dto);
 	}
 	
+	//게시글 등록(내용)
+	public void content_save(CommunityConDTO dto) {
+	
+		sqlSession.insert(namespace+".contentsave",dto);
+	}
+	//게시글 내용 가져오기
+	public List<CommunityConDTO> contentGet(int cno) {
+		return sqlSession.selectList(namespace+".contentGet",cno);
+	}
+	//회원 탈퇴
+	public int leave(CommunityDTO dto){
+		return sqlSession.delete(namespace+".leave",dto);
+	}
 
 }
