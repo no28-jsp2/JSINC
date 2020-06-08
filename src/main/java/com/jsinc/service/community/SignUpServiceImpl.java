@@ -29,11 +29,13 @@ public class SignUpServiceImpl implements ServiceCom{
 		Map<String, Object> map=model.asMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		String title = request.getParameter("title");
+		int cno =Integer.parseInt(request.getParameter("cno"));
 		String join="Y";
 		HttpSession session=request.getSession();
 		ServletContext application = session.getServletContext();
 		MemberDTO memDto =(MemberDTO)application.getAttribute("user");
 		CommunityDTO dto = new CommunityDTO();
+		dto.setcNo(cno);
 		dto.setEmpNo(memDto.getEmpNo());
 		dto.setTitle(title);
 		dto.setname(memDto.getName());
