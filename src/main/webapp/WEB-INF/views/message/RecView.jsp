@@ -19,7 +19,6 @@
 <link href="resources/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="resource/css/zabuto_calendar.css">
 <link rel="stylesheet" type="text/css" href="resource/lib/gritter/css/jquery.gritter.css" />
-						<!-- (설문  2020.06.01 17:51 추가)-->
 <link rel="stylesheet" href="resources/lib/advanced-datatable/css/DT_bootstrap.css" />
 <link href="resources/lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
 <link href="resources/lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />

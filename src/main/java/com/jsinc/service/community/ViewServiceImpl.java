@@ -41,6 +41,8 @@ public class ViewServiceImpl implements ServiceCom{
 		int signBut =dao.signBut(dto);
 		model.addAttribute("signBut",signBut);
 		System.out.println("버튼~~~:"+signBut);
+		
+		session.setAttribute("com", dto);
 		model.addAttribute("view",dto);
 	}
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.jsinc.mybatis.message">
+<insert id="sendMes" parameterType="dto_mes">
+	insert into jsinc_message (senderEmpNo,sender,senderRank,senderDep,subject,content,sentTime,recEmpNo,receiver,recRank,recDep) 
+	values(#{senderEmpNo},#{sender},#{senderRank},#{senderDep},#{subject},#{content},#{sentTime},#{recEmpNo},#{receiver},#{recRank},#{recDep})
+</insert>
+
+<select id="sentView" resultType="dto_mes">
+	select * from jsinc_message where senderEmpNo=#{empNo} order by sentTime desc
+</select>
+
+
+
+</mapper>

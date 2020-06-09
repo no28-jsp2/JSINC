@@ -30,7 +30,7 @@ public class ContentGetServiceImpl implements ServiceCom {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		int cno = Integer.parseInt(request.getParameter("cno"));
 		ArrayList<CommunityConDTO> list = (ArrayList<CommunityConDTO>) dao.contentGet(cno);
-
+		
 		
 		System.out.println(list.size());
 		model.addAttribute("conList", list);

@@ -1,34 +1,89 @@
 package com.jsinc.jsincDTO;
 
 public class MessageDTO {
-	private int empNo;
-	private String name;
-	private String dep;
-	private String rank;
-	public int getEmpNo() {
-		return empNo;
+	private String sender;
+	private String receiver;
+	private String senderRank;
+	private String recRank;
+	private int senderEmpNo;
+	private int recEmpNo;
+	private String senderDep;
+	private String recDep;
+	private String mesChk;
+	private String subject;
+	private String content;
+	private String sentTime;
+	public String getSender() {
+		return sender;
 	}
-	public void setEmpNo(int empNo) {
-		this.empNo = empNo;
+	public void setSender(String sender) {
+		this.sender = sender;
 	}
-	public String getName() {
-		return name;
+	public String getReceiver() {
+		return receiver;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
 	}
-	public String getDep() {
-		return dep;
+	public String getSenderRank() {
+		return senderRank;
 	}
-	public void setDep(String dep) {
-		this.dep = dep;
+	public void setSenderRank(String senderRank) {
+		this.senderRank = senderRank;
 	}
-	public String getRank() {
-		return rank;
+	public String getRecRank() {
+		return recRank;
 	}
-	public void setRank(String rank) {
-		this.rank = rank;
+	public void setRecRank(String recRank) {
+		this.recRank = recRank;
 	}
-	
+	public int getSenderEmpNo() {
+		return senderEmpNo;
+	}
+	public void setSenderEmpNo(int senderEmpNo) {
+		this.senderEmpNo = senderEmpNo;
+	}
+	public int getRecEmpNo() {
+		return recEmpNo;
+	}
+	public void setRecEmpNo(int recEmpNo) {
+		this.recEmpNo = recEmpNo;
+	}
+	public String getSenderDep() {
+		return senderDep;
+	}
+	public void setSenderDep(String senderDep) {
+		this.senderDep = senderDep;
+	}
+	public String getRecDep() {
+		return recDep;
+	}
+	public void setRecDep(String recDep) {
+		this.recDep = recDep;
+	}
+	public String getMesChk() {
+		return mesChk;
+	}
+	public void setMesChk(String mesChk) {
+		this.mesChk = mesChk;
+	}
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getSentTime() {
+		return sentTime;
+	}
+	public void setSentTime(String sentTime) {
+		this.sentTime = sentTime;
+	}
 	
 }

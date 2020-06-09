@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,7 +60,16 @@
 									</tr>
 								</thead>
 								<tbody>
-									
+								
+								<c:forEach var="dto" items="${list }">
+								<tr>
+									<td><h5>${dto.receiver } ${dto.recRank }</h5></td>
+									<td><h5>${dto.subject }</h5></td>
+									<td><h5>${dto.sentTime }</h5></td>
+									<td><button type="button" onclick="#" class="btn btn-warning">삭제</button></td>
+								</tr>
+								</c:forEach>
+								
 								</tbody>
 							</table>
 						</div>
@@ -128,7 +138,7 @@
 				 */
 				 
 				var oTable = $('#hidden-table-info').dataTable({
-					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 3, 'asc' ] ]
+					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 3, 'desc' ] ]
 				});
 
 				/* Add event listener for opening and closing details
