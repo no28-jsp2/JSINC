@@ -1,4 +1,4 @@
-package com.jsinc.service.community;
+package com.jsinc.services.community;
 
 import org.springframework.ui.Model;
 

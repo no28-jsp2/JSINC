@@ -1,4 +1,4 @@
-package com.jsinc.service.community;
+package com.jsinc.services.community;
 
 import java.util.Map;
 
@@ -14,7 +14,7 @@ import com.jsinc.jsincDAO.CommunityDAO;
 import com.jsinc.jsincDTO.CommunityDTO;
 import com.jsinc.jsincDTO.MemberDTO;
 @Service
-public class ViewServiceImpl implements ServiceCom{
+public class SignUpServiceImpl implements ServiceCom{
 	@Autowired
 	CommunityDAO dao;
 	
@@ -26,22 +26,24 @@ public class ViewServiceImpl implements ServiceCom{
 
 	@Override
 	public void getExe(Model model) {
-		Map<String, Object> map = model.asMap();
-		HttpServletRequest request= (HttpServletRequest)map.get("request");
-		String title=request.getParameter("title");
-		
+		Map<String, Object> map=model.asMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		String title = request.getParameter("title");
+		int cno =Integer.parseInt(request.getParameter("cno"));
+		String join="Y";
 		HttpSession session=request.getSession();
 		ServletContext application = session.getServletContext();
 		MemberDTO memDto =(MemberDTO)application.getAttribute("user");
-		int empNo=memDto.getEmpNo();
-		
-		CommunityDTO dto=dao.view(title);
+		CommunityDTO dto = new CommunityDTO();
+		dto.setcNo(cno);
 		dto.setEmpNo(memDto.getEmpNo());
 		dto.setTitle(title);
-		int signBut =dao.signBut(dto);
-		model.addAttribute("signBut",signBut);
-		System.out.println("버튼~~~:"+signBut);
-		model.addAttribute("view",dto);
+		dto.setname(memDto.getName());
+		dto.setRank(memDto.getRank());
+		dto.setJoin(join);
+		
+		dao.signUp(dto);
+		
 	}
 
 }

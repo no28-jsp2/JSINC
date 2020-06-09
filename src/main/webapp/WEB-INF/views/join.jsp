@@ -10,44 +10,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원가입</title>
 <!-- Bootstrap -->
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
 <script src="http://code.jquery.com/jquery.js"></script>
 <!-- 모든 합쳐진 플러그인을 포함하거나 (아래) 필요한 각각의 파일들을 포함하세요 -->
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- Respond.js 으로 IE8 에서 반응형 기능을 활성화하세요 (https://github.com/scottjehl/Respond) -->
-<script
-	src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	
-
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
 
 <body>
-
 	<br>
 	<br>
 	<br>
 	<br>
-
-
 	<div class="container" style="color: white">
-
 		<h1 style="text-align: center; color: white">회 원 가 입</h1>
 		<!-- 좌우측의 공간 확보 -->
 		<!-- 헤더 들어가는 부분 -->
-
-
 		<!-- 모달창 -->
-
 		<hr />
 		<!-- 본문 들어가는 부분 -->
 
-
-
-		<form class="form-horizontal" role="form" method="post"	action="registerMem" enctype="multipart/form-data">
+		<form class="form-horizontal" role="form" method="post" action="registerMem" enctype="multipart/form-data">
 			<div class="form-group">
 
 				<label for="provision" class="col-lg-2 control-label">회원가입약관</label>
@@ -162,23 +147,34 @@
 						</label>
 					</div>
 					<!-- 프로필 이미지 -->
-		<div class="inputArea" >
-			<div class="select_img" align="center">
-			<label for="proImg">프로필 사진 등록</label>
-			<input type="file" id="proImg" name="profile" style="display: none;"/><br>
-			<input type="text" name="protext" id="protext" style="display: none;">
-				<img src="resources/img/joinprofile.png" width="100px" height="100px"  
-				onclick="document.all.profile.click(); document.all.protext.value=document.all.profile.value" style="cursor: pointer;" />
-			</div>
-			<script>
-    $("#proImg").change(function(){
-   if(this.files && this.files[0]) {
-    var reader = new FileReader;
-    reader.onload = function(data) {
-     $(".select_img img").attr("src", data.target.result);}
-    reader.readAsDataURL(this.files[0]);}
-  });
- </script>
+					<div class="inputArea">
+						<div class="select_img" align="center">
+							<label for="proImg">프로필 사진 등록</label> <input type="file"
+								id="proImg" name="profile" style="display: none;" /><br> <input
+								type="text" name="protext" id="protext" style="display: none;">
+							<img src="resources/img/joinprofile.png" width="100px"
+								height="100px"
+								onclick="document.all.profile.click(); document.all.protext.value=document.all.profile.value"
+								style="cursor: pointer;" />
+						</div>
+						<script>
+							$("#proImg")
+									.change(
+											function() {
+												if (this.files && this.files[0]) {
+													var reader = new FileReader;
+													reader.onload = function(
+															data) {
+														$(".select_img img")
+																.attr(
+																		"src",
+																		data.target.result);
+													}
+													reader
+															.readAsDataURL(this.files[0]);
+												}
+											});
+						</script>
 					</div>
 				</div>
 
@@ -188,11 +184,12 @@
 					<label for="inputEmpNo" class="col-lg-2 control-label">사원번호(아이디)</label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control onlyAlphabetAndNumber"
-							id="empNo" name="empNo" data-rule-required="true" placeholder="사원번호를 입력 해주세요"
-							maxlength="30"><br>
-							<button type="button" class="btn btn-primary" value="N" onclick="empNoChk()" id="empCK">사원번호 중복확인</button>
-							<span id="spanEmp"></span>
-							
+							id="empNo" name="empNo" data-rule-required="true"
+							placeholder="사원번호를 입력 해주세요" maxlength="30"><br>
+						<button type="button" class="btn btn-primary" value="N"
+							onclick="empNoChk()" id="empCK">사원번호 중복확인</button>
+						<span id="spanEmp"></span>
+
 					</div>
 				</div>
 				<div class="form-group" id="divPassword">
@@ -224,51 +221,55 @@
 						예)910525</label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control onlyNumber" id="birth"
-							name="birth" data-rule-required="true" placeholder="생년월일 예)910525"
-							maxlength="15">
+							name="birth" data-rule-required="true"
+							placeholder="생년월일 예)910525" maxlength="15">
 					</div>
 				</div>
-				<!-- 직급 --> 
+				<!-- 직급 -->
 				<label for="inputPhoneNumber" class="col-lg-2 control-label">직급</label>
-					<div class="col-lg-10">
-						<select class="form-control" id="rank" name="rank">
-							<option value="사원">사원</option>
-							<option value="주임">주임</option>
-							<option value="대리">대리</option>
-							<option value="과장">과장</option>
-							<option value="부장">부장</option>
-							<option value="이사">이사</option>
-							<option value="대표">대표</option>
-						</select>
-					</div>
+				<div class="col-lg-10">
+					<select class="form-control" id="rank" name="rank">
+						<option value="사원">사원</option>
+						<option value="주임">주임</option>
+						<option value="대리">대리</option>
+						<option value="과장">과장</option>
+						<option value="부장">부장</option>
+						<option value="이사">이사</option>
+						<option value="대표">대표</option>
+					</select>
+				</div>
 				<!-- 부서 -->
 				<label for="inputPhoneNumber" class="col-lg-2 control-label">부서</label>
-					<div class="col-lg-10">
-						<select class="form-control" id="dep" name="dep">
-							<option value="개발부">개발부</option>
-							<option value="경영지원부">경영지원부</option>
-							<option value="경리부">경리부</option>
-							<option value="품질관리부">품질관리부</option>
-							<option value="해외영업부">해외영업부</option>
-						</select>
-					</div>
-				
-				
+				<div class="col-lg-10">
+					<select class="form-control" id="dep" name="dep">
+						<option value="개발부">개발부</option>
+						<option value="경영지원부">경영지원부</option>
+						<option value="경리부">경리부</option>
+						<option value="품질관리부">품질관리부</option>
+						<option value="해외영업부">해외영업부</option>
+					</select>
+				</div>
+
+
 				<!-- email -->
 				<div class="form-group" id="divEmail">
 
 					<label for="inputEmail" class="col-lg-2 control-label">이메일(인증)</label>
 					<div class="col-lg-10">
 
-						<input type="email" class="form-control" id="userEmail" name="userEmail"
-							data-rule-required="true" placeholder="이메일" maxlength="40"><br>
-	<button type="button" class="btn btn-primary" value="N" onclick="userEmailCk()" id="userEmailChk">이메일 중복확인</button>
-							
-	<button type="button" class="btn btn-primary" onclick="email_()" value="N" id="emailVal">인증번호전송</button><span id="spanEmail"></span><br>
-						
-						<br> <input class="form-control" id="chkNum"
-							placeholder="인증번호 입력"><br>
-					<button type="button" class="btn btn-primary" value="N" onclick="emailChk_()" id="emaVal">이메일 인증</button><span id="spanEmailVal"></span>
+						<input type="email" class="form-control" id="userEmail"
+							name="userEmail" data-rule-required="true" placeholder="이메일"
+							maxlength="40"><br>
+						<button type="button" class="btn btn-primary" value="N"
+							onclick="userEmailCk()" id="userEmailChk">이메일 중복확인</button>
+
+						<button type="button" class="btn btn-primary" onclick="email_()"
+							value="N" id="emailVal">인증번호전송</button>
+						<span id="spanEmail"></span><br> <br> <input
+							class="form-control" id="chkNum" placeholder="인증번호 입력"><br>
+						<button type="button" class="btn btn-primary" value="N"
+							onclick="emailChk_()" id="emaVal">이메일 인증</button>
+						<span id="spanEmailVal"></span>
 
 						<div class="col-lg-offset-2 col-lg-10"></div>
 
@@ -281,9 +282,9 @@
 					<label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰
 						번호</label>
 					<div class="col-lg-10">
-						<input type="tel" class="form-control onlyNumber" id="phoneNumber" name="phoneNumber"
-							data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요."
-							maxlength="11">
+						<input type="tel" class="form-control onlyNumber" id="phoneNumber"
+							name="phoneNumber" data-rule-required="true"
+							placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
 					</div>
 				</div>
 				<div class="form-group">
@@ -295,7 +296,7 @@
 						</select>
 					</div>
 				</div>
-				
+
 
 				<!-- =========================== -->
 				<div class="form-group">
@@ -306,8 +307,7 @@
 							id="emailReceiveYn" name="mailChk" value="Y" checked>
 							동의합니다.
 						</label> <label class="radio-inline"> <input type="radio"
-							id="emailReceiveYn" name="mailChk" value="N"> 동의하지
-							않습니다.
+							id="emailReceiveYn" name="mailChk" value="N"> 동의하지 않습니다.
 						</label>
 					</div>
 				</div>
@@ -316,11 +316,9 @@
 						수신여부</label>
 					<div class="col-lg-10">
 						<label class="radio-inline"> <input type="radio"
-							id="smsReceiveYn" name="smsChk" value="Y" checked>
-							동의합니다.
+							id="smsReceiveYn" name="smsChk" value="Y" checked> 동의합니다.
 						</label> <label class="radio-inline"> <input type="radio"
-							id="smsReceiveYn" name="smsChk" value="N"> 동의하지
-							않습니다.
+							id="smsReceiveYn" name="smsChk" value="N"> 동의하지 않습니다.
 						</label>
 					</div>
 				</div>
@@ -333,244 +331,245 @@
 
 
 		<script>
-      //사원번호 중복확인
-      function empNoChk() {
-         $.ajax({
-            url:"empNoChk",
-            data:{"empNo" : $('#empNo').val()},
-            type:"post",
-            dataType:"json",
-            success:function(data){
-               if(data=='1'){
-                   $("#spanEmp").text('사용중인 사원번호 입니다')
-                   $("#spanEmp").css('color','red')
-                   
-               }else if(data=='0'){
-            	   $("#spanEmp").css('color','white')
-            	   $("#spanEmp").text('사용가능한 사원번호 입니다')
-                  $("#empCK").attr("value","Y");
-            	  
-               }
-            },
-            error:function(){
-               console.log("실패");
-            }
-         
-         });
-      }
-      //이메일 중복확인
-      function userEmailCk() {
-    	  if($('#userEmail').val()==""){
-    		  $("#spanEmail").text('이메일을 입력해 주시기 바랍니다.')
-              $("#spanEmail").css('color','red')
-    	  }else if($('#userEmail').val()!=null){
-    		  $.ajax({
-                  url:"userEmailChk",
-                  data:{"userEmail" : $('#userEmail').val()},
-                  type:"post",
-                  dataType:"json",
-                  success:function(data){
-                     if(data=='1'){
-                         $("#spanEmail").text('사용중인 이메일 입니다')
-                         $("#spanEmail").css('color','red')
-                         
-                     }else if(data=='0'){
-                  	   $("#spanEmail").css('color','white')
-                  	   $("#spanEmail").text('사용가능한 이메일 입니다')
-                        $("#userEmailChk").attr("value","Y");
-                  	  
-                     }
-                  },
-                  error:function(){
-                     console.log("실패");
-                  }
-               
-               });
-            }  
-    		  
-    		  
-    	  }
-    	  
-      //이메일 인증번호 전송
-         function email_() {
-             if($("#userEmailChk").val()=="N"){
-            	alert("이메일 중복확인을 해주시기 바랍니다")
-            }else{
-            	  alert("전송 되었습니다.")
-            	  $.ajax({
-                      url : "doSend",
-                      data : {
-                         "userEmail" : $('#userEmail').val()
-                      },
-                      type : "GET",
-                      success : function(data) {
-                    	  $('#emailVal').attr("value","Y");
-                         console.log("성공")
-                      },
-                      error : function() {
-                         console.log("실패")
-                      }
-                   });
-            }
-         }
-         //이메일 인증
-         function emailChk_() {
-        	 if($('#emailVal').val()=="N"){
-        		 alert("인증번호 전송을 해주시기 바랍니다.");
-        	 }else if($("#userEmailChk").val()=="N"){
-        		 alert("이메일 중복확인을 해주시기 바랍니다")
-        	 }else if($('#emailVal').val()=="Y"||$("#userEmailChk").val()=="Y"){
+			//사원번호 중복확인
+			function empNoChk() {
+				$.ajax({
+					url : "empNoChk",
+					data : {
+						"empNo" : $('#empNo').val()
+					},
+					type : "post",
+					dataType : "json",
+					success : function(data) {
+						if (data == '1') {
+							$("#spanEmp").text('사용중인 사원번호 입니다')
+							$("#spanEmp").css('color', 'red')
 
-            $.ajax({
-               url : "chkEmail",
-               data : {
-                  "chkNum" : $('#chkNum').val()
-               },
-               type : "GET",
-               success : function(data) {
-					if(data=='0'){
-						$("#spanEmailVal").text("인증번호가 일치합니다.");
-						$('#emaVal').attr("value","Y");
-					}else if(data=='1'){
-						$("#spanEmail").css('color','red')
-						$("#spanEmailVal").text("인증번호를 입력해 주시기 바랍니다.");	
-						
-					}else if(data=='2'){
-						$("#spanEmail").css('color','red')
-						$("#spanEmailVal").text("인증번호가 일치하지 않습니다.");
+						} else if (data == '0') {
+							$("#spanEmp").css('color', 'white')
+							$("#spanEmp").text('사용가능한 사원번호 입니다')
+							$("#empCK").attr("value", "Y");
+
+						}
+					},
+					error : function() {
+						console.log("실패");
 					}
-            	   
-            	   
-            	   
-                  console.log("성공")
-               },
-               error : function() {
-                  alert("이메일 인증 실패.")
-                  console.log("실패")
-               }
-            });
-        	 }
-      }
-         $(function() {
-            //모달을 전역변수로 선언
-            var modalContents = $(".modal-contents");
-            var modal = $("#defaultModal");
 
-            $('.onlyAlphabetAndNumber').keyup(function(event) {
-               if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
-                  var inputVal = $(this).val();
-                  $(this).val($(this).val().replace(/[^_a-z0-9]/gi, '')); //_(underscore), 영어, 숫자만 가능
-               }
-            });
+				});
+			}
+			//이메일 중복확인
+			function userEmailCk() {
+				if ($('#userEmail').val() == "") {
+					$("#spanEmail").text('이메일을 입력해 주시기 바랍니다.')
+					$("#spanEmail").css('color', 'red')
+				} else if ($('#userEmail').val() != null) {
+					$.ajax({
+						url : "userEmailChk",
+						data : {
+							"userEmail" : $('#userEmail').val()
+						},
+						type : "post",
+						dataType : "json",
+						success : function(data) {
+							if (data == '1') {
+								$("#spanEmail").text('사용중인 이메일 입니다')
+								$("#spanEmail").css('color', 'red')
 
-            $(".onlyHangul").keyup(function(event) {
-               if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
-                  var inputVal = $(this).val();
-                  $(this).val(inputVal.replace(/[a-z0-9]/gi, ''));
-               }
-            });
+							} else if (data == '0') {
+								$("#spanEmail").css('color', 'white')
+								$("#spanEmail").text('사용가능한 이메일 입니다')
+								$("#userEmailChk").attr("value", "Y");
 
-            $(".onlyNumber").keyup(function(event) {
-               if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
-                  var inputVal = $(this).val();
-                  $(this).val(inputVal.replace(/[^0-9]/gi, ''));
-               }
-            });
+							}
+						},
+						error : function() {
+							console.log("실패");
+						}
 
-            //------- 검사하여 상태를 class에 적용
-            
-            //------- validation 검사
-            $("form").submit(
-                  function(event) {
+					});
+				}
 
-                  
-                     //회원가입약관
-                     if ($('#provisionYn:checked').val() == "N") {
-                        alert("회원가입약관에 동의하여 주시기 바랍니다."); //모달 메시지 입력
-                        $('#provisionYn').focus();
-                        return false;
-                     } 
-                     //아이디 검사
-                     if ($('#empNo').val() == "") {
-                        alert("사원번호를 입력하여 주시기 바랍니다.");
-                        $('#empNo').focus();
-                        return false;
-                     }
-					//아이디 중복검사 
-					var empCKVal=$("#empCK").val();
-                     if(empCKVal == "N"){
-                    	 alert("사원번호 중복확인을 해주시기 바랍니다.");
-                    	 $('#empCK').focus();
-                     	return false;
-                     }
-                    //이메일 중복검사
-                     if($("#userEmailChk").val() == "N"){
-                    	 alert("이메일 중복확인을 해주시기 바랍니다.");
-                    	 $('#empCK').focus();
-                     	return false;
-                     }
-                    //이메일 인증번호 전송 검사
-                     if( $('#emailVal').val() == "N"){
-                    	 alert("이메일 인증을 해주시기 바랍니다.");
-                    	 $('#emailVal').focus();
-                     	return false;
-                     }
-                    
-					
-                     //패스워드 검사
-                     if ($('#password').val() == "") {
-                        alert("패스워드를 입력하여 주시기 바랍니다.");
-                        $('#password').focus();
-                        return false;
-                     } 
+			}
 
-                     //패스워드 확인
-                     if ($('#passwordCheck').val() == "") {
-                        alert("패스워드 확인을 입력하여 주시기 바랍니다.");
-                        $('#passwordCheck').focus();
-                        return false;
-                     }
+			//이메일 인증번호 전송
+			function email_() {
+				if ($("#userEmailChk").val() == "N") {
+					alert("이메일 중복확인을 해주시기 바랍니다")
+				} else {
+					alert("전송 되었습니다.")
+					$.ajax({
+						url : "doSend",
+						data : {
+							"userEmail" : $('#userEmail').val()
+						},
+						type : "GET",
+						success : function(data) {
+							$('#emailVal').attr("value", "Y");
+							console.log("성공")
+						},
+						error : function() {
+							console.log("실패")
+						}
+					});
+				}
+			}
+			//이메일 인증
+			function emailChk_() {
+				if ($('#emailVal').val() == "N") {
+					alert("인증번호 전송을 해주시기 바랍니다.");
+				} else if ($("#userEmailChk").val() == "N") {
+					alert("이메일 중복확인을 해주시기 바랍니다")
+				} else if ($('#emailVal').val() == "Y"
+						|| $("#userEmailChk").val() == "Y") {
 
-                     //패스워드 비교
-                     if ($('#password').val() != $('#passwordCheck').val() || $('#passwordCheck').val() == "") {
-                        alert("패스워드가 일치하지 않습니다.");
-                        $('#passwordCheck').focus();
-                        return false;
-                     } 
-                     //이름
-                     if ($('#name').val() == "") {
-                        alert("이름을 입력하여 주시기 바랍니다.");
-                        $('#name').focus();
-                        return false;
-                     } 
-         
+					$.ajax({
+						url : "chkEmail",
+						data : {
+							"chkNum" : $('#chkNum').val()
+						},
+						type : "GET",
+						success : function(data) {
+							if (data == '0') {
+								$("#spanEmailVal").text("인증번호가 일치합니다.");
+								$('#emaVal').attr("value", "Y");
+							} else if (data == '1') {
+								$("#spanEmail").css('color', 'red')
+								$("#spanEmailVal").text("인증번호를 입력해 주시기 바랍니다.");
 
-                     //이메일
-                     if ($('#userEmail').val() == "") {
-                        alert("이메일을 입력하여 주시기 바랍니다.");
-                        $('#userEmail').focus();
-                        return false;
-                     } 
-                     //이메일 인증번호 요청
-                     if ($('#chkNum').val() == "") {
-                        alert("인증번호를 입력 해주시기 바랍니다.");
-                        $('#chkNum').focus();
-                        return false;
-                     }
-                     
-                     //휴대폰 번호
-                     if ($('#phoneNumber').val() == "") {
-                        alert("휴대폰 번호를 입력하여 주시기 바랍니다.");
-                        $('#phoneNumber').focus();
-                        return false;
-                     } 
-                     
-                     alert("회원가입이 완료 되었습니다")
+							} else if (data == '2') {
+								$("#spanEmail").css('color', 'red')
+								$("#spanEmailVal").text("인증번호가 일치하지 않습니다.");
+							}
 
-                  });
+							console.log("성공")
+						},
+						error : function() {
+							alert("이메일 인증 실패.")
+							console.log("실패")
+						}
+					});
+				}
+			}
+			$(function() {
+				//모달을 전역변수로 선언
+				var modalContents = $(".modal-contents");
+				var modal = $("#defaultModal");
 
-         });
-      </script>
+				$('.onlyAlphabetAndNumber').keyup(function(event) {
+					if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
+						var inputVal = $(this).val();
+						$(this).val($(this).val().replace(/[^_a-z0-9]/gi, '')); //_(underscore), 영어, 숫자만 가능
+					}
+				});
+
+				$(".onlyHangul").keyup(function(event) {
+					if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
+						var inputVal = $(this).val();
+						$(this).val(inputVal.replace(/[a-z0-9]/gi, ''));
+					}
+				});
+
+				$(".onlyNumber").keyup(function(event) {
+					if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
+						var inputVal = $(this).val();
+						$(this).val(inputVal.replace(/[^0-9]/gi, ''));
+					}
+				});
+
+				//------- 검사하여 상태를 class에 적용
+
+				//------- validation 검사
+				$("form").submit(
+						function(event) {
+
+							//회원가입약관
+							if ($('#provisionYn:checked').val() == "N") {
+								alert("회원가입약관에 동의하여 주시기 바랍니다."); //모달 메시지 입력
+								$('#provisionYn').focus();
+								return false;
+							}
+							//아이디 검사
+							if ($('#empNo').val() == "") {
+								alert("사원번호를 입력하여 주시기 바랍니다.");
+								$('#empNo').focus();
+								return false;
+							}
+							//아이디 중복검사 
+							var empCKVal = $("#empCK").val();
+							if (empCKVal == "N") {
+								alert("사원번호 중복확인을 해주시기 바랍니다.");
+								$('#empCK').focus();
+								return false;
+							}
+							//이메일 중복검사
+							if ($("#userEmailChk").val() == "N") {
+								alert("이메일 중복확인을 해주시기 바랍니다.");
+								$('#empCK').focus();
+								return false;
+							}
+							//이메일 인증번호 전송 검사
+							if ($('#emailVal').val() == "N") {
+								alert("이메일 인증을 해주시기 바랍니다.");
+								$('#emailVal').focus();
+								return false;
+							}
+
+							//패스워드 검사
+							if ($('#password').val() == "") {
+								alert("패스워드를 입력하여 주시기 바랍니다.");
+								$('#password').focus();
+								return false;
+							}
+
+							//패스워드 확인
+							if ($('#passwordCheck').val() == "") {
+								alert("패스워드 확인을 입력하여 주시기 바랍니다.");
+								$('#passwordCheck').focus();
+								return false;
+							}
+
+							//패스워드 비교
+							if ($('#password').val() != $('#passwordCheck')
+									.val()
+									|| $('#passwordCheck').val() == "") {
+								alert("패스워드가 일치하지 않습니다.");
+								$('#passwordCheck').focus();
+								return false;
+							}
+							//이름
+							if ($('#name').val() == "") {
+								alert("이름을 입력하여 주시기 바랍니다.");
+								$('#name').focus();
+								return false;
+							}
+
+							//이메일
+							if ($('#userEmail').val() == "") {
+								alert("이메일을 입력하여 주시기 바랍니다.");
+								$('#userEmail').focus();
+								return false;
+							}
+							//이메일 인증번호 요청
+							if ($('#chkNum').val() == "") {
+								alert("인증번호를 입력 해주시기 바랍니다.");
+								$('#chkNum').focus();
+								return false;
+							}
+
+							//휴대폰 번호
+							if ($('#phoneNumber').val() == "") {
+								alert("휴대폰 번호를 입력하여 주시기 바랍니다.");
+								$('#phoneNumber').focus();
+								return false;
+							}
+
+							alert("회원가입이 완료 되었습니다")
+
+						});
+
+			});
+		</script>
 		<!--// 본문 들어가는 부분 -->
 		<hr />
 		<!-- 푸터 들어가는 부분 -->
@@ -588,10 +587,10 @@
 	<script type="text/javascript"
 		src="resources/lib/jquery.backstretch.min.js"></script>
 	<script>
-      $.backstretch("resources/img/login-bg.jpg", {
-         speed :500
-      });
-   </script>
+		$.backstretch("resources/img/login-bg.jpg", {
+			speed : 500
+		});
+	</script>
 
 </body>
 </html>

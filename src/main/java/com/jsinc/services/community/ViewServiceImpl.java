@@ -1,9 +1,11 @@
-package com.jsinc.service.community;
+package com.jsinc.services.community;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +14,10 @@ import org.springframework.ui.Model;
 import com.jsinc.jsincDAO.CommunityDAO;
 import com.jsinc.jsincDTO.CommunityConDTO;
 import com.jsinc.jsincDTO.CommunityDTO;
+import com.jsinc.jsincDTO.MemberDTO;
 
 @Service
-public class ContentGetServiceImpl implements ServiceCom {
+public class ViewServiceImpl implements ServiceCom {
 	@Autowired
 	CommunityDAO dao;
 
@@ -28,13 +31,22 @@ public class ContentGetServiceImpl implements ServiceCom {
 	public void getExe(Model model) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		int cno = Integer.parseInt(request.getParameter("cno"));
-		ArrayList<CommunityConDTO> list = (ArrayList<CommunityConDTO>) dao.contentGet(cno);
-
+		HttpSession session = request.getSession();
 		
-		System.out.println(list.size());
-		model.addAttribute("conList", list);
-
+		String title = request.getParameter("title");
+		if(title == null) {
+			CommunityDTO dto = (CommunityDTO) session.getAttribute("view");
+			title = dto.getTitle();
+		}
+		
+		CommunityDTO dto = dao.view(title);
+		int cno = dto.getcNo();
+		ArrayList<CommunityConDTO> list = (ArrayList<CommunityConDTO>) dao.contentGet(cno);
+		
+		int signBut = dao.signBut(dto);
+		model.addAttribute("signBut", signBut);
+		session.setAttribute("view", dto);
+		session.setAttribute("conList", list);
 	}
 
 }

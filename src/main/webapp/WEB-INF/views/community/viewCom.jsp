@@ -28,15 +28,14 @@
 			<h3>
 				<i class="fa fa-angle-right"></i>커뮤니티 글
 				<c:choose>
-					<c:when test="${signBut == 1 }">
-						<button type="button" class="btn btn-round btn-danger" style="margin: 10px;" 
-						onclick="location.href='leave?title=${view.title}'">탈퇴 하기..</button>
+					<c:when test="${signBut==1 }">
+						<button type="button" class="btn btn-round btn-danger" style="margin: 10px;"
+							onclick="location.href='leave?title=${view.title}'">탈퇴 하기..</button>
 					</c:when>
 					<c:otherwise>
 						<button type="button" class="btn btn-round btn-success"
-							onclick="location.href='signUp?title=${view.title}&cno=${cno }'">가입 하기</button>
+							onclick="location.href='signUp?title=${view.title}&cno=${view.cNo }'">가입 하기</button>
 					</c:otherwise>
-
 				</c:choose>
 			</h3>
 
@@ -51,15 +50,19 @@
 
 			<div class="showback">
 				<h4>
-					<i class="fa fa-angle-right"></i> 마스터:${view.name }${view.rank }
+					<i class="fa fa-angle-right"></i> <b>마스터</b>
 				</h4>
+				<h4>- <font style="color: blue;">${view.name } ${view.rank }</font></h4>
 				<h4>
-					<i class="fa fa-angle-right"></i> 커뮤니티 명:${view.title }
+					<i class="fa fa-angle-right"></i> <b>커뮤니티 명</b>
 				</h4>
+				<h4>- <font style="color: blue;">${view.title }</font></h4>
 				<h4>
-					<i class="fa fa-angle-right"></i> 소개:${view.content }
+					<i class="fa fa-angle-right"></i> <b>소개</b>
 				</h4>
+				<h4 style="margin-left: 10px;"><font style="color: blue;">${view.content }</font></h4>
 			</div>
+			
 			<input type="text" id="hide" style="visibility: hidden;" value="${view.title }">
 			<div style="width: 90%" align="left">
 				<div class="form-group">
@@ -67,12 +70,11 @@
 						<h4>
 							<i class="fa fa-angle-right"></i>게시글을 작성 해주세요
 						</h4>
-						<form action=viewCom onsubmit="return validat()">
-							<input type="text" value="${cno }" name="cno">
-							<textarea class="form-control" id="contact-message" placeholder="내용을 입력해주세요" 
-									rows="5" data-rule="required" name="content"></textarea>
+						<form action="contentView" onsubmit="return validat()">
+							<textarea class="form-control" id="contact-message" placeholder="내용을 입력해주세요" rows="5" data-rule="required" name="content"></textarea>
 							<button type="submit" class="btn btn-round btn-info" style="margin: 10px;">이야기하기</button>
-							<input type="text" value="${view.title }" name="title">
+							<input type="text" value="${view.title }" name="title" style="visibility: hidden;">
+							<input type="text" value="${view.cNo }" name="cno" style="visibility: hidden;">
 						</form>
 					</div>
 				</div>
@@ -80,65 +82,34 @@
 
 				<div class="room-box">
 					<c:forEach items="${conList }" var="con">
-						<c:set var="tot" value="0" />
-						<c:set var="tot" value="${tot+con.idgroup }" />
-						<c:set var="tot" value="${tot+con.step }" />
 						<c:choose>
-							<c:when test="${tot gt con.idgroup }">
-								<hr>
-							</c:when>
-						</c:choose>
-						<c:choose>
-							<c:when test="${con.step>0 }">
-								<span style="font-size: 13pt; color: black"> <span
-									class="fa fa-mail-forward">${con.content } </span>
+							<c:when test="${con.step > 0 }">
+								<span style="font-size: 13pt; color: black"> 
+									<span class="fa fa-mail-forward">${con.content } </span>
 								</span>
-								<span class="text-primary"> <i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp;
-									<i class="fa fa-calendar"></i>&nbsp;${con.com_date }
+								<span class="text-primary"> 
+									<i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp; <i class="fa fa-calendar"></i>&nbsp;${con.com_date }
 								</span>
-
-
 							</c:when>
-
-
-							<c:when test="${con.step==0 }">
+							<c:when test="${con.step == 0 }">
 								<h5 class="text-primary" style="margin-top: 30px;">
 									<i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp;
 									<i class="fa fa-calendar"></i>&nbsp;${con.com_date }
 								</h5>
 								<span style="font-size: 13pt; color: black">${con.content }</span>
 								<br>
-
 							</c:when>
 						</c:choose>
-
-
-
-
-
-
 					</c:forEach>
 					<div>
 						<c:set var="idgroup" value="${con.idgroup }" />
 						<form action="reply" onsubmit="return revaldat()">
-							<input type="text" style="width: 60%; margin-top: 20px;"
-								placeholder="댓글 입력" name="reply" id="reply">
-							<button type="submit" class="btn btn-round btn-success"
-								onclick="revaldat()">등록</button>
+							<input type="text" style="width: 60%; margin-top: 20px;" placeholder="댓글 입력" name="reply" id="reply">
+							<button type="submit" class="btn btn-round btn-success" onclick="revaldat()">등록</button>
 						</form>
 					</div>
 				</div>
-
-
 			</div>
-
-
-
-
-
-
-
-
 		</section>
 	</section>
 	<script type="text/javascript">
@@ -149,9 +120,6 @@
 		}	
 			alert("등록 되었습니다.")	
 	}
-	
-	
-	
 	
 	function validat(){
 		if($("#contact-message").val()==""){
@@ -164,19 +132,11 @@
 			$("#contact-message").focus()
 			return false;
 		}
-		
-		
 		alert("등록 되었습니다~")
 		
 	}
-
-	
-	
 	
 </script>
-
-
-
 	<!--main content end-->
 	<jsp:include page="../default/footer.jsp" />
 	<script src="resources/bxSli/js/jquery-3.5.1.min.js"></script>

@@ -1,4 +1,4 @@
-package com.jsinc.service.community;
+package com.jsinc.services.community;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,10 +17,6 @@ public class CreateServiceImpl implements ServiceCom {
 
 	@Override
 	public void execute(CommunityDTO dto) {
-		System.out.println("service:" + dto.getEmpNo());
-		System.out.println("service:" + dto.getname());
-		System.out.println("service:" + dto.getTitle());
-		System.out.println("service:" + dto.getContent());
 		String title = dto.getTitle();
 		// *태그문자 처리 (< ==> &lt; > ==> &gt;)
 		// replace(A, B) A를 B로 변경
@@ -33,7 +29,7 @@ public class CreateServiceImpl implements ServiceCom {
 		content = content.replace("  ", "&nbsp;&nbsp;");
 		content = content.replace("\n", "<br>");
 		dto.setContent(content);
-		SimpleDateFormat fm1 = new SimpleDateFormat("yyyy년MM월dd일");
+		SimpleDateFormat fm1 = new SimpleDateFormat("yyyy년 MM월 dd일");
 		String date = fm1.format(new Date());
 		dto.setCom_date(date);
 		dao.create(dto);

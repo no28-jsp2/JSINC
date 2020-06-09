@@ -1,4 +1,4 @@
-package com.jsinc.service.community;
+package com.jsinc.services.community;
 
 import java.util.Map;
 
@@ -13,39 +13,33 @@ import org.springframework.ui.Model;
 import com.jsinc.jsincDAO.CommunityDAO;
 import com.jsinc.jsincDTO.CommunityDTO;
 import com.jsinc.jsincDTO.MemberDTO;
+
 @Service
-public class LeaveServiceImpl implements ServiceCom{
+public class LeaveServiceImpl implements ServiceCom {
 	@Autowired
 	CommunityDAO dao;
-	
+
 	@Override
 	public void execute(CommunityDTO dto) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void getExe(Model model) {
 		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session = request.getSession();
 		ServletContext application = session.getServletContext();
-		MemberDTO memDto =(MemberDTO)application.getAttribute("user");
-		int empNo=memDto.getEmpNo();
-		String title=request.getParameter("title");
-		
+
+		MemberDTO memDto = (MemberDTO) application.getAttribute("user");
+		int empNo = memDto.getEmpNo();
+		String title = request.getParameter("title");
+
 		CommunityDTO dto = new CommunityDTO();
 		dto.setEmpNo(empNo);
 		dto.setTitle(title);
-		int result=0;
-		System.out.println("empNo :"+empNo);
-		System.out.println("title"+title);
-		result=dao.leave(dto);
-		
-		
-		
-		
-		
+		dao.leave(dto);
 		
 	}
 

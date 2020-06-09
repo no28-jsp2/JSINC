@@ -9,19 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jsinc.jsincDTO.CommunityDTO;
 import com.jsinc.jsincDTO.MemberDTO;
-import com.jsinc.service.community.AllServiceImpl;
-import com.jsinc.service.community.ContentGetServiceImpl;
-import com.jsinc.service.community.ContentSaveServiceImpl;
-import com.jsinc.service.community.CreateServiceImpl;
-import com.jsinc.service.community.LeaveServiceImpl;
-import com.jsinc.service.community.MyServiceImpl;
-import com.jsinc.service.community.ServiceCom;
-import com.jsinc.service.community.SignUpServiceImpl;
-import com.jsinc.service.community.ViewServiceImpl;
+import com.jsinc.services.community.AllServiceImpl;
+import com.jsinc.services.community.ContentSaveServiceImpl;
+import com.jsinc.services.community.CreateServiceImpl;
+import com.jsinc.services.community.LeaveServiceImpl;
+import com.jsinc.services.community.MyServiceImpl;
+import com.jsinc.services.community.ServiceCom;
+import com.jsinc.services.community.SignUpServiceImpl;
+import com.jsinc.services.community.ViewServiceImpl;
 
 @Controller
 public class CommunityControllers {
@@ -40,7 +38,6 @@ public class CommunityControllers {
 		model.addAttribute("request", req);
 		service = ac.getBean("allServiceImpl", AllServiceImpl.class);
 		service.getExe(model);
-
 		return "community/allCommunity";
 	}
 
@@ -72,30 +69,18 @@ public class CommunityControllers {
 	// 해당 커뮤니티에 입장시
 	@RequestMapping(value = "viewCom", method = RequestMethod.GET)
 	public String viewCom(HttpServletRequest request, Model model) {
-		String cno = request.getParameter("cno");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		if (content != null) {
-			System.out.println("content내용 추가 시 동작함 : " + content);
-			model.addAttribute("request", request);
-			// 추가
-			service = ac.getBean("contentSaveServiceImpl", ContentSaveServiceImpl.class);
-			service.getExe(model);
-		}
-
-		System.out.println("게시글 내용:" + content);
-		System.out.println("커뮤니티 번호 : " + cno);
-		System.out.println("title:" + title);
 		model.addAttribute("request", request);
-		model.addAttribute("cno", cno);
 		service = ac.getBean("viewServiceImpl", ViewServiceImpl.class);
 		service.getExe(model);
-		// 내용 가져오기
-		service = ac.getBean("contentGetServiceImpl", ContentGetServiceImpl.class);
-		service.getExe(model);
-
-
 		return "community/viewCom";
+	}
+
+	@RequestMapping("contentView")
+	public String contentView(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		service = ac.getBean("contentSaveServiceImpl", ContentSaveServiceImpl.class);
+		service.getExe(model);
+		return "redirect:viewCom";
 	}
 
 	// 해당 커뮤니티에 가입하기 버튼을 누를 시

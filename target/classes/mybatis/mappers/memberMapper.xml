@@ -16,7 +16,7 @@
 	</select>
 	<!-- 회원가입 -->
 	<insert id="regMem" parameterType="com.jsinc.jsincDTO.MemberDTO">
-		insert into JSinc values(#{empNo},#{password},#{name},#{birth},#{userEmail},#{phoneNumber},#{gender},#{mailChk},#{smsChk},#{dep},#{rank},#{img})
+		insert into JSinc values(#{empNo},#{password},#{name},#{birth},#{userEmail},#{phoneNumber},#{gender},#{mailChk},#{smsChk},#{dep},#{rank},#{img},#{authority})
 	</insert>
 	<!-- 임시 비밀번호 발급 -->
 	<update id="newPw">
