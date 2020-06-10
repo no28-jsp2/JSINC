@@ -71,7 +71,7 @@ public class MainController {
 		profileService.execute(model);
 		return "redirect:profile";
 	}
-	
+
 	@RequestMapping("changePw")
 	public String changePw(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -129,7 +129,6 @@ public class MainController {
 		String chkNum = (String) req.getParameter("chkNum");
 		System.out.println("입력한 인증번호" + chkNum);
 		System.out.println("인증번호=======" + vali);
-		int result = 0;
 		if (vali.equals(chkNum)) {
 			return 0 + "";
 		} else if (chkNum.equals("")) {
@@ -161,9 +160,7 @@ public class MainController {
 	}
 
 	@RequestMapping("registerMem")
-	public String registerMem(MemberDTO dto, Model model, MultipartFile profile, @RequestParam String rank) throws Exception {
-
-		
+	public String registerMem(MemberDTO dto, Model model, MultipartFile profile) throws Exception {
 		// 업로드
 		UUID uuid = UUID.randomUUID(); // 파일 이름 중복 방지
 		String saveName = uuid + "_" + profile.getOriginalFilename(); // UUID가 붙은 파일이름을 객체에 저장
@@ -215,18 +212,18 @@ public class MainController {
 		return (String) sendRs.get("msg");
 
 	}
-	
+
 	@RequestMapping("lockScreen")
 	public String lockScreen() {
 		return "lockScreen";
 	}
-	
+
 	@RequestMapping("lock")
 	public String lock(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		ServletContext application = session.getServletContext();
-		MemberDTO dto = (MemberDTO)application.getAttribute("user");
-		if(dto.getPassword().equals(request.getParameter("password"))) {
+		MemberDTO dto = (MemberDTO) application.getAttribute("user");
+		if (dto.getPassword().equals(request.getParameter("password"))) {
 			return "redirect:index";
 		}
 		return "redirect:lockScreen";
