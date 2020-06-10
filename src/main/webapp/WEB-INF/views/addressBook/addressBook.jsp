@@ -32,6 +32,7 @@
 										<th>직급</th>
 										<th>부서</th>
 										<th>이메일</th>
+										<th align="left">메세지전송</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -42,6 +43,7 @@
 											<td>${dto_mem.rank }</td>
 											<td>${dto_mem.dep }</td>
 											<td>${dto_mem.userEmail }</td>
+											<td align="center"><button type="button" class="btn btn-info" onclick="location.href='mesWriteView?empNo=${dto_mem.empNo }&rank=${dto_mem.rank }&name=${dto_mem.name }&dep=${dto_mem.dep }'">메세지 전송</button></td>
 										</tr>
 									</c:forEach>
 									<c:forEach items="${dp }" var="dto_mem">
@@ -51,6 +53,7 @@
 											<td>${dto_mem.rank }</td>
 											<td>${dto_mem.dep }</td>
 											<td>${dto_mem.userEmail }</td>
+											<td align="center"><button type="button" class="btn btn-info" onclick="location.href='mesWriteView?empNo=${dto_mem.empNo }&rank=${dto_mem.rank }&name=${dto_mem.name }&dep=${dto_mem.dep }'">메세지 전송</button></td>
 										</tr>
 									</c:forEach>
 									<c:forEach items="${at }" var="dto_mem">
@@ -60,6 +63,7 @@
 											<td>${dto_mem.rank }</td>
 											<td>${dto_mem.dep }</td>
 											<td>${dto_mem.userEmail }</td>
+											<td align="center"><button type="button" class="btn btn-info" onclick="location.href='mesWriteView?empNo=${dto_mem.empNo }&rank=${dto_mem.rank }&name=${dto_mem.name }&dep=${dto_mem.dep }'">메세지 전송</button></td>
 										</tr>
 									</c:forEach>
 									<c:forEach items="${ql }" var="dto_mem">
@@ -69,6 +73,7 @@
 											<td>${dto_mem.rank }</td>
 											<td>${dto_mem.dep }</td>
 											<td>${dto_mem.userEmail }</td>
+											<td align="center"><button type="button" class="btn btn-info" onclick="location.href='mesWriteView?empNo=${dto_mem.empNo }&rank=${dto_mem.rank }&name=${dto_mem.name }&dep=${dto_mem.dep }'">메세지 전송</button></td>
 										</tr>
 									</c:forEach>
 									<c:forEach items="${os }" var="dto_mem">
@@ -78,6 +83,7 @@
 											<td>${dto_mem.rank }</td>
 											<td>${dto_mem.dep }</td>
 											<td>${dto_mem.userEmail }</td>
+											<td align="center"><button type="button" class="btn btn-info" onclick="location.href='mesWriteView?empNo=${dto_mem.empNo }&rank=${dto_mem.rank }&name=${dto_mem.name }&dep=${dto_mem.dep }'">메세지 전송</button></td>
 										</tr>
 									</c:forEach>
 								</tbody>

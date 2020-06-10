@@ -19,35 +19,34 @@ import com.jsinc.jsincDTO.MemberDTO;
 public class LoginService implements ServiceIf {
 	private final int CHK_OK = 0;
 	private final int CHK_NO = 1;
-	
+
 	@Autowired
 	MemberDAO dao;
 
 	@Override
 	public int execute(Model model) {
 		Map<String, Object> map = model.asMap();
-	      HttpServletRequest request = (HttpServletRequest) map.get("request");
-	      MemberDTO dto = dao.list(request.getParameter("empNo"));
-	      if(dto != null) {
-	         if(request.getParameter("password").equals(dto.getPassword())) {
-	            //profile 추가
-	            Date date = new Date();
-	            SimpleDateFormat format = new SimpleDateFormat("MM");
-	            SimpleDateFormat day = new SimpleDateFormat("dd");
-	            String month = format.format(date);
-	            String days = day.format(date);
-	            //------------------------------------------------------
-	            HttpSession session = request.getSession();
-	            ServletContext application = session.getServletContext();
-	            application.setAttribute("user", dto);
-	            //profile 추가
-	            application.setAttribute("loginMonth", month);
-	            application.setAttribute("loginDay", days);
-	            //------------------------------------------------------
-	            return CHK_OK;
-	         }
-	      }
-	      return CHK_NO;
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		String empNo = request.getParameter("empNo");
+		String password = request.getParameter("password");
+		MemberDTO dto = dao.list(empNo);
+		if (dto != null) {
+			if (password.equals(dto.getPassword())) {
+				Date date = new Date();
+				SimpleDateFormat format = new SimpleDateFormat("MM");
+				SimpleDateFormat day = new SimpleDateFormat("dd");
+				String month = format.format(date);
+				String days = day.format(date);
+				HttpSession session = request.getSession();
+				ServletContext application = session.getServletContext();
+				application.setAttribute("user", dto);
+				application.setAttribute("loginMonth", month);
+				application.setAttribute("loginDay", days);
+				return CHK_OK;
+			}
+		}
+		return CHK_NO;
 	}
 
 	@Override
@@ -65,6 +64,6 @@ public class LoginService implements ServiceIf {
 	@Override
 	public void sentPw(MemberDTO dto) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

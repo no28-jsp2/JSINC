@@ -22,7 +22,7 @@
 					<!--  DATE PICKERS -->
 					<div class="col-lg-12">
 						<div class="form-panel">
-							<form action="surveyInput" class="form-horizontal style-form">
+							<form action="surveyInput" class="form-horizontal style-form" onsubmit="return permission()">
 							
 								<div class="form-group">
 									<label for="ctitle" class="control-label col-lg-2" style="text-align: center;">설문 제목</label>
@@ -93,6 +93,11 @@
 		<!--main content end-->
 		<jsp:include page="../default/footer.jsp"/>
 	</section>
+	<script type="text/javascript">
+		function permission() {
+			alert("설문 등록 승인 요청을 하였습니다.")
+		}
+	</script>
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="resources/lib/jquery/jquery.min.js"></script>
 	<script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>

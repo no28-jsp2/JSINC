@@ -29,6 +29,8 @@ public class TodoListService implements ServiceIf{
 		HttpSession session = request.getSession();
 		ServletContext application = session.getServletContext();
 		
+		session.invalidate();
+		
 		MemberDTO dto_mem = (MemberDTO)application.getAttribute("user");
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
