@@ -25,8 +25,9 @@
           <div class="content-panel" align="center">
    
 	 
-			<form action="rpWrite" method="post">
 
+<form action="updateRp" method="post">
+	<input type="hidden" name="bno" value="${rp.bno }">
 	<table style=" border: solid;">
 	<tr><th>보고서</th><td>
 	<select name="report">
@@ -35,25 +36,24 @@
 		<option value="주간보고">주간보고</option>
 		<option value="업무일지">업무일지</option>
 	</select></td>
-	<th>제목</th><td colspan="3"><input type="text" name="title" required="required"></td></tr>
+	<th>제목</th><td colspan="3"><input type="text" name="title" required="required" value="${rp.title }"></td></tr>
 	<tr><th>부서</th>
 	<td><select name="department">
-		<option value="개발부">개발부</option>
+		<option value="개발부">개 발부</option>
 		<option value="경영지원부">경영지원부</option>
 		<option value="경리부">경리부</option>
 		<option value="품질관리부">품질관리부</option>
 		<option value="해외업무부">해외업무부</option>
 	</select></td>
-	<th>보고자</th><td><input type="text" id="wr" name="writer" value="${user.name }"></td>
-	<th>보고 대상</th><td><input type="text" name="target" required="required"></td></tr>
-	<tr><td colspan="6"><textarea name="content" style="width: 600px; height: 300px;" required="required"></textarea></td></tr>
+	<th>보고자</th><td><input type="text" id="wr" name="writer" value="${rp.writer}"></td>
+	<th>보고 대상</th><td><input type="text" name="target" required="required" value="${rp.target }"></td></tr>
+	<tr><td colspan="6"><textarea name="content" style="width: 600px; height: 300px;" required="required">${rp.content }</textarea></td></tr>
 	</table>
-	<button type="submit" class="btn">보고서 등록</button>
+	<button type="submit" class="btn">수정</button>
 	<button type="reset" class="btn">취소</button>
 	<button><a href="report" class="btn">목록보기</a></button>
-	</form>
-	   
-	
+	</form> 
+
 	</div>
 	</div>
 	</section>
