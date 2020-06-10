@@ -14,4 +14,16 @@
 	<update id="check" parameterType="dto_todo">
 		update jsinc_todo set checked=#{checked} where todo=#{todo}
 	</update>
+	
+	<select id="editPage" resultType="dto_todo">
+		select * from jsinc_todo where todo=#{todo}
+	</select>
+	
+	<update id="edit">
+		update jsinc_todo set todo=#{sDate} where todo=#{todo}
+	</update>
+	
+	<delete id="del">
+		delete from jsinc_todo where todo=#{todo}
+	</delete>
 </mapper>

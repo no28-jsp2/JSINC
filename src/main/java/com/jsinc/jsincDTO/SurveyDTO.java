@@ -9,6 +9,7 @@ public class SurveyDTO {
 	private String writer;
 	private String state;
 	private int opt;
+	private String autho;
 
 	public int getOpt() {
 		return opt;
@@ -72,6 +73,14 @@ public class SurveyDTO {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public String getAutho() {
+		return autho;
+	}
+
+	public void setAutho(String autho) {
+		this.autho = autho;
 	}
 
 }

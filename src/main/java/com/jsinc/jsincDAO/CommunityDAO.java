@@ -12,55 +12,64 @@ import com.jsinc.jsincDTO.CommunityDTO;
 
 @Repository
 public class CommunityDAO {
-	private static final String namespace="com.jsinc.mybatis.community";
+	private static final String namespace = "com.jsinc.mybatis.community";
 	@Autowired
 	private SqlSession sqlSession;
-	//커뮤니티 만들기
+
+	// 커뮤니티 만들기
 	public void create(CommunityDTO dto) {
-		sqlSession.insert(namespace+".input",dto);
+		sqlSession.insert(namespace + ".input", dto);
 	}
-	//전체 커뮤니티 보기
+
+	// 전체 커뮤니티 보기
 	public List<CommunityDTO> allCom() {
-		return sqlSession.selectList(namespace+".getAll");
+		return sqlSession.selectList(namespace + ".getAll");
 	}
-	//내가 가입한 커뮤니티
-	public List<CommunityDTO> myCom(int empNo){
-		return sqlSession.selectList(namespace+".myCom",empNo);
+
+	// 내가 가입한 커뮤니티
+	public List<CommunityDTO> myCom(int empNo) {
+		return sqlSession.selectList(namespace + ".myCom", empNo);
 	}
-	//커뮤니티 클릭 시 
+
+	// 커뮤니티 클릭 시
 	public CommunityDTO view(String title) {
-		return sqlSession.selectOne(namespace+".view",title);
+		return sqlSession.selectOne(namespace + ".view", title);
 	}
-	//커뮤니티 가입
+
+	// 커뮤니티 가입
 	public void signUp(CommunityDTO dto) {
-		sqlSession.insert(namespace+".signUp",dto);
+		sqlSession.insert(namespace + ".signUp", dto);
 	}
-	//가입 하기 버튼 
+
+	// 가입 하기 버튼
 	public int signBut(CommunityDTO dto) {
-		return sqlSession.selectOne(namespace+".signBut",dto);
+		return sqlSession.selectOne(namespace + ".signBut", dto);
 	}
-	//가입여부 
-	public int joinOrNot(CommunityDTO dto){
-		return sqlSession.selectOne(namespace+".joinOrNot",dto);
+
+	// 가입여부
+	public int joinOrNot(CommunityDTO dto) {
+		return sqlSession.selectOne(namespace + ".joinOrNot", dto);
 	}
-	
-	//가입인원
+
+	// 가입인원
 	public int countMember(CommunityDTO dto) {
-		return sqlSession.selectOne(namespace+".countMember",dto);
+		return sqlSession.selectOne(namespace + ".countMember", dto);
 	}
-	
-	//게시글 등록(내용)
+
+	// 게시글 등록(내용)
 	public void content_save(CommunityConDTO dto) {
-	
-		sqlSession.insert(namespace+".contentsave",dto);
+
+		sqlSession.insert(namespace + ".contentsave", dto);
 	}
-	//게시글 내용 가져오기
+
+	// 게시글 내용 가져오기
 	public List<CommunityConDTO> contentGet(int cno) {
-		return sqlSession.selectList(namespace+".contentGet",cno);
+		return sqlSession.selectList(namespace + ".contentGet", cno);
 	}
-	//회원 탈퇴
-	public int leave(CommunityDTO dto){
-		return sqlSession.delete(namespace+".leave",dto);
+
+	// 회원 탈퇴
+	public int leave(CommunityDTO dto) {
+		return sqlSession.delete(namespace + ".leave", dto);
 	}
 
 }

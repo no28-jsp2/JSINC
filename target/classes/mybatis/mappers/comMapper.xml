@@ -9,7 +9,7 @@
 	</insert>
 	<!-- 전체 커뮤니티 -->
 	<select id="getAll" resultType="dto_com">
-		select * from createcom
+		select * from createcom where autho='Y'
 	</select>
 	<!-- 내가 가입한 커뮤니티 -->
 	<select id="myCom" resultType="dto_com">
@@ -43,7 +43,7 @@
 	<select id="contentGet" resultType="dto_com02">
 			select * from contentcom where cno=#{cno} order by idgroup desc,step asc
 	</select>
-	<!-- 회원 탈퇸 -->
+	<!-- 회원 탈퇴 -->
 	<delete id="leave" parameterType="dto_com">
 		delete from joinCom where empno=#{empNo} and title=#{title}
 	</delete>

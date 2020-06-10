@@ -19,5 +19,6 @@ public class DeleteService implements ServiceIf{
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		dao.delete(request.getParameter("btns"));
 	}
 }

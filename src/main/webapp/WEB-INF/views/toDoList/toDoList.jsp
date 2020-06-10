@@ -47,7 +47,7 @@
 																<button class="btn btn-success btn-xs" onclick="location.href='check?btns=${dto_todo.todo}'">				
 																	<i class=" fa fa-check"></i>
 																</button>
-																<button class="btn btn-primary btn-xs" onclick="location.href='edit?btns=${dto_todo.todo}'">
+																<button class="btn btn-primary btn-xs" onclick="location.href='editPage?btns=${dto_todo.todo}'">
 																	<i class="fa fa-pencil"></i>
 																</button>
 																<button class="btn btn-danger btn-xs" onclick="location.href='delete?btns=${dto_todo.todo}'">
@@ -68,7 +68,7 @@
 																<button class="btn btn-success btn-xs" onclick="location.href='check?btns=${dto_todo.todo}'">				
 																	<i class=" fa fa-check"></i>
 																</button>
-																<button class="btn btn-primary btn-xs" onclick="location.href='edit?btns=${dto_todo.todo}'">
+																<button class="btn btn-primary btn-xs" onclick="location.href='editPage?btns=${dto_todo.todo}'">
 																	<i class="fa fa-pencil"></i>
 																</button>
 																<button class="btn btn-danger btn-xs" onclick="location.href='delete?btns=${dto_todo.todo}'">
