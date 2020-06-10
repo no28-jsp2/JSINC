@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,16 +20,7 @@
 <link href="resources/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="resource/css/zabuto_calendar.css">
 <link rel="stylesheet" type="text/css" href="resource/lib/gritter/css/jquery.gritter.css" />
-						<!-- (설문  2020.06.01 17:51 추가)-->
-<link rel="stylesheet" href="resources/lib/advanced-datatable/css/DT_bootstrap.css" />
-<link href="resources/lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
-<link href="resources/lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-fileupload/bootstrap-fileupload.css" />
-<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-datepicker/css/datepicker.css" />
-<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-daterangepicker/daterangepicker.css" />
-<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-timepicker/compiled/timepicker.css" />
-<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-datetimepicker/datertimepicker.css" />
-  
+
 <!-- Custom styles for this template -->
 <link href="resources/css/style.css" rel="stylesheet">
 <link href="resources/css/style-responsive.css" rel="stylesheet">
@@ -51,15 +43,27 @@
 							<table cellpadding="0" cellspacing="0" border="0"
 								class="display table table-bordered" id="hidden-table-info">
 								<thead>
-									<tr>
-										<th>수신자</th>
-										<th>내용</th>
+											<tr>
+										<th>받는사람</th>
+										<th>부서</th>
+										<th>제목</th>
 										<th>송신 시간</th>
 										<th>삭제</th>
 									</tr>
 								</thead>
 								<tbody>
-									
+								
+								<c:forEach var="dto" items="${list }">
+								<tr>
+									<td><h5>${dto.receiver } ${dto.recRank }</h5></td>
+									<td><h5>${dto.recDep }</h5></td>
+									<td><h5><a href="sentContentView?subject=${dto.subject }&content=${dto.content}&sentTime=${dto.sentTime}&sender=${dto.sender}">${dto.subject }</a></h5></td>
+									<td><h5>${dto.sentTime }</h5></td>
+									<td><button type="button" class="btn btn-danger">삭제</button></td>
+								</tr>
+								
+								</c:forEach>
+								
 								</tbody>
 							</table>
 						</div>
@@ -128,7 +132,7 @@
 				 */
 				 
 				var oTable = $('#hidden-table-info').dataTable({
-					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 3, 'asc' ] ]
+					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 3, 'desc' ] ]
 				});
 
 				/* Add event listener for opening and closing details

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,15 +53,25 @@
 								class="display table table-bordered" id="hidden-table-info">
 								<thead>
 									<tr>
-										<th>발신자</th>
-										<th>내용</th>
-										<th>수신 시간</th>
-										<th>답장</th>
+										<th>보낸사람</th>
+										<th>부서</th>
+										<th>제목</th>
+										<th>송신 시간</th>
 										<th>삭제</th>
 									</tr>
 								</thead>
 								<tbody>
-									
+								
+								<c:forEach var="dto" items="${list }">
+								<tr>
+									<td><h5>${dto.sender } ${dto.senderRank }</h5></td>
+									<td><h5>${dto.senderDep }</h5></td>
+									<td><h5><a href="recContentView?subject=${dto.subject }&content=${dto.content}&sentTime=${dto.sentTime}&sender=${dto.sender}&senderRank=${dto.senderRank}&senderDep=${dto.senderDep}">${dto.subject }</a></h5></td>
+									<td><h5>${dto.sentTime }</h5></td>
+									<td><button type="button" class="btn btn-danger">삭제</button></td>
+								</tr>
+								</c:forEach>
+								
 								</tbody>
 							</table>
 						</div>
@@ -129,7 +140,7 @@
 				 */
 				 
 				var oTable = $('#hidden-table-info').dataTable({
-					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 3, 'asc' ] ]
+					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 3, 'desc' ] ]
 				});
 
 				/* Add event listener for opening and closing details
