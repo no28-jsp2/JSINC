@@ -11,11 +11,11 @@
 		<typeAlias alias="dto_com" type="com.jsinc.jsincDTO.CommunityDTO"/>
 		<typeAlias alias="dto_sur" type="com.jsinc.jsincDTO.SurveyDTO"/>
 		<typeAlias alias="dto_sr" type="com.jsinc.jsincDTO.SurveyResultDTO"/>
-
 		<typeAlias alias="dto_com02" type="com.jsinc.jsincDTO.CommunityConDTO"/>
-
 		<typeAlias alias="dto_todo" type="com.jsinc.jsincDTO.ToDoListDTO"/>
 
+
 		<typeAlias alias="dto_msg" type="com.jsinc.jsincDTO.MessageDTO"/>
+
    </typeAliases>
 </configuration>

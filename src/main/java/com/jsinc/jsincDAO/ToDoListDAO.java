@@ -25,5 +25,16 @@ public class ToDoListDAO {
 	public void check(ToDoListDTO dto) {
 		sqlSession.update(namespace + ".check", dto);
 	}
-
+	
+	public ToDoListDTO editPage(String todo) {
+		return sqlSession.selectOne(namespace + ".editPage", todo);
+	}
+	
+	public void edit(ToDoListDTO dto) {
+		sqlSession.update(namespace + ".edit", dto);
+	}
+	
+	public void delete(String todo) {
+		sqlSession.delete(namespace + ".del", todo);
+	}
 }
