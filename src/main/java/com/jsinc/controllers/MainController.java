@@ -161,8 +161,9 @@ public class MainController {
 	}
 
 	@RequestMapping("registerMem")
-	public String registerMem(MemberDTO dto, Model model, MultipartFile profile) throws Exception {
+	public String registerMem(MemberDTO dto, Model model, MultipartFile profile, @RequestParam String rank) throws Exception {
 
+		
 		// 업로드
 		UUID uuid = UUID.randomUUID(); // 파일 이름 중복 방지
 		String saveName = uuid + "_" + profile.getOriginalFilename(); // UUID가 붙은 파일이름을 객체에 저장
