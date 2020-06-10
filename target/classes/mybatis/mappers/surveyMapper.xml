@@ -4,7 +4,7 @@
   
 <mapper namespace="com.jsinc.mybatis.Survey">
 	<select id="listAll" resultType="dto_sur">
-		select * from jsinc_survey where state=#{state}
+		select * from jsinc_survey where state=#{state} and autho='Y'
 	</select>
 	
 	<select id="myList" resultType="dto_sur">
@@ -12,7 +12,7 @@
 	</select>
 	
 	<insert id="input" parameterType="dto_sur">
-		insert into jsinc_survey values(#{empNo}, #{title}, #{text}, #{sDate}, #{eDate},#{writer},#{state},#{opt})
+		insert into jsinc_survey values(#{empNo}, #{title}, #{text}, #{sDate}, #{eDate},#{writer},#{state},#{opt},'N')
 	</insert>
 	
 	<select id="survey" resultType="dto_sur">

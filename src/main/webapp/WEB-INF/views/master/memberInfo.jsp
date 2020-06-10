@@ -61,7 +61,7 @@
 					</h5>
 					<!-- 사원 관리 -->
 					<li class="mt">
-						<a class="active" href="#"> 
+						<a class="active" href="memberMng"> 
 							<i class="fa fa-asterisk"></i>
 							<span>사원 관리</span>
 						</a>
@@ -69,7 +69,7 @@
 
 					<!-- 커뮤니티 관리 -->
 					<li>
-						<a href="#"> 
+						<a href="communityMng"> 
 							<i class="fa fa-asterisk"></i>
 							<span>커뮤니티 승인/삭제</span>
 						</a>
@@ -77,7 +77,7 @@
 
 					<!-- 설문 관리 -->
 					<li>
-						<a href="#"> 
+						<a href="surveyMng"> 
 							<i class="fa fa-asterisk"></i>
 							<span>설문 승인/삭제</span>
 						</a>
@@ -103,54 +103,88 @@
 							<h4 class="mb">
 								<i class="fa fa-angle-right"></i> 수정하기
 							</h4>
-							<form class="form-horizontal style-form" method="get">
+							<form class="form-horizontal style-form" method="get" action="memberEdit">
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">Default</label>
+									<label class="col-sm-2 col-sm-2 control-label">사원 번호</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control">
+										<input class="form-control round-form" id="disabledInput" type="text" placeholder="${member.empNo }" disabled>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">Help text</label>
+									<label class="col-sm-2 col-sm-2 control-label">이름</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control"> 
-										<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+										<input type="text" class="form-control round-form" name="name" value="${member.name }">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">Rounder</label>
+									<label class="col-sm-2 col-sm-2 control-label">생년월일</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control round-form">
+										<input type="text" class="form-control round-form" name="birth" value="${member.birth }">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">Input focus</label>
+									<label class="col-sm-2 col-sm-2 control-label">이메일</label>
 									<div class="col-sm-10">
-										<input class="form-control" id="focusedInput" type="text" value="This is focused...">
+										<input type="text" class="form-control round-form" name="email" value="${member.userEmail }">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">Disabled</label>
+									<label class="col-sm-2 col-sm-2 control-label">전화번호</label>
 									<div class="col-sm-10">
-										<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+										<input type="text" class="form-control round-form" name="pn" value="${member.phoneNumber }">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">Placeholder</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" placeholder="placeholder">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">Password</label>
-									<div class="col-sm-10">
-										<input type="password" class="form-control" placeholder="">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-lg-2 col-sm-2 control-label">Static control</label>
+									<label class="col-sm-2 col-sm-2 control-label">성별</label>
 									<div class="col-lg-10">
-										<p class="form-control-static">email@example.com</p>
+										<select class="form-control" id="gender" name="gender">
+											<c:choose>
+												<c:when test="${member.gender eq '남' }">
+													<option value="남" selected="selected">남</option>
+													<option value="여">여</option>
+												</c:when>
+												<c:otherwise>
+													<option value="남">남</option>
+													<option value="여" selected="selected">여</option>
+												</c:otherwise>
+											</c:choose>
+											
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 col-sm-2 control-label">직급</label>
+									<div class="col-lg-10">
+										<select class="form-control" id="rank" name="rank">
+											<option value="${member.rank }" selected="selected">${member.rank }</option>
+											<option value="사원">사원</option>
+											<option value="주임">주임</option>
+											<option value="대리">대리</option>
+											<option value="과장">과장</option>
+											<option value="부장">부장</option>
+											<option value="이사">이사</option>
+											<option value="대표">대표</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 col-sm-2 control-label">부서</label>
+									<div class="col-lg-10">
+										<select class="form-control" id="dep" name="dep">
+											<option value="${member.dep }" selected="selected">${member.dep }</option>
+											<option value="개발부">개발부</option>
+											<option value="경영지원부">경영지원부</option>
+											<option value="경리부">경리부</option>
+											<option value="품질관리부">품질관리부</option>
+											<option value="해외영업부">해외영업부</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-2 col-sm-2 control-label"></label>
+									<div class="col-lg-10">
+										<input type="submit" value="수정" class="btn btn-round btn-success">
+										<input type="button" value="취소" class="btn btn-round btn-danger" onclick="location.href='memberMng'">
 									</div>
 								</div>
 							</form>
@@ -179,66 +213,6 @@
 	<script src="resources/lib/common-scripts.js"></script>
 	<!--script for this page-->
 	<script src="resources/lib/ckeditor/ckeditor.js"></script>
-	<script type="text/javascript">
-		/* Formating function for row details 
-		function fnFormatDetails(oTable, nTr) {
-			var aData = oTable.fnGetData(nTr);
-			var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
-			sOut += '<tr><td>Rendering engine:</td><td>' + aData[2] + '</td></tr>';
-			sOut += '</table>';
-			return sOut;
-		}
-		*/
-		$(document).ready(
-			function() {
-				var nCloneTh = document.createElement('th');
-				var nCloneTd = document.createElement('td');
-				/*
-				nCloneTd.innerHTML = '<img src="resources/lib/advanced-datatable/images/details_open.png">';
-				nCloneTd.className = "center";
-				*/
-				
-				$('#hidden-table-info thead tr').each(
-					function() {
-						this.insertBefore(nCloneTh,this.childNodes[0]);
-					}
-				);
-
-				$('#hidden-table-info tbody tr').each(
-					function() {
-						this.insertBefore(nCloneTd.cloneNode(true),this.childNodes[0]);
-					}
-				);
-				
-				/*
-				 * Initialse DataTables, with no sorting on the 'details' column
-				 */
-				 
-				var oTable = $('#hidden-table-info').dataTable({
-					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 1, 'asc' ] ]
-				});
-
-				/* Add event listener for opening and closing details
-				 * Note that the indicator for showing which row is open is not controlled by DataTables,
-				 * rather it is done here
-				 */
-				
-				 /*
-				$('#hidden-table-info tbody td img').live('click',
-					function() {
-						var nTr = $(this).parents('tr')[0];
-						if (oTable.fnIsOpen(nTr)) {
-							this.src = "resources/lib/advanced-datatable/images/details_open.png";
-							oTable.fnClose(nTr);
-						} else {
-							this.src = "resources/lib/advanced-datatable/images/details_close.png";
-							oTable.fnOpen(nTr,fnFormatDetails(oTable,nTr),'details');
-						}
-					}
-				);*/
-			}
-		);
-	</script>
 </body>
 
 </html>

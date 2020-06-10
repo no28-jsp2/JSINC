@@ -27,12 +27,13 @@
 <!-- Custom styles for this template -->
 <link href="resources/css/style.css" rel="stylesheet">
 <link href="resources/css/style-responsive.css" rel="stylesheet">
+
 </head>
 
 <body>
 	<div id="login-page">
 		<div class="container">
-			<form class="form-login" action="loginChk">
+			<form class="form-login" name="formLogin">
 				<h2 class="form-login-heading">sign in now</h2>
 				<div class="login-wrap">
 					<input type="text" name="empNo" class="form-control" placeholder="사원 번호" autofocus><br>
@@ -42,13 +43,13 @@
 						<a data-toggle="modal" href="login#myModal"> 비밀번호를 잊으셨습니까?</a>
 					</span>
 					</label>
-					<button class="btn btn-theme btn-block" type="submit">
+					<button class="btn btn-theme btn-block" type="button" onclick="form_submit('L')">
 						<i class="fa fa-lock"></i> 로그인
 					</button>
 					<hr>
 					<div class="login-social-link centered">
 						<p>관리자 계정으로 로그인</p>
-						<button class="btn btn-facebook" type="submit" style="width: 100%;">관리자 로그인</button>
+						<button class="btn btn-facebook" type="button" style="width: 100%;" onclick="form_submit('M')">관리자 로그인</button>
 					</div>
 					<hr>
 					<div class="registration">
@@ -80,8 +81,18 @@
 						</div>
 					</div>
 				</div>
-				<!-- modal -->
-
+				<!-- /modal -->
+				<script type="text/javascript">
+					function form_submit(arg) {
+						if(arg=="L"){
+							document.formLogin.action = "loginChk";
+							document.formLogin.submit();
+						}else if(arg=="M"){
+							document.formLogin.action = "masterLogin";
+							document.formLogin.submit();
+						}
+					}
+				</script>
 				<script type="text/javascript">
 					function lost() {
 						$.ajax({

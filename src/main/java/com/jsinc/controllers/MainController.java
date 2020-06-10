@@ -43,20 +43,14 @@ public class MainController {
 
 	@RequestMapping("loginChk")
 	public String loginChk(Model model, HttpServletRequest request) throws Exception {
-		int empNo = Integer.parseInt(request.getParameter("empNo"));
-		String pw = request.getParameter("password");
-		if(empNo == 1 && pw.equals("master")) {
-			return "redirect:memberMng";
-		}else {
-			model.addAttribute("request", request);
-			service = ac.getBean("loginService", LoginService.class);
-			int result = service.execute(model);
-			if (result == 0)
-				return "redirect:index";
-		}
+		model.addAttribute("request", request);
+		service = ac.getBean("loginService", LoginService.class);
+		int result = service.execute(model);
+		if (result == 0)
+			return "redirect:index";
 		return "home";
 	}
-	
+
 	@RequestMapping("index")
 	public String index() {
 		return "index";
@@ -77,7 +71,7 @@ public class MainController {
 		profileService.execute(model);
 		return "redirect:profile";
 	}
-	
+
 	@RequestMapping("changePw")
 	public String changePw(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -218,18 +212,18 @@ public class MainController {
 		return (String) sendRs.get("msg");
 
 	}
-	
+
 	@RequestMapping("lockScreen")
 	public String lockScreen() {
 		return "lockScreen";
 	}
-	
+
 	@RequestMapping("lock")
 	public String lock(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		ServletContext application = session.getServletContext();
-		MemberDTO dto = (MemberDTO)application.getAttribute("user");
-		if(dto.getPassword().equals(request.getParameter("password"))) {
+		MemberDTO dto = (MemberDTO) application.getAttribute("user");
+		if (dto.getPassword().equals(request.getParameter("password"))) {
 			return "redirect:index";
 		}
 		return "redirect:lockScreen";

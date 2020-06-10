@@ -27,9 +27,12 @@ public class LoginService implements ServiceIf {
 	public int execute(Model model) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		MemberDTO dto = dao.list(request.getParameter("empNo"));
+		
+		String empNo = request.getParameter("empNo");
+		String password = request.getParameter("password");
+		MemberDTO dto = dao.list(empNo);
 		if (dto != null) {
-			if (request.getParameter("password").equals(dto.getPassword())) {
+			if (password.equals(dto.getPassword())) {
 				Date date = new Date();
 				SimpleDateFormat format = new SimpleDateFormat("MM");
 				SimpleDateFormat day = new SimpleDateFormat("dd");

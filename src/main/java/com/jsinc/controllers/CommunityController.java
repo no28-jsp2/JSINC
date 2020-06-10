@@ -22,7 +22,7 @@ import com.jsinc.services.community.SignUpServiceImpl;
 import com.jsinc.services.community.ViewServiceImpl;
 
 @Controller
-public class CommunityControllers {
+public class CommunityController {
 	ApplicationContext ac = App.ac;
 	private ServiceCom service;
 

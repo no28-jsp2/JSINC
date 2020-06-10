@@ -61,7 +61,7 @@
 					</h5>
 					<!-- 사원 관리 -->
 					<li class="mt">
-						<a class="active" href="memberMng"> 
+						<a href="memberMng"> 
 							<i class="fa fa-asterisk"></i>
 							<span>사원 관리</span>
 						</a>
@@ -77,7 +77,7 @@
 
 					<!-- 설문 관리 -->
 					<li>
-						<a href="surveyMng"> 
+						<a class="active" href="serveyMng"> 
 							<i class="fa fa-asterisk"></i>
 							<span>설문 승인/삭제</span>
 						</a>
@@ -104,34 +104,41 @@
 								class="display table table-bordered" id="hidden-table-info">
 								<thead>
 									<tr>
-										<th>이름</th>
-										<th>사원번호</th>
-										<th>생년월일</th>
-										<th>이메일</th>
-										<th>전화번호</th>
-										<th>성별</th>
-										<th>직급</th>
-										<th>부서</th>
+										<th>상태</th>
+										<th>설문</th>
+										<th>마감 날짜</th>
+										<th>작성자</th>
 										<th></th>
 										
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${list }" var="dto_mem">
+									<c:forEach items="${list }" var="dto">
 										<!-- <form action="edit"> -->
 											<tr>
-												<td><img src="resources/img${dto_mem.img}" class="img-circle" width="20">&nbsp;${dto_mem.name }</td>
-												<td><h5>${dto_mem.empNo }</h5></td>
-												<td><h5>${dto_mem.birth }</h5></td>
-												<td><h5>${dto_mem.userEmail }</h5></td>
-												<td><h5>${dto_mem.phoneNumber }</h5></td>
-												<td><h5>${dto_mem.gender }</h5></td>
-												<td><h5>${dto_mem.rank }</h5></td>
-												<td><h5>${dto_mem.dep }</h5></td>
-												<td align="center">
-													<button type="button" class="btn btn-theme02" onclick="location.href='memberInfo?empNo=${dto_mem.empNo}'"><i class="fa fa-check"></i>수정</button>
-													<button type="button" class="btn btn-theme04"><i class="fa fa-trash-o" onclick="location.href='memberDel?empNo=${dto_mem.empNo}'"></i>삭제</button>
-												</td>
+												<td><h5>${dto.state }</h5></td>
+												<td><h5>${dto.title }</h5></td>
+												<td><h5>${dto.eDate }</h5></td>
+												<td><h5>${dto.writer}</h5></td>
+												<c:choose>
+													<c:when test="${dto.autho eq 'N' }">
+														<td align="center">
+															<button type="button" class="btn btn-round btn-success" onclick="location.href='permissionSur?title=${dto.title}'">
+																<i class="fa fa-check"></i> 승인
+															</button>
+															<button type="button" class="btn btn-round btn-warning" onclick="location.href='deleteSur?title=${dto.title}'">
+																<i class="fa fa-certificate"></i> 승인 취소
+															</button>
+														</td>
+													</c:when>
+													<c:otherwise>
+														<td align="center">
+															<button type="button" class="btn btn-round btn-theme04" onclick="location.href='deleteSur?title=${dto.title}'">
+																<i class="fa fa-trash-o"></i> 삭제
+															</button>
+														</td>
+													</c:otherwise>
+												</c:choose>
 											</tr>
 										<!-- </form> -->
 									</c:forEach>
