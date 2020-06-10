@@ -56,8 +56,7 @@
                      <i class="fa fa-book"></i>  <span>전자 결재</span>
                   </a>
                   <ul class="sub">
-                     <li><a href="newSign">새 결재</a></li>
-                     <li><a href="signPost">결재 상신</a></li>
+                     <li><a href="newSign">결재 상신</a></li>
                      <li><a href="signAproved">결재 승인</a></li>
                      <li><a href="signWait">결재 대기</a></li>
                      <li><a href="signSuccess">결재 완료</a></li>
@@ -81,15 +80,10 @@
 
                
                <!-- 보고 -->
-               <li class="sub-menu">
-                  <a href="javascript:;"> 
+               <li>
+                  <a href="report"> 
                      <i class=" fa fa-bar-chart-o"></i><span>보고</span>
-                  </a>
-                  <ul class="sub">
-                     <li><a href="dayReport">일일 보고</a></li>
-                     <li><a href="weekReport">주간 보고</a></li>
-                     <li><a href="workReport">업무 일지</a></li>
-                  </ul>
+               		</a>
                </li>
                
                <!-- 쪽지 -->
