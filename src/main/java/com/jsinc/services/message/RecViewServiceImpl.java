@@ -14,24 +14,20 @@ import org.springframework.ui.Model;
 import com.jsinc.jsincDAO.MessageDAO;
 import com.jsinc.jsincDTO.MemberDTO;
 import com.jsinc.jsincDTO.MessageDTO;
-
 @Service
-public class SentViewServiceImpl implements ServiceMes{
+public class RecViewServiceImpl implements ServiceMes{
 	@Autowired
 	MessageDAO dao;
-
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();
-		HttpServletRequest request =(HttpServletRequest)map.get("request");
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		HttpSession session = request.getSession();
-		ServletContext application = session.getServletContext();
-		MemberDTO dto=(MemberDTO) application.getAttribute("user");
-		int empNo = dto.getEmpNo();
-		ArrayList<MessageDTO> list = (ArrayList<MessageDTO>) dao.sentView(empNo);
+		ServletContext app= session.getServletContext();
+		MemberDTO dto = (MemberDTO) app.getAttribute("user");
+		int recEmpNo=dto.getEmpNo();
+		ArrayList<MessageDTO> list= (ArrayList<MessageDTO>) dao.recView(recEmpNo);
 		model.addAttribute("list",list);
-		
-		
 	}
-	
+
 }

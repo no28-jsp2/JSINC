@@ -35,29 +35,33 @@ public class SenderServiceImpl implements ServiceMes{
 		SimpleDateFormat fm1 = new SimpleDateFormat("yyyy년MM월dd일hh시mm분");
 		String date = fm1.format(new Date());
 		
-		MessageDTO mdto= new MessageDTO();
-		mdto.setSender(dto.getName());
-		mdto.setSenderEmpNo(dto.getEmpNo());
-		mdto.setSenderRank(dto.getRank());
-		mdto.setSenderDep(dto.getDep());
-		mdto.setSentTime(date);
-		mdto.setRecEmpNo(Integer.parseInt(request.getParameter("recEmpNo")));
-		mdto.setReceiver(request.getParameter("receiver"));
-		System.out.println("==============="+dto.getRank());
-		mdto.setRecRank(request.getParameter("recRank"));
-		mdto.setRecDep(request.getParameter("recDep"));
-		//문자처리
-		String subject=request.getParameter("subject");
-		String content=request.getParameter("content");
-		subject = subject.replace("<", "&lt;");
-		subject = subject.replace("<", "&gt;");
-		// * 공백문자 처리
-		subject = subject.replace("  ", "&nbsp;&nbsp;");
-		// * 줄바꿈 문자처리
-		content = content.replace("\n", "<br>");
-		mdto.setSubject(subject);
-		mdto.setContent(content);
-		dao.sendMes(mdto);
+		//JSinc_sendMsg 테이블에 저장됨
+		MessageDTO sdto= new MessageDTO();
+		sdto.setSenderEmpNo(dto.getEmpNo());
+		sdto.setRecEmpNo(Integer.parseInt(request.getParameter("recEmpNo")));
+		sdto.setReceiver(request.getParameter("receiver"));
+		sdto.setRecRank(request.getParameter("recRank"));
+		sdto.setRecDep(request.getParameter("recDep"));
+		System.out.println("recDep:"+request.getParameter("recDep"));
+		sdto.setSubject(request.getParameter("subject"));
+		sdto.setContent(request.getParameter("content"));
+		sdto.setSentTime(date);
+		//JSinc_recMsg테이블에 저장됨
+		MessageDTO rdto= new MessageDTO();
+		rdto.setRecEmpNo(Integer.parseInt(request.getParameter("recEmpNo")));
+		rdto.setSenderEmpNo(dto.getEmpNo());
+		rdto.setSender(dto.getName());
+		rdto.setSenderRank(dto.getRank());
+		rdto.setSenderDep(dto.getDep());
+		System.out.println("senderDep:"+dto.getDep());
+		rdto.setSubject(request.getParameter("subject"));
+		rdto.setContent(request.getParameter("content"));
+		rdto.setSentTime(date);
+		
+		
+		dao.sendMsg(sdto);
+		dao.recMsg(rdto);
+		
 		
 		
 	}

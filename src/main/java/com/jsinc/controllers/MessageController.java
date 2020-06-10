@@ -10,11 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jsinc.jsincDTO.MemberDTO;
-import com.jsinc.jsincDTO.MessageDTO;
-import com.jsinc.service.community.ServiceCom;
+import com.jsinc.services.message.RecViewServiceImpl;
 import com.jsinc.services.message.SenderServiceImpl;
 import com.jsinc.services.message.SentViewServiceImpl;
 import com.jsinc.services.message.ServiceMes;
+import com.jsinc.services.message.ViewContentServiceImpl;
 
 @Controller
 public class MessageController {
@@ -31,8 +31,11 @@ public class MessageController {
 	}
 	//받은 쪽지함
 	@RequestMapping("RecMessage")
-	public String RecMessage() {
-		return "message/RecView";
+	public String RecMessage(Model model,HttpServletRequest request) {
+		model.addAttribute("request",request);
+		service=ac.getBean("recViewServiceImpl",RecViewServiceImpl.class);
+		service.execute(model);
+		return "message/recView";
 	}
 	//메세지 전송 버튼 클릭 시 (접속유저의 내용을 같이 등록함)
 	@RequestMapping("mesWriteView")
@@ -58,6 +61,22 @@ public class MessageController {
 		service=ac.getBean("senderServiceImpl",SenderServiceImpl.class);
 		service.execute(model);
 		return "redirect:sentMessage";
+	}
+	//보낸 메세지내용 클릭
+	@RequestMapping("sentContentView")
+	public String sentContentView(HttpServletRequest request,Model model) {
+		service=ac.getBean("viewContentServiceImpl",ViewContentServiceImpl.class);
+		model.addAttribute("request",request);
+		service.execute(model);
+		return "message/sentContentView";
+	}
+	//받은 메세지내용 클릭
+	@RequestMapping("recContentView")
+	public String recContentView(HttpServletRequest request,Model model) {
+		service=ac.getBean("viewContentServiceImpl",ViewContentServiceImpl.class);
+		model.addAttribute("request",request);
+		service.execute(model);
+		return "message/recContentView";
 	}
 	
 	

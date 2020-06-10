@@ -16,6 +16,6 @@
 
 		<typeAlias alias="dto_todo" type="com.jsinc.jsincDTO.ToDoListDTO"/>
 
-		<typeAlias alias="dto_mes" type="com.jsinc.jsincDTO.MessageDTO"/>
+		<typeAlias alias="dto_msg" type="com.jsinc.jsincDTO.MessageDTO"/>
    </typeAliases>
 </configuration>
