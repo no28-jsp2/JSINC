@@ -1,6 +1,5 @@
 package com.jsinc.services.message;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -14,25 +13,26 @@ import org.springframework.ui.Model;
 import com.jsinc.jsincDAO.MessageDAO;
 import com.jsinc.jsincDTO.MemberDTO;
 import com.jsinc.jsincDTO.MessageDTO;
-
 @Service
-public class SentViewServiceImpl implements ServiceMes{
+public class SentMsgDelServiceImpl implements ServiceMes{
 	@Autowired
 	MessageDAO dao;
-
+	
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();
-		HttpServletRequest request =(HttpServletRequest)map.get("request");
+		HttpServletRequest request= (HttpServletRequest)map.get("request");
 		HttpSession session = request.getSession();
-		ServletContext application = session.getServletContext();
-		MemberDTO dto=(MemberDTO) application.getAttribute("user");
-		System.out.println(dto.getEmpNo());
-		int empNo = dto.getEmpNo();
-		ArrayList<MessageDTO> list = (ArrayList<MessageDTO>) dao.sentView(empNo);
-		model.addAttribute("list",list);
+		ServletContext app = session.getServletContext();
+		MemberDTO dto_app = (MemberDTO) app.getAttribute("user");
+		MessageDTO dto = new MessageDTO();
 		
+		dto.setSenderEmpNo(dto_app.getEmpNo());
+		dto.setRecEmpNo(Integer.parseInt(request.getParameter("recEmpNo")));
+		dto.setSubject(request.getParameter("subject"));
+		dto.setSentTime(request.getParameter("sentTime"));
 		
+		int result=dao.sentMsgDel(dto);
 	}
-	
+
 }

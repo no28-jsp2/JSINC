@@ -55,7 +55,7 @@
                   <div class="row">
                      <div class="col-md-8">
                       <strong>보낸사람:</strong>
-                      <span>${subCon.rank }</span>
+                      <span>[${subCon.senderDep }]${subCon.sender }&nbsp;${subCon.senderRank }</span>
                     </div>
                     <div class="col-md-4">
                       <p class="date"> ${subCon.sentTime }</p>
@@ -68,6 +68,7 @@
               
                 <div class="compose-btn pull-left">
                   <a href="RecMessage" class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> 뒤로가기</a>
+                 <button class="btn btn-sm " onclick="location.href='replyMes?recEmpNo=${subCon.senderEmpNo}&recDep=${subCon.senderDep }&recRank=${subCon.senderRank }&receiver=${subCon.sender }'"><i class="fa fa-arrow-right"></i> 답장</button>
                 </div>
               </div>
             </section>

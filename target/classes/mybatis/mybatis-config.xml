@@ -16,6 +16,6 @@
 		<typeAlias alias="dto_report" type="com.jsinc.jsincDTO.ReportDTO"/>
 		<typeAlias alias="dto_sign" type="com.jsinc.jsincDTO.SignDTO"/>
 		<typeAlias alias="dto_msg" type="com.jsinc.jsincDTO.MessageDTO"/>
-
+		<typeAlias alias="dto_report" type="com.jsinc.jsincDTO.ReportDTO"/>
    </typeAliases>
 </configuration>

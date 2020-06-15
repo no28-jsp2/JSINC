@@ -1,8 +1,7 @@
 package com.jsinc.controllers;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -10,8 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jsinc.jsincDTO.MemberDTO;
+import com.jsinc.services.message.RecContentServiceImpl;
+import com.jsinc.services.message.RecMsgDelServiceImpl;
 import com.jsinc.services.message.RecViewServiceImpl;
+import com.jsinc.services.message.ReplyViewServiceImpl;
 import com.jsinc.services.message.SenderServiceImpl;
+import com.jsinc.services.message.SentMsgDelServiceImpl;
 import com.jsinc.services.message.SentViewServiceImpl;
 import com.jsinc.services.message.ServiceMes;
 import com.jsinc.services.message.ViewContentServiceImpl;
@@ -41,16 +44,22 @@ public class MessageController {
 	@RequestMapping("mesWriteView")
 	public String mesWriteView(Model model,HttpServletRequest request) {
 		String name=request.getParameter("name");
+		if(name!=null) {
 		int empNo=Integer.parseInt(request.getParameter("empNo"));
 		String rank=request.getParameter("rank");
 		String dep=request.getParameter("dep");
-		ArrayList<String> arr = new ArrayList<String>();
 		MemberDTO dto = new MemberDTO();
 		dto.setName(name);
 		dto.setEmpNo(empNo);
 		dto.setDep(dep);
 		dto.setRank(rank);
 		model.addAttribute("emp",dto);
+		}else if(name == null) {
+		HttpSession session = request.getSession();
+		MemberDTO dto= (MemberDTO) session.getAttribute("emp");
+		model.addAttribute("emp",dto);	
+		}
+		
 
 		return "message/mesWriteView";
 	}
@@ -73,11 +82,39 @@ public class MessageController {
 	//받은 메세지내용 클릭
 	@RequestMapping("recContentView")
 	public String recContentView(HttpServletRequest request,Model model) {
-		service=ac.getBean("viewContentServiceImpl",ViewContentServiceImpl.class);
+	
+		service=ac.getBean("recContentServiceImpl",RecContentServiceImpl.class);
 		model.addAttribute("request",request);
 		service.execute(model);
 		return "message/recContentView";
 	}
+	
+	//답장하기 view
+	@RequestMapping("replyMes")
+	public String replyMes(Model model,HttpServletRequest request) {
+		service=ac.getBean("replyViewServiceImpl",ReplyViewServiceImpl.class);
+		model.addAttribute("request",request);
+		service.execute(model);
+		return "redirect:mesWriteView";
+	}
+	//보낸 메세지 삭제 
+	@RequestMapping("sentMsgDel")
+	public String sentMsgDel(Model model,HttpServletRequest request) {
+		service=ac.getBean("sentMsgDelServiceImpl",SentMsgDelServiceImpl.class);
+		model.addAttribute("request",request);
+		service.execute(model);
+		return "redirect:sentMessage";
+	}
+	//받은 메세지 삭제
+	@RequestMapping("recMsgDel")
+	public String recMsgDel(Model model,HttpServletRequest request) {
+		service=ac.getBean("recMsgDelServiceImpl",RecMsgDelServiceImpl.class);
+		model.addAttribute("request",request);
+		service.execute(model);
+		return "redirect:RecMessage";
+	}
+	
+	
 	
 	
 }
