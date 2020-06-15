@@ -53,14 +53,6 @@
 							<h5>퇴근 : ${applicationScope.end.leaveWork } </h5>
 						</div>
 						<!-- /showback -->
-						<!--  BUTTONS SIZES -->
-						<div class="showback">
-							<h4>
-								<i class="fa fa-angle-right"></i> 차트(그래프)
-							</h4>
-							
-						</div>
-						<!-- /showback -->
 					</div>
 					
 					<!-- /col-lg-6 -->
