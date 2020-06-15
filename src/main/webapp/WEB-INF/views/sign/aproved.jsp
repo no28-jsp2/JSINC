@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +23,8 @@
 					<!--  DATE PICKERS -->
 					<div class="col-lg-12">
 						<div class="form-panel">
-							<table>
+							<table border="0" cellpadding="0" cellspacing="0"
+								class="display table table-bordered" id="hidden-table-info">
 								<tr>
 									<td>제목</td>
 									<td>${sign.title }</td>
@@ -37,17 +39,75 @@
 								</tr>
 								<tr>
 									<td>작성 일자</td>
-									<td>${sign.regdate }</td>
+									<td><fmt:formatDate value="${sign.regdate }"
+											pattern="yyyy-MM-dd HH:mm:ss" /></td>
 								</tr>
-
 							</table>
-						</div>
-						<!-- /form-panel -->
-					</div>
-					<!-- /col-lg-12 -->
-				</div>
-				<!-- /row -->
 
+							<br>
+							<c:set var="signs" value="${sign.signs }"></c:set>
+							<%
+								String signs = (String) pageContext.getAttribute("signs");
+								if (signs.equals("휴가")) {
+							%>
+							<div>
+								<table border="0" cellpadding="0" cellspacing="0"
+								class="display table table-bordered" id="hidden-table-info">
+									<tr>
+										<td>신청한 휴가 일자 :</td>
+										<td>${sign.startDT }~ ${sign.endDT }</td>
+									</tr>
+									<tr>
+										<td>휴가 사유 :</td>
+										<td>${sign.content}</td>
+									</tr>
+								</table>
+							</div>
+							<%
+								} else if (signs.equals("외근")) {
+							%>
+							<div>
+								<table border="0" cellpadding="0" cellspacing="0"
+								class="display table table-bordered" id="hidden-table-info">
+									<tr>
+										<td>신청한 외근 일자 :</td>
+										<td>${sign.outwork }</td>
+									</tr>
+									<tr>
+										<td>외근 지역 :</td>
+										<td>${sign.worklocation}</td>
+									</tr>
+									<tr>
+										<td>작업 내용 :</td>
+										<td>${sign.content }</td>
+									</tr>
+								</table border="0" cellpadding="0" cellspacing="0"
+								class="display table table-bordered" id="hidden-table-info">
+							</div>
+							<%
+								} else if (signs.equals("연장근무")) {
+							%>
+							<div>
+								<table>
+									<tr>
+										<td>신청한 연장 시간 :</td>
+										<td>${sign.startDT }~ ${sign.endDT }</td>
+									</tr>
+									<tr>
+										<td>연장 근무 사유 :</td>
+										<td>${sign.content }</td>
+									</tr>
+									</div>
+								</table>
+								<%
+									}
+								%>
+							</div>
+							<!-- /form-panel -->
+						</div>
+						<!-- /col-lg-12 -->
+					</div>
+					<!-- /row -->
 			</section>
 			<!-- /wrapper -->
 		</section>
