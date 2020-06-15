@@ -2,7 +2,9 @@ package com.jsinc.controllers;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -34,10 +36,12 @@ public class SignController {
 		ss.createSign(dto);
 		return "redirect:signWait";
 	}
-	@RequestMapping("signAproved")
-	public String signAproved() {
-		
-		return "sign/aproved";
+	@RequestMapping("aproved")
+	public ModelAndView signAproved(@RequestParam int bno) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("sign/aproved");
+		mav.addObject("sign",ss.read(bno));
+		return mav;
 	}
 	@RequestMapping("signSuccess")
 	public ModelAndView signSuccess() {
@@ -48,7 +52,10 @@ public class SignController {
 		return mav;
 	}
 	@RequestMapping("signWait")
-	public ModelAndView signWaiting(@ModelAttribute MemberDTO dto) {
+	public ModelAndView signWaiting(HttpServletRequest request) {
+		HttpSession session=request.getSession();
+		ServletContext application = session.getServletContext();
+		MemberDTO dto = (MemberDTO)application.getAttribute("user");
 		int empno = dto.getEmpNo();
 		List<SignDTO> list = ss.waitList(empno);
 		ModelAndView mav = new ModelAndView();

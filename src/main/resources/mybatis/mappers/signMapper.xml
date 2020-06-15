@@ -17,8 +17,11 @@
 	</select>
 	<select id="waitList" resultType="dto_sign">
 		select
+			bno,
 			title,
 			signs,
+			writer,
+			regdate,
 			department,
 			target
 		from

@@ -24,19 +24,21 @@
 					<!--  DATE PICKERS -->
 					<div class="col-lg-12">
 						<div class="form-panel" >
-							<table>
+							<table border="0" cellpadding="0" cellspacing="0"
+								class="display table table-bordered" id="hidden-table-info">
 								<thead>
 									<tr>
-										<td>제목</td><td>결재 분류</td><td>작성자</td><td>작성일자</td><td>결재 현황</td>
+										<td>제목</td><td>결재 분류</td><td>작성자</td><td>부서</td><td>작성일자</td><td>결재 현황</td>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="list" items="${sign }">
 										<tr>
-											<a href="aproved?bno=${list.bno }"><td>${list.title }</td></a>
+											<td><a href="aproved?bno=${list.bno }">${list.title }</a></td>
 											<td>${list.signs }</td>
 											<td>${list.writer }</td>
-											<td>${list.regdate }</td>
+											<td>${list.department }</td>
+											<td><fmt:formatDate value="${list.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 											<td>대기</td>
 										</tr>
 									</c:forEach>
