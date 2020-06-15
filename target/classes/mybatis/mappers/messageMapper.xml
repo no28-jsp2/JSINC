@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.jsinc.mybatis.message">
-<!-- 보낸 메세지  저장-->
-<insert id="sendMsg" parameterType="dto_msg">
-	insert into jsinc_sendMsg (senderEmpNo,recEmpNo,receiver,recRank,recDep,subject,content,sentTime) 
-	values(#{senderEmpNo},#{recEmpNo},#{receiver},#{recRank},#{recDep},#{subject},#{content},#{sentTime})
-</insert>
-<!-- 받은 메세지 저장-->
-<insert id="recMsg" parameterType="dto_msg">
-	insert into jsinc_recMsg (recEmpNo,senderEmpNo,sender,senderRank,senderDep,subject,content,sentTime) 
-	values(#{recEmpNo},#{senderEmpNo},#{sender},#{senderRank},#{senderDep},#{subject},#{content},#{sentTime})
-</insert>
+	<!-- 보낸 메세지 저장 -->
+	<insert id="sendMsg" parameterType="dto_msg">
+		insert into jsinc_sendMsg (senderEmpNo,recEmpNo,receiver,recRank,recDep,subject,content,sentTime)
+		values(#{senderEmpNo},#{recEmpNo},#{receiver},#{recRank},#{recDep},#{subject},#{content},#{sentTime})
+	</insert>
+	<!-- 받은 메세지 저장 -->
+	<insert id="recMsg" parameterType="dto_msg">
+		insert into jsinc_recMsg (recEmpNo,senderEmpNo,sender,senderRank,senderDep,subject,content,sentTime)
+		values(#{recEmpNo},#{senderEmpNo},#{sender},#{senderRank},#{senderDep},#{subject},#{content},#{sentTime})
+	</insert>
 
+	<!-- 해당 유저의 보낸메세지를 가져옴 -->
+	<select id="sentView" resultType="dto_msg">
+		select * from jsinc_sendMsg where senderEmpNo=#{empNo} order by sentTime desc
+	</select>
 
-<!-- 해당 유저의 보낸메세지를 가져옴-->
-<select id="sentView" resultType="dto_msg">
-	select * from jsinc_sendMsg where senderEmpNo=#{empNo} order by sentTime desc
-</select>
-
-<!-- 받은 메세지를 가져옴 -->
-<select id="recView" resultType="dto_msg">
- 	select * from jsinc_recMsg where recEmpNo=#{recEmpNo}
-</select>
+	<!-- 받은 메세지를 가져옴 -->
+	<select id="recView" resultType="dto_msg">
+		select * from jsinc_recMsg where recEmpNo=#{recEmpNo}
+	</select>
 
 <!-- 보낸 메세지 삭제 -->
 <delete id="sentMsgDel" parameterType="dto_msg">

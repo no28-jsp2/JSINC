@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.jsinc.mybatis.Sign">
+ 	<select id="lists" resultType="dto_sign">
+		select
+			title,
+			department,
+			writer,
+			target,
+			check
+		from
+			jsinc_sign
+		order by
+			bno desc
+	</select>
+	<select id="waitList" resultType="dto_sign">
+		select
+			title,
+			signs,
+			department,
+			target
+		from
+			jsinc_sign
+		where
+			empno = #{empno}
+			
+	</select>
+	<insert id="insert" parameterType="dto_sign">
+		insert into jsinc_sign(bno,title,department,writer,target,content,empno,worklocation,outwork,startDT,endDT,signs)
+		values((select nvl(max(bno)+1,1)from jsinc_sign),#{title},#{department},#{writer},#{target},#{content},#{empno},#{worklocation},#{outwork},#{startDT},#{endDT},#{signs})
+	</insert>
+	<select id="read" resultType="com.jsinc.jsincDTO.SignDTO">
+		select * from jsinc_sign where bno = #{bno}
+	</select>
+	<delete id="delete">
+		delete from jsinc_sign where bno = #{bno}
+	</delete>
+ </mapper>

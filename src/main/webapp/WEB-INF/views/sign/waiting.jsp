@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +23,25 @@
 				<div class="row mt">
 					<!--  DATE PICKERS -->
 					<div class="col-lg-12">
-						<div class="form-panel">
-							
+						<div class="form-panel" >
+							<table>
+								<thead>
+									<tr>
+										<td>제목</td><td>결재 분류</td><td>작성자</td><td>작성일자</td><td>결재 현황</td>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="list" items="${sign }">
+										<tr>
+											<a href="aproved?bno=${list.bno }"><td>${list.title }</td></a>
+											<td>${list.signs }</td>
+											<td>${list.writer }</td>
+											<td>${list.regdate }</td>
+											<td>대기</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
 						<!-- /form-panel -->
 					</div>
