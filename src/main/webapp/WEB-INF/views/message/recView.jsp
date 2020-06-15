@@ -20,15 +20,6 @@
 <link href="resources/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="resource/css/zabuto_calendar.css">
 <link rel="stylesheet" type="text/css" href="resource/lib/gritter/css/jquery.gritter.css" />
-						<!-- (설문  2020.06.01 17:51 추가)-->
-<link rel="stylesheet" href="resources/lib/advanced-datatable/css/DT_bootstrap.css" />
-<link href="resources/lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
-<link href="resources/lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-fileupload/bootstrap-fileupload.css" />
-<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-datepicker/css/datepicker.css" />
-<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-daterangepicker/daterangepicker.css" />
-<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-timepicker/compiled/timepicker.css" />
-<link rel="stylesheet" type="text/css" href="resources/lib/bootstrap-datetimepicker/datertimepicker.css" />
   
 <!-- Custom styles for this template -->
 <link href="resources/css/style.css" rel="stylesheet">
@@ -66,9 +57,9 @@
 								<tr>
 									<td><h5>${dto.sender } ${dto.senderRank }</h5></td>
 									<td><h5>${dto.senderDep }</h5></td>
-									<td><h5><a href="recContentView?subject=${dto.subject }&content=${dto.content}&sentTime=${dto.sentTime}&sender=${dto.sender}&senderRank=${dto.senderRank}&senderDep=${dto.senderDep}">${dto.subject }</a></h5></td>
+									<td><h5><a href="recContentView?subject=${dto.subject }&content=${dto.content}&sentTime=${dto.sentTime}&sender=${dto.sender}&senderRank=${dto.senderRank}&senderDep=${dto.senderDep}&senderEmpNo=${dto.senderEmpNo}">${dto.subject }</a></h5></td>
 									<td><h5>${dto.sentTime }</h5></td>
-									<td><button type="button" class="btn btn-danger">삭제</button></td>
+									<td><button type="button" onclick="location.href='recMsgDel?senderEmpNo=${dto.senderEmpNo}&recEmpNo=${dto.recEmpNo }&subject=${dto.subject}&sentTime=${dto.sentTime}'" class="btn btn-danger">삭제</button></td>
 								</tr>
 								</c:forEach>
 								

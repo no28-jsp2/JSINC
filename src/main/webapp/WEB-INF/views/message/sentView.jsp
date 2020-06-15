@@ -57,9 +57,9 @@
 								<tr>
 									<td><h5>${dto.receiver } ${dto.recRank }</h5></td>
 									<td><h5>${dto.recDep }</h5></td>
-									<td><h5><a href="sentContentView?subject=${dto.subject }&content=${dto.content}&sentTime=${dto.sentTime}&sender=${dto.sender}">${dto.subject }</a></h5></td>
+									<td><h5><a href="sentContentView?subject=${dto.subject }&content=${dto.content}&sentTime=${dto.sentTime}&receiver=${dto.receiver}&recDep=${dto.recDep}&recRank=${dto.recRank}">${dto.subject }</a></h5></td>
 									<td><h5>${dto.sentTime }</h5></td>
-									<td><button type="button" class="btn btn-danger">삭제</button></td>
+									<td><button type="button" onclick="location.href='sentMsgDel?recEmpNo=${dto.recEmpNo}&subject=${dto.subject}&sentTime=${dto.sentTime}'" class="btn btn-danger">삭제</button></td>
 								</tr>
 								
 								</c:forEach>
@@ -132,7 +132,7 @@
 				 */
 				 
 				var oTable = $('#hidden-table-info').dataTable({
-					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 3, 'desc' ] ]
+					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 4, 'desc' ] ]
 				});
 
 				/* Add event listener for opening and closing details

@@ -89,7 +89,7 @@
                <!-- 쪽지 -->
                <li class="sub-menu">
                   <a href="javascript:;"> 
-                     <i class="fa fa-comments-o"></i> <span>쪽지함</span><span class="label label-theme pull-right mail-info">2</span>
+                     <i class="fa fa-comments-o"></i> <span>쪽지함</span><span class="label label-theme pull-right mail-info">${msgAlarm }</span>
                   </a>
                   <ul class="sub">
                      <li><a href="sentMessage">보낸 쪽지함</a></li>
