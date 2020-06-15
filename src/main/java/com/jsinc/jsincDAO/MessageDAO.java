@@ -25,13 +25,26 @@ public class MessageDAO {
 	public List<MessageDTO> sentView(int empNo){
 		return sqlSession.selectList(namespace+".sentView",empNo);
 	}
-	//보낸 메세지 삭제
-	
 	//받은 메세지 가져옴
 	public List<MessageDTO> recView(int recEmpNo){
 		return sqlSession.selectList(namespace+".recView",recEmpNo);
 	}
+	//보낸 메세지 삭제
+	public int sentMsgDel(MessageDTO dto) {
+	 return sqlSession.delete(namespace+".sentMsgDel",dto);
+	}
 	//받은 메세지 삭제
+	public int recMsgDel(MessageDTO dto) {
+		return sqlSession.delete(namespace+".recMsgDel",dto);
+		
+	}
+	//메세지 알림
+	public int msgAlarm(int empNo) {
+		return sqlSession.selectOne(namespace+".msgAlarm",empNo);
+	}
+	//메세지 알림 체크 'Y'
+	public int msgChk(MessageDTO dto) {
+		return sqlSession.update(namespace+".msgChk",dto);
+	}
 	
-
 }

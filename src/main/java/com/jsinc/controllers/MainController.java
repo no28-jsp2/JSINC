@@ -28,6 +28,8 @@ import com.jsinc.services.main.ProfileEditServiceImpl;
 import com.jsinc.services.main.ProfileService;
 import com.jsinc.services.main.ProfileValueServiceImpl;
 import com.jsinc.services.main.ServiceIf;
+import com.jsinc.services.message.MsgAlarmServiceImpl;
+import com.jsinc.services.message.ServiceMes;
 
 @Controller
 public class MainController {
@@ -37,6 +39,7 @@ public class MainController {
 	@Autowired
 	MailService mailService;
 	ProfileService profileService;
+	ServiceMes msgService;
 
 	@Resource(name = "uploadPath") // 업로드 경로 (출처 : servlet-context)
 	private String uploadPath;
@@ -46,8 +49,13 @@ public class MainController {
 		model.addAttribute("request", request);
 		service = ac.getBean("loginService", LoginService.class);
 		int result = service.execute(model);
-		if (result == 0)
+		
+		if (result == 0) {
+			msgService=ac.getBean("msgAlarmServiceImpl",MsgAlarmServiceImpl.class);
+			model.addAttribute("request",request);
+			msgService.execute(model);
 			return "redirect:index";
+		}
 		return "home";
 	}
 

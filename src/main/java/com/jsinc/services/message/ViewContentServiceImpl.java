@@ -18,18 +18,11 @@ public class ViewContentServiceImpl implements ServiceMes{
 		MessageDTO dto = new MessageDTO();
 		//receiver
 		dto.setReceiver(request.getParameter("receiver"));
+		dto.setRecDep(request.getParameter("recDep"));
 		dto.setSentTime(request.getParameter("sentTime"));
 		dto.setSubject(request.getParameter("subject"));
 		dto.setContent(request.getParameter("content"));
-		
-		//sender
-		dto.setSender(request.getParameter("sender"));
-		dto.setSenderRank(request.getParameter("senderRank"));
-		dto.setSentTime(request.getParameter("sentTime"));
-		dto.setSenderEmpNo(Integer.parseInt(request.getParameter("senderEmpNo")));
-		
-		
-		
+		dto.setRecRank(request.getParameter("recRank"));
 		model.addAttribute("subCon",dto);
 		
 		
