@@ -57,7 +57,6 @@
                   </a>
                   <ul class="sub">
                      <li><a href="newSign">결재 상신</a></li>
-                     <li><a href="signAproved">결재 승인</a></li>
                      <li><a href="signWait">결재 대기</a></li>
                      <li><a href="signSuccess">결재 완료</a></li>
                   </ul>
@@ -89,7 +88,7 @@
                <!-- 쪽지 -->
                <li class="sub-menu">
                   <a href="javascript:;"> 
-                     <i class="fa fa-comments-o"></i> <span>쪽지함</span><span class="label label-theme pull-right mail-info">2</span>
+                     <i class="fa fa-comments-o"></i> <span>쪽지함</span><span class="label label-theme pull-right mail-info">${msgAlarm }</span>
                   </a>
                   <ul class="sub">
                      <li><a href="sentMessage">보낸 쪽지함</a></li>

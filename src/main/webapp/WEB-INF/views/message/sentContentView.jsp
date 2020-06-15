@@ -55,7 +55,7 @@
                   <div class="row">
                      <div class="col-md-8">
                       <strong>받는사람:</strong>
-                      <span>${subCon.receiver }</span>
+                      <span>[${subCon.recDep }]${subCon.receiver }${subCon.recRank } </span>
                     </div>
                     <div class="col-md-4">
                       <p class="date"> ${subCon.sentTime }</p>
@@ -69,6 +69,7 @@
                 <div class="compose-btn pull-left">
                   <a href="sentMessage" class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> 뒤로가기</a>
                 </div>
+                	
               </div>
             </section>
           </div>

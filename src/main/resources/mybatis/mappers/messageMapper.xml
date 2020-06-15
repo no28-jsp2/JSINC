@@ -24,4 +24,24 @@
 		select * from jsinc_recMsg where recEmpNo=#{recEmpNo}
 	</select>
 
+<!-- 보낸 메세지 삭제 -->
+<delete id="sentMsgDel" parameterType="dto_msg">
+	delete from jsinc_sendMsg where recEmpNo=#{recEmpNo} and subject=#{subject} 
+	and sentTime=#{sentTime} and senderEmpNo=#{senderEmpNo}
+</delete>
+<!-- 받은 메세지 삭제 -->
+<delete id="recMsgDel" parameterType="dto_msg">
+	delete from jsinc_recMsg where recEmpNo=#{recEmpNo} and subject=#{subject} 
+	and sentTime=#{sentTime} and senderEmpNo=#{senderEmpNo}
+</delete>
+<!-- 메세지 알림 -->
+<select id="msgAlarm" resultType="int">
+ 	select count(*) from jsinc_recmsg where msgChk='N' and recEmpNo=#{empNo}
+</select>
+<!-- 메세지 알림 체크 Y -->
+<update id="msgChk" parameterType="dto_msg">
+	update jsinc_recMsg set msgChk='Y' where recEmpNo=#{recEmpNo} and senderEmpNo=#{senderEmpNo} and subject=#{subject} and sentTime=#{sentTime}
+</update>
+
+
 </mapper>

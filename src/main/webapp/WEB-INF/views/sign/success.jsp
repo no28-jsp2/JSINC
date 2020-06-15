@@ -22,7 +22,24 @@
 					<!--  DATE PICKERS -->
 					<div class="col-lg-12">
 						<div class="form-panel">
-							
+							<table>
+								<thead>
+									<tr>
+										<td>제목</td><td>결재 분류</td><td>작성일자</td><td>부서</td><td>결재 승인 여부</td>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="list" items="${sign }">
+										<tr>
+											<td>${list.title }</td>
+											<td>${list.signs }</td>
+											<td>${list.regdate }</td>
+											<td>${list.department }</td>
+											<td>${list.checksign }</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
 						<!-- /form-panel -->
 					</div>
