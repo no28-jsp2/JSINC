@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,112 @@ ul li img {
 <body>
 	<section id="container">
 		<jsp:include page="default/header.jsp" />
-		<jsp:include page="default/sidebar.jsp" />
+		<!--sidebar start-->
+      <aside>
+         <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+               <p class="centered">
+                  <a href="profile">
+                     <img src="resources/img${user.img}" class="img-circle" width="80">
+                  </a>
+               </p>
+               <h5 class="centered"><i class="fa fa-user"></i> ${user.name } <br>(${user.userEmail })</h5>
+               
+               <!-- 출/퇴근 관리 -->
+               <li class="mt">
+                  <a href="attendance"> 
+                     <i class="fa fa-asterisk"></i> <span>출/퇴근</span>
+                  </a>
+               </li>
+               
+               <!-- 커뮤니티 -->
+               <li class="sub-menu">
+                  <a href="javascript:;"> 
+                     <i class="fa fa-desktop"></i> <span>커뮤니티</span>
+                  </a>
+                  <ul class="sub">
+                     <li><a href="createCommunity">커뮤니티 만들기</a></li>
+                     <li><a href="allCommunity">전체 커뮤니티</a></li>
+                     <li><a href="joinCommunity">가입 커뮤니티</a></li>
+                     
+                  </ul>
+               </li>
+               
+               <!-- 게시판 -->
+               <li class="sub-menu"><a href="javascript:;"> <i
+                     class="fa fa-cogs"></i> <span>게시판</span>
+               </a>
+                  <ul class="sub">
+                     <li><a href="allCompanyBoard">전사 게시판</a></li>
+                     <li><a href="departmentBoard">부서 게시판</a></li>
+                     <li><a href="referenceBoard">자료실 게시판</a></li>
+                  </ul>
+               </li>
+               
+               <!-- 전자 결재 -->
+               <li class="sub-menu">
+                  <a href="javascript:;"> 
+                     <i class="fa fa-book"></i>  <span>전자 결재</span>
+                  </a>
+                  <ul class="sub">
+                     <li><a href="newSign">결재 상신</a></li>
+                     <li><a href="signWait">결재 대기</a></li>
+                     <li><a href="signSuccess">결재 완료</a></li>
+                  </ul>
+               </li>
+               
+               <!-- 주소록 -->
+               <li >
+                  <a href="addressBook"> 
+                     <i class="fa fa-tasks"></i><span>주소록</span>
+                  </a>
+               </li>
+               
+               <!-- 캘린더 -->
+               <li>
+                  <a href="toDoList">
+                     <i class="fa fa-th"></i><span>스케줄</span>
+                  </a>
+               </li>
+               
+
+               
+               <!-- 보고 -->
+               <li>
+                  <a href="report"> 
+                     <i class=" fa fa-bar-chart-o"></i><span>보고</span>
+               		</a>
+               </li>
+               
+               <!-- 쪽지 -->
+               <li class="sub-menu">
+                  <a href="javascript:;"> 
+                     <i class="fa fa-comments-o"></i> <span>쪽지함</span><span class="label label-theme pull-right mail-info">${msgAlarm }</span>
+                  </a>
+                  <ul class="sub">
+                     <li><a href="sentMessage">보낸 쪽지함</a></li>
+                     <li><a href="RecMessage">받은 쪽지함</a></li>
+                  </ul>
+               </li>
+               
+               <!-- 설문 -->
+               <li class="sub-menu">
+                  <a href="javascript:;"> 
+                     <i class="fa fa-map-marker"></i>  <span>설문</span>
+                  </a>
+                  <ul class="sub">
+                  	 <li><a href="createSurvey">새 설문 작성</a></li>
+                     <li><a href="startedSurvey">진행중인 설문</a></li>
+                     <li><a href="endSurvey">마감된 설문</a></li>
+                     <li><a href="mySurvey">내가 만든 설문</a></li>
+                  </ul>
+               </li>
+            </ul>
+            <!-- sidebar menu end-->
+         </div>
+      </aside>
+      <!--sidebar end-->
 		<!--main content start-->
 		<section id="main-content">
 			<section class="wrapper">
@@ -38,21 +144,7 @@ ul li img {
 							</div>
 
 						</div>
-						<!--custom chart end-->
-
-						<!-- SERVER STATUS PANELS -->
-
-						<!-- /grey-panel -->
-
-						<!-- /col-md-4-->
-
-						<!--  /darkblue panel -->
-
-						<!-- /col-md-4 -->
-
-						<!-- /col-md-4 -->
-
-						<!-- /row -->
+						
 						<div class="row">
 							<!-- WEATHER PANEL -->
 							<div class="col-md-4 mb">
@@ -64,67 +156,34 @@ ul li img {
 								</div>
 							</div>
 							<!-- /col-md-4-->
+							
 							<!-- DIRECT MESSAGE PANEL -->
 							<div class="col-md-8 mb">
 								<div class="message-p pn">
 									<div class="message-header">
-										<h5>최신 메일함 or 쪽지</h5>
+										<h5>오늘의 설문</h5>
 									</div>
 									<div class="row">
-										<div class="col-md-3 centered hidden-sm hidden-xs">
-											<img src="img/ui-danro.jpg" class="img-circle" width="65">
-										</div>
-										<div class="col-md-9">
-											<p>
-												<name>Dan Rogers</name>
-												sent you a message.
-											</p>
-											<p class="small">3 hours ago</p>
-											<p class="message">Lorem Ipsum is simply dummy text of
-												the printing and typesetting industry. Lorem Ipsum has been
-												the industry's standard dummy text ever since the 1500s.</p>
-											<form class="form-inline" role="form">
-												<div class="form-group">
-													<input type="text" class="form-control"
-														id="exampleInputText" placeholder="Reply Dan">
-												</div>
-												<button type="submit" class="btn btn-default">Send</button>
-											</form>
-										</div>
+										<c:choose>
+											<c:when test="${list != null }">
+												<c:forEach items="list" var="dto">
+													<div class="col-md-9">
+														<p>
+															작성자 : <name>${dto.writer }</name>
+														</p>
+														<p class="small">Today</p>
+														<p class="message">
+															${dto.text }
+														</p>
+													</div>
+												</c:forEach>
+											</c:when>
+										</c:choose>
 									</div>
 								</div>
 							</div>
 							<!-- /col-md-8  -->
 						</div>
-
-						<!-- /row -->
-						<div class="col-md-8 mb">
-							<div class="message-p pn">
-								<div class="message-header">
-									<h5>결재 대기 문서</h5>
-								</div>
-								<div class="row">
-									<div class="col-md-3 centered hidden-sm hidden-xs">
-										<img src="img/ui-danro.jpg" class="img-circle" width="65">
-									</div>
-									<div class="col-md-9">
-										<p>
-											<name>Dan Rogers</name>
-											sent you a message.
-										</p>
-										<p class="small">3 hours ago</p>
-										<p class="message">Lorem Ipsum is simply dummy text of the
-											printing and typesetting industry. Lorem Ipsum has been the
-											industry's standard dummy text ever since the 1500s.</p>
-										<form class="form-inline" role="form">
-											<button type="submit" class="btn btn-default">Send</button>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
 						<!-- /row -->
 					</div>
 					<!-- /col-lg-9 END SECTION MIDDLE -->
@@ -190,66 +249,11 @@ ul li img {
 								</p>
 							</div>
 						</div>
-						<!-- USERS ONLINE SECTION -->
-						<h4 class="centered mt">TEAM MEMBERS ONLINE</h4>
-						<!-- First Member -->
-						<div class="desc">
-							<div class="thumb">
-								<img class="img-circle" src="img/ui-divya.jpg" width="35px"
-									height="35px" align="">
-							</div>
-							<div class="details">
-								<p>
-									<a href="#">DIVYA MANIAN</a><br />
-									<muted>Available</muted>
-								</p>
-							</div>
-						</div>
-						<!-- Second Member -->
-						<div class="desc">
-							<div class="thumb">
-								<img class="img-circle" src="img/ui-sherman.jpg" width="35px"
-									height="35px" align="">
-							</div>
-							<div class="details">
-								<p>
-									<a href="#">DJ SHERMAN</a><br />
-									<muted>I am Busy</muted>
-								</p>
-							</div>
-						</div>
-						<!-- Third Member -->
-						<div class="desc">
-							<div class="thumb">
-								<img class="img-circle" src="img/ui-danro.jpg" width="35px"
-									height="35px" align="">
-							</div>
-							<div class="details">
-								<p>
-									<a href="#">DAN ROGERS</a><br />
-									<muted>Available</muted>
-								</p>
-							</div>
-						</div>
-						<!-- Fourth Member -->
-						<div class="desc">
-							<div class="thumb">
-								<img class="img-circle" src="img/ui-zac.jpg" width="35px"
-									height="35px" align="">
-							</div>
-							<div class="details">
-								<p>
-									<a href="#">Zac Sniders</a><br />
-									<muted>Available</muted>
-								</p>
-							</div>
-						</div>
 						<!-- CALENDAR-->
 						<div id="calendar" class="mb">
 							<div class="panel green-panel no-margin">
 								<div class="panel-body">
-									<div id="date-popover" class="popover top"
-										style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+									<div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
 										<div class="arrow"></div>
 										<h3 class="popover-title" style="disadding: none;"></h3>
 										<div id="date-popover-content" class="popover-content"></div>
@@ -312,29 +316,7 @@ ul li img {
 	<!--script for this page-->
 	<script src="resources/lib/sparkline-chart.js"></script>
 	<script src="resources/lib/zabuto_calendar.js"></script>
-	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							var unique_id = $.gritter
-									.add({
-										// (string | mandatory) the heading of the notification
-										title : 'Welcome to Dashio!',
-										// (string | mandatory) the text inside the notification
-										text : 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo.',
-										// (string | optional) the image to display on the left
-										image : 'img/ui-sam.jpg',
-										// (bool | optional) if you want it to fade out on its own or just sit there
-										sticky : false,
-										// (int | optional) the time you want it to be alive for before fading out
-										time : 8000,
-										// (string | optional) the class name you want to apply to that specific message
-										class_name : 'my-sticky-class'
-									});
 
-							return false;
-						});
-	</script>
 	<script type="application/javascript">
 		
     $(document).ready(function() {
