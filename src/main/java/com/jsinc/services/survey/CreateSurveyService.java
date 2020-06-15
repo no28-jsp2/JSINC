@@ -18,6 +18,7 @@ import com.jsinc.jsincDTO.SurveyDTO;
 
 @Service
 public class CreateSurveyService implements ServiceIf {
+	
 	@Autowired
 	SurveyDAO dao;
 
@@ -31,7 +32,6 @@ public class CreateSurveyService implements ServiceIf {
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		String sDate = format.format(date);
-		System.out.println(sDate);
 		MemberDTO dto_mem = (MemberDTO) application.getAttribute("user");
 
 		SurveyDTO dto = new SurveyDTO();
