@@ -32,7 +32,7 @@ public class SenderServiceImpl implements ServiceMes{
 		ServletContext application = session.getServletContext();
 		MemberDTO dto= (MemberDTO) application.getAttribute("user");
 		//시간
-		SimpleDateFormat fm1 = new SimpleDateFormat("yyyy년MM월dd일hh시mm분");
+		SimpleDateFormat fm1 = new SimpleDateFormat("yyyy년 MM월 dd일 hh시 mm분");
 		String date = fm1.format(new Date());
 		
 		//JSinc_sendMsg 테이블에 저장됨

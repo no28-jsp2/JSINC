@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JS.Inc</title>
 </head>
 <!-- Favicons -->
 <link href="resources/img/favicon.png" rel="icon">
@@ -188,17 +188,19 @@
 				<div class="room-box">
 					<c:forEach items="${conList }" var="con">
 						<c:choose>
+	
 							<c:when test="${con.step > 0 }">
 								<span style="font-size: 13pt; color: black"> 
 									<span class="fa fa-mail-forward">${con.content } </span>
 								</span>
 								<span class="text-primary"> 
-									<i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp; <i class="fa fa-calendar"></i>&nbsp;${con.com_date }
+									<i class="fa fa-user"></i>&nbsp;<a onclick="replyTo('${view.cNo}','${con.idgroup }','${con.step }','${con.indent }','${con.name }')" style="cursor: pointer;" >${con.name }&nbsp;${con.rank}&nbsp;</a> <i class="fa fa-calendar"></i>&nbsp;${con.com_date }<br>
 								</span>
 							</c:when>
 							<c:when test="${con.step == 0 }">
+			
 								<h5 class="text-primary" style="margin-top: 30px;">
-									<i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp;
+									<i class="fa fa-user"></i><a onclick="replyTo('${view.cNo}','${con.idgroup }','${con.step }','${con.indent }','${con.name }')" style="cursor: pointer;">&nbsp;${con.name }&nbsp;${con.rank}&nbsp;</a>
 									<i class="fa fa-calendar"></i>&nbsp;${con.com_date }
 								</h5>
 								<span style="font-size: 13pt; color: black">${con.content }</span>
@@ -211,6 +213,9 @@
 						<form action="reply" onsubmit="return revaldat()">
 							<input type="text" style="width: 60%; margin-top: 20px;" placeholder="댓글 입력" name="reply" id="reply">
 							<button type="submit" class="btn btn-round btn-success" onclick="revaldat()">등록</button>
+							<input type="text" name="cno" id="cn"><input type="text" name="idGroup" id="idGroup">
+							<input type="text" name="cno" id="step"><input type="text" name="idGroup" id="indent">
+						
 						</form>
 					</div>
 				</div>
@@ -218,6 +223,21 @@
 		</section>
 	</section>
 	<script type="text/javascript">
+	function replyTo(cNo,idGroup,step,indent,name){
+	
+		$('#cn').val(cNo);
+		$('#idGroup').val(idGroup);
+		$('#step').val(step);
+		$('#indent').val(indent);
+		$('#reply').val(name)
+		alert(cNo+idGroup)
+		if($('#cn').val()==""){
+			alert("댓글을 작성 하고싶은 사람의 이름을 클릭해주세요")
+			return false
+		}
+		
+		
+	}
 	function revaldat(){
 		if($("#reply").val()==""){
 			alert("내용을 작성해주세요")
@@ -244,6 +264,9 @@
 		alert("등록 되었습니다~")
 		
 	}
+	
+	
+	
 	
 </script>
 	<!--main content end-->
