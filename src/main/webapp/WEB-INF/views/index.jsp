@@ -64,7 +64,7 @@ ul li img {
 							<li><a href="referenceBoard">자료실 게시판</a></li>
 						</ul>
 					</li>
-
+					
 					<!-- 전자 결재 -->
 					<li class="sub-menu">
 						<a href="javascript:;">
