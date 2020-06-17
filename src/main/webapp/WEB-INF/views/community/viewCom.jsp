@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JS.Inc</title>
+<title>Insert title here</title>
 </head>
 <!-- Favicons -->
 <link href="resources/img/favicon.png" rel="icon">

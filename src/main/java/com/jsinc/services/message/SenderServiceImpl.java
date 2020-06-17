@@ -32,10 +32,8 @@ public class SenderServiceImpl implements ServiceMes{
 		ServletContext application = session.getServletContext();
 		MemberDTO dto= (MemberDTO) application.getAttribute("user");
 		//시간
-		Date date = new Date();
-		SimpleDateFormat fm1 = new SimpleDateFormat("yyyy년 MM월 dd일 ");
-		SimpleDateFormat fm2 = new SimpleDateFormat("시 mm분");
-		String time = fm1.format(date) + date.getHours() + fm2.format(date);
+		SimpleDateFormat fm1 = new SimpleDateFormat("yyyy년MM월dd일hh시mm분");
+		String date = fm1.format(new Date());
 		
 		//JSinc_sendMsg 테이블에 저장됨
 		MessageDTO sdto= new MessageDTO();
@@ -47,7 +45,7 @@ public class SenderServiceImpl implements ServiceMes{
 		System.out.println("recDep:"+request.getParameter("recDep"));
 		sdto.setSubject(request.getParameter("subject"));
 		sdto.setContent(request.getParameter("content"));
-		sdto.setSentTime(time);
+		sdto.setSentTime(date);
 		//JSinc_recMsg테이블에 저장됨
 		MessageDTO rdto= new MessageDTO();
 		rdto.setRecEmpNo(Integer.parseInt(request.getParameter("recEmpNo")));
@@ -58,7 +56,7 @@ public class SenderServiceImpl implements ServiceMes{
 		System.out.println("senderDep:"+dto.getDep());
 		rdto.setSubject(request.getParameter("subject"));
 		rdto.setContent(request.getParameter("content"));
-		rdto.setSentTime(time);
+		rdto.setSentTime(date);
 		
 		
 		dao.sendMsg(sdto);
