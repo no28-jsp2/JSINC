@@ -314,7 +314,6 @@ ul li img {
 						
 						</div>
 						</c:forEach>
-						<!-- RECENT ACTIVITIES END -->
 						<!-- CALENDAR-->
 						<div id="calendar" class="mb">
 							<div class="panel green-panel no-margin">
