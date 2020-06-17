@@ -10,7 +10,8 @@
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JS.Inc</title>
+<link href="resources/img/favicon.png" rel="icon">
 </head>
 <body>
   <!-- **********************************************************************************************************************************************************
@@ -65,6 +66,7 @@
 				</a>
 					<ul class="sub">
 						<li><a href="newSign">결재 상신</a></li>
+						<li><a href="signApprove">결재 승인</a></li>
 						<li><a href="signWait">결재 대기</a></li>
 						<li><a href="signSuccess">결재 완료</a></li>
 					</ul></li>
@@ -112,28 +114,29 @@
     
       <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> 전사 게시판</h3>
+        <hr>
         <div class="row mb">
+        <a href="writeBoard" style="padding-left: 10px; padding-bottom: 10px;"><button type="button" class="btn btn-sm btn-success">글쓰기</button></a>
         	
           <!-- page start-->
           <div class="content-panel">
           <div style="padding-right: 30px; float: right;" align="right"  >
-        	<button type="button" id="write" style="width: 70px; height: 25px;">글 쓰 기</button>
         	</div>
             <div class="adv-table">
               
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    <th>작성자</th>
-                    <th>제목</th>
-                    <th>작성일</th>
+                    <th><center>제목</center></th>
+                    <th><center>작성자</center></th>
+                    <th><center>작성일</center></th>
                   </tr>
                 </thead>
                 <tbody>
                 <c:forEach var="board" items="${board}">
                   <tr>
+                    <td><a href="allCompanyCon?bno=${board.bno}">${board.title }</td>
                     <td>${board.writer }</td>
-                    <td>${board.title }</td>
                     <td><fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                   </tr>
                  </c:forEach>
@@ -164,7 +167,7 @@
   <script src="resources/lib/common-scripts.js"></script>
   <!--script for this page-->
   <script type="text/javascript">
-    /* Formating function for row details */
+    /* Formating function for row details 
     function fnFormatDetails(oTable, nTr) {
       var aData = oTable.fnGetData(nTr);
       var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
@@ -174,7 +177,7 @@
 
       return sOut;
     }
-
+*/
     $(document).ready(function() {
     	$('#write').on('click', function() {
 			location.href = 'writeBoard'
@@ -185,9 +188,10 @@
        */
       var nCloneTh = document.createElement('th');
       var nCloneTd = document.createElement('td');
+      /*
       nCloneTd.innerHTML = '<img src="resource/lib/advanced-datatable/images/details_open.png">';
       nCloneTd.className = "center";
-
+	  */
       $('#hidden-table-info thead tr').each(function() {
         this.insertBefore(nCloneTh, this.childNodes[0]);
       });
@@ -212,19 +216,19 @@
       /* Add event listener for opening and closing details
        * Note that the indicator for showing which row is open is not controlled by DataTables,
        * rather it is done here
-       */
+       
       $('#hidden-table-info tbody td img').live('click', function() {
         var nTr = $(this).parents('tr')[0];
         if (oTable.fnIsOpen(nTr)) {
-          /* This row is already open - close it */
+           This row is already open - close it 
           this.src = "resources/lib/advanced-datatable/images/details_open.png";
           oTable.fnClose(nTr);
         } else {
-          /* Open this row */
+           Open this row 
           this.src = "resources/lib/advanced-datatable/images/details_close.png";
           oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
         }
-      });
+      });*/
     });
   </script>
 

@@ -10,7 +10,7 @@ public class SignDTO {
 	private String content;
 	private String writer;
 	private String target;
-	private String check;
+	private String checksign;
 	private String department;
 	private String worklocation;
 	private String signs;
@@ -48,12 +48,12 @@ public class SignDTO {
 	}
 	public void setTarget(String target) {
 		this.target = target;
+	}	
+	public String getChecksign() {
+		return checksign;
 	}
-	public String getCheck() {
-		return check;
-	}
-	public void setCheck(String check) {
-		this.check = check;
+	public void setChecksign(String checksign) {
+		this.checksign = checksign;
 	}
 	public Date getRegdate() {
 		return regdate;

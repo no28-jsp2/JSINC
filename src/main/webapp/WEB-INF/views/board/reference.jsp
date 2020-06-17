@@ -10,7 +10,8 @@
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JS.Inc</title>
+<link href="resources/img/favicon.png" rel="icon">
 </head>
 <body>
   <!-- **********************************************************************************************************************************************************
@@ -68,6 +69,7 @@
                   </a>
                   <ul class="sub">
                      <li><a href="newSign">결재 상신</a></li>
+                     <li><a href="signApprove">결재 승인</a></li>
                      <li><a href="signWait">결재 대기</a></li>
                      <li><a href="signSuccess">결재 완료</a></li>
                   </ul>
@@ -128,29 +130,33 @@
     
       <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> 자료실 게시판</h3>
+        <hr>
         <div class="row mb">
-        	
+        	 <a href="upload" style="padding-left: 10px; padding-bottom: 10px;"><button type="button" class="btn btn-sm btn-success">글쓰기</button></a>
+		
           <!-- page start-->
           <div class="content-panel">
+         		
           <div style="padding-right: 30px; float: right;" align="right"  >
-        	<a href="upload"><button type="button" id="write" style="width: 70px; height: 25px;">글 쓰 기</button></a>
         	</div>
             <div class="adv-table">
               
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    <th>작성자</th>
-                    <th>제목</th>
-                    <th>작성일</th>
+                    <th><center>제목</center></th>
+                    <th><center>작성자</center></th>
+                    <th><center>부서</center></th>
+                    <th><center>작성일</center></th>
                   </tr>
                 </thead>
                 <tbody>
                 <c:forEach var="ref" items="${reference}">
                   <tr>
-                    <td>${ref.writer }</td>
                     <td><a href="refContent?bno=${ref.bno }">${ref.title }</a></td>
-                    <td><fmt:formatDate value="${ref.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                    <td>${ref.writer }</td>
+                    <td>${ref.department }</td>
+                    <td><fmt:formatDate value="${ref.regdate }" pattern="yyyy-MM-dd (E) HH:mm:ss (a)"/></td>
                   </tr>
                  </c:forEach>
                 </tbody>
@@ -179,6 +185,40 @@
   <!--common script for all pages-->
   <script src="resources/lib/common-scripts.js"></script>
   <!--script for this page-->
+  <script type="text/javascript">
+  $(document).ready(
+			function() {
+				var nCloneTh = document.createElement('th');
+				var nCloneTd = document.createElement('td');
+				/*
+				nCloneTd.innerHTML = '<img src="resources/lib/advanced-datatable/images/details_open.png">';
+				nCloneTd.className = "center";
+				*/
+				
+				$('#hidden-table-info thead tr').each(
+					function() {
+						this.insertBefore(nCloneTh,this.childNodes[0]);
+					}
+				);
+
+				$('#hidden-table-info tbody tr').each(
+					function() {
+						this.insertBefore(nCloneTd.cloneNode(true),this.childNodes[0]);
+					}
+				);
+				
+				/*
+				 * Initialse DataTables, with no sorting on the 'details' column
+				 */
+				 
+				var oTable = $('#hidden-table-info').dataTable({
+					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 1, 'desc' ] ]
+				});
+			}
+	);
+
+
+  </script>
   
 
 </body>
