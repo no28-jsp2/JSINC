@@ -11,7 +11,7 @@
 <body>
 	<section id="container">
 		<jsp:include page="../default/header.jsp"/>
-		<jsp:include page="../default/sidebar.jsp"/>
+
 		<!--main content start-->
 		<section id="main-content">
 			<section class="wrapper">
