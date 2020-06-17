@@ -294,7 +294,7 @@ ul li img {
 
 						<!--new earning end-->
 						<!-- RECENT ACTIVITIES SECTION -->
-						<h4 class="centered mt">읽지 않은 메세지</h4>
+							<h4 class="centered mt">읽지 않은 메세지</h4>
 					
 				<c:if test="${empty recList}">
 						<div class="desc" align="center" style="margin-bottom: 250px;">
@@ -314,8 +314,6 @@ ul li img {
 						
 						</div>
 						</c:forEach>
-						 
-						
 						<!-- CALENDAR-->
 						<div id="calendar" class="mb">
 							<div class="panel green-panel no-margin">
