@@ -126,26 +126,26 @@
 
 			<!-- page start-->
 			<div class="form-panel">
-							<form action="write" class="form-horizontal style-form" method="post">
-							
+							<form action="updateAC" class="form-horizontal style-form" method="post">
+							<input type="hidden" value="${board.bno }" name="bno">
 								<div class="form-group">
 									<label  class="control-label col-lg-2" style="text-align: center;">제목</label>
 									<div class="col-lg-10">
-										<input type="text" class="form-control "  name="title" required>
+										<input type="text" class="form-control "  name="title" value="${board.title }" required>
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<label class="col-sm-2 col-sm-2 control-label" style="text-align: center;">작성자</label>
 									<div class="col-md-3 col-xs-11">
-										<input type="text" class="form-control" name="writer" value="${user.name } ${user.rank}" readonly="readonly">
+										<input type="text" class="form-control" name="writer" value="${board.writer }" readonly="readonly">
 									</div>
 								</div>
 
 								<div class="form-group ">
 									<label class="control-label col-lg-2" style="text-align: center;">내용</label>
 									<div class="col-lg-10">
-										<textarea class="form-control " name="content" required style="height: 200px;"></textarea>
+										<textarea class="form-control " name="content" required style="height: 200px;">${board.content }</textarea>
 									</div>
 								</div>
 								<div class="form-group">
