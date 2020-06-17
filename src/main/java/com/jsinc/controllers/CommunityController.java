@@ -17,6 +17,7 @@ import com.jsinc.services.community.ContentSaveServiceImpl;
 import com.jsinc.services.community.CreateServiceImpl;
 import com.jsinc.services.community.LeaveServiceImpl;
 import com.jsinc.services.community.MyServiceImpl;
+import com.jsinc.services.community.ReplySaveServiceImpl;
 import com.jsinc.services.community.ServiceCom;
 import com.jsinc.services.community.SignUpServiceImpl;
 import com.jsinc.services.community.ViewServiceImpl;
@@ -97,11 +98,18 @@ public class CommunityController {
 	// 댓글 등록
 	@RequestMapping("reply")
 	public String reply(Model model, HttpServletRequest request) {
-		String cno = (String) request.getParameter("cno");
-		String idgroup = (String) request.getParameter("idgroup");
+		int cno = Integer.parseInt(request.getParameter("cno"));
+		int idgroup = Integer.parseInt(request.getParameter("idGroup"));
+		int step=Integer.parseInt(request.getParameter("step"));
+		int indent=Integer.parseInt(request.getParameter("indent"));
 		System.out.println(cno);
 		System.out.println(idgroup);
-
+		System.out.println(step);
+		System.out.println(indent);
+		model.addAttribute("request",request);
+		service=ac.getBean("replySaveServiceImpl",ReplySaveServiceImpl.class);
+		service.getExe(model);
+		
 		return "redirect:viewCom";
 	}
 

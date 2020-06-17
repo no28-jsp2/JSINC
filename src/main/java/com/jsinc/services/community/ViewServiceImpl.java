@@ -32,8 +32,6 @@ public class ViewServiceImpl implements ServiceCom {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session = request.getSession();
-		ServletContext application = session.getServletContext();
-		MemberDTO dto_mem = (MemberDTO)application.getAttribute("user");
 		
 		String title = request.getParameter("title");
 		if(title == null) {
@@ -42,14 +40,11 @@ public class ViewServiceImpl implements ServiceCom {
 		}
 		
 		CommunityDTO dto = dao.view(title);
-		dto.setEmpNo(dto_mem.getEmpNo());
-		
 		int cno = dto.getcNo();
 		ArrayList<CommunityConDTO> list = (ArrayList<CommunityConDTO>) dao.contentGet(cno);
 		
 		int signBut = dao.signBut(dto);
 		model.addAttribute("signBut", signBut);
-		
 		session.setAttribute("view", dto);
 		session.setAttribute("conList", list);
 	}
