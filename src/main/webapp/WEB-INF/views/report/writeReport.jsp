@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+    pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<title>JS.Inc</title>
-<link href="resources/img/favicon.png" rel="icon">
+<style type="text/css">
+	th{background-color: #B2D3C2; width: 60px; height: 30px; }
+	input{border: none;}
+	select {border: none;}
+</style>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
-
 <body>
-	<section id="container">
-		<jsp:include page="../default/header.jsp"/>
+<jsp:include page="../default/header.jsp" />
 		<!--sidebar start-->
       <aside>
          <div id="sidebar" class="nav-collapse ">
@@ -62,7 +64,6 @@
                   </a>
                   <ul class="sub">
                      <li><a href="newSign">결재 상신</a></li>
-                     <li><a href="signApprove">결재 승인</a></li>
                      <li><a href="signWait">결재 대기</a></li>
                      <li><a href="signSuccess">결재 완료</a></li>
                   </ul>
@@ -86,7 +87,7 @@
                
                <!-- 보고 -->
                <li>
-                  <a href="report"> 
+                  <a class="active" href="report"> 
                      <i class=" fa fa-bar-chart-o"></i><span>보고</span>
                		</a>
                </li>
@@ -104,11 +105,11 @@
                
                <!-- 설문 -->
                <li class="sub-menu">
-                  <a class="active" href="javascript:;"> 
+                  <a href="javascript:;"> 
                      <i class="fa fa-map-marker"></i>  <span>설문</span>
                   </a>
                   <ul class="sub">
-                  	 <li class="active"><a href="createSurvey">새 설문 작성</a></li>
+                  	 <li><a href="createSurvey">새 설문 작성</a></li>
                      <li><a href="startedSurvey">진행중인 설문</a></li>
                      <li><a href="endSurvey">마감된 설문</a></li>
                      <li><a href="mySurvey">내가 만든 설문</a></li>
@@ -119,115 +120,69 @@
          </div>
       </aside>
       <!--sidebar end-->
-		<!--main content start-->
-		<section id="main-content">
-			<section class="wrapper">
-				<h3>
-					<i class="fa fa-angle-right"></i> 보고
-				</h3>
-				<div class="row mt">
-					<!--  DATE PICKERS -->
-					<div class="col-lg-12">
-						<div class="form-panel">
-							<form action="rpWrite" class="form-horizontal style-form" method="post">
-							
-								<div class="form-group">
-									<label  class="col-sm-2 col-sm-2 control-label" style="text-align: center;">보고서</label>
-									<div class="col-md-3 col-xs-11">
-									<select name="report" class="form-control" required="required">
-										<option value="">보고서</option>
-										<option value="일일보고">일일보고</option>
-										<option value="주간보고">주간보고</option>
-										<option value="업무일지">업무일지</option>
-									</select>
-									</div>
-									<label  class="col-sm-2 col-sm-2 control-label" style="text-align: center;">보고 대상자</label>
-									<div class="col-md-3 col-xs-11">
-									<select name="target" class="form-control" required="required">
-												<option value="홍앵앵 과장">홍앵앵 과장</option>
-												<option value="홍길동 과장">홍길동 과장</option>
-												<option value="황원장 과장">황원장 과장</option>
-												<option value="박창준 과장">박창준 과장</option>
-												<option value="심고은 과장">심고은 과장</option>
-												<option value="최양락 과장">최양락 과장</option>
-												<option value="이순재 과장">이순재 과장</option>
-												<option value="최불암 과장">최불암 과장</option>
-												<option value="이특 부장">이특 부장</option>
-												<option value="고준희 부장">고준희 부장</option>
-												<option value="이효리 부장">이효리 부장</option>
-												<option value="나길동 부장">나길동 부장</option>
-												<option value="장동건 이사">장동건 이사</option>
-												<option value="강동원 이사">강동원 이사</option>
-												<option value="이송이 이사">이송이 이사</option>
-												<option value="수진 이사">수진 이사</option>
-												
-									</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label  class="control-label col-lg-2" style="text-align: center;">제목</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control "  name="title" required>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label" style="text-align: center;">부서</label>
-									<div class="col-md-3 col-xs-11">
-										<input type="text" class="form-control" name="department" value="${user.dep }" readonly="readonly">
-									</div>
-									<label class="col-sm-2 col-sm-2 control-label" style="text-align: center;">작성자</label>
-									<div class="col-md-3 col-xs-11">
-										<input type="text" class="form-control" name="writer" value="${user.name } ${user.rank}" readonly="readonly">
-									</div>
-								</div>
+<section id="main-content">
+    
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i>보고</h3>
+       <div class="row mb">
+        	
+          <!-- page start-->
+          <div class="content-panel" align="center">
+   
+	 
+			<form action="rpWrite" method="post">
 
-								<div class="form-group ">
-									<label class="control-label col-lg-2" style="text-align: center;">내용</label>
-									<div class="col-lg-10">
-										<textarea class="form-control " name="content" required style="height: 200px;"></textarea>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-lg-offset-2 col-lg-10">
-										<button class="btn btn-theme" type="submit">올리기</button>
-										<button class="btn btn-theme04" type="reset">초기화</button>
-									</div>
-								</div>
-							</form>
-						</div>
-						<!-- /form-panel -->
-					</div>
-					<!-- /col-lg-12 -->
-				</div>
-				<!-- /row -->
-				
-			</section>
-			<!-- /wrapper -->
-		</section>
-		<!-- /MAIN CONTENT -->
-		<!--main content end-->
-		<jsp:include page="../default/footer.jsp"/>
+	<table style=" border: solid;">
+	<tr><th>보고서</th><td>
+	<select name="report">
+		<option value="">보고서</option>
+		<option value="일일보고">일일보고</option>
+		<option value="주간보고">주간보고</option>
+		<option value="업무일지">업무일지</option>
+	</select></td>
+	<th>제목</th><td colspan="3"><input type="text" name="title" required="required"></td></tr>
+	<tr><th>부서</th>
+	<td><select name="department">
+		<option value="개발부">개발부</option>
+		<option value="경영지원부">경영지원부</option>
+		<option value="경리부">경리부</option>
+		<option value="품질관리부">품질관리부</option>
+		<option value="해외업무부">해외업무부</option>
+	</select></td>
+	<th>보고자</th><td><input type="text" id="wr" name="writer" value="${user.name }"></td>
+	<th>보고 대상</th><td><input type="text" name="target" required="required"></td></tr>
+	<tr><td colspan="6"><textarea name="content" style="width: 600px; height: 300px;" required="required"></textarea></td></tr>
+	</table>
+	<button type="submit" class="btn">보고서 등록</button>
+	<button type="reset" class="btn">취소</button>
+	<button><a href="report" class="btn">목록보기</a></button>
+	</form>
+	   
+	
+	</div>
+	</div>
 	</section>
-	<!-- js placed at the end of the document so the pages load faster -->
-	<script src="resources/lib/jquery/jquery.min.js"></script>
-	<script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
-	<script class="include" type="text/javascript" src="resources/lib/jquery.dcjqaccordion.2.7.js"></script>
-	<script src="resources/lib/jquery.scrollTo.min.js"></script>
-	<script src="resources/lib/jquery.nicescroll.js" type="text/javascript"></script>
-	<!--common script for all pages-->
-	<script src="resources/lib/common-scripts.js"></script>
-	<!--script for this page-->
-	<script src="resources/lib/jquery-ui-1.9.2.custom.min.js"></script>
-	<script type="text/javascript" src="resources/lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-	<script type="text/javascript" src="resources/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="resources/lib/bootstrap-daterangepicker/date.js"></script>
-	<script type="text/javascript" src="resources/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
-	<script type="text/javascript" src="resources/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-	<script type="text/javascript" src="resources/lib/bootstrap-daterangepicker/moment.min.js"></script>
-	<script type="text/javascript" src="resources/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-	<script src="resources/lib/advanced-form-components.js"></script>
-
+	</section>
+	
+	
+	
+<jsp:include page="../default/footer.jsp"/>
+<script src="resources/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" language="javascript" src="resources/lib/advanced-datatable/js/jquery.js"></script>
+  <script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="resources/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="resources/lib/jquery.scrollTo.min.js"></script>
+  <script src="resources/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script type="text/javascript" language="javascript" src="resources/lib/advanced-datatable/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="resources/lib/advanced-datatable/js/DT_bootstrap.js"></script>
+  <!--common script for all pages-->
+  <script src="resources/lib/common-scripts.js"></script>
+  <script type="text/javascript">
+		
+		$("#wr").attr('readonly', true);
+		
+</script>
+	
+	
 </body>
-
 </html>

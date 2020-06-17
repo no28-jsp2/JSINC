@@ -32,7 +32,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jsinc.jsincDTO.BoardDTO;
 import com.jsinc.services.board.boardService;
-import com.jsinc.services.board.departmentService;
 import com.jsinc.services.board.referenceService;
 
 @Controller
@@ -42,30 +41,18 @@ public class BoardController {
 	
 	ApplicationContext ac = App.ac;
 	
-	@Autowired
+	@Inject
 	referenceService rs;
+	
 	@Autowired
 	boardService bs;
-	@Autowired
-	departmentService ds;
-	
+
 	@RequestMapping("allCompanyBoard")
 	public ModelAndView allCompany() throws Exception{
 		List<BoardDTO> list = bs.listAll();
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("board/allCompany");
 		mav.addObject("board",list);
-		return mav;
-	}
-	@RequestMapping("allCompanyCon")
-	public ModelAndView allCompanyCon(@RequestParam int bno) throws Exception{
-		BoardDTO dto = bs.view(bno);
-		String content = dto.getContent();
-		content = content.replace("\n", "<br>");
-		dto.setContent(content);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/allCompanyCon");
-		mav.addObject("board",dto);
 		return mav;
 	}
 	
@@ -80,111 +67,13 @@ public class BoardController {
 		bs.create(dto);
 		return "redirect:allCompanyBoard";
 	}
-	@RequestMapping("updateCom")
-	public ModelAndView updateCom(@RequestParam int bno) throws Exception {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/updateCom");
-		mav.addObject("board",bs.view(bno));
-		return mav;
-	}
-	@RequestMapping(value="updateAC",method=RequestMethod.POST)
-	public String updateAC(@ModelAttribute BoardDTO dto) throws Exception {
-		bs.update(dto);
-		return "redirect:allCompanyCon?bno="+dto.getBno();
-	}
-	
-	///////////////////부서 게시판////////////////////////////
-	@RequestMapping("depView")
-	public ModelAndView depView(@RequestParam int bno) {
-		BoardDTO dto = ds.depRead(bno);
-		String content = dto.getContent();
-		content = content.replace("\n", "<br>");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/department/depView");
-		mav.addObject("view",dto);
-		return mav;
-	}
-	
-	@RequestMapping("departmentBoard")
-	public ModelAndView department() {
-		List<BoardDTO> list = ds.allList();
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/department");
-		mav.addObject("department",list);
-		return mav;
-	}
-	@RequestMapping("depWrite")
-	public String depWrite() {
-		return "board/department/depWrite";
-	}
-	@RequestMapping(value="depCreate",method = RequestMethod.POST)
-	public String depCreate(@ModelAttribute BoardDTO dto) {
-		ds.create(dto);
-		return "redirect:departmentBoard";
-	}
-	
-	@RequestMapping("develop")
-	public ModelAndView develop() {
-		List<BoardDTO> list = ds.develop();
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/department/develop");
-		mav.addObject("develop",list);
-		return mav;
-	}
-	@RequestMapping("support")
-	public ModelAndView support() {
-		List<BoardDTO> list = ds.support();
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/department/support");
-		mav.addObject("support",list);
-		return mav;
-	}
-	@RequestMapping("accounting")
-	public ModelAndView accounting() {
-		List<BoardDTO> list = ds.accounting();
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/department/accounting");
-		mav.addObject("accounting",list);
-		return mav;
-	}
-	@RequestMapping("quality")
-	public ModelAndView quality() {
-		List<BoardDTO> list = ds.quality();
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/department/quality");
-		mav.addObject("quality",list);
-		return mav;
-	}
-	@RequestMapping("overseas")
-	public ModelAndView overseas() {
-		List<BoardDTO> list = ds.overseas();
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/department/overseas");
-		mav.addObject("overseas",list);
-		return mav;
-	}
-	@RequestMapping("updateDep")
-	public ModelAndView updateDep(@RequestParam int bno) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/department/depUpdate");
-		mav.addObject("dep",ds.depRead(bno));
-		return mav;
-	}
-	
-	@RequestMapping(value="updateD",method = RequestMethod.POST)
-	public String update(@ModelAttribute BoardDTO dto) {
-		ds.depUpdate(dto);
-		return "redirect:depView?bno="+dto.getBno();
-	}
-	@RequestMapping("deleteDep")
-	public String delete(@RequestParam int bno) {
-		ds.depDelete(bno);
-		return "redirect:departmentBoard";
-	}
 	
 	
-	
-	///////////////////////////////////////////////
+	@RequestMapping("department")
+	public String department() {
+		
+		return "department";
+	}
 	@RequestMapping("referenceBoard")
 	public ModelAndView reference() throws Exception {
 		List<BoardDTO> list = rs.fileListAll();
@@ -220,30 +109,13 @@ public class BoardController {
 				
 				return "redirect:referenceBoard";
 	}
-	@RequestMapping("deleteRef")
-	public String deleteRef(@RequestParam int bno) throws Exception {
-		BoardDTO dto = rs.fileView(bno);
-		String file = dto.getSavefile();
-		File deleteFile = new File(uploadPath+file);
-		if(deleteFile.exists()) {
-			if(deleteFile.delete()) {
-				System.out.println("삭제 성공");
-			}else {
-				System.out.println("삭제 실패");
-			}
-		}else {
-			System.out.println("파일을 찾지 못함");
-		}
-		return "redirect:referenceBoard";
-	}
 	@RequestMapping("refContent")
-	public ModelAndView refContent(@RequestParam int bno)throws Exception {
+	public ModelAndView reqContent(@RequestParam int bno)throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("board/refContent");
-		mav.addObject("ref",rs.fileView(bno));
+		mav.addObject("board",rs.fileView(bno));
 		return mav;
 	}
-	
 	
 	@RequestMapping("fileDownload")
 	public ModelAndView download(@RequestParam int bno) throws Exception {

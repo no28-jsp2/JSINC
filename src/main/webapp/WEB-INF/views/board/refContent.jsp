@@ -1,35 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+	th {background-color: #B2D3C2; }
+</style>
 <meta charset="UTF-8">
-<title>JS.Inc</title>
-<link href="resources/img/favicon.png" rel="icon">
+<title>Insert title here</title>
 </head>
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="Dashboard">
-  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Dashio - Bootstrap Admin Template</title>
-
-  <!-- Favicons -->
-  <link href="resources/img/favicon.png" rel="icon">
-  <link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Bootstrap core CSS -->
-  <link href="resources/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!--external css-->
-  <link href="resources/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <!-- Custom styles for this template -->
-  <link href="resources/css/style.css" rel="stylesheet">
-  <link href="resources/css/style-responsive.css" rel="stylesheet">
 <body>
-<jsp:include page="../default/header.jsp" />
-		 <!--sidebar start-->
+ <jsp:include page="../default/header.jsp" />
+		<!--sidebar start-->
       <aside>
          <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
@@ -62,13 +46,13 @@
                </li>
                
                <!-- 게시판 -->
-               <li class="sub-menu"><a href="javascript:;"> <i
+               <li class="sub-menu"><a class="active" href="javascript:;"> <i
                      class="fa fa-cogs"></i> <span>게시판</span>
                </a>
                   <ul class="sub">
                      <li><a href="allCompanyBoard">전사 게시판</a></li>
                      <li><a href="departmentBoard">부서 게시판</a></li>
-                     <li><a href="referenceBoard">자료실 게시판</a></li>
+                     <li class="active"><a href="referenceBoard">자료실 게시판</a></li>
                   </ul>
                </li>
                
@@ -79,7 +63,6 @@
                   </a>
                   <ul class="sub">
                      <li><a href="newSign">결재 상신</a></li>
-                     <li><a href="signApprove">결재 승인</a></li>
                      <li><a href="signWait">결재 대기</a></li>
                      <li><a href="signSuccess">결재 완료</a></li>
                   </ul>
@@ -110,7 +93,7 @@
                
                <!-- 쪽지 -->
                <li class="sub-menu">
-                  <a class="active" href="javascript:;"> 
+                  <a href="javascript:;"> 
                      <i class="fa fa-comments-o"></i> <span>쪽지함</span><span class="label label-theme pull-right mail-info">${msgAlarm }</span>
                   </a>
                   <ul class="sub">
@@ -136,93 +119,43 @@
          </div>
       </aside>
       <!--sidebar end-->
-	 <!--main content start-->
-	 
     <section id="main-content">
+    
       <section class="wrapper">
-      <h3>
-					<i class="fa fa-angle-right"></i> 자료실 게시판
-				</h3>
-        <!-- page start-->
-      
-          <div class="col-sm-13">
-            <section class="panel">
-              <header class="panel-heading wht-bg">
-                
-                
-                  
-                  
-              </header>
-              <div class="panel-body ">
-                <div class="mail-header row">
-                  <div class="col-md-8">
-                    <h4 class="pull-left"><b>제목:</b> ${ref.title } </h4>
-                  </div>
-                  
-                </div>
-                <div class="mail-sender">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <p>
-                      	<b>작성자 :</b> ${ref.writer }&nbsp;&nbsp;&nbsp;
-                      	<b>부서 :</b> ${ref.department }
-                      	</p>
-                      <fmt:formatDate value="${ref.regdate }" pattern="yyyy-MM-dd (E) HH:mm:ss (a)"/> 
-                      
-                    </div>
-                  </div>
-                </div>
-                <div class="view-mail">
-                	${ref.content }
-                </div>
-                <hr>
-                <div>
-                <th>첨부 파일 </th><td> <a href="fileDownload?bno=${ref.bno}"/>${ref.realfile }</a></td>
-                </div>
-              	<hr>
-                <div class="compose-btn pull-left">
-                  	<a href="referenceBoard" class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> 목록으로</a>
-                	<button id="delete" class="btn btn-sm btn-theme04">삭제하기</button>
-                </div>
-              </div>
-            </section>
-          </div>
+        <h3><i class="fa fa-angle-right"></i> 자료실 게시판</h3>
+        <div class="row mb">
+        	
+          <!-- page start-->
+          	<div class="content-panel">
+          		<table  style=" border-style:solid; width: 500px; height: 150px;">
+          		<tr><th>제목 </th><td> ${board.title }</td></tr>
+          		<tr><th>작성자 </th><td> ${board.writer }</td></tr>
+          		<tr><th>작성일자 </th><td> <fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/></td></tr>
+          		<tr><th>내용 </th><td> ${board.content }</td></tr>
+          		<tr><th>첨부 파일 </th><td> <a href="fileDownload?bno=${board.bno}"/>${board.realfile }</a></td></tr>
+          		</table>
+        	<a href="referenceBoard" id="list" class="btn">목록보기</a>
+			<a href="update" class="btn">수정</a>
+			<a href="delete" class="btn">삭제</a>
+          <!-- page end-->
+        	</div>
         </div>
+        <!-- /row -->
       </section>
       <!-- /wrapper -->
+      <jsp:include page="../default/footer.jsp" />
     </section>
     <!-- /MAIN CONTENT -->
-    <!--main content end-->
-	 <jsp:include page="../default/footer.jsp"/>
-	
-                <!-- js placed at the end of the document so the pages load faster -->
-  <script src="resources/lib/jquery/jquery.min.js"></script>
+    <!--main content end-->	
+<script src="resources/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" language="javascript" src="resources/lib/advanced-datatable/js/jquery.js"></script>
   <script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="resources/lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="resources/lib/jquery.scrollTo.min.js"></script>
   <script src="resources/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script type="text/javascript" language="javascript" src="resources/lib/advanced-datatable/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="resources/lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="resources/lib/common-scripts.js"></script>
-  <!--script for this page-->
-  <c:set var="userName" value="${user.name }"></c:set>
-  <c:set var="userRank" value="${user.rank }"></c:set>
-  <c:set var="viewName" value="${view.writer }"></c:set>
-<script>
-<% 
-	String userRank = (String)pageContext.getAttribute("userRank");
-	String userName = (String)pageContext.getAttribute("userName");
-	String viewName = (String)pageContext.getAttribute("viewName");
-	String chk = userName+" "+userRank;
-%>
-				
-				$("#delete").on('click',function() {
-					<% if(chk.equals(viewName)){%>
-						location.href = "deleteRef?bno=${view.bno}";
-					<%}else{%>
-						alert("작성자가 아니면 삭제할 수 없습니다!");
-						location.href = "referenceBoard";
-					<%}%>
-				});
-        </script>
 </body>
 </html>

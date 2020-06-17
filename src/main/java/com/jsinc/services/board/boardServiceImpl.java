@@ -22,15 +22,28 @@ public class boardServiceImpl implements boardService{
 	//게시글 작성
 	@Override
 	public void create(BoardDTO dto) throws Exception {
+		String title = dto.getTitle();
+		String content = dto.getContent();
+		String writer = dto.getWriter();
+		// *태그문자 처리 (< ==> &lt; > ==> &gt;)
+		// replace(A, B) A를 B로 변경
+		title = title.replace("<", "&lt;");
+		title = title.replace("<", "&gt;");
+		writer = writer.replace("<", "&lt;");
+		writer = writer.replace("<", "&gt;");
+		// * 공백문자 처리
+		title = title.replace("  ", "&nbsp;&nbsp;");
+		writer = writer.replace("  ", "&nbsp;&nbsp;");
+		// * 줄바꿈 문자처리
+		content = content.replace("\n", "<br>");
+		dto.setTitle(title);
+		dto.setContent(content);
+		dto.setWriter(writer);
 		dao.create(dto);
 	}
 	//게시글 상세보기
 	@Override
 	public BoardDTO view(int bno) throws Exception {
-		BoardDTO dto = dao.view(bno);
-		String content = dto.getContent();
-		content = content.replace("\n", "<br>");
-		dto.setContent(content);
 		return dao.view(bno);
 	}
 	//게시글 수정

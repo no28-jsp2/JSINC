@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.jsinc.jsincDAO.SignDAO;
 import com.jsinc.jsincDTO.SignDTO;
-
-import groovy.sql.Sql;
 @Service
 public class signServiceImpl implements signService {
 
@@ -43,8 +41,8 @@ public class signServiceImpl implements signService {
 	}
 
 	@Override
-	public List<SignDTO> lists(String target) {
-		return dao.lists(target);
+	public List<SignDTO> lists() {
+		return dao.lists();
 	}
 
 	@Override
@@ -55,16 +53,6 @@ public class signServiceImpl implements signService {
 	@Override
 	public List<SignDTO> waitList(int empno) {
 		return dao.waitList(empno);
-	}
-
-	@Override
-	public List<SignDTO> successList() {
-		return dao.successList();
-	}
-
-	@Override
-	public void update(SignDTO dto) {
-		dao.update(dto);
 	}
 
 }

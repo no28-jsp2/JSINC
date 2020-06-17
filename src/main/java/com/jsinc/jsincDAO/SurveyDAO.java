@@ -51,8 +51,4 @@ public class SurveyDAO {
 	public int answerCnt(SurveyResultDTO dto) {
 		return sqlSession.selectOne(namespace + ".answerCnt", dto);
 	}
-	// ==========================================================================
-	public List<SurveyDTO> todayList(String time){
-		return sqlSession.selectList(namespace + ".todayList" , time);
-	}
 }

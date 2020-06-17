@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[3.9.13.202004191628-CI-B2465]]></pluginVersion>
+	<pluginVersion><![CDATA[3.9.12.202003180620-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
@@ -9,8 +9,8 @@
 	<configs>
 		<config>src/main/resources/database/jdbc-config.xml</config>
 		<config>src/main/resources/email/context-email.xml</config>
-		<config>src/main/resources/mybatis/mappers/messageMapper.xml</config>
 		<config>src/main/resources/mybatis/mappers/comMapper.xml</config>
+		<config>src/main/resources/mybatis/mappers/messageMapper.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/resources/download/context.xml</config>
