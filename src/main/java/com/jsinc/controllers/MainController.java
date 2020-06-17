@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jsinc.jsincDTO.MemberDTO;
-import com.jsinc.services.main.ComponentService;
 import com.jsinc.services.main.LoginService;
 import com.jsinc.services.main.MailService;
 import com.jsinc.services.main.MemberServiceImpl;
@@ -28,7 +27,6 @@ import com.jsinc.services.main.PasswordChangeService;
 import com.jsinc.services.main.ProfileEditServiceImpl;
 import com.jsinc.services.main.ProfileService;
 import com.jsinc.services.main.ProfileValueServiceImpl;
-import com.jsinc.services.main.ResentSurveyService;
 import com.jsinc.services.main.ServiceIf;
 import com.jsinc.services.message.MsgAlarmServiceImpl;
 import com.jsinc.services.message.ServiceMes;
@@ -42,7 +40,6 @@ public class MainController {
 	MailService mailService;
 	ProfileService profileService;
 	ServiceMes msgService;
-	ComponentService comService;
 
 	@Resource(name = "uploadPath") // 업로드 경로 (출처 : servlet-context)
 	private String uploadPath;
@@ -63,10 +60,7 @@ public class MainController {
 	}
 
 	@RequestMapping("index")
-	public String index(Model model, HttpServletRequest request) {
-		model.addAttribute("request", request);
-		comService = ac.getBean("resentSurveyService", ResentSurveyService.class);
-		comService.execute(model);
+	public String index() {
 		return "index";
 	}
 

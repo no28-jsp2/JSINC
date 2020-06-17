@@ -21,21 +21,10 @@ public class MemberServiceImpl implements ServiceIf {
 		MemberDTO dto = (MemberDTO) map.get("dto");
 		
 		String rank = dto.getRank();
-		if(rank.equals("사원"))
-			dto.setAuthority(1);
-		else if(rank.equals("주임"))
-			dto.setAuthority(2);
-		else if(rank.equals("대리"))
-			dto.setAuthority(3);
-		else if(rank.equals("과장"))
-			dto.setAuthority(4);
-		else if(rank.equals("부장"))
-			dto.setAuthority(5);
-		else if(rank.equals("이사"))
-			dto.setAuthority(6);
-		else if(rank.equals("대표"))
-			dto.setAuthority(7);
-		
+		if(rank.equals("과장") || rank.equals("부장") || rank.equals("이사"))
+			dto.setAuthority("Y");
+		else
+			dto.setAuthority("N");
 		dao.memReg(dto);
 		return 0;
 	}
