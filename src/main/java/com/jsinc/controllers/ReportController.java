@@ -44,33 +44,15 @@ public class ReportController {
 	}
 	@RequestMapping("contentReport")
 	public ModelAndView contentReport(@RequestParam int bno) throws Exception{
-		ReportDTO dto = rs.read(bno);
-		String title = dto.getTitle();
-		String content = dto.getContent();
-		String writer = dto.getWriter();
-		// *태그문자 처리 (< ==> &lt; > ==> &gt;)
-		// replace(A, B) A를 B로 변경
-		title = title.replace("<", "&lt;");
-		title = title.replace("<", "&gt;");
-		writer = writer.replace("<", "&lt;");
-		writer = writer.replace("<", "&gt;");
-		// * 공백문자 처리
-		title = title.replace("  ", "&nbsp;&nbsp;");
-		writer = writer.replace("  ", "&nbsp;&nbsp;");
-		// * 줄바꿈 문자처리
-		content = content.replace("\n", "<br>");
-		dto.setTitle(title);
-		dto.setContent(content);
-		dto.setWriter(writer);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("report/contentReport");
-		mav.addObject("rp", dto);
+		mav.addObject("rp",rs.read(bno));
 		return mav;
 	}
 	@RequestMapping(value="updateRp",method = RequestMethod.POST)
 	public String update(@ModelAttribute ReportDTO dto) throws Exception {
 		rs.update(dto);
-		return "redirect:contentReport?bno="+dto.getBno();
+		return "redirect:report";
 	}
 	@RequestMapping("deleteRp")
 	public String delete(@RequestParam int bno) throws Exception {

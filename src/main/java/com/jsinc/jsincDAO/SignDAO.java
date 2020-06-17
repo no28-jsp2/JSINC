@@ -19,8 +19,8 @@ public class SignDAO {
 	public void createSign(SignDTO dto) {
 		sqlSession.insert(namespace+".insert",dto);
 	}
-	public List<SignDTO> lists(String target) {
-		return sqlSession.selectList(namespace+".lists",target);
+	public List<SignDTO> lists() {
+		return sqlSession.selectList(namespace+".lists");
 	}
 	public SignDTO read(int bno) {
 		return sqlSession.selectOne(namespace+".read",bno);
@@ -31,11 +31,6 @@ public class SignDAO {
 	public List<SignDTO> waitList(int empno){
 		return sqlSession.selectList(namespace+".waitList",empno);
 	}
-	public List<SignDTO> successList(){
-		return sqlSession.selectList(namespace+".successList");
-	}
-	public void update(SignDTO dto) {
-		sqlSession.update(namespace+".chkSign",dto);
-	}
+	
 	
 }

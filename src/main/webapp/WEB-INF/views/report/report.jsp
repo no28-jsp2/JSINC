@@ -8,7 +8,6 @@
 
 <head>
 <title>JS.Inc</title>
-<link href="resources/img/favicon.png" rel="icon">
 </head>
 
 <body>
@@ -64,7 +63,6 @@
                   </a>
                   <ul class="sub">
                      <li><a href="newSign">결재 상신</a></li>
-                     <li><a href="signApprove">결재 승인</a></li>
                      <li><a href="signWait">결재 대기</a></li>
                      <li><a href="signSuccess">결재 완료</a></li>
                   </ul>
@@ -125,9 +123,7 @@
 		<section id="main-content">
 			<section class="wrapper">
 				<h3>
-					<i class="fa fa-angle-right"></i> 보고
-					<hr>
-					<a href="writeReport"> <button class="btn btn-sm btn-success">보고서 올리기</button></a>
+					<i class="fa fa-angle-right"></i> 보고<a href="writeReport"> <button class="btn">보고서 올리기</button></a>
 				</h3>
 				<div class="row mb">
 					<!-- page start-->
