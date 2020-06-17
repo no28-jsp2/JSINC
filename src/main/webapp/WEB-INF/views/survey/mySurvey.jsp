@@ -7,6 +7,7 @@
 
 <head>
 <title>JS.Inc</title>
+<link href="resources/img/favicon.png" rel="icon">
 </head>
 
 <body>

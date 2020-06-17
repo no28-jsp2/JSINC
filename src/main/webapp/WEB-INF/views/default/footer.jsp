@@ -10,7 +10,7 @@
 	<!--footer start-->
 	<footer class="site-footer">
 		<div class="text-center">
-			<p>&copy; Copyrights <strong>Dashio</strong>. All Rights Reserved</p>
+			<p>&copy; Company <strong>JSINC</strong>.</p>
 			<div class="credits">
 				Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
 			</div>

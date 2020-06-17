@@ -38,5 +38,8 @@
 	<select id="answerCnt" resultType="int">
 		select count(*) from survey_result where result=#{result} and title=#{title}
 	</select>
-	
+	<!-- ============================================================================================================ -->
+	<select id="todayList" resultType="dto_sur">
+		select * from jsinc_survey where sDate=#{sDate}
+	</select>
 </mapper>

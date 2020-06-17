@@ -165,10 +165,10 @@
                       <button class="btn btn-theme btn-sm" type="submit"><i class="fa fa-check"></i> 보내기</button>
                       <button class="btn btn-sm" type="button" onclick="#"><i class="fa fa-times"></i> 지우기</button>
                       <button class="btn btn-sm" id="cancel">취소</button>
-                      <input type="text" value="${emp.empNo }" name="recEmpNo">
-                      <input type="text" value="${emp.name }" name="receiver">
-                      <input type="text" value="${emp.rank }" name="recRank">
-                      <input type="text" value="${emp.dep }" name="recDep">
+                      <input type="text" style="visibility: hidden;" value="${emp.empNo }" name="recEmpNo">
+                      <input type="text" style="visibility: hidden;" value="${emp.name }" name="receiver">
+                      <input type="text" style="visibility: hidden;" value="${emp.rank }" name="recRank">
+                      <input type="text" style="visibility: hidden;" value="${emp.dep }" name="recDep">
                       
                     </div>
                   </form>

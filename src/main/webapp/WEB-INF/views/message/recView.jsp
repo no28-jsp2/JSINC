@@ -153,7 +153,7 @@
 										<th>보낸사람</th>
 										<th>부서</th>
 										<th>제목</th>
-										<th>송신 시간</th>
+										<th>수신 시간</th>
 										<th>삭제</th>
 									</tr>
 								</thead>
@@ -237,7 +237,7 @@
 				 */
 				 
 				var oTable = $('#hidden-table-info').dataTable({
-					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 3, 'desc' ] ]
+					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 4, 'desc' ] ]
 				});
 
 				/* Add event listener for opening and closing details
