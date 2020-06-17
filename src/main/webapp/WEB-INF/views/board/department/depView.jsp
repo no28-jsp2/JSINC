@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +9,27 @@
 <title>JS.Inc</title>
 <link href="resources/img/favicon.png" rel="icon">
 </head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>Dashio - Bootstrap Admin Template</title>
+
+  <!-- Favicons -->
+  <link href="resources/img/favicon.png" rel="icon">
+  <link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="resources/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!--external css-->
+  <link href="resources/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="resources/css/style.css" rel="stylesheet">
+  <link href="resources/css/style-responsive.css" rel="stylesheet">
 <body>
-	<jsp:include page="../default/header.jsp" />
-	<!--sidebar start-->
+<jsp:include page="../../default/header.jsp" />
+		 <!--sidebar start-->
       <aside>
          <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
@@ -42,11 +62,11 @@
                </li>
                
                <!-- 게시판 -->
-               <li class="sub-menu"><a class="active" href="javascript:;"> <i
+               <li class="sub-menu"><a href="javascript:;"> <i
                      class="fa fa-cogs"></i> <span>게시판</span>
                </a>
                   <ul class="sub">
-                     <li class="active"><a href="allCompanyBoard">전사 게시판</a></li>
+                     <li><a href="allCompanyBoard">전사 게시판</a></li>
                      <li><a href="departmentBoard">부서 게시판</a></li>
                      <li><a href="referenceBoard">자료실 게시판</a></li>
                   </ul>
@@ -90,7 +110,7 @@
                
                <!-- 쪽지 -->
                <li class="sub-menu">
-                  <a href="javascript:;"> 
+                  <a class="active" href="javascript:;"> 
                      <i class="fa fa-comments-o"></i> <span>쪽지함</span><span class="label label-theme pull-right mail-info">${msgAlarm }</span>
                   </a>
                   <ul class="sub">
@@ -116,63 +136,98 @@
          </div>
       </aside>
       <!--sidebar end-->
+	 <!--main content start-->
+	 
+    <section id="main-content">
+      <section class="wrapper">
+      <h3>
+					<i class="fa fa-angle-right"></i> 부서 게시판
+				</h3>
+        <!-- page start-->
+      
+          <div class="col-sm-13">
+            <section class="panel">
+              <header class="panel-heading wht-bg">
+                
+                
+                  
+                  
+              </header>
+              <div class="panel-body ">
+                <div class="mail-header row">
+                  <div class="col-md-8">
+                    <h4 class="pull-left"><b>제목:</b> ${view.title } </h4>
+                  </div>
+                  
+                </div>
+                <div class="mail-sender">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <p>
+                      	<b>작성자 :</b> ${view.writer }&nbsp;&nbsp;&nbsp;
+                      	<b>부서 :</b> ${view.department }
+                      	</p>
+                      <fmt:formatDate value="${view.regdate }" pattern="yyyy-MM-dd (E) HH:mm:ss (a)"/> 
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="view-mail">
+                	${view.content }
+                </div>
+                <hr>
+              
+                <div class="compose-btn pull-left">
+                  	<a href="departmentBoard" class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> 목록으로</a>
+                	<button id="update" class="btn btn-sm btn-success">수정하기</button>
+                	<button id="delete" class="btn btn-sm btn-theme04">삭제하기</button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+      <!-- /wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+	 <jsp:include page="../../default/footer.jsp"/>
 	
-	<section id="main-content">
-	<section class="wrapper">
-		<h3>
-			<i class="fa fa-angle-right"></i> 전사 게시판
-		</h3>
-		<div class="row mb" align="center">
-
-			<!-- page start-->
-			<div class="form-panel">
-							<form action="write" class="form-horizontal style-form" method="post">
-							
-								<div class="form-group">
-									<label  class="control-label col-lg-2" style="text-align: center;">제목</label>
-									<div class="col-lg-10">
-										<input type="text" class="form-control "  name="title" required>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label" style="text-align: center;">작성자</label>
-									<div class="col-md-3 col-xs-11">
-										<input type="text" class="form-control" name="writer" value="${user.name } ${user.rank}" readonly="readonly">
-									</div>
-								</div>
-
-								<div class="form-group ">
-									<label class="control-label col-lg-2" style="text-align: center;">내용</label>
-									<div class="col-lg-10">
-										<textarea class="form-control " name="content" required style="height: 200px;"></textarea>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-lg-offset-2 col-lg-10">
-										<button class="btn btn-theme" type="submit">올리기</button>
-										<button class="btn btn-theme04" type="reset">초기화</button>
-									</div>
-								</div>
-							</form>
-						</div>
-		</div>
-	</section>
-	<jsp:include page="../default/footer.jsp" />
-	
-	</section>
-	<!-- js placed at the end of the document so the pages load faster -->
+                <!-- js placed at the end of the document so the pages load faster -->
   <script src="resources/lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" language="javascript" src="resources/lib/advanced-datatable/js/jquery.js"></script>
   <script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="resources/lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="resources/lib/jquery.scrollTo.min.js"></script>
   <script src="resources/lib/jquery.nicescroll.js" type="text/javascript"></script>
-  <script type="text/javascript" language="javascript" src="resources/lib/advanced-datatable/js/jquery.dataTables.js"></script>
-  <script type="text/javascript" src="resources/lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="resources/lib/common-scripts.js"></script>
-
-	
+  <!--script for this page-->
+  <c:set var="userName" value="${user.name }"></c:set>
+  <c:set var="userRank" value="${user.rank }"></c:set>
+  <c:set var="viewName" value="${view.writer }"></c:set>
+<script>
+<% 
+	String userRank = (String)pageContext.getAttribute("userRank");
+	String userName = (String)pageContext.getAttribute("userName");
+	String viewName = (String)pageContext.getAttribute("viewName");
+	String chk = userName+" "+userRank;
+%>
+				$("#update").on('click',function() {
+					<% if(chk.equals(viewName)){%>
+						location.href = "updateDep?bno=${view.bno}";
+					<%}else{%>
+						alert("작성자가 아니면 수정할 수 없습니다!");
+						location.href = "departmentBoard";
+					<%}%>
+				});
+				$("#delete").on('click',function() {
+					<% if(chk.equals(viewName)){%>
+						location.href = "deleteDep?bno=${view.bno}";
+					<%}else{%>
+						alert("작성자가 아니면 삭제할 수 없습니다!");
+						location.href = "departmentBoard";
+					<%}%>
+				});
+        </script>
 </body>
 </html>

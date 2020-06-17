@@ -1,35 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="Dashboard">
-<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <style type="text/css">
+         /* 기본 설정*/
+         a{text-decoration:none; color:#000000;}         
+         a:hover{color:#ff0000;}                    
+         
+         /* nav tag */
+         nav ul{padding-top:10px;}                     /*  상단 여백 10px  */
+         nav ul li {
+            display:inline;                         /*  세로나열을 가로나열로 변경 */
+            border-left:1px solid #999;             /* 각 메뉴의 왼쪽에 "|" 표시(분류 표시) */
+            font:bold 12px Dotum;                     /* 폰트 설정 - 12px의 돋움체 굵은 글씨로 표시 */
+            padding:0 10px;                         /* 각 메뉴 간격 */
+        }
+         nav ul li:first-child{border-left:none;}     /* 메뉴 분류중 제일 왼쪽의 "|"는 삭제       
+    </style>
+
 <title>JS.Inc</title>
-<!-- Favicons -->
 <link href="resources/img/favicon.png" rel="icon">
-<link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-<!-- Bootstrap core CSS -->
-<link href="resources/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!--external css-->
-<link href="resources/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="resource/css/zabuto_calendar.css">
-<link rel="stylesheet" type="text/css" href="resource/lib/gritter/css/jquery.gritter.css" />
-
-<!-- Custom styles for this template -->
-<link href="resources/css/style.css" rel="stylesheet">
-<link href="resources/css/style-responsive.css" rel="stylesheet">
-<script src="resources/lib/chart-master/Chart.js"></script>
 </head>
+
 <body>
-<section id="container">
+	<section id="container">
 		<jsp:include page="../default/header.jsp" />
-			 <!--sidebar start-->
+		<!--sidebar start-->
       <aside>
          <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
@@ -110,25 +111,25 @@
                
                <!-- 쪽지 -->
                <li class="sub-menu">
-                  <a class="active" href="javascript:;"> 
+                  <a href="javascript:;"> 
                      <i class="fa fa-comments-o"></i> <span>쪽지함</span><span class="label label-theme pull-right mail-info">${msgAlarm }</span>
                   </a>
                   <ul class="sub">
-                     <li class="active"><a  href="sentMessage">보낸 쪽지함</a></li>
-                     <li><a  href="RecMessage">받은 쪽지함</a></li>
+                     <li><a href="sentMessage">보낸 쪽지함</a></li>
+                     <li><a href="RecMessage">받은 쪽지함</a></li>
                   </ul>
                </li>
                
                <!-- 설문 -->
                <li class="sub-menu">
-                  <a href="javascript:;"> 
+                  <a class="active" href="javascript:;"> 
                      <i class="fa fa-map-marker"></i>  <span>설문</span>
                   </a>
                   <ul class="sub">
                   	 <li><a href="createSurvey">새 설문 작성</a></li>
                      <li><a href="startedSurvey">진행중인 설문</a></li>
                      <li><a href="endSurvey">마감된 설문</a></li>
-                     <li><a href="mySurvey">내가 만든 설문</a></li>
+                     <li class="active"><a href="mySurvey">내가 만든 설문</a></li>
                   </ul>
                </li>
             </ul>
@@ -140,8 +141,9 @@
 		<section id="main-content">
 			<section class="wrapper">
 				<h3>
-					<i class="fa fa-angle-right"></i> 보낸 쪽지함
+					<i class="fa fa-angle-right"></i> 결재 승인
 				</h3>
+				<hr>
 				<div class="row mb">
 					<!-- page start-->
 					<div class="content-panel">
@@ -149,27 +151,21 @@
 							<table cellpadding="0" cellspacing="0" border="0"
 								class="display table table-bordered" id="hidden-table-info">
 								<thead>
-											<tr>
-										<th>받는사람</th>
-										<th>부서</th>
-										<th>제목</th>
-										<th>송신 시간</th>
-										<th>삭제</th>
+									<tr>
+										<td>제목</td><td>결재 분류</td><td>보고 대상자</td><td>부서</td><td>작성일자</td><td>결재 현황</td>
 									</tr>
 								</thead>
 								<tbody>
-								
-								<c:forEach var="dto" items="${list }">
-								<tr>
-									<td><h5>${dto.receiver } ${dto.recRank }</h5></td>
-									<td><h5>${dto.recDep }</h5></td>
-									<td><h5><a href="sentContentView?subject=${dto.subject }&content=${dto.content}&sentTime=${dto.sentTime}&receiver=${dto.receiver}&recDep=${dto.recDep}&recRank=${dto.recRank}">${dto.subject }</a></h5></td>
-									<td><h5>${dto.sentTime }</h5></td>
-									<td><button type="button" onclick="location.href='sentMsgDel?recEmpNo=${dto.recEmpNo}&subject=${dto.subject}&sentTime=${dto.sentTime}'" class="btn btn-danger">삭제</button></td>
-								</tr>
-								
-								</c:forEach>
-								
+									<c:forEach var="list" items="${sign }">
+										<tr>
+											<td><a href="aproved?bno=${list.bno }">${list.title }</a></td>
+											<td>${list.signs }</td>
+											<td>${list.target }</td>
+											<td>${list.department }</td>
+											<td><fmt:formatDate value="${list.regdate }" pattern="yyyy-MM-dd (E) HH:mm:ss (a)"/></td>
+											<td>${list.checksign }</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -181,12 +177,7 @@
 			<!-- /wrapper -->
 		</section>
 		<!-- /MAIN CONTENT -->
-
-
-
-
-
-	<!--main content end-->
+		<!--main content end-->
 		<jsp:include page="../default/footer.jsp"/>
 	</section>
 	<!-- js placed at the end of the document so the pages load faster -->
@@ -238,7 +229,7 @@
 				 */
 				 
 				var oTable = $('#hidden-table-info').dataTable({
-					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 4, 'desc' ] ]
+					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 1, 'desc' ] ]
 				});
 
 				/* Add event listener for opening and closing details
@@ -263,4 +254,6 @@
 		);
 	</script>
 </body>
+
 </html>
+				

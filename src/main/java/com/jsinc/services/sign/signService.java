@@ -10,9 +10,15 @@ public interface signService {
 	
 	public SignDTO read(int bno);
 	
-	public List<SignDTO> lists();
+	public List<SignDTO> lists(String target);
 	
 	public List<SignDTO> waitList(int empno);
 	
+	public List<SignDTO> successList();
+	
 	public void delete(int bno);
+	
+	public void update(SignDTO dto);
+	
+	
 }
