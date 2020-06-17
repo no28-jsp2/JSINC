@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JS.Inc</title>
+<link href="resources/img/favicon.png" rel="icon">
 </head>
+
 <body>
-	<jsp:include page="../default/header.jsp" />
-	<!--sidebar start-->
+	<section id="container">
+		<jsp:include page="../default/header.jsp"/>
+		<!--sidebar start-->
       <aside>
          <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
@@ -44,7 +45,7 @@
                </li>
                
                <!-- 게시판 -->
-               <li class="sub-menu"><a class="active" href="javascript:;"> <i
+               <li class="sub-menu"><a href="javascript:;"> <i
                      class="fa fa-cogs"></i> <span>게시판</span>
                </a>
                   <ul class="sub">
@@ -61,6 +62,7 @@
                   </a>
                   <ul class="sub">
                      <li><a href="newSign">결재 상신</a></li>
+                     <li><a href="signApprove">결재 승인</a></li>
                      <li><a href="signWait">결재 대기</a></li>
                      <li><a href="signSuccess">결재 완료</a></li>
                   </ul>
@@ -102,11 +104,11 @@
                
                <!-- 설문 -->
                <li class="sub-menu">
-                  <a href="javascript:;"> 
+                  <a class="active" href="javascript:;"> 
                      <i class="fa fa-map-marker"></i>  <span>설문</span>
                   </a>
                   <ul class="sub">
-                  	 <li><a href="createSurvey">새 설문 작성</a></li>
+                  	 <li class="active"><a href="createSurvey">새 설문 작성</a></li>
                      <li><a href="startedSurvey">진행중인 설문</a></li>
                      <li><a href="endSurvey">마감된 설문</a></li>
                      <li><a href="mySurvey">내가 만든 설문</a></li>
@@ -117,62 +119,86 @@
          </div>
       </aside>
       <!--sidebar end-->
-	
-	<section id="main-content">
-	<section class="wrapper">
-		<h3>
-			<i class="fa fa-angle-right"></i> 자료실 게시판
-		</h3>
-		<div class="row mb" align="center">
-			<!-- page start-->
-			<div class="content-panel" >
-				<form action="uploadWrite" method="post" enctype="multipart/form-data">
-					<div>
-					<input type="text" placeholder="제목" name="title" style="width: 300px;">
-					<input type="text" id="wr" name="writer" value="${user.name }" style="width: 100px;">
-					
-					</div>
-					<hr>
-					<div>
-					<textarea name="content" style="width: 500px; height: 300px;" placeholder="내용을 입력해 주세요!"></textarea>
-					</div>
-					<hr>
-					<div>
-						<input type="file" name="file_0"/>
-					</div>
-					
-					<div>
-					<a href="referenceBoard" id="list" class="btn">목록보기</a>
-					<input type="submit" class="btn" value="글쓰기"></a>
-					<button type="reset" class="btn" >취소</button>
-					</div>
-					
-					
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
+				<h3>
+					<i class="fa fa-angle-right"></i> 자료실 게시판
+				</h3>
+				<div class="row mt">
+					<!--  DATE PICKERS -->
+					<div class="col-lg-12">
+						<div class="form-panel">
+							<form action="uploadWrite" class="form-horizontal style-form" method="post" enctype="multipart/form-data">
+							
+								<div class="form-group">
+									<label  class="control-label col-lg-2" style="text-align: center;">제목</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control "  name="title" required>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-sm-2 col-sm-2 control-label" style="text-align: center;">부서</label>
+									<div class="col-md-3 col-xs-11">
+										<input type="text" class="form-control" name="department" value="${user.dep }" readonly="readonly">
+									</div>
+									<label class="col-sm-2 col-sm-2 control-label" style="text-align: center;">작성자</label>
+									<div class="col-md-3 col-xs-11">
+										<input type="text" class="form-control" name="writer" value="${user.name } ${user.rank}" readonly="readonly">
+									</div>
+								</div>
 
-				</form>
-			</div>
-		</div>
-	</section>
-	<jsp:include page="../default/footer.jsp" />
-	
+								<div class="form-group ">
+									<label class="control-label col-lg-2" style="text-align: center;">내용</label>
+									<div class="col-lg-10">
+										<textarea class="form-control " name="content" required style="height: 200px;"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+								<div class="col-lg-offset-2 col-lg-10">
+								<input type="file" name="file_0"/>
+								</div>
+								<hr>
+									<div class="col-lg-offset-2 col-lg-10">
+										<button class="btn btn-theme" type="submit">올리기</button>
+										<button class="btn btn-theme04" type="reset">초기화</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<!-- /form-panel -->
+					</div>
+					<!-- /col-lg-12 -->
+				</div>
+				<!-- /row -->
+				
+			</section>
+			<!-- /wrapper -->
+		</section>
+		<!-- /MAIN CONTENT -->
+		<!--main content end-->
+		<jsp:include page="../default/footer.jsp"/>
 	</section>
 	<!-- js placed at the end of the document so the pages load faster -->
-  <script src="resources/lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" language="javascript" src="resources/lib/advanced-datatable/js/jquery.js"></script>
-  <script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
-  <script class="include" type="text/javascript" src="resources/lib/jquery.dcjqaccordion.2.7.js"></script>
-  <script src="resources/lib/jquery.scrollTo.min.js"></script>
-  <script src="resources/lib/jquery.nicescroll.js" type="text/javascript"></script>
-  <script type="text/javascript" language="javascript" src="resources/lib/advanced-datatable/js/jquery.dataTables.js"></script>
-  <script type="text/javascript" src="resources/lib/advanced-datatable/js/DT_bootstrap.js"></script>
-  <!--common script for all pages-->
-  <script src="resources/lib/common-scripts.js"></script>
-  <script type="text/javascript">
-		
-  var g_count =1;
-		$("#wr").attr('readonly', true);
-		
-</script>
+	<script src="resources/lib/jquery/jquery.min.js"></script>
+	<script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
+	<script class="include" type="text/javascript" src="resources/lib/jquery.dcjqaccordion.2.7.js"></script>
+	<script src="resources/lib/jquery.scrollTo.min.js"></script>
+	<script src="resources/lib/jquery.nicescroll.js" type="text/javascript"></script>
+	<!--common script for all pages-->
+	<script src="resources/lib/common-scripts.js"></script>
+	<!--script for this page-->
+	<script src="resources/lib/jquery-ui-1.9.2.custom.min.js"></script>
+	<script type="text/javascript" src="resources/lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+	<script type="text/javascript" src="resources/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="resources/lib/bootstrap-daterangepicker/date.js"></script>
+	<script type="text/javascript" src="resources/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script type="text/javascript" src="resources/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="resources/lib/bootstrap-daterangepicker/moment.min.js"></script>
+	<script type="text/javascript" src="resources/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+	<script src="resources/lib/advanced-form-components.js"></script>
 
 </body>
+
 </html>
