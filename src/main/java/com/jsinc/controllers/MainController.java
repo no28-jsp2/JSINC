@@ -67,6 +67,10 @@ public class MainController {
 		model.addAttribute("request", request);
 		comService = ac.getBean("resentSurveyService", ResentSurveyService.class);
 		comService.execute(model);
+		
+		msgService=ac.getBean("recentServiceImpl",RecentServiceImpl.class);
+		msgService.execute(model);
+		
 		return "index";
 	}
 
