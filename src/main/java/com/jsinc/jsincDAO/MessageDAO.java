@@ -46,5 +46,10 @@ public class MessageDAO {
 	public int msgChk(MessageDTO dto) {
 		return sqlSession.update(namespace+".msgChk",dto);
 	}
+	//최근 메세지 가져오기
+	public List<MessageDTO> recentMsg(int empNo){
+		return sqlSession.selectList(namespace+".recentMsg",empNo);
+	}
+	
 	
 }

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jsinc.jsincDTO.MemberDTO;
+import com.jsinc.services.message.MsgAlarmServiceImpl;
 import com.jsinc.services.message.RecContentServiceImpl;
 import com.jsinc.services.message.RecMsgDelServiceImpl;
 import com.jsinc.services.message.RecViewServiceImpl;
@@ -23,6 +24,7 @@ import com.jsinc.services.message.ViewContentServiceImpl;
 public class MessageController {
 	ApplicationContext ac = App.ac;
 	private ServiceMes service;
+	ServiceMes msgService;
 	
 	//보낸 쪽지함
 	@RequestMapping("sentMessage")
@@ -30,6 +32,10 @@ public class MessageController {
 		model.addAttribute("request",request);
 		service=ac.getBean("sentViewServiceImpl",SentViewServiceImpl.class);
 		service.execute(model);
+		msgService=ac.getBean("msgAlarmServiceImpl",MsgAlarmServiceImpl.class);
+		model.addAttribute("request",request);
+		msgService.execute(model);
+		
 		return "message/sentView";
 	}
 	//받은 쪽지함
@@ -38,6 +44,9 @@ public class MessageController {
 		model.addAttribute("request",request);
 		service=ac.getBean("recViewServiceImpl",RecViewServiceImpl.class);
 		service.execute(model);
+		msgService=ac.getBean("msgAlarmServiceImpl",MsgAlarmServiceImpl.class);
+		model.addAttribute("request",request);
+		msgService.execute(model);
 		return "message/recView";
 	}
 	//메세지 전송 버튼 클릭 시 (접속유저의 내용을 같이 등록함)
