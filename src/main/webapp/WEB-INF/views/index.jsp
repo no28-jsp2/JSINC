@@ -314,7 +314,7 @@ ul li img {
 						
 						</div>
 						</c:forEach>
-						
+						 
 						
 						<!-- CALENDAR-->
 						<div id="calendar" class="mb">
