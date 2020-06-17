@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JS.Inc</title>
 </head>
 <!-- Favicons -->
 <link href="resources/img/favicon.png" rel="icon">
@@ -170,17 +170,18 @@
 			
 			<input type="text" id="hide" style="visibility: hidden;" value="${view.title }">
 			<div style="width: 90%" align="left">
+			<form name="fo">
 				<div class="form-group">
 					<div class="showback">
 						<h4>
 							<i class="fa fa-angle-right"></i>게시글을 작성 해주세요
 						</h4>
-						<form action="contentView" onsubmit="return validat()">
+						
 							<textarea class="form-control" id="contact-message" placeholder="내용을 입력해주세요" rows="5" data-rule="required" name="content"></textarea>
-							<button type="submit" class="btn btn-round btn-info" style="margin: 10px;">이야기하기</button>
+							<button type="submit" class="btn btn-round btn-info" style="margin: 10px;" onclick="register('A')">이야기하기</button>
 							<input type="text" value="${view.title }" name="title" style="visibility: hidden;">
 							<input type="text" value="${view.cNo }" name="cno" style="visibility: hidden;">
-						</form>
+						
 					</div>
 				</div>
 				<hr style="border: ridge 10px lightgray; margin-left: 10px;">
@@ -188,17 +189,19 @@
 				<div class="room-box">
 					<c:forEach items="${conList }" var="con">
 						<c:choose>
+	
 							<c:when test="${con.step > 0 }">
 								<span style="font-size: 13pt; color: black"> 
 									<span class="fa fa-mail-forward">${con.content } </span>
 								</span>
 								<span class="text-primary"> 
-									<i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp; <i class="fa fa-calendar"></i>&nbsp;${con.com_date }
+									<i class="fa fa-user"></i>&nbsp;<a onclick="replyTo('${view.cNo}','${con.idgroup }','${con.step }','${con.indent }','${con.name }','${con.rank }')" style="cursor: pointer;" >${con.name }&nbsp;${con.rank}&nbsp;</a> <i class="fa fa-calendar"></i>&nbsp;${con.com_date }<br>
 								</span>
 							</c:when>
 							<c:when test="${con.step == 0 }">
+			
 								<h5 class="text-primary" style="margin-top: 30px;">
-									<i class="fa fa-user"></i>&nbsp;${con.name }&nbsp;${con.rank}&nbsp;
+									<i class="fa fa-user"></i><a onclick="replyTo('${view.cNo}','${con.idgroup }','${con.step }','${con.indent }','${con.name }','${con.rank }')" style="cursor: pointer;">&nbsp;${con.name }&nbsp;${con.rank}&nbsp;</a>
 									<i class="fa fa-calendar"></i>&nbsp;${con.com_date }
 								</h5>
 								<span style="font-size: 13pt; color: black">${con.content }</span>
@@ -208,42 +211,55 @@
 					</c:forEach>
 					<div>
 						<c:set var="idgroup" value="${con.idgroup }" />
-						<form action="reply" onsubmit="return revaldat()">
+						
 							<input type="text" style="width: 60%; margin-top: 20px;" placeholder="댓글 입력" name="reply" id="reply">
-							<button type="submit" class="btn btn-round btn-success" onclick="revaldat()">등록</button>
-						</form>
+							<button type="button" class="btn btn-round btn-success" onclick="register('B')">등록</button>
+							<input type="text" name="cno" id="cn" style="visibility: hidden;"><input type="text" name="idGroup" id="idGroup" style="visibility: hidden;">
+							<input type="text" name="step" id="step" style="visibility: hidden;"><input type="text" name="indent" id="indent" style="visibility: hidden;">
+				</form>		
+					
 					</div>
 				</div>
 			</div>
 		</section>
 	</section>
 	<script type="text/javascript">
-	function revaldat(){
-		if($("#reply").val()==""){
-			alert("내용을 작성해주세요")
-			return false;
-		}	
-		
-			alert("등록 되었습니다.")	
+	function replyTo(cNo,idGroup,step,indent,name,rank){
+		$('#cn').val(cNo);
+		$('#idGroup').val(idGroup);
+		$('#step').val(step);
+		$('#indent').val(indent);
+		$('#reply').val("@"+name+rank+' ')
 	}
 	
-	function validat(){
-		if($("#contact-message").val()==""){
-			alert("내용을 작성해주세요")
-			$("#contact-message").focus()
-			return false;
+	function register(arg){
+		if(arg=="A"){
+			if($("#contact-message").val()==""){
+				alert("내용을 작성해주세요")
+				$("#contact-message").focus()
+				return false;
+			}
+			if(${signBut != 1 }){
+				alert("가입을 해주시기 바랍니다")
+				$("#contact-message").focus()
+				return false;
+			}
+			fo.action="contentView";
+			fo.submit();
+			
+		}else if(arg=="B"){
+			if($('#cn').val()==""){
+				alert("댓글을 작성 하고싶은 사람의 이름을 클릭해주세요")
+				return false
+			}
+			fo.action="reply";
+			fo.submit();
 		}
-		if(${signBut != 1 }){
-			alert("가입을 해주시기 바랍니다")
-			$("#contact-message").focus()
-			return false;
-		}
-
-		
-		$("#contact-message").text()=""	
-		alert("등록 되었습니다~")
-		
 	}
+	
+
+	
+	
 	
 </script>
 	<!--main content end-->

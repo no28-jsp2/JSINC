@@ -47,6 +47,12 @@
 	<delete id="leave" parameterType="dto_com">
 		delete from joinCom where empno=#{empNo} and title=#{title}
 	</delete>
-
-
+	<!-- 댓글 등록하기 -->
+	<insert id="replySave">
+		insert into contentCom (cno,name,content,com_date,idgroup,step,indent,empno,rank) values (#{cNo},#{name},#{content},#{com_date},#{idgroup},#{step}+1,#{indent}+1,#{empNo},#{rank})
+	</insert>
+	<!-- 기본 댓글 step 올림 -->
+	<update id="updateReply" parameterType="dto_com02">
+		update contentCom set step=step+1 where cNo=#{cNo} and idgroup=#{idgroup} and step>#{step}
+	</update>
 </mapper>

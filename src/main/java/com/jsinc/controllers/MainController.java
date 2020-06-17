@@ -29,6 +29,7 @@ import com.jsinc.services.main.ProfileService;
 import com.jsinc.services.main.ProfileValueServiceImpl;
 import com.jsinc.services.main.ServiceIf;
 import com.jsinc.services.message.MsgAlarmServiceImpl;
+import com.jsinc.services.message.RecentServiceImpl;
 import com.jsinc.services.message.ServiceMes;
 
 @Controller
@@ -60,7 +61,11 @@ public class MainController {
 	}
 
 	@RequestMapping("index")
-	public String index() {
+	public String index(Model model,HttpServletRequest request) {
+		msgService=ac.getBean("recentServiceImpl",RecentServiceImpl.class);
+		model.addAttribute("request",request);
+		msgService.execute(model);
+		
 		return "index";
 	}
 

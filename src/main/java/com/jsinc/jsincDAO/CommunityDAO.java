@@ -71,5 +71,16 @@ public class CommunityDAO {
 	public int leave(CommunityDTO dto) {
 		return sqlSession.delete(namespace + ".leave", dto);
 	}
+	//댓글 등록
+	public int replySave(CommunityConDTO dto) {
+		updateReply(dto);
+		return sqlSession.insert(namespace+".replySave",dto);
+	}
+	//기존 댓글들의 step을 올림
+	public void updateReply(CommunityConDTO dto) {
+		int step=dto.getStep();
+		System.out.println("dao updateReply step : " + step);
+		sqlSession.update(namespace+".updateReply",dto);
+	}
 
 }
