@@ -5,15 +5,18 @@
  <mapper namespace="com.jsinc.mybatis.Sign">
  	<select id="lists" resultType="dto_sign">
 		select
+			bno,
 			title,
-			department,
-			writer,
+			signs,
 			target,
-			check
+			writer,
+			department,
+			regdate,
+			checksign
 		from
 			jsinc_sign
-		order by
-			bno desc
+		where 
+			checksign = '대기' and target = #{target}
 	</select>
 	<select id="waitList" resultType="dto_sign">
 		select
@@ -23,12 +26,29 @@
 			writer,
 			regdate,
 			department,
-			target
+			target,
+			checksign
 		from
 			jsinc_sign
 		where
-			empno = #{empno}
+			empno = #{empno} and checksign='대기'
 			
+	</select>
+	<select id="successList" resultType="dto_sign">
+		select
+			bno,
+			title,
+			signs,
+			writer,
+			target,
+			department,
+			regdate,
+			checksign
+		from
+			jsinc_sign
+		where
+			checksign = '승인' or checksign = '반려'
+		
 	</select>
 	<insert id="insert" parameterType="dto_sign">
 		insert into jsinc_sign(bno,title,department,writer,target,content,empno,worklocation,outwork,startDT,endDT,signs)
@@ -40,4 +60,10 @@
 	<delete id="delete">
 		delete from jsinc_sign where bno = #{bno}
 	</delete>
+	<update id="chkSign" parameterType="dto_sign">
+		update jsinc_sign set
+			checksign = #{checksign}
+		where
+			bno = #{bno}
+	</update>
  </mapper>

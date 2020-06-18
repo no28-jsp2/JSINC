@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>JS.Inc</title>
+<link href="resources/img/favicon.png" rel="icon">
 </head>
 <body>
 	<jsp:include page="../default/header.jsp" />
@@ -59,6 +59,7 @@
                   </a>
                   <ul class="sub">
                      <li><a href="newSign">결재 상신</a></li>
+                     <li><a href="signApprove">결재 승인</a></li>
                      <li><a href="signWait">결재 대기</a></li>
                      <li><a href="signSuccess">결재 완료</a></li>
                   </ul>
@@ -124,25 +125,37 @@
 		<div class="row mb" align="center">
 
 			<!-- page start-->
-			<div class="content-panel" >
-				<form name="forma" action="write" method="post">
-					<div>
-					<input type="text" placeholder="제목" name="title" style="width: 300px;">
-					<input type="text" id="wr" name="writer" value="${user.name }" style="width: 100px;">
-					
-					</div>
-					<hr>
-					<div>
-					<textarea name="content" style="width: 500px; height: 300px;" placeholder="내용을 입력해 주세요!"></textarea>
-					</div>
-					<hr>
-					<div>
-					<button type="button" id="sub">등록</button>&nbsp;&nbsp;
-					<button type="reset" >취소</button>
-					</div>
+			<div class="form-panel">
+							<form action="write" class="form-horizontal style-form" method="post">
+							
+								<div class="form-group">
+									<label  class="control-label col-lg-2" style="text-align: center;">제목</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control "  name="title" required>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-sm-2 col-sm-2 control-label" style="text-align: center;">작성자</label>
+									<div class="col-md-3 col-xs-11">
+										<input type="text" class="form-control" name="writer" value="${user.name } ${user.rank}" readonly="readonly">
+									</div>
+								</div>
 
-				</form>
-			</div>
+								<div class="form-group ">
+									<label class="control-label col-lg-2" style="text-align: center;">내용</label>
+									<div class="col-lg-10">
+										<textarea class="form-control " name="content" required style="height: 200px;"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-offset-2 col-lg-10">
+										<button class="btn btn-theme" type="submit">올리기</button>
+										<button class="btn btn-theme04" type="reset">초기화</button>
+									</div>
+								</div>
+							</form>
+						</div>
 		</div>
 	</section>
 	<jsp:include page="../default/footer.jsp" />
@@ -159,14 +172,6 @@
   <script type="text/javascript" src="resources/lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="resources/lib/common-scripts.js"></script>
-  <script type="text/javascript">
-	
-		$("#sub").click(function() {
-			document.forma.submit();
-		})
-		$("#wr").attr('readonly', true);
-	
-</script>
 
 	
 </body>

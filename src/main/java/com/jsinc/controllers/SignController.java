@@ -43,9 +43,22 @@ public class SignController {
 		mav.addObject("sign",ss.read(bno));
 		return mav;
 	}
+	@RequestMapping("signApprove")
+	public ModelAndView signApprove(HttpServletRequest request) {
+		HttpSession sessoin = request.getSession();
+		ServletContext application = sessoin.getServletContext();
+		MemberDTO dto = (MemberDTO)application.getAttribute("user");
+		String target = dto.getName()+" "+dto.getRank();
+		List<SignDTO> list = ss.lists(target);
+		ModelAndView mav = new  ModelAndView();
+		mav.setViewName("sign/list");
+		mav.addObject("sign",ss.lists(target));
+		return mav;
+	}
+	
 	@RequestMapping("signSuccess")
 	public ModelAndView signSuccess() {
-		List<SignDTO> list = ss.lists();
+		List<SignDTO> list = ss.successList();
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("sign/success");
 		mav.addObject("sign", list);
@@ -63,7 +76,27 @@ public class SignController {
 		mav.addObject("sign",list);
 		return mav;
 	}
-	
+	@RequestMapping("confirm")
+	public String confirm(@RequestParam int bno) {
+		SignDTO dto = new SignDTO();
+		dto.setBno(bno);
+		dto.setChecksign("승인");
+		ss.update(dto);
+		return "redirect:signSuccess";
+	}
+	@RequestMapping("reject")
+	public String reject(@RequestParam int bno) {
+		SignDTO dto = new SignDTO();
+		dto.setBno(bno);
+		dto.setChecksign("반려");
+		ss.update(dto);
+		return "redirect:signSuccess";
+	}
+	@RequestMapping("deleteSign")
+	public String deleteSign(@RequestParam int bno) {
+		ss.delete(bno);
+		return "redirect:signWait";
+	}
 	
 	
 }

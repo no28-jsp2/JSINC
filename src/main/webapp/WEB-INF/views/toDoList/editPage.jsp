@@ -6,6 +6,7 @@
 
 <head>
 <title>JS.Inc</title>
+<link href="resources/img/favicon.png" rel="icon">
 </head>
 
 <body>
@@ -61,6 +62,7 @@
                   </a>
                   <ul class="sub">
                      <li><a href="newSign">결재 상신</a></li>
+                     <li><a href="signApprove">결재 승인</a></li>
                      <li><a href="signWait">결재 대기</a></li>
                      <li><a href="signSuccess">결재 완료</a></li>
                   </ul>
