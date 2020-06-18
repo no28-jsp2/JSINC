@@ -9,7 +9,7 @@
 	</insert>
 	<!-- 전체 커뮤니티 -->
 	<select id="getAll" resultType="dto_com">
-		select * from createcom where autho='Y'
+		select * from createcom where autho='Y' order by cno desc
 	</select>
 	<!-- 내가 가입한 커뮤니티 -->
 	<select id="myCom" resultType="dto_com">
