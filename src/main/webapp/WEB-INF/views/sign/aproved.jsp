@@ -207,7 +207,7 @@
 										<b>연장 근무 사유 :</b>
 										${sign.content }<br>
 								<%
-									}
+									}  
 								%>
 								<c:set var="auth" value="${user.authority }"></c:set>
 								<%
