@@ -19,8 +19,8 @@ public class ReportDAO {
 	public void writeReport(ReportDTO dto) {
 		sqlSession.insert(namespace+".insert",dto);
 	}
-	public List<ReportDTO> listAll(){
-		return sqlSession.selectList(namespace+".listAll");
+	public List<ReportDTO> listAll(String dep){
+		return sqlSession.selectList(namespace+".listAll",dep);
 	}
 	public ReportDTO read(int bno) {
 		return sqlSession.selectOne(namespace+".read",bno);

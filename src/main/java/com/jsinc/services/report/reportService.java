@@ -14,5 +14,5 @@ public interface reportService {
 	
 	public void delete(int bno);
 	
-	public List<ReportDTO> listAll();
+	public List<ReportDTO> listAll(String dep);
 }
