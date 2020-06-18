@@ -130,7 +130,7 @@
 												<td><h5>${dto_mem.dep }</h5></td>
 												<td align="center">
 													<button type="button" class="btn btn-theme02" onclick="location.href='memberInfo?empNo=${dto_mem.empNo}'"><i class="fa fa-check"></i>수정</button>
-													<button type="button" class="btn btn-theme04"><i class="fa fa-trash-o" onclick="location.href='memberDel?empNo=${dto_mem.empNo}'"></i>삭제</button>
+													<button type="button" class="btn btn-theme04" onclick="location.href='memberDel?empNo=${dto_mem.empNo}'"><i class="fa fa-trash-o"></i>삭제</button>
 												</td>
 											</tr>
 										<!-- </form> -->

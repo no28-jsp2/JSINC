@@ -26,7 +26,7 @@ public class ReportController {
 	
 	
 	@RequestMapping("report")
-	public ModelAndView listAll() throws Exception{
+	public ModelAndView listAll(){
 		List<ReportDTO> list = rs.listAll();
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("report/report");
@@ -38,47 +38,33 @@ public class ReportController {
 		return "report/writeReport";
 	}
 	@RequestMapping(value = "rpWrite" , method = RequestMethod.POST)
-	public String write(@ModelAttribute ReportDTO dto) throws Exception{
+	public String write(@ModelAttribute ReportDTO dto){
 		rs.reportWrite(dto);
 		return "redirect:report";
 	}
 	@RequestMapping("contentReport")
-	public ModelAndView contentReport(@RequestParam int bno) throws Exception{
+	public ModelAndView contentReport(@RequestParam int bno) {
 		ReportDTO dto = rs.read(bno);
-		String title = dto.getTitle();
 		String content = dto.getContent();
-		String writer = dto.getWriter();
-		// *태그문자 처리 (< ==> &lt; > ==> &gt;)
-		// replace(A, B) A를 B로 변경
-		title = title.replace("<", "&lt;");
-		title = title.replace("<", "&gt;");
-		writer = writer.replace("<", "&lt;");
-		writer = writer.replace("<", "&gt;");
-		// * 공백문자 처리
-		title = title.replace("  ", "&nbsp;&nbsp;");
-		writer = writer.replace("  ", "&nbsp;&nbsp;");
-		// * 줄바꿈 문자처리
 		content = content.replace("\n", "<br>");
-		dto.setTitle(title);
 		dto.setContent(content);
-		dto.setWriter(writer);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("report/contentReport");
 		mav.addObject("rp", dto);
 		return mav;
 	}
 	@RequestMapping(value="updateRp",method = RequestMethod.POST)
-	public String update(@ModelAttribute ReportDTO dto) throws Exception {
+	public String update(@ModelAttribute ReportDTO dto){
 		rs.update(dto);
 		return "redirect:contentReport?bno="+dto.getBno();
 	}
 	@RequestMapping("deleteRp")
-	public String delete(@RequestParam int bno) throws Exception {
+	public String delete(@RequestParam int bno){
 		rs.delete(bno);
 		return "redirect:report";
 	}
 	@RequestMapping("updateReport")
-	public ModelAndView updateReport(@RequestParam int bno) throws Exception{
+	public ModelAndView updateReport(@RequestParam int bno){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("report/updateReport");
 		mav.addObject("rp",rs.read(bno));

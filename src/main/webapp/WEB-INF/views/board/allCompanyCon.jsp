@@ -62,11 +62,11 @@
                </li>
                
                <!-- 게시판 -->
-               <li class="sub-menu"><a href="javascript:;"> <i
+               <li class="sub-menu"><a class="active" href="javascript:;"> <i
                      class="fa fa-cogs"></i> <span>게시판</span>
                </a>
                   <ul class="sub">
-                     <li><a href="allCompanyBoard">전사 게시판</a></li>
+                     <li class="active"><a href="allCompanyBoard">전사 게시판</a></li>
                      <li><a href="departmentBoard">부서 게시판</a></li>
                      <li><a href="referenceBoard">자료실 게시판</a></li>
                   </ul>
@@ -110,7 +110,7 @@
                
                <!-- 쪽지 -->
                <li class="sub-menu">
-                  <a class="active" href="javascript:;"> 
+                  <a  href="javascript:;"> 
                      <i class="fa fa-comments-o"></i> <span>쪽지함</span><span class="label label-theme pull-right mail-info">${msgAlarm }</span>
                   </a>
                   <ul class="sub">
@@ -221,7 +221,7 @@
 				});
 				$("#delete").on('click',function() {
 					<% if(chk.equals(viewName)){%>
-						location.href = "deleteCom?bno=${board.bno}";
+						location.href = "deleteAC?bno=${board.bno}";
 					<%}else{%>
 						alert("작성자가 아니면 삭제할 수 없습니다!");
 						location.href = "allCompanyBoard";

@@ -92,6 +92,11 @@ public class BoardController {
 		bs.update(dto);
 		return "redirect:allCompanyCon?bno="+dto.getBno();
 	}
+	@RequestMapping("deleteAC")
+	public String deleteCom(@RequestParam int bno) throws Exception {
+		bs.delete(bno);
+		return "redirect:allCompanyBoard";
+	}
 	
 	///////////////////부서 게시판////////////////////////////
 	@RequestMapping("depView")

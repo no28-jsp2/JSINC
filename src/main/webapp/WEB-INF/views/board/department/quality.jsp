@@ -63,12 +63,12 @@
                </li>
                
                <!-- 게시판 -->
-               <li class="sub-menu"><a href="javascript:;"> <i
+               <li class="sub-menu"><a class="active" href="javascript:;"> <i
                      class="fa fa-cogs"></i> <span>게시판</span>
                </a>
                   <ul class="sub">
                      <li><a href="allCompanyBoard">전사 게시판</a></li>
-                     <li><a href="departmentBoard">부서 게시판</a></li>
+                     <li class="active"><a href="departmentBoard">부서 게시판</a></li>
                      <li><a href="referenceBoard">자료실 게시판</a></li>
                   </ul>
                </li>
@@ -145,14 +145,14 @@
 				</h3>
 				<hr>
 				<div align="center">
-				<a href="depWrite" style="float: left"><button type="button" class="btn">글쓰기</button></a>
+				<a href="depWrite" style="float: left"><button type="button" class="btn btn-sm btn-success">글쓰기</button></a>
 				<nav >
 				<ul>
-				<li><a href="develop"><button type="button" class="btn">개발부</button></a></li>
-				<li><a href="support"><button type="button" class="btn">경영지원부</button></a></li>
-				<li><a href="accounting"><button type="button" class="btn">경리부</button></a></li>
-				<li><a href="quality"><button type="button" class="btn">품질관리부</button></a></li>
-				<li><a href="overseas"><button type="button" class="btn">해외영업부</button></a></li>
+				<li><a href="develop"><button type="button" class="btn btn-sm btn-theme">개발부</button></a></li>
+				<li><a href="support"><button type="button" class="btn btn-sm btn-theme">경영지원부</button></a></li>
+				<li><a href="accounting"><button type="button" class="btn btn-sm btn-theme">경리부</button></a></li>
+				<li><a href="quality"><button type="button" class="btn btn-sm btn-theme">품질관리부</button></a></li>
+				<li><a href="overseas"><button type="button" class="btn btn-sm btn-theme">해외영업부</button></a></li>
 				</ul>
 				</nav>
 				</div>

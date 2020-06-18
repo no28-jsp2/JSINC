@@ -74,12 +74,12 @@
                
                <!-- 전자 결재 -->
                <li class="sub-menu">
-                  <a href="javascript:;"> 
+                  <a class="active" href="javascript:;"> 
                      <i class="fa fa-book"></i>  <span>전자 결재</span>
                   </a>
                   <ul class="sub">
                      <li><a href="newSign">결재 상신</a></li>
-                     <li><a href="signApprove">결재 승인</a></li>
+                     <li><a class="active" href="signApprove">결재 승인</a></li>
                      <li><a href="signWait">결재 대기</a></li>
                      <li><a href="signSuccess">결재 완료</a></li>
                   </ul>
@@ -110,7 +110,7 @@
                
                <!-- 쪽지 -->
                <li class="sub-menu">
-                  <a class="active" href="javascript:;"> 
+                  <a  href="javascript:;"> 
                      <i class="fa fa-comments-o"></i> <span>쪽지함</span><span class="label label-theme pull-right mail-info">${msgAlarm }</span>
                   </a>
                   <ul class="sub">

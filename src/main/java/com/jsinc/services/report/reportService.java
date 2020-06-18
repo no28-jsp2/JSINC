@@ -6,13 +6,13 @@ import com.jsinc.jsincDTO.ReportDTO;
 
 public interface reportService {
 
-	public void reportWrite(ReportDTO dto) throws Exception;
+	public void reportWrite(ReportDTO dto) ;
 	
-	public ReportDTO read(int bno) throws Exception;
+	public ReportDTO read(int bno);
 	
-	public void update(ReportDTO dto) throws Exception;
+	public void update(ReportDTO dto);
 	
-	public void delete(int bno) throws Exception;
+	public void delete(int bno);
 	
-	public List<ReportDTO> listAll() throws Exception;
+	public List<ReportDTO> listAll();
 }
