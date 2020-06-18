@@ -14,13 +14,13 @@ public class reportServiceImpl implements reportService {
 	ReportDAO dao;
 	
 	@Override
-	public void reportWrite(ReportDTO dto) throws Exception {
+	public void reportWrite(ReportDTO dto) {
 		
 		dao.writeReport(dto);
 	}
 
 	@Override
-	public ReportDTO read(int bno) throws Exception {
+	public ReportDTO read(int bno) {
 		ReportDTO dto = dao.read(bno);
 		String title = dto.getTitle();
 		String content = dto.getContent();
@@ -43,18 +43,18 @@ public class reportServiceImpl implements reportService {
 	}
 
 	@Override
-	public void update(ReportDTO dto) throws Exception {
+	public void update(ReportDTO dto) {
 		dao.update(dto);
 	}
 
 	@Override
-	public void delete(int bno) throws Exception {
+	public void delete(int bno) {
 		dao.delete(bno);
 	}
 
 
 	@Override
-	public List<ReportDTO> listAll() throws Exception {
+	public List<ReportDTO> listAll() {
 		return dao.listAll();
 	}
 

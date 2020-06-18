@@ -136,8 +136,9 @@
 							<table cellpadding="0" cellspacing="0" border="0"
 								class="display table table-bordered" id="hidden-table-info">
 								<c:set var="auth" value="${user.authority }"></c:set>
-								<% String auth = (String)pageContext.getAttribute("auth");
-								if(auth.equals("N")){%>
+								<% String StringAuth = String.valueOf(pageContext.getAttribute("auth"));
+								int auth = Integer.parseInt(StringAuth);
+								if(auth<4){%>
 								<thead>
 									<tr>
 										<th>작성 일자</th>

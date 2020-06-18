@@ -16,19 +16,19 @@ public class ReportDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public void writeReport(ReportDTO dto) throws Exception{
+	public void writeReport(ReportDTO dto) {
 		sqlSession.insert(namespace+".insert",dto);
 	}
-	public List<ReportDTO> listAll()throws Exception{
+	public List<ReportDTO> listAll(){
 		return sqlSession.selectList(namespace+".listAll");
 	}
-	public ReportDTO read(int bno) throws Exception{
+	public ReportDTO read(int bno) {
 		return sqlSession.selectOne(namespace+".read",bno);
 	}
-	public void update(ReportDTO dto) throws Exception{
+	public void update(ReportDTO dto) {
 		sqlSession.update(namespace+".update",dto);
 	}
-	public void delete(int bno) throws Exception{
+	public void delete(int bno) {
 		sqlSession.delete(namespace+".delete",bno);
 	}
 }
