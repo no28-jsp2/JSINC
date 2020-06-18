@@ -207,13 +207,13 @@
 										<b>연장 근무 사유 :</b>
 										${sign.content }<br>
 								<%
-									}
+									}  
 								%>
 								<c:set var="auth" value="${user.authority }"></c:set>
 								<%
-								String auth1 = (String)pageContext.getAttribute("auth");
-								int auth = Integer.parseInt(auth1);
-								if(auth >= 3){%>
+								String StringAuth = String.valueOf(pageContext.getAttribute("auth"));
+								int auth = Integer.parseInt(StringAuth);
+								if(auth>3){%>
 									<div>
 										<button type="button" class="btn btn-success" value="승인" name="approved" onclick="location.href='confirm?bno=${sign.bno}'">승인</button>
 										<button type="button" class="btn btn-theme04" value="반려" name="reject" onclick="location.href='reject?bno=${sign.bno}'">반려</button>
@@ -223,7 +223,7 @@
                 <hr>
               
                 <div class="compose-btn pull-left">
-                  	<a href="signApprove" class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> 목록으로</a>
+                  	<a href="signApprove"><button class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> 목록으로</button></a>
                 	<button id="delete" class="btn btn-sm btn-theme04">삭제하기</button>
                 </div>
               </div>

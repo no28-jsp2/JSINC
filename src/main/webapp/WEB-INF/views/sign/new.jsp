@@ -220,7 +220,7 @@
 									<div class="col-md-3 col-xs-11">
 										<input id="extend1" class="form-control" disabled="disabled" name="startDT" type="time">
 									</div>
-									<label class="control-label col-lg-2" style="text-align: center;">휴가 마감 </label>
+									<label class="control-label col-lg-2" style="text-align: center;">연장 마감 </label>
 									<div class="col-md-3 col-xs-11">
 									 <input id="extend2" class="form-control" disabled="disabled" name="endDT" type="time">
 									</div>
