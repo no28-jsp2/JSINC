@@ -221,7 +221,7 @@
 				});
 				$("#delete").on('click',function() {
 					<% if(chk.equals(viewName)){%>
-						location.href = "deleteCom?bno=${board.bno}";
+						location.href = "deleteAC?bno=${board.bno}";
 					<%}else{%>
 						alert("작성자가 아니면 삭제할 수 없습니다!");
 						location.href = "allCompanyBoard";
