@@ -103,14 +103,14 @@
                
                <!-- 보고 -->
                <li>
-                  <a href="report"> 
+                  <a class="active" href="report"> 
                      <i class=" fa fa-bar-chart-o"></i><span>보고</span>
                		</a>
                </li>
                
                <!-- 쪽지 -->
                <li class="sub-menu">
-                  <a class="active" href="javascript:;"> 
+                  <a  href="javascript:;"> 
                      <i class="fa fa-comments-o"></i> <span>쪽지함</span><span class="label label-theme pull-right mail-info">${msgAlarm }</span>
                   </a>
                   <ul class="sub">

@@ -86,7 +86,7 @@
                
                <!-- 보고 -->
                <li>
-                  <a href="report"> 
+                  <a class="active" href="report"> 
                      <i class=" fa fa-bar-chart-o"></i><span>보고</span>
                		</a>
                </li>
@@ -104,11 +104,11 @@
                
                <!-- 설문 -->
                <li class="sub-menu">
-                  <a class="active" href="javascript:;"> 
+                  <a  href="javascript:;"> 
                      <i class="fa fa-map-marker"></i>  <span>설문</span>
                   </a>
                   <ul class="sub">
-                  	 <li class="active"><a href="createSurvey">새 설문 작성</a></li>
+                  	 <li><a href="createSurvey">새 설문 작성</a></li>
                      <li><a href="startedSurvey">진행중인 설문</a></li>
                      <li><a href="endSurvey">마감된 설문</a></li>
                      <li><a href="mySurvey">내가 만든 설문</a></li>

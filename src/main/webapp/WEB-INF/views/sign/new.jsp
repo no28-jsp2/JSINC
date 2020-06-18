@@ -57,11 +57,11 @@
                
                <!-- 전자 결재 -->
                <li class="sub-menu">
-                  <a href="javascript:;"> 
+                  <a class="active" href="javascript:;"> 
                      <i class="fa fa-book"></i>  <span>전자 결재</span>
                   </a>
                   <ul class="sub">
-                     <li><a href="newSign">결재 상신</a></li>
+                     <li><a class="active" href="newSign">결재 상신</a></li>
                      <li><a href="signApprove">결재 승인</a></li>
                      <li><a href="signWait">결재 대기</a></li>
                      <li><a href="signSuccess">결재 완료</a></li>
@@ -104,11 +104,11 @@
                
                <!-- 설문 -->
                <li class="sub-menu">
-                  <a class="active" href="javascript:;"> 
+                  <a  href="javascript:;"> 
                      <i class="fa fa-map-marker"></i>  <span>설문</span>
                   </a>
                   <ul class="sub">
-                  	 <li class="active"><a href="createSurvey">새 설문 작성</a></li>
+                  	 <li><a href="createSurvey">새 설문 작성</a></li>
                      <li><a href="startedSurvey">진행중인 설문</a></li>
                      <li><a href="endSurvey">마감된 설문</a></li>
                      <li><a href="mySurvey">내가 만든 설문</a></li>

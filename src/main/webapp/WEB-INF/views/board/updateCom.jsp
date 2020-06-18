@@ -46,9 +46,9 @@
                      class="fa fa-cogs"></i> <span>게시판</span>
                </a>
                   <ul class="sub">
-                     <li class="active"><a href="allCompanyBoard">전사 게시판</a></li>
+                     <li ><a href="allCompanyBoard">전사 게시판</a></li>
                      <li><a href="departmentBoard">부서 게시판</a></li>
-                     <li><a href="referenceBoard">자료실 게시판</a></li>
+                     <li class="active"><a href="referenceBoard">자료실 게시판</a></li>
                   </ul>
                </li>
                
