@@ -61,7 +61,7 @@
                      <i class="fa fa-book"></i>  <span>전자 결재</span>
                   </a>
                   <ul class="sub">
-                     <li><a class="active" href="newSign">결재 상신</a></li>
+                     <li class="active"><a href="newSign">결재 상신</a></li>
                      <li><a href="signApprove">결재 승인</a></li>
                      <li><a href="signWait">결재 대기</a></li>
                      <li><a href="signSuccess">결재 완료</a></li>
