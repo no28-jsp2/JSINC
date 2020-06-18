@@ -242,7 +242,7 @@
 				 */
 				 
 				var oTable = $('#hidden-table-info').dataTable({
-					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 1, 'desc' ] ]
+					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 4, 'desc' ] ]
 				});
 
 				/* Add event listener for opening and closing details

@@ -209,7 +209,7 @@
           "aTargets": [0]
         }],
         "aaSorting": [
-          [1, 'asc']
+          [3, 'desc']
         ]
       });
 
