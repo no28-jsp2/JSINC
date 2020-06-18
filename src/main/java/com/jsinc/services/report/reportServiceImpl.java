@@ -54,8 +54,8 @@ public class reportServiceImpl implements reportService {
 
 
 	@Override
-	public List<ReportDTO> listAll() {
-		return dao.listAll();
+	public List<ReportDTO> listAll(String dep) {
+		return dao.listAll(dep);
 	}
 
 }

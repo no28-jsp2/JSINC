@@ -2,7 +2,9 @@ package com.jsinc.controllers;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jsinc.jsincDTO.MemberDTO;
 import com.jsinc.jsincDTO.ReportDTO;
 import com.jsinc.services.report.reportService;
 
@@ -26,8 +29,12 @@ public class ReportController {
 	
 	
 	@RequestMapping("report")
-	public ModelAndView listAll(){
-		List<ReportDTO> list = rs.listAll();
+	public ModelAndView listAll(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		ServletContext application = session.getServletContext();
+		MemberDTO dto_mem = (MemberDTO) application.getAttribute("user");
+		
+		List<ReportDTO> list = rs.listAll(dto_mem.getDep());
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("report/report");
 		mav.addObject("report",list);

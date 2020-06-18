@@ -144,7 +144,7 @@
 										<th>작성 일자</th>
 										<th>부서</th>
 										<th>보고서</th>
-										<th>회차</th>
+										<th>제목</th>
 										<th>보고대상</th>
 									</tr>
 								</thead>

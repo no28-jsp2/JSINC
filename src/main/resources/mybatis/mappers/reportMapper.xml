@@ -8,6 +8,8 @@
 			bno,regdate,department,report,title,target,writer
 		from
 			jsinc_report
+		where	
+			department = #{department}
 		order
 			by bno desc
 	</select>
