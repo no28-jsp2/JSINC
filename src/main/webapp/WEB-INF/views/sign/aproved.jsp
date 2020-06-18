@@ -223,7 +223,7 @@
                 <hr>
               
                 <div class="compose-btn pull-left">
-                  	<a href="signApprove"><button class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> 목록으로</a>
+                  	<a href="signApprove"><button class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> 목록으로</button></a>
                 	<button id="delete" class="btn btn-sm btn-theme04">삭제하기</button>
                 </div>
               </div>
