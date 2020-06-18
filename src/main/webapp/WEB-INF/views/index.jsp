@@ -72,6 +72,7 @@ ul li img {
 						</a>
 						<ul class="sub">
 							<li><a href="newSign">결재 상신</a></li>
+							<li><a href="signApprove">결재 승인</a></li>
 							<li><a href="signWait">결재 대기</a></li>
 							<li><a href="signSuccess">결재 완료</a></li>
 						</ul>
@@ -294,58 +295,26 @@ ul li img {
 
 						<!--new earning end-->
 						<!-- RECENT ACTIVITIES SECTION -->
-						<h4 class="centered mt">가입 커뮤니티 최신글</h4>
-						<!-- First Activity -->
+							<h4 class="centered mt">읽지 않은 메세지</h4>
+					
+				<c:if test="${empty recList}">
+						<div class="desc" align="center" style="margin-bottom: 250px;">
+							<a href="RecMessage">받은 쪽지함 바로가기</a>
+						</div>
+				</c:if>	
+						<c:forEach var="rec" items="${recList }" begin="0" end="3">
 						<div class="desc">
 							<div class="thumb">
 								<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
 							</div>
-							<div class="details">
+							
 								<p>
-									<muted>Just Now</muted>
-									<br /> <a href="#">Paul Rudd</a> purchased an item.<br />
+									${rec.sentTime }
+									<br /><a href="recContentView?subject=${rec.subject }&content=${rec.content}&sentTime=${rec.sentTime}&sender=${rec.sender}&senderRank=${rec.senderRank}&senderDep=${rec.senderDep}&senderEmpNo=${rec.senderEmpNo}">${rec.sender }</a>&nbsp;${rec.senderRank }님이  메세지를 보내셨습니다.<br />
 								</p>
-							</div>
+						
 						</div>
-						<!-- Second Activity -->
-						<div class="desc">
-							<div class="thumb">
-								<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-							</div>
-							<div class="details">
-								<p>
-									<muted>2 Minutes Ago</muted>
-									<br /> <a href="#">James Brown</a> subscribed to your
-									newsletter.<br />
-								</p>
-							</div>
-						</div>
-						<!-- Third Activity -->
-						<div class="desc">
-							<div class="thumb">
-								<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-							</div>
-							<div class="details">
-								<p>
-									<muted>3 Hours Ago</muted>
-									<br /> <a href="#">Diana Kennedy</a> purchased a year
-									subscription.<br />
-								</p>
-							</div>
-						</div>
-						<!-- Fourth Activity -->
-						<div class="desc">
-							<div class="thumb">
-								<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-							</div>
-							<div class="details">
-								<p>
-									<muted>7 Hours Ago</muted>
-									<br /> <a href="#">Brando Page</a> purchased a year
-									subscription.<br />
-								</p>
-							</div>
-						</div>
+						</c:forEach>
 						<!-- CALENDAR-->
 						<div id="calendar" class="mb">
 							<div class="panel green-panel no-margin">

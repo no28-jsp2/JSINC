@@ -8,7 +8,10 @@
 <meta charset="utf-8">
 <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원가입</title>
+<title>JS.Inc</title>
+<!-- Favicons -->
+<link href="resources/img/favicon.png" rel="icon">
+<link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 <!-- Bootstrap -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
@@ -489,6 +492,12 @@
 								$('#provisionYn').focus();
 								return false;
 							}
+							//사진 
+							if($('#proImg').val()==""){
+								alert("사진을 등록해주세요")
+								$('#protext').focus();
+								return false;
+							}
 							//아이디 검사
 							if ($('#empNo').val() == "") {
 								alert("사원번호를 입력하여 주시기 바랍니다.");
@@ -563,6 +572,7 @@
 								$('#phoneNumber').focus();
 								return false;
 							}
+							
 
 							alert("회원가입이 완료 되었습니다")
 

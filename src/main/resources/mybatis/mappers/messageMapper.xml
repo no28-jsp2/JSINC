@@ -42,6 +42,9 @@
 <update id="msgChk" parameterType="dto_msg">
 	update jsinc_recMsg set msgChk='Y' where recEmpNo=#{recEmpNo} and senderEmpNo=#{senderEmpNo} and subject=#{subject} and sentTime=#{sentTime}
 </update>
-
+<!-- 읽지 않은 메세지 -->
+<select id="recentMsg" resultType="dto_msg">
+	select * from jsinc_recMsg where recEmpNo=#{empNo} and msgChk='N' order by sentTime desc
+</select>
 
 </mapper>

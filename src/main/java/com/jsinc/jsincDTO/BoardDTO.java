@@ -8,6 +8,7 @@ public class BoardDTO {
 	private String title;
 	private String writer;
 	private String content;
+	private String department;
 	private Date regdate;
 	private String savefile;
 	private String realfile;
@@ -60,6 +61,12 @@ public class BoardDTO {
 	}
 	public void setFilesize(int filesize) {
 		this.filesize = filesize;
+	}
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 	
 	
