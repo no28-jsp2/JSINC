@@ -135,10 +135,9 @@ ul li img {
 			<section class="wrapper">
 				<div class="row">
 					<div class="col-lg-9 main-chart">
-						<!--CUSTOM CHART START -->
-
+					<!-- 사진 슬라이드 -->
 						<div class="border-head"></div>
-						<div class="custom-bar-chart" style="width: 90%; margin: 0 auto; margin-bottom: 50px;">
+						<div class="custom-bar-chart" style="width: 100%; margin: 0 auto; margin-bottom: 50px;">
 							<div align="center" style="margin: 0 auto;">
 								<ul class="bxSlider">
 									<li><img alt="" src="resources/bxSli/img/pic01.png"></a></li>
@@ -252,7 +251,7 @@ ul li img {
 							</div>
 							<!-- /col-md-4-->
 
-							<!-- DIRECT MESSAGE PANEL -->
+							<!-- DIRECT SURVEY PANEL -->
 							<div class="col-md-8 mb">
 								<div class="message-p pn">
 									<div class="message-header">
@@ -289,12 +288,7 @@ ul li img {
               RIGHT SIDEBAR CONTENT
               *********************************************************************************************************************************************************** -->
 					<div class="col-lg-3 ds">
-						<!--COMPLETED ACTIONS DONUTS CHART-->
-
-						<!--NEW EARNING STATS -->
-
-						<!--new earning end-->
-						<!-- RECENT ACTIVITIES SECTION -->
+						<!-- RECENT MESSAGE SECTION -->
 							<h4 class="centered mt">읽지 않은 메세지</h4>
 					
 				<c:if test="${empty recList}">
@@ -330,7 +324,8 @@ ul li img {
 							</div>
 						</div>
 						<!-- / calendar -->
-						<img src="resources/img/favicon.png" style="padding: 75px 0 75px 0;">
+						<!-- Company Logo -->
+						<img src="resources/img/favicon.png" style="padding: 75px 0 75px 0; width: 100%; heigth: 100%;">
 					</div>
 					<!-- /col-lg-3 -->
 				</div>
