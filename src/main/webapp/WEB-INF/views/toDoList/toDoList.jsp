@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<!-- by성택_할일 리스트 페이지_20200605 -->
+
 <!DOCTYPE html>
 <html lang="en">
 

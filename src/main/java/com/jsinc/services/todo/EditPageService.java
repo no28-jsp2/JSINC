@@ -12,12 +12,14 @@ import org.springframework.ui.Model;
 import com.jsinc.jsincDAO.ToDoListDAO;
 import com.jsinc.jsincDTO.ToDoListDTO;
 
+// 수정 페이지 서비스
 @Service
 public class EditPageService implements ServiceIf {
 
 	@Autowired
 	ToDoListDAO dao;
-
+	
+	// by성택_해당 리스트 값 수정페이지로 가져오기_20200606
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();

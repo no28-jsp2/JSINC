@@ -16,12 +16,14 @@ import com.jsinc.jsincDAO.SurveyDAO;
 import com.jsinc.jsincDTO.MemberDTO;
 import com.jsinc.jsincDTO.SurveyDTO;
 
+// 설문 등록 서비스
 @Service
 public class CreateSurveyService implements ServiceIf {
 	
 	@Autowired
 	SurveyDAO dao;
-
+	
+	// by성택_작성한 설문 등록(DB에 저장)_20200609
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();

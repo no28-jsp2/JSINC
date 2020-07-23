@@ -13,6 +13,7 @@ public class CommunityDeleteService implements ServiceIf{
 	@Autowired
 	MasterDAO dao;
 	
+	// 커뮤니티 승인 취소 & 삭제
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();

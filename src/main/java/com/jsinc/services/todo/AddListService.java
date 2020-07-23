@@ -16,11 +16,13 @@ import com.jsinc.jsincDAO.ToDoListDAO;
 import com.jsinc.jsincDTO.MemberDTO;
 import com.jsinc.jsincDTO.ToDoListDTO;
 
+// 할일 추가하기 서비스
 @Service
 public class AddListService implements ServiceIf{
 	@Autowired
 	ToDoListDAO dao;
 	
+	// by성택_할일 리스트에 저장_20200605
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();

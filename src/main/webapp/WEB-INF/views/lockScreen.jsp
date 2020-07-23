@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<!-- by성택_화면 잠금 페이지_20200529 -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,9 +20,11 @@
 <link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Bootstrap core CSS -->
-<link href="resources/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/lib/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 <!--external css-->
-<link href="resources/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="resources/lib/font-awesome/css/font-awesome.css"
+	rel="stylesheet" />
 <!-- Custom styles for this template -->
 <link href="resources/css/style.css" rel="stylesheet">
 <link href="resources/css/style-responsive.css" rel="stylesheet">
@@ -37,19 +41,23 @@
 				</h2>
 				<p>UNLOCK</p>
 				<!-- Modal -->
-				<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+				<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
+					tabindex="-1" id="myModal" class="modal fade">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<form action="lock">
 								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">&times;</button>
 									<h4 class="modal-title">화면 잠금 해체</h4>
 								</div>
 								<div class="modal-body">
 									<p class="centered">
-										<img class="img-circle" width="80" src="resources/img${user.img}">
+										<img class="img-circle" width="80"
+											src="resources/img${user.img}">
 									</p>
-									<input type="password" name="password" placeholder="비밀번호 입력" autocomplete="off" class="form-control placeholder-no-fix">
+									<input type="password" name="password" placeholder="비밀번호 입력"
+										autocomplete="off" class="form-control placeholder-no-fix">
 								</div>
 								<div class="modal-footer centered">
 									<button data-dismiss="modal" class="btn btn-theme04"
@@ -72,7 +80,8 @@
 	<script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
 	<!--BACKSTRETCH-->
 	<!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-	<script type="text/javascript" src="resources/lib/jquery.backstretch.min.js"></script>
+	<script type="text/javascript"
+		src="resources/lib/jquery.backstretch.min.js"></script>
 	<script>
 		$.backstretch("resources/img/login-bg.jpg", {
 			speed : 500

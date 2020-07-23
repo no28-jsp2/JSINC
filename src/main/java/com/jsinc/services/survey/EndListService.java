@@ -12,11 +12,13 @@ import org.springframework.ui.Model;
 import com.jsinc.jsincDAO.SurveyDAO;
 import com.jsinc.jsincDTO.SurveyDTO;
 
+// 마감된 설문 리스트 서비스
 @Service
 public class EndListService implements ServiceIf {
 	@Autowired
 	SurveyDAO dao;
 	
+	// by성택_마감된 설문 리스트_20200608
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();

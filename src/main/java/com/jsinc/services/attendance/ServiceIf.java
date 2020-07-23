@@ -4,7 +4,7 @@ import org.springframework.ui.Model;
 
 import com.jsinc.jsincDTO.AttendanceDTO;
 
+// by성택_근태 정보 서비스 인터페이스_20200523
 public interface ServiceIf {
-	public AttendanceDTO execute(AttendanceDTO dto_att);
-	public void list(Model model);
+	public AttendanceDTO execute(Model model);
 }

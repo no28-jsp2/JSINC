@@ -1,5 +1,6 @@
 package com.jsinc.services.main;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -10,24 +11,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.jsinc.jsincDAO.MemberDAO;
+import com.jsinc.jsincDAO.MessageDAO;
 import com.jsinc.jsincDTO.MemberDTO;
-
+import com.jsinc.jsincDTO.MessageDTO;
+import com.jsinc.services.message.ServiceMes;
 @Service
-public class PasswordChangeService implements ProfileService {
+public class RecentServiceImpl implements ServiceMes{
 	@Autowired
-	MemberDAO dao;
-
+	MessageDAO dao;
+	
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session = request.getSession();
-		ServletContext application = session.getServletContext();
-		MemberDTO dto_mem = (MemberDTO) application.getAttribute("user");
-		dto_mem.setPassword(request.getParameter("newPW"));
-		System.out.println("바뀐 비밀번호 : " + dto_mem.getPassword());
-		dao.passwordChange(dto_mem);
+		ServletContext app= session.getServletContext();
+		MemberDTO dto = (MemberDTO) app.getAttribute("user");
+		int empNo = dto.getEmpNo();
+		ArrayList<MessageDTO> list = (ArrayList<MessageDTO>) dao.recentMsg(empNo);
+		model.addAttribute("recList",list);
+		
 	}
+	
 
 }

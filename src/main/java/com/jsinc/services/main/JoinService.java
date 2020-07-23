@@ -9,12 +9,13 @@ import org.springframework.ui.Model;
 import com.jsinc.jsincDAO.MemberDAO;
 import com.jsinc.jsincDTO.MemberDTO;
 
+// 회원가입 서비스
 @Service
-public class MemberServiceImpl implements ServiceIf {
+public class JoinService implements ServiceIf {
 	@Autowired
 	MemberDAO dao;
 
-	// 회원가입
+	// by해준_회원가입_20200522
 	@Override
 	public int execute(Model model) throws Exception {
 		Map<String, Object> map = model.asMap();
@@ -39,20 +40,5 @@ public class MemberServiceImpl implements ServiceIf {
 		dao.memReg(dto);
 		return 0;
 	}
-
-	@Override
-	public int empNoChk(MemberDTO dto) throws Exception {
-		return dao.empNoChk(dto);
-	}
-
-	@Override
-	public int userEmailChk(String userEmail) throws Exception {
-		return dao.userEmailChk(userEmail);
-	}
-
-	@Override
-	public void sentPw(MemberDTO dto) throws Exception {
-		dao.sentPw(dto);
-	}
-
+	
 }

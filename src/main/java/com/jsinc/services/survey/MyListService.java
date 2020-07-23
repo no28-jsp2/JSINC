@@ -15,11 +15,13 @@ import com.jsinc.jsincDAO.SurveyDAO;
 import com.jsinc.jsincDTO.MemberDTO;
 import com.jsinc.jsincDTO.SurveyDTO;
 
+// 내가 만든 설문 서비스
 @Service
 public class MyListService implements ServiceIf{
 	@Autowired
 	SurveyDAO dao;
 	
+	// by성택_내가 만든 설문 서비스 리스트_20200609
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();

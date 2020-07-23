@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:beans="http://www.springframework.org/schema/beans"
-   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
-   <!-- 이메일 관련 -->
-   <beans:bean id="javaMailSender"
-      class="org.springframework.mail.javamail.JavaMailSenderImpl">
-      <beans:property name="host" value="smtp.gmail.com" />
-      <beans:property name="port" value="587" />
-      <beans:property name="username" value="tjgowns12@gmail.com" />
-      <beans:property name="password" value="JSInc.123456" />
-      <beans:property name="javaMailProperties">
-         <beans:props>
-            <beans:prop key="mail.smtp.ssl.trust">smtp.gmail.com</beans:prop>
-            <beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
-            <beans:prop key="mail.smtp.auth">true</beans:prop>
-         </beans:props>
-      </beans:property>
-   </beans:bean>
-
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	<!-- by해준_이메일 관련_20200522 -->
+	<beans:bean id="javaMailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<beans:property name="host" value="smtp.gmail.com" />
+		<beans:property name="port" value="587" />
+		<!-- 구글 계정 아이디와 비밀번호 입력하기 -->
+		<beans:property name="username" value="hstaek95@gmail.com" />
+		<beans:property name="password" value="s2h5s7t8@!" />
+		<beans:property name="javaMailProperties">
+			<beans:props>
+				<beans:prop key="mail.smtp.ssl.trust">smtp.gmail.com</beans:prop>
+				<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+				<beans:prop key="mail.smtp.auth">true</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
 </beans:beans>

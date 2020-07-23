@@ -10,11 +10,13 @@ import org.springframework.ui.Model;
 
 import com.jsinc.jsincDAO.ToDoListDAO;
 
+// 삭제 서비스
 @Service
 public class DeleteService implements ServiceIf{
 	@Autowired
 	ToDoListDAO dao;
 	
+	// by성택_삭제하기_20200606
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();

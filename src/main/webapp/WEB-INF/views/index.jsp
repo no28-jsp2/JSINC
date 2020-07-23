@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<!-- by성택_메인페이지_20200521 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,12 +23,14 @@ ul li img {
 	<section id="container">
 		<jsp:include page="default/header.jsp" />
 		<!--sidebar start-->
+		<!-- by성택_sidebar 메뉴 아이콘+이름 수정_20200521 -->
 		<aside>
 			<div id="sidebar" class="nav-collapse ">
 				<!-- sidebar menu start-->
 				<ul class="sidebar-menu" id="nav-accordion">
+					<!-- 프로필 -->
 					<p class="centered">
-						<a href="profile"> 
+						<a href="profile">
 							<img src="resources/img${user.img}" class="img-circle" width="80">
 						</a>
 					</p>
@@ -91,8 +95,6 @@ ul li img {
 							<i class="fa fa-th"></i><span>스케줄</span>
 						</a>
 					</li>
-
-
 
 					<!-- 보고 -->
 					<li>

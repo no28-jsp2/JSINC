@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!-- by해준_회원가입 페이지_20200522 -->
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -13,13 +16,17 @@
 <link href="resources/img/favicon.png" rel="icon">
 <link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 <!-- Bootstrap -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
 <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
 <script src="http://code.jquery.com/jquery.js"></script>
 <!-- 모든 합쳐진 플러그인을 포함하거나 (아래) 필요한 각각의 파일들을 포함하세요 -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- Respond.js 으로 IE8 에서 반응형 기능을 활성화하세요 (https://github.com/scottjehl/Respond) -->
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script
+	src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
 
 <body>
@@ -35,7 +42,8 @@
 		<hr />
 		<!-- 본문 들어가는 부분 -->
 
-		<form class="form-horizontal" role="form" method="post" action="registerMem" enctype="multipart/form-data">
+		<form class="form-horizontal" role="form" method="post"
+			action="registerMem" enctype="multipart/form-data">
 			<div class="form-group">
 
 				<label for="provision" class="col-lg-2 control-label">회원가입약관</label>
@@ -417,15 +425,16 @@
 					});
 				}
 			}
+			
 			//이메일 인증
 			function emailChk_() {
 				if ($('#emailVal').val() == "N") {
 					alert("인증번호 전송을 해주시기 바랍니다.");
 				} else if ($("#userEmailChk").val() == "N") {
 					alert("이메일 중복확인을 해주시기 바랍니다")
-				} else if ($('#emailVal').val() == "Y"
+				} else if ($('#emailVal').val() == "Y" 
 						|| $("#userEmailChk").val() == "Y") {
-
+					
 					$.ajax({
 						url : "chkEmail",
 						data : {
@@ -439,12 +448,10 @@
 							} else if (data == '1') {
 								$("#spanEmail").css('color', 'red')
 								$("#spanEmailVal").text("인증번호를 입력해 주시기 바랍니다.");
-
 							} else if (data == '2') {
 								$("#spanEmail").css('color', 'red')
 								$("#spanEmailVal").text("인증번호가 일치하지 않습니다.");
 							}
-
 							console.log("성공")
 						},
 						error : function() {
@@ -493,7 +500,7 @@
 								return false;
 							}
 							//사진 
-							if($('#proImg').val()==""){
+							if ($('#proImg').val() == "") {
 								alert("사진을 등록해주세요")
 								$('#protext').focus();
 								return false;
@@ -572,7 +579,6 @@
 								$('#phoneNumber').focus();
 								return false;
 							}
-							
 
 							alert("회원가입이 완료 되었습니다")
 

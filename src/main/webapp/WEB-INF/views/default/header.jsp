@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<!-- by성택_메인페이지의 header_20200521 -->
+
 <html>
 <head>
 <meta charset="UTF-8">

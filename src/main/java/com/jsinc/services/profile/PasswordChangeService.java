@@ -1,6 +1,5 @@
-package com.jsinc.services.message;
+package com.jsinc.services.profile;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -11,26 +10,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.jsinc.jsincDAO.MessageDAO;
+import com.jsinc.jsincDAO.MemberDAO;
 import com.jsinc.jsincDTO.MemberDTO;
-import com.jsinc.jsincDTO.MessageDTO;
+
+// 비밀번호 변경 서비스
 @Service
-public class RecentServiceImpl implements ServiceMes{
+public class PasswordChangeService implements ServiceIf {
 	@Autowired
-	MessageDAO dao;
+	MemberDAO dao;
 	
+	// by성택_비밀번호 변경_20200528
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session = request.getSession();
-		ServletContext app= session.getServletContext();
-		MemberDTO dto = (MemberDTO) app.getAttribute("user");
-		int empNo = dto.getEmpNo();
-		ArrayList<MessageDTO> list = (ArrayList<MessageDTO>) dao.recentMsg(empNo);
-		model.addAttribute("recList",list);
+		ServletContext application = session.getServletContext();
 		
+		MemberDTO dto_mem = (MemberDTO) application.getAttribute("user");
+		dto_mem.setPassword(request.getParameter("newPW"));
+		dao.passwordChange(dto_mem);
 	}
-	
 
 }

@@ -12,11 +12,13 @@ import org.springframework.ui.Model;
 import com.jsinc.jsincDAO.ToDoListDAO;
 import com.jsinc.jsincDTO.ToDoListDTO;
 
+// 수정 서비스
 @Service
 public class EditService implements ServiceIf{
 	@Autowired
 	ToDoListDAO dao;
 	
+	// by성택_수정하기_20200606
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();

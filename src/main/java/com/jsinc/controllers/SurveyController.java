@@ -16,11 +16,13 @@ import com.jsinc.services.survey.ServiceIf;
 import com.jsinc.services.survey.SurveyResultService;
 import com.jsinc.services.survey.SurveyService;
 
+// 설문 컨트롤러
 @Controller
 public class SurveyController {
 	ApplicationContext ac = App.ac;
 	ServiceIf service;
-	
+
+	// by성택_진행중인 설문 리스트_20200608
 	@RequestMapping("startedSurvey")
 	public String startedSurvey(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -29,11 +31,13 @@ public class SurveyController {
 		return "survey/startedSurvey";
 	}
 	
+	// by성택_새 설문 작성 페이지_20200609
 	@RequestMapping("createSurvey")
 	public String createSurvey() {
 		return "survey/createSurvey";
 	}
 	
+	// by성택_마감된 설문 리스트_20200608
 	@RequestMapping("endSurvey")
 	public String endSurvey(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -42,6 +46,7 @@ public class SurveyController {
 		return "survey/endSurvey";
 	}
 	
+	// by성택_내가 만든 설문_20200609
 	@RequestMapping("mySurvey")
 	public String mySurvey(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -50,6 +55,7 @@ public class SurveyController {
 		return "survey/mySurvey";
 	}
 	
+	// by성택_설문 등록하기_20200609
 	@RequestMapping("surveyInput")
 	public String surveyInput(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -58,6 +64,7 @@ public class SurveyController {
 		return "redirect:startedSurvey";
 	}
 	
+	// by성택_설문 응답 페이지 들어가기_20200610
 	@RequestMapping("survey")
 	public String survey(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -65,7 +72,8 @@ public class SurveyController {
 		service.execute(model);
 		return "survey/survey";
 	}
-	
+
+	// by성택_설문 결과 등록_20200610
 	@RequestMapping("surveyResult")
 	public String surveyResult(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -74,6 +82,7 @@ public class SurveyController {
 		return "redirect:startedSurvey";
 	}
 	
+	// by성택_설문 결과 페이지_20200611
 	@RequestMapping("result")
 	public String result(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);

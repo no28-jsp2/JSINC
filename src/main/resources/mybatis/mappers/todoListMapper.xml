@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.jsinc.mybatis.todoList">
+	<!-- by성택_오늘의 할일 리스트 가져오기_20200605 -->
 	<select id="listAll" resultType="dto_todo">
-		select * from jsinc_todo where empNo=#{empNo} and eDate=#{eDate} order by sDate asc
+		select * from jsinc_todo where
+		empNo=#{empNo} and eDate=#{eDate} order by sDate asc
 	</select>
-	
+	<!-- by성택_할일 목록 추가_20200605 -->
 	<insert id="addList">
-		insert into jsinc_todo(empNo,eDate,todo,sDate) values(#{empNo},#{eDate},#{todo},#{sDate})
+		insert into jsinc_todo(empNo,eDate,todo,sDate)
+		values(#{empNo},#{eDate},#{todo},#{sDate})
 	</insert>
-	
+	<!-- by성택_할일 완료 여부 'y'_20200605 -->
 	<update id="check" parameterType="dto_todo">
-		update jsinc_todo set checked=#{checked} where todo=#{todo}
+		update jsinc_todo set
+		checked=#{checked} where todo=#{todo}
 	</update>
-	
+	<!-- by성택_해당하는 할 일 dto 가져오기_20200606 -->
 	<select id="editPage" resultType="dto_todo">
-		select * from jsinc_todo where todo=#{todo}
+		select * from jsinc_todo where
+		todo=#{todo}
 	</select>
-	
+	<!-- by성택_수정_20200606 -->
 	<update id="edit">
-		update jsinc_todo set todo=#{sDate} where todo=#{todo}
+		update jsinc_todo set todo=#{sDate} where
+		todo=#{todo}
 	</update>
-	
+	<!-- by성택_삭제_20200606 -->
 	<delete id="del">
 		delete from jsinc_todo where todo=#{todo}
 	</delete>

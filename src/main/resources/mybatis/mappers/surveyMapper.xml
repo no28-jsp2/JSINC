@@ -1,45 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.jsinc.mybatis.Survey">
+	<!-- by성택_진행중/마감됨 설문 리스트_20200608 -->
 	<select id="listAll" resultType="dto_sur">
-		select * from jsinc_survey where state=#{state} and autho='Y'
+		select * from jsinc_survey where
+		state=#{state} and autho='Y'
 	</select>
-	
+	<!-- by성택_내가 만든 설문 리스트_20200609 -->
 	<select id="myList" resultType="dto_sur">
-		select * from jsinc_survey where empNo=#{empNo}
+		select * from jsinc_survey where
+		empNo=#{empNo}
 	</select>
-	
+	<!-- by성택_설문 등록_20200609 -->
 	<insert id="input" parameterType="dto_sur">
-		insert into jsinc_survey values(#{empNo}, #{title}, #{text}, #{sDate}, #{eDate},#{writer},#{state},#{opt},'N')
+		insert into jsinc_survey
+		values(#{empNo}, #{title}, #{text}, #{sDate},
+		#{eDate},#{writer},#{state},#{opt},'N')
 	</insert>
-	
+	<!-- by성택_클린한 설문 정보_20200610 -->
 	<select id="survey" resultType="dto_sur">
-		select * from jsinc_survey where title=#{title}
+		select * from jsinc_survey where
+		title=#{title}
 	</select>
-	
+	<!-- by성택_설문 상태 마감으로 변경_20200611 -->
 	<update id="endChk">
-		update jsinc_survey set state=#{state} where title=#{title}
+		update jsinc_survey set state=#{state} where
+		title=#{title}
 	</update>
 	<!-- ============================================================================================================ -->
+	<!-- by성택_설문 결과 등록_20200610 -->
 	<insert id="inputResult" parameterType="dto_sr">
-		insert into survey_result values(#{empNo}, #{title}, #{result})
+		insert into survey_result
+		values(#{empNo}, #{title}, #{result})
 	</insert>
-	
+	<!-- by성택_설문 참여 여부_20200608 -->
 	<select id="resultChk" resultType="int">
-		select count(*) from survey_result where empNo=#{empNo} and title=#{title}
+		select count(*) from
+		survey_result where empNo=#{empNo} and title=#{title}
 	</select>
-	
+	<!-- by성택_설문 응답자 수_20200611 -->
 	<select id="resultAll" resultType="int">
-		select count(*) from survey_result where title=#{title}
+		select count(*) from
+		survey_result where title=#{title}
 	</select>
-	
+	<!-- by성택_옵션별 응답자 수_20200611 -->
 	<select id="answerCnt" resultType="int">
-		select count(*) from survey_result where result=#{result} and title=#{title}
+		select count(*) from
+		survey_result where result=#{result} and title=#{title}
 	</select>
 	<!-- ============================================================================================================ -->
 	<select id="todayList" resultType="dto_sur">
-		select * from jsinc_survey where sDate=#{sDate}
+		select * from jsinc_survey
+		where sDate=#{sDate}
 	</select>
 </mapper>
