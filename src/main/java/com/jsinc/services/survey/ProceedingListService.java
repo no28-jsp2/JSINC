@@ -23,7 +23,7 @@ import com.jsinc.jsincDTO.SurveyResultDTO;
 public class ProceedingListService implements ServiceIf {
 	@Autowired
 	SurveyDAO dao;
-	
+
 	// by성택_진행중인 설문 리스트 가져오기_20200608
 	@Override
 	public void execute(Model model) {
@@ -32,27 +32,27 @@ public class ProceedingListService implements ServiceIf {
 		HttpSession session = request.getSession();
 		ServletContext application = session.getServletContext();
 		MemberDTO dto_mem = (MemberDTO) application.getAttribute("user");
-		
+
 		// by성택_마감 날짜 확인을 위해 현재시간 생성_20200611 추가
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd ");
 		SimpleDateFormat time = new SimpleDateFormat(":mm:ss");
 		String now = format.format(date) + date.getHours() + time.format(date); // 시간을 24h로 표현하기 위함
-		
-		ArrayList<SurveyDTO> list = (ArrayList<SurveyDTO>) dao.list("진행중");	// 진행중인 모든 설문 리스트
-		
+
+		ArrayList<SurveyDTO> list = (ArrayList<SurveyDTO>) dao.list("진행중"); // 진행중인 모든 설문 리스트
+
 		ArrayList<SurveyDTO> gList = new ArrayList<SurveyDTO>();
 		ArrayList<SurveyDTO> rList = new ArrayList<SurveyDTO>();
 
 		int result = 0;
 		for (SurveyDTO dto : list) {
-				// by성택_현재시간이 마감시간을 지나면 상태를 '마감됨'으로 변경_20200611 추가
-				if (now.compareTo(dto.geteDate()) == 1){
-					dto.setState("마감됨");
-					dao.endChk(dto);
-					continue;
-				}
-			
+			// by성택_현재시간이 마감시간을 지나면 상태를 '마감됨'으로 변경_20200611 추가
+			if (now.compareTo(dto.geteDate()) == 1) {
+				dto.setState("마감됨");
+				dao.endChk(dto);
+				continue;
+			}
+
 			// 참여 여부에 따라 rList와 gList로 분리
 			SurveyResultDTO dto_sr = new SurveyResultDTO();
 			dto_sr.setEmpNo(dto_mem.getEmpNo());

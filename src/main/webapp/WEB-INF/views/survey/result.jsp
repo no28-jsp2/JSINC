@@ -130,8 +130,7 @@
 									<label for="ccomment" class="control-label col-lg-2"
 										style="text-align: center;">결과</label>
 									<div class="col-lg-10">
-										참여자 수 : <b style="color: blue;">${total }</b> 명<br>
-										<br>
+										참여자 수 : <b style="color: blue;">${total }</b> 명<br> <br>
 										<c:choose>
 											<c:when test="${opt == 2 }">
 												1. <b style="color: blue;">${answer1 }</b> 명&nbsp;(<fmt:formatNumber
