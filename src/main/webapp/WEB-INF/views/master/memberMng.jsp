@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!-- by성택_사원 관리 페이지_20200613 -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,19 +12,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="Dashboard">
-<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+<meta name="keyword"
+	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 <title>JS.Inc</title>
 <!-- Favicons -->
 <link href="resources/img/favicon.png" rel="icon">
 <link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Bootstrap core CSS -->
-<link href="resources/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/lib/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 <!--external css-->
-<link href="resources/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href="resources/lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
-<link href="resources/lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
-<link rel="stylesheet" href="resources/lib/advanced-datatable/css/DT_bootstrap.css" />
+<link href="resources/lib/font-awesome/css/font-awesome.css"
+	rel="stylesheet" />
+<link href="resources/lib/advanced-datatable/css/demo_page.css"
+	rel="stylesheet" />
+<link href="resources/lib/advanced-datatable/css/demo_table.css"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="resources/lib/advanced-datatable/css/DT_bootstrap.css" />
 <!-- Custom styles for this template -->
 <link href="resources/css/style.css" rel="stylesheet">
 <link href="resources/css/style-responsive.css" rel="stylesheet">
@@ -36,7 +44,8 @@
 		<!--header start-->
 		<header class="header black-bg">
 			<div class="sidebar-toggle-box">
-				<div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+				<div class="fa fa-bars tooltips" data-placement="right"
+					data-original-title="Toggle Navigation"></div>
 			</div>
 			<!--logo start-->
 			<a href="memberMng" class="logo"><b>JS<span>Inc</span></b></a>
@@ -60,28 +69,19 @@
 						<i class="fa fa-user"></i> 관리자
 					</h5>
 					<!-- 사원 관리 -->
-					<li class="mt">
-						<a class="active" href="memberMng"> 
-							<i class="fa fa-asterisk"></i>
-							<span>사원 관리</span>
-						</a>
-					</li>
+					<li class="mt"><a class="active" href="memberMng"> <i
+							class="fa fa-asterisk"></i> <span>사원 관리</span>
+					</a></li>
 
 					<!-- 커뮤니티 관리 -->
-					<li>
-						<a href="communityMng"> 
-							<i class="fa fa-asterisk"></i>
+					<li><a href="communityMng"> <i class="fa fa-asterisk"></i>
 							<span>커뮤니티 승인/삭제</span>
-						</a>
-					</li>
+					</a></li>
 
 					<!-- 설문 관리 -->
-					<li>
-						<a href="surveyMng"> 
-							<i class="fa fa-asterisk"></i>
-							<span>설문 승인/삭제</span>
-						</a>
-					</li>
+					<li><a href="surveyMng"> <i class="fa fa-asterisk"></i> <span>설문
+								승인/삭제</span>
+					</a></li>
 				</ul>
 				<!-- sidebar menu end-->
 			</div>
@@ -113,26 +113,33 @@
 										<th>직급</th>
 										<th>부서</th>
 										<th></th>
-										
+
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${list }" var="dto_mem">
 										<!-- <form action="edit"> -->
-											<tr>
-												<td><img src="resources/img${dto_mem.img}" class="img-circle" width="20">&nbsp;${dto_mem.name }</td>
-												<td><h5>${dto_mem.empNo }</h5></td>
-												<td><h5>${dto_mem.birth }</h5></td>
-												<td><h5>${dto_mem.userEmail }</h5></td>
-												<td><h5>${dto_mem.phoneNumber }</h5></td>
-												<td><h5>${dto_mem.gender }</h5></td>
-												<td><h5>${dto_mem.rank }</h5></td>
-												<td><h5>${dto_mem.dep }</h5></td>
-												<td align="center">
-													<button type="button" class="btn btn-theme02" onclick="location.href='memberInfo?empNo=${dto_mem.empNo}'"><i class="fa fa-check"></i>수정</button>
-													<button type="button" class="btn btn-theme04" onclick="location.href='memberDel?empNo=${dto_mem.empNo}'"><i class="fa fa-trash-o"></i>삭제</button>
-												</td>
-											</tr>
+										<tr>
+											<td><img src="resources/img${dto_mem.img}"
+												class="img-circle" width="20">&nbsp;${dto_mem.name }</td>
+											<td><h5>${dto_mem.empNo }</h5></td>
+											<td><h5>${dto_mem.birth }</h5></td>
+											<td><h5>${dto_mem.userEmail }</h5></td>
+											<td><h5>${dto_mem.phoneNumber }</h5></td>
+											<td><h5>${dto_mem.gender }</h5></td>
+											<td><h5>${dto_mem.rank }</h5></td>
+											<td><h5>${dto_mem.dep }</h5></td>
+											<td align="center">
+												<button type="button" class="btn btn-theme02"
+													onclick="location.href='memberInfo?empNo=${dto_mem.empNo}'">
+													<i class="fa fa-check"></i>수정
+												</button>
+												<button type="button" class="btn btn-theme04"
+													onclick="location.href='memberDel?empNo=${dto_mem.empNo}'">
+													<i class="fa fa-trash-o"></i>삭제
+												</button>
+											</td>
+										</tr>
 										<!-- </form> -->
 									</c:forEach>
 								</tbody>
@@ -147,17 +154,21 @@
 		</section>
 		<!-- /MAIN CONTENT -->
 		<!--main content end-->
-		<jsp:include page="../default/footer.jsp"/>
+		<jsp:include page="../default/footer.jsp" />
 	</section>
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="resources/lib/jquery/jquery.min.js"></script>
-	<script type="text/javascript" language="javascript" src="resources/lib/advanced-datatable/js/jquery.js"></script>
+	<script type="text/javascript" language="javascript"
+		src="resources/lib/advanced-datatable/js/jquery.js"></script>
 	<script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
-	<script class="include" type="text/javascript" src="resources/lib/jquery.dcjqaccordion.2.7.js"></script>
+	<script class="include" type="text/javascript"
+		src="resources/lib/jquery.dcjqaccordion.2.7.js"></script>
 	<script src="resources/lib/jquery.scrollTo.min.js"></script>
 	<script src="resources/lib/jquery.nicescroll.js" type="text/javascript"></script>
-	<script type="text/javascript" language="javascript" src="resources/lib/advanced-datatable/js/jquery.dataTables.js"></script>
-	<script type="text/javascript" src="resources/lib/advanced-datatable/js/DT_bootstrap.js"></script>
+	<script type="text/javascript" language="javascript"
+		src="resources/lib/advanced-datatable/js/jquery.dataTables.js"></script>
+	<script type="text/javascript"
+		src="resources/lib/advanced-datatable/js/DT_bootstrap.js"></script>
 	<!--common script for all pages-->
 	<script src="resources/lib/common-scripts.js"></script>
 	<!--script for this page-->
@@ -171,43 +182,45 @@
 			sOut += '</table>';
 			return sOut;
 		}
-		*/
+		 */
 		$(document).ready(
-			function() {
-				var nCloneTh = document.createElement('th');
-				var nCloneTd = document.createElement('td');
-				/*
-				nCloneTd.innerHTML = '<img src="resources/lib/advanced-datatable/images/details_open.png">';
-				nCloneTd.className = "center";
-				*/
-				
-				$('#hidden-table-info thead tr').each(
-					function() {
-						this.insertBefore(nCloneTh,this.childNodes[0]);
-					}
-				);
+				function() {
+					var nCloneTh = document.createElement('th');
+					var nCloneTd = document.createElement('td');
+					/*
+					nCloneTd.innerHTML = '<img src="resources/lib/advanced-datatable/images/details_open.png">';
+					nCloneTd.className = "center";
+					 */
 
-				$('#hidden-table-info tbody tr').each(
-					function() {
-						this.insertBefore(nCloneTd.cloneNode(true),this.childNodes[0]);
-					}
-				);
-				
-				/*
-				 * Initialse DataTables, with no sorting on the 'details' column
-				 */
-				 
-				var oTable = $('#hidden-table-info').dataTable({
-					"aoColumnDefs" : [ {"bSortable" : false, "aTargets" : [ 0 ]} ], "aaSorting" : [ [ 1, 'asc' ] ]
-				});
+					$('#hidden-table-info thead tr').each(function() {
+						this.insertBefore(nCloneTh, this.childNodes[0]);
+					});
 
-				/* Add event listener for opening and closing details
-				 * Note that the indicator for showing which row is open is not controlled by DataTables,
-				 * rather it is done here
-				 */
-				
-				 /*
-				$('#hidden-table-info tbody td img').live('click',
+					$('#hidden-table-info tbody tr').each(
+							function() {
+								this.insertBefore(nCloneTd.cloneNode(true),
+										this.childNodes[0]);
+							});
+
+					/*
+					 * Initialse DataTables, with no sorting on the 'details' column
+					 */
+
+					var oTable = $('#hidden-table-info').dataTable({
+						"aoColumnDefs" : [ {
+							"bSortable" : false,
+							"aTargets" : [ 0 ]
+						} ],
+						"aaSorting" : [ [ 1, 'asc' ] ]	// 이름순 정렬
+					});
+
+					/* Add event listener for opening and closing details
+					 * Note that the indicator for showing which row is open is not controlled by DataTables,
+					 * rather it is done here
+					 */
+
+					/*
+					$('#hidden-table-info tbody td img').live('click',
 					function() {
 						var nTr = $(this).parents('tr')[0];
 						if (oTable.fnIsOpen(nTr)) {
@@ -218,9 +231,8 @@
 							oTable.fnOpen(nTr,fnFormatDetails(oTable,nTr),'details');
 						}
 					}
-				);*/
-			}
-		);
+					);*/
+				});
 	</script>
 </body>
 

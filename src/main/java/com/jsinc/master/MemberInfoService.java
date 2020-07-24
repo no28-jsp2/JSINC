@@ -11,11 +11,13 @@ import org.springframework.ui.Model;
 
 import com.jsinc.jsincDTO.MemberDTO;
 
+// 사원 정보 서비스
 @Service
 public class MemberInfoService implements ServiceIf {
 	@Autowired
 	MasterDAO dao;
-
+	
+	// by성택_사원 정보_20200615
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();

@@ -4,43 +4,47 @@
   
 <mapper namespace="com.jsinc.mybatis.Master">
 	<!-- 사원 관리 -->
+	<!-- by성택_회사 전 사원 리스트_20200613 -->
 	<select id="listAll" resultType="dto_mem">
 		select * from jsinc
 	</select>
-	
+	<!-- by성택_사원 정보 가져오기_20200615 -->
 	<select id="member" resultType="dto_mem">
 		select * from jsinc where empNo=#{empNo}
 	</select>
-	
+	<!-- by성택_정보 수정_20200615 -->
 	<update id="edit">
 		update jsinc set name=#{name}, birth=#{birth}, userEmail=#{userEmail}, phoneNumber=#{phoneNumber}, gender=#{gender}, rank=#{rank}, dep=#{dep} where empNo=#{empNo}
 	</update>
-	
+	<!-- by성택_사원 삭제_20200615 -->
 	<delete id="delete">
 		delete from jsinc where empNo=#{empNo}
 	</delete>
+	
 	<!-- 커뮤니티 관리 -->
+	<!-- by성택_커뮤니티 전체 리스트_20200616 -->
 	<select id="comAll" resultType="dto_com">
 		select * from createcom
 	</select>
-	
+	<!-- by성택_커뮤니티 승인_20200616 -->
 	<update id="permissionCom">
 		update createcom set autho='Y' where title=#{title}
 	</update>
-	
+	<!-- by성택_커뮤니티 승인취소/삭제_20200616 -->
 	<delete id="delCom">
 		delete from createcom where title=#{title}
 	</delete>
 	
 	<!-- 설문 관리 -->
+	<!-- by성택_썰문 전체 리스트_20200616 -->
 	<select id="surAll" resultType="dto_sur">
 		select * from jsinc_survey
 	</select>
-	
+	<!-- by성택_설문 승인_20200616 -->
 	<update id="permissionSur">
 		update jsinc_survey set autho='Y' where title=#{title}
 	</update>
-	
+	<!-- by성택_설문 승인취소/삭제_20200616 -->
 	<delete id="delSur">
 		delete from jsinc_survey where title=#{title}
 	</delete>

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jsinc.jsincDTO.MemberDTO;
-import com.jsinc.services.main.ComponentService;
 import com.jsinc.services.main.EmailChkService;
 import com.jsinc.services.main.EmpNumChkService;
 import com.jsinc.services.main.LoginService;
@@ -41,10 +40,8 @@ public class MainController {
 	
 	@Autowired
 	MailServiceIf mailService;	// by해준_인증메일 서비스 객체 생성_20200522
-	/*
-	ServiceMes msgService;
-	ComponentService comService;
-	*/
+	ServiceMes msgService;	// by해준_메세지 서비스 객체 생성_20200617
+	
 	// by재만_파일 업로드 경로 설정_20200529
 	@Resource(name = "uploadPath") // 업로드 경로 (출처 : servlet-context)
 	private String uploadPath;
@@ -58,12 +55,10 @@ public class MainController {
 		int result = service.execute(model);
 		// 로그인 성공시 메인페이지로 이동
 		if (result == 0) {
-			/*
-			// by해준_메세지 알람 수 표시_20200616 추가
+			// by해준_메세지 알람 수 표시_20200617
 			msgService = ac.getBean("msgAlarmServiceImpl", MsgAlarmServiceImpl.class);
 			model.addAttribute("request", request);
 			msgService.execute(model);
-			*/
 			return "redirect:index";
 		}
 		return "home";
@@ -71,15 +66,15 @@ public class MainController {
 	
 	// by성택_메인 페이지 나타내기_20200521
 	@RequestMapping("index")
-	public String index(Model model, HttpServletRequest request) {
-		//model.addAttribute("request", request);
-		// by성택_최근 등록된 설문 리스트_20200616 추가
-		//comService = ac.getBean("resentSurveyService", ResentSurveyService.class);
-		//comService.execute(model);
+	public String index(Model model, HttpServletRequest request) throws Exception {
+		// by성택_최근 등록된 설문 리스트_20200617 추가
+		model.addAttribute("request", request);
+		service = ac.getBean("resentSurveyService", ResentSurveyService.class);
+		service.execute(model);
 
-		// by해준_안읽은 메세지 리스트_20200616 추가
-		//msgService = ac.getBean("recentServiceImpl", RecentServiceImpl.class);
-		//msgService.execute(model);
+		// 안읽은 메세지 리스트
+		msgService = ac.getBean("recentServiceImpl", RecentServiceImpl.class);
+		msgService.execute(model);
 		return "index";
 	}
 	

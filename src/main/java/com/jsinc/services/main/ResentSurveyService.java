@@ -17,12 +17,12 @@ import com.jsinc.jsincDTO.SurveyDTO;
 import com.jsinc.jsincDTO.SurveyResultDTO;
 
 @Service
-public class ResentSurveyService implements ComponentService {
+public class ResentSurveyService implements ServiceIf {
 	@Autowired
 	SurveyDAO dao;
 
 	@Override
-	public void execute(Model model) {
+	public int execute(Model model) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session = request.getSession();
@@ -40,5 +40,6 @@ public class ResentSurveyService implements ComponentService {
 			}
 		}
 		model.addAttribute("survey", list2);
+		return 0;
 	}
 }

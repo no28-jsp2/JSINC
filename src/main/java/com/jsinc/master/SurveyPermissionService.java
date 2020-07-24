@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+// 설문 승인 서비스
 @Service
 public class SurveyPermissionService implements ServiceIf {
 	@Autowired
 	MasterDAO dao;
-
+	
+	// by성택_설문 승인_20200616
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();

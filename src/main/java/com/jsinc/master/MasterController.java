@@ -15,12 +15,10 @@ public class MasterController {
 	ApplicationContext ac = App.ac;
 	ServiceIf service;
 
-	// by성택_관리자 로그인_20200616
+	// by성택_관리자 로그인_20200612
 	@RequestMapping("masterLogin")
 	public String masterLogin(HttpServletRequest request) {
-		if (request.getParameter("empNo").isEmpty()) { // 사원 번호 입력란이 비어있으면 로그인 페이지로 이동
-			return "home";
-		} else if (request.getParameter("password").isEmpty()) { // 비밀번호 입력란이 비어있으면 로그인 페이지로 이동
+		if (request.getParameter("empNo").isEmpty() || request.getParameter("password").isEmpty()) { // 사원 번호 입력란이 비어있으면 로그인 페이지로 이동
 			return "home";
 		} else {
 			int empNo = Integer.parseInt(request.getParameter("empNo"));
@@ -31,8 +29,8 @@ public class MasterController {
 		}
 		return "home";
 	}
-
-	// 사원 관리 페이지
+	// 사원 관리-------------------------------------------------------------------------------
+	// by성택_사원 관리 페이지_20200613
 	@RequestMapping("memberMng")
 	public String memberMng(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -41,7 +39,7 @@ public class MasterController {
 		return "master/memberMng";
 	}
 
-	// 수정 버튼 클릭 시 사원 정보 페이지로 이동
+	// by성택_수정 버튼 클릭 시 사원 정보 페이지로 이동_20200615
 	@RequestMapping("memberInfo")
 	public String memberInfo(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -50,7 +48,7 @@ public class MasterController {
 		return "master/memberInfo";
 	}
 
-	// 사원 정보 수정
+	// by성택_사원 정보 수정_20200615
 	@RequestMapping("memberEdit")
 	public String memberEdit(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -59,7 +57,7 @@ public class MasterController {
 		return "redirect:memberMng";
 	}
 
-	// 사원 삭제
+	// by성택_사원 삭제_20200615
 	@RequestMapping("memberDel")
 	public String memberDel(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -67,8 +65,9 @@ public class MasterController {
 		service.execute(model);
 		return "redirect:memberMng";
 	}
-
-	// 커뮤니티 관리 페이지
+	
+	// 커뮤니티 관리-------------------------------------------------------------------------------
+	// by성택_커뮤니티 승인 관리 페이지_20200616
 	@RequestMapping("communityMng")
 	public String communityMng(Model model) {
 		service = ac.getBean("communityService", CommunityService.class);
@@ -76,7 +75,7 @@ public class MasterController {
 		return "master/communityMng";
 	}
 
-	// 커뮤니티 승인
+	// by성택_커뮤니티 승인_20200616
 	@RequestMapping("permissionCom")
 	public String permissionCom(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -85,7 +84,7 @@ public class MasterController {
 		return "redirect:communityMng";
 	}
 
-	// 커뮤니티 승인 취소 & 삭제
+	// by성택_커뮤니티 승인 취소 & 삭제_20200616
 	@RequestMapping("deleteCom")
 	public String deleteCom(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -94,7 +93,8 @@ public class MasterController {
 		return "redirect:communityMng";
 	}
 
-	// 설문 관리 페이지
+	// 설문 관리-------------------------------------------------------------------------------
+	// by성택_설문 관리 페이지_20200616
 	@RequestMapping("surveyMng")
 	public String surveyMng(Model model) {
 		service = ac.getBean("surveyListService", SurveyListService.class);
@@ -102,7 +102,7 @@ public class MasterController {
 		return "master/surveyMng";
 	}
 
-	// 설문 승인
+	// by성택_설문 승인_20200616
 	@RequestMapping("permissionSur")
 	public String permissionSur(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -111,7 +111,7 @@ public class MasterController {
 		return "redirect:surveyMng";
 	}
 
-	// 설문 승인 취소 & 삭제
+	// by성택_설문 승인 취소 & 삭제_20200616
 	@RequestMapping("delSur")
 	public String delSur(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
