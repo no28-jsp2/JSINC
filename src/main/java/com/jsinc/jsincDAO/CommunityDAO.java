@@ -58,7 +58,6 @@ public class CommunityDAO {
 
 	// 게시글 등록(내용)
 	public void content_save(CommunityConDTO dto) {
-
 		sqlSession.insert(namespace + ".contentsave", dto);
 	}
 

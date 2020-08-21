@@ -29,7 +29,8 @@ public class LeaveWorkService implements ServiceIf {
 		SimpleDateFormat time = new SimpleDateFormat(":mm:ss");
 		String end = format.format(date) + date.getHours() + time.format(date);
 		dto_att.setLeaveWork(end); // 퇴근 시간 저장
-		dto_att.setWorkTime(Double.parseDouble(String.format("%.1f", this.workTime(dto_att)))); // 당일 근무 시간 저장
+		// 당일 근무 시간 저장
+		dto_att.setWorkTime(Double.parseDouble(String.format("%.1f", this.workTime(dto_att))));
 		dao.input(dto_att); // DB에 기록 저장
 		return dto_att;
 	}

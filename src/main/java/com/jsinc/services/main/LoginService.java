@@ -29,52 +29,30 @@ public class LoginService implements ServiceIf {
 	public int execute(Model model) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		
+
 		String empNo = request.getParameter("empNo");
 		String password = request.getParameter("password");
-		MemberDTO dto = dao.memberInfo(empNo);	// 입력한 사원 번호로 사원의 정보를 dto에 저장
+		MemberDTO dto = dao.memberInfo(empNo); // 입력한 사원 번호로 사원의 정보를 dto에 저장
 		// 사원에 대한 정보가 없거나 비밀번호가 일치하지 않으면 로그인 실패
 		if (dto != null) {
 			if (password.equals(dto.getPassword())) {
 				HttpSession session = request.getSession();
 				ServletContext application = session.getServletContext();
-				application.setAttribute("user", dto);	// 로그인한 사원  dto application 변수에 저장
-				
-				/*
+				application.setAttribute("user", dto); // 로그인한 사원 dto application 변수에 저장
+
+				// by성택_로그인 한 월,일 저장_20200605
+				// 달력 현재 날짜 표시하기 위함
 				Date date = new Date();
 				SimpleDateFormat format = new SimpleDateFormat("MM");
 				SimpleDateFormat day = new SimpleDateFormat("dd");
 				String month = format.format(date);
 				String days = day.format(date);
-				*/
-				//application.setAttribute("loginMonth", month);	// by성택_로그인 한 월 저장_
-				//application.setAttribute("loginDay", days);
+				
+				application.setAttribute("loginMonth", month); 
+				application.setAttribute("loginDay", days);
 				return CHK_OK;
 			}
 		}
 		return CHK_NO;
 	}
-	
-	/*
-	// 사용 안함
-	@Override
-	public int empNoChk(MemberDTO dto) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	// 사용 안함
-	@Override
-	public int userEmailChk(String userEmail) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	// 사용 안함
-	@Override
-	public void sentPw(MemberDTO dto) throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-	*/
 }

@@ -93,25 +93,15 @@ public class CommunityController {
 		model.addAttribute("request", request);
 		service.getExe(model);
 		String title = request.getParameter("title");
-		System.out.println("title" + title);
 		return "redirect:allCommunity";
 	}
 
 	// 댓글 등록
 	@RequestMapping("reply")
 	public String reply(Model model, HttpServletRequest request) {
-		int cno = Integer.parseInt(request.getParameter("cno"));
-		int idgroup = Integer.parseInt(request.getParameter("idGroup"));
-		int step=Integer.parseInt(request.getParameter("step"));
-		int indent=Integer.parseInt(request.getParameter("indent"));
-		System.out.println(cno);
-		System.out.println(idgroup);
-		System.out.println(step);
-		System.out.println(indent);
 		model.addAttribute("request",request);
 		service=ac.getBean("replySaveServiceImpl",ReplySaveServiceImpl.class);
 		service.getExe(model);
-		
 		return "redirect:viewCom";
 	}
 

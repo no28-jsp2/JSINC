@@ -17,8 +17,6 @@ import com.jsinc.jsincDTO.CommunityConDTO;
 import com.jsinc.jsincDTO.CommunityDTO;
 import com.jsinc.jsincDTO.MemberDTO;
 
-// 작성자 : 서해준
-
 // 커뮤니티 댓글 서비스
 @Service
 public class ReplySaveServiceImpl implements ServiceCom {
@@ -29,7 +27,8 @@ public class ReplySaveServiceImpl implements ServiceCom {
 	public void execute(CommunityDTO dto) {
 		// TODO Auto-generated method stub
 	}
-
+	
+	// by해준_커뮤니티 댓글 등록_20200615
 	@Override
 	public void getExe(Model model) {
 		Map<String, Object> map = model.asMap();
@@ -39,7 +38,7 @@ public class ReplySaveServiceImpl implements ServiceCom {
 		MemberDTO mem_dto = (MemberDTO) app.getAttribute("user");
 		CommunityConDTO dto = new CommunityConDTO();
 		
-		// 시간
+		// 댓글 등록 시간
 		Date date = new Date();
 		SimpleDateFormat fm1 = new SimpleDateFormat("yyyy년 MM월 dd일 ");
 		SimpleDateFormat fm2 = new SimpleDateFormat("시 mm분");
@@ -55,7 +54,6 @@ public class ReplySaveServiceImpl implements ServiceCom {
 		dto.setEmpNo(mem_dto.getEmpNo());
 		dto.setRank(mem_dto.getRank());
 		dto.setCom_date(time);
-		System.out.println("step====== 값 :" + dto.getStep());
 
 		int result = dao.replySave(dto);
 	}

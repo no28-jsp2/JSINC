@@ -94,7 +94,7 @@
 		<section id="main-content">
 			<section class="wrapper">
 				<h3>
-					<i class="fa fa-angle-right"></i> 사원 정보
+					<i class="fa fa-angle-right"></i> 사원 리스트
 				</h3>
 				<div class="row mb">
 					<!-- page start-->
