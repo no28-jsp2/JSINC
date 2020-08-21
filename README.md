@@ -7,9 +7,10 @@ Step
 --------------------------
 1. Code clone
 2. JSINC > src > main > webapp > WEB-INF > spring > appServlet > servlet-context.xml
-3. add workspace path(line 41).   : <beans:constructor-arg value = "(workspace path)\\.metadata\\.plugins\ ...  "\> 
+3. add workspace path(line 41) : <beans:constructor-arg value = "(workspace path)\\.metadata\\.plugins\ ...  "\> 
 4. Run on Server ( Apache Tomcat 9.0 )
 
 Login
 ---------------------------
 - User
+  - ID : 2233 // PW : 111
