@@ -12,5 +12,5 @@ Step
 
 Login
 ---------------------------
-User
-  - ID : 2233 // PW : 111
+- User ( 2233 / 111 )
+- Manager ( 1 / master )
