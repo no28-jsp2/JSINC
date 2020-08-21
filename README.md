@@ -1,4 +1,8 @@
 # JS.Inc Office
+Introduce
+--------------------------
+- This project is a webpage for intranet services within a company.
+
 Step
 --------------------------
 1. Code clone
