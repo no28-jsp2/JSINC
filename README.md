@@ -1,5 +1,6 @@
-###### JSINC
+## JSINC
 project clone 후
+
 src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml
 <!-- 업로드 패스 설정 -->
 제일 아래에
